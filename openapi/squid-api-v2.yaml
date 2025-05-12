@@ -1,0 +1,951 @@
+openapi: 3.0.3
+info:
+  title: Squid Router API V2
+  version: v2.9.4 # Based on SDK version
+  description: API for Squid Router, enabling cross-chain swaps and token transfers. Inferred from @0xsquid/sdk.
+servers:
+  - url: https://v2.api.squidrouter.com/v2
+    description: Production V2 API
+  - url: https://testnet.api.squidrouter.com/v2 # Assumed testnet URL, may differ
+    description: Testnet V2 API
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+  parameters:
+    IntegratorIdHeader:
+      name: x-integrator-id
+      in: header
+      required: true
+      description: The ID of the integrator using the API.
+      schema:
+        type: string
+  schemas:
+    Token:
+      type: object
+      properties:
+        chainId:
+          type: string
+        address:
+          type: string
+        name:
+          type: string
+        symbol:
+          type: string
+        decimals:
+          type: integer
+        logoURI:
+          type: string
+          format: uri
+          nullable: true
+        coingeckoId:
+          type: string
+          nullable: true
+        categories:
+          type: array
+          items:
+            type: string
+          nullable: true
+        ibcDenom:
+          type: string
+          nullable: true
+        bridgeOnly:
+          type: boolean
+          nullable: true
+        axelarNetworkIdentifier:
+          type: object
+          properties:
+            ethereum:
+              type: string
+              nullable: true
+            moonbeam:
+              type: string
+              nullable: true
+          nullable: true
+        price: # Populated by pricing endpoints
+          type: number
+          format: float
+          nullable: true
+          description: Price of the token, usually in USD. Contextually populated by pricing endpoints.
+
+    ChainData:
+      type: object
+      properties:
+        chainName:
+          type: string
+        chainId:
+          type: string
+        chainType:
+          type: string
+          enum: [evm, cosmos, axelar, svm] # svm added as solana is supported
+        rpc:
+          type: string
+          format: uri
+          nullable: true # RPC might not always be relevant for API response
+        chainIconURI:
+          type: string
+          format: uri
+          nullable: true
+        nativeCurrency:
+          type: object
+          properties:
+            name:
+              type: string
+            symbol:
+              type: string
+            decimals:
+              type: integer
+            icon:
+              type: string
+              format: uri
+              nullable: true
+        axelarChainName:
+          type: string
+          nullable: true
+        squidImplementation:
+          type: string
+          enum: [squidrouter, squidflow, tpflistener]
+          nullable: true
+        estimatedRouteDuration:
+          type: integer
+          nullable: true
+        estimatedExpressRouteDuration:
+          type: integer
+          nullable: true
+        swapAmountForGas:
+          type: string
+          nullable: true
+        blockExplorerUrls:
+          type: array
+          items:
+            type: string
+          nullable: true
+        gasMultiplier:
+          type: number
+          format: float
+          nullable: true
+        chainNativeContracts:
+          type: object
+          properties:
+            ensRegistryAddress:
+              type: string
+              nullable: true
+            multicallAddress:
+              type: string
+              nullable: true
+            usdcTokenAddress:
+              type: string
+              nullable: true
+            usdtTokenAddress:
+              type: string
+              nullable: true
+            wethTokenAddress:
+              type: string
+              nullable: true
+            axlUsdcTokenAddress:
+              type: string
+              nullable: true
+          nullable: true
+        supportedCrossChainProtocols:
+          type: array
+          items:
+            type: string
+          nullable: true
+        compliance:
+          type: object
+          properties:
+            blackListedUserAgent:
+              type: array
+              items:
+                type: string
+              nullable: true
+            supported:
+              type: boolean
+              nullable: true
+          nullable: true
+        maintenances:
+          type: array
+          items:
+            type: object # Define Maintenance object if structure is known
+            description: Placeholder for Maintenance object structure
+          nullable: true
+        features:
+          type: array
+          items:
+            type: string
+          nullable: true
+
+    SdkInfoResponse:
+      type: object
+      properties:
+        tokens:
+          type: array
+          items:
+            $ref: '#/components/schemas/Token'
+        chains:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChainData'
+        axelarscanURL:
+          type: string
+          format: uri
+          nullable: true
+        isInMaintenanceMode:
+          type: boolean
+          nullable: true
+        maintenanceMessage:
+          type: string
+          nullable: true
+
+    SlippageConfig:
+      type: object
+      properties:
+        slippage:
+          type: number
+          format: float
+          description: Slippage percentage (e.g., 1 for 1%)
+        autoMode:
+          type: boolean
+          description: If true, API calculates optimal slippage.
+
+    FeeCost:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        percentage:
+          type: string
+        token:
+          $ref: '#/components/schemas/Token'
+        amount:
+          type: string
+        amountUSD:
+          type: string
+
+    GasCost:
+      type: object
+      properties:
+        type:
+          type: string
+        token:
+          $ref: '#/components/schemas/Token'
+        amount:
+          type: string
+        amountUSD:
+          type: string
+        gasPrice:
+          type: string
+          nullable: true
+        maxFeePerGas:
+          type: string
+          nullable: true
+        maxPriorityFeePerGas:
+          type: string
+          nullable: true
+        gasLimit:
+          type: string
+          nullable: true
+
+    RouteEstimate:
+      type: object
+      properties:
+        fromAmount:
+          type: string
+        sendAmount:
+          type: string
+          nullable: true # Not always present
+        toAmount:
+          type: string
+        toAmountMin:
+          type: string
+          nullable: true # Not always present
+        fromAmountUSD:
+          type: string
+          nullable: true
+        toAmountUSD:
+          type: string
+          nullable: true
+        feeCosts:
+          type: array
+          items:
+            $ref: '#/components/schemas/FeeCost'
+          nullable: true
+        gasCosts:
+          type: array
+          items:
+            $ref: '#/components/schemas/GasCost'
+          nullable: true
+        estimatedRouteDuration:
+          type: integer
+        exchangeRate:
+          type: string
+          nullable: true
+        aggregatePriceImpact:
+          type: string
+          nullable: true
+
+    TransactionRequestDataBase: # Common fields for EVM, Cosmos, etc.
+      type: object
+      properties:
+        routeType:
+          type: string
+        target: # For EVM, contract address. For Cosmos, module/contract.
+          type: string
+          nullable: true
+        data: # EVM: calldata. Cosmos: JSON msg for MsgExecuteContract.
+          type: string # Or could be object for Cosmos msg
+          nullable: true
+        value: # EVM: native token value.
+          type: string
+          default: "0"
+          nullable: true
+
+    EvmTransactionRequestData:
+      allOf:
+        - $ref: '#/components/schemas/TransactionRequestDataBase'
+      type: object
+      properties:
+        gasLimit:
+          type: string
+          nullable: true
+        gasPrice:
+          type: string
+          nullable: true
+        maxFeePerGas:
+          type: string
+          nullable: true
+        maxPriorityFeePerGas:
+          type: string
+          nullable: true
+
+    CosmosTransactionRequestDataValue: # Example for MsgExecuteContract value
+        type: object
+        properties:
+          contract:
+            type: string
+          msg:
+            type: object # a JSON object
+          funds:
+            type: array
+            items:
+              type: object # coin structure { denom, amount }
+              properties:
+                denom:
+                  type: string
+                amount:
+                  type: string
+            default: []
+
+    CosmosTransactionRequestData: # Corresponds to CosmosMsg
+      type: object
+      properties:
+        typeUrl:
+          type: string # e.g., "/cosmwasm.wasm.v1.MsgExecuteContract"
+        value: # Type any in SDK, structure depends on typeUrl
+          oneOf:
+            - $ref: '#/components/schemas/CosmosTransactionRequestDataValue'
+            - type: object # Generic placeholder
+          description: The value structure depends on the typeUrl.
+
+    SolanaTransaction: # Simplified from VersionedTransaction for API context
+      type: object
+      properties:
+        serialized: # Assuming the API would expect a serialized form
+          type: string
+          description: Base64 or Hex encoded serialized transaction.
+
+    TransactionRequest: # Union type in API response
+      oneOf:
+        - $ref: '#/components/schemas/EvmTransactionRequestData'
+        - $ref: '#/components/schemas/CosmosTransactionRequestData'
+        - $ref: '#/components/schemas/SolanaTransaction' # If route involves Solana tx
+        - type: object # For DepositAddressResponse type from SDK (not an on-chain tx)
+          properties:
+            depositAddress:
+              type: string
+            chainName:
+              type: string # e.g. bitcoin
+          description: Represents a deposit address generation, not an on-chain transaction.
+
+    RouteData:
+      type: object
+      properties:
+        fromChain:
+          $ref: '#/components/schemas/ChainData'
+        toChain:
+          $ref: '#/components/schemas/ChainData'
+        fromToken:
+          $ref: '#/components/schemas/Token'
+        toToken:
+          $ref: '#/components/schemas/Token'
+        transactionRequest: # This is the crucial part for execution
+          $ref: '#/components/schemas/TransactionRequest'
+        estimate:
+          $ref: '#/components/schemas/RouteEstimate'
+        params: # Contains the original RouteRequest params, possibly augmented
+          $ref: '#/components/schemas/RouteRequest'
+
+    RouteRequest:
+      type: object
+      required:
+        - fromChain
+        - toChain
+        - fromToken
+        - toToken
+        - fromAmount
+        - toAddress
+      properties:
+        fromChain:
+          type: string
+        toChain:
+          type: string
+        fromToken:
+          type: string
+        toToken:
+          type: string
+        fromAmount:
+          type: string
+        fromAddress:
+          type: string
+          nullable: true
+        toAddress:
+          type: string
+        slippage:
+          type: number
+          format: float
+          nullable: true
+        slippageConfig:
+          $ref: '#/components/schemas/SlippageConfig'
+          nullable: true
+        quoteOnly:
+          type: boolean
+          nullable: true
+        enableExpress:
+          type: boolean
+          nullable: true
+        prefer:
+          type: array
+          items:
+            type: string
+          nullable: true
+        receiveGasOnDestination:
+          type: boolean
+          nullable: true
+        fallbackAddresses:
+          type: array
+          items:
+            type: object # Define FallbackAddress if structure is known
+          nullable: true
+        bypassGuardRail:
+          type: boolean
+          nullable: true
+        postHook:
+          type: object # Define PostHook if structure is known
+          nullable: true
+        integratorId:
+          type: string
+          nullable: true
+          description: Can be sent in body to override header for this specific request.
+
+    RouteResponse:
+      allOf:
+        - $ref: '#/components/schemas/ApiBasicResponse' # Error fields can be at top level
+      type: object
+      properties:
+        route:
+          $ref: '#/components/schemas/RouteData'
+          nullable: true # Route can be null/absent if no route is found
+        requestId:
+          type: string
+          nullable: true
+        integratorId:
+          type: string
+          nullable: true
+
+    GetStatusParams:
+      type: object
+      required:
+        - transactionId
+      properties:
+        transactionId:
+          type: string
+        requestId:
+          type: string
+          nullable: true
+        integratorId:
+          type: string
+          nullable: true
+          description: Can be sent in body to override header for this specific request.
+
+    TransactionStatus:
+      type: object
+      properties:
+        transactionId:
+          type: string
+          nullable: true
+        blockNumber:
+          type: string
+          nullable: true
+        callEventStatus:
+          type: string
+          nullable: true
+        callEventLog:
+          type: array
+          items:
+            type: object
+          nullable: true
+        chainData:
+          $ref: '#/components/schemas/ChainData'
+          nullable: true
+        transactionUrl:
+          type: string
+          format: uri
+          nullable: true
+
+    StatusResponse:
+      allOf:
+        - $ref: '#/components/schemas/ApiBasicResponse'
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        gasStatus:
+          type: string
+          nullable: true
+        isGMPTransaction:
+          type: boolean
+          nullable: true
+        axelarTransactionUrl:
+          type: string
+          format: uri
+          nullable: true
+        fromChain:
+          $ref: '#/components/schemas/TransactionStatus'
+          nullable: true
+        toChain:
+          $ref: '#/components/schemas/TransactionStatus'
+          nullable: true
+        timeSpent:
+          type: object
+          additionalProperties:
+            type: number
+          nullable: true
+        requestId:
+          type: string
+          nullable: true
+        integratorId:
+          type: string
+          nullable: true
+        routeStatus:
+          type: object
+          nullable: true
+        squidTransactionStatus:
+          type: string
+          nullable: true
+
+    TokenPriceRequest:
+      type: object
+      required:
+        - chainId
+        - tokenAddress
+      properties:
+        chainId:
+          type: string
+        tokenAddress:
+          type: string
+
+    TokenPriceResponse:
+      allOf:
+        - $ref: '#/components/schemas/ApiBasicResponse'
+      type: object
+      properties:
+        price: # The SDK expects a number directly, likely from response.data.price
+          type: number
+          format: float
+          nullable: true # If error, price might be null
+
+    MultipleTokensPriceRequest:
+      type: object
+      properties:
+        chainId:
+          type: string
+          nullable: true
+
+    MultipleTokensPriceResponse:
+      allOf:
+        - $ref: '#/components/schemas/ApiBasicResponse'
+      type: object
+      properties:
+        tokens: # Based on SDK: (await this.httpInstance.post<any>("/tokens", ...)).data.tokens
+          type: array
+          items:
+            $ref: '#/components/schemas/Token' # Tokens here would have their 'price' field populated
+          nullable: true
+
+    FromAmountRequest:
+      type: object
+      required:
+        - fromTokenChainId
+        - fromTokenAddress
+        - toTokenChainId
+        - toTokenAddress
+        - toAmount
+      properties:
+        fromTokenChainId:
+          type: string
+        fromTokenAddress:
+          type: string
+        toTokenChainId:
+          type: string
+        toTokenAddress:
+          type: string
+        toAmount:
+          type: string
+        slippagePercentage:
+          type: number
+          format: float
+          nullable: true
+
+    FromAmountResponse:
+      allOf:
+        - $ref: '#/components/schemas/ApiBasicResponse'
+      type: object
+      properties:
+        fromAmount: # SDK: (await this.httpInstance.post<any>("/from-amount", ...)).data.fromAmount
+          type: string
+          nullable: true
+
+    CosmosAddress:
+      type: object
+      properties:
+        coinType:
+          type: integer
+        chainId:
+          type: string
+        address:
+          type: string
+
+    CosmosBalance:
+      type: object
+      properties:
+        decimals:
+          type: integer
+        balance:
+          type: string
+        denom:
+          type: string
+        chainId:
+          type: string
+
+    TokenBalance:
+      type: object
+      properties:
+        symbol:
+          type: string
+        address:
+          type: string
+        decimals:
+          type: integer
+        balance:
+          type: string
+        chainId:
+          type: string
+
+    BalancesRequest:
+      type: object
+      properties:
+        chainIds:
+          type: array
+          items:
+            type: string
+          nullable: true
+        cosmosAddresses:
+          type: array
+          items:
+            $ref: '#/components/schemas/CosmosAddress'
+          nullable: true
+        evmAddress:
+          type: string
+          nullable: true
+
+    BalancesResponse:
+      allOf:
+        - $ref: '#/components/schemas/ApiBasicResponse'
+      type: object
+      properties:
+        cosmosBalances:
+          type: array
+          items:
+            $ref: '#/components/schemas/CosmosBalance'
+          nullable: true
+        evmBalances:
+          type: array
+          items:
+            $ref: '#/components/schemas/TokenBalance'
+          nullable: true
+
+    ConfigResponse: # Based on old v2 docs for GET /config
+      allOf:
+        - $ref: '#/components/schemas/ApiBasicResponse'
+      type: object
+      properties:
+        integratorId:
+          type: string
+          nullable: true
+        apiUrl:
+          type: string
+          format: uri
+          nullable: true
+        defaultSlippage:
+          type: number # Assuming number, could be string
+          format: float
+          nullable: true
+        infiniteApproval:
+          type: boolean
+          nullable: true
+        enableExpress:
+          type: boolean
+          nullable: true
+        collectFees:
+          type: object # Structure unknown from docs
+          nullable: true
+          description: Details about fee collection for the integrator.
+
+    YupError:
+      type: object
+      properties:
+        path:
+          type: string
+        message:
+          type: string
+
+    ApiBasicResponse:
+      type: object
+      properties:
+        error:
+          oneOf:
+            - type: string
+            - type: array
+              items:
+                $ref: '#/components/schemas/YupError'
+            - type: object
+          nullable: true
+        errorType:
+          type: string
+          nullable: true
+
+security:
+  - ApiKeyAuth: []
+
+paths:
+  /sdk-info:
+    get:
+      summary: Get SDK Initialization Data
+      description: Fetches tokens, chains, and other configuration data required for the SDK.
+      operationId: getSdkInfo
+      parameters:
+        - $ref: '#/components/parameters/IntegratorIdHeader'
+      responses:
+        '200':
+          description: Successful response with SDK data.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SdkInfoResponse'
+        default:
+          description: Error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiBasicResponse'
+  /route:
+    post:
+      summary: Get Cross-Chain Route
+      description: Calculates the optimal cross-chain route for a given swap.
+      operationId: getRoute
+      parameters:
+        - $ref: '#/components/parameters/IntegratorIdHeader'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RouteRequest'
+      responses:
+        '200':
+          description: Successful response with route details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RouteResponse'
+        default:
+          description: Error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiBasicResponse' # Or specific error for route not found
+  /status:
+    post:
+      summary: Get Transaction Status
+      description: Retrieves the status of a cross-chain transaction.
+      operationId: getStatus
+      parameters:
+        - $ref: '#/components/parameters/IntegratorIdHeader'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetStatusParams'
+      responses:
+        '200':
+          description: Successful response with transaction status.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusResponse'
+        default:
+          description: Error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiBasicResponse'
+  /token-price:
+    post:
+      summary: Get Token Price
+      description: Retrieves the price for a single token on a specific chain.
+      operationId: getTokenPrice
+      parameters:
+        - $ref: '#/components/parameters/IntegratorIdHeader'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenPriceRequest'
+      responses:
+        '200':
+          description: Successful response with token price.
+          content:
+            application/json:
+              schema: # The SDK directly uses response.data (which would be the number)
+                      # but usually APIs wrap primitives. Assuming price is a field.
+                type: object
+                properties:
+                  price:
+                    type: number
+                    format: float
+        default:
+          description: Error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiBasicResponse'
+  /tokens:
+    post:
+      summary: Get Multiple Tokens Prices
+      description: Retrieves prices for multiple tokens, optionally filtered by chain. The returned tokens will have their 'price' field populated.
+      operationId: getMultipleTokensPrice
+      parameters:
+        - $ref: '#/components/parameters/IntegratorIdHeader'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MultipleTokensPriceRequest'
+      responses:
+        '200':
+          description: Successful response with token prices.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MultipleTokensPriceResponse'
+        default:
+          description: Error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiBasicResponse'
+  /from-amount:
+    post:
+      summary: Get "From" Amount
+      description: Calculates the required "from" amount for a desired "to" amount.
+      operationId: getFromAmount
+      parameters:
+        - $ref: '#/components/parameters/IntegratorIdHeader'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FromAmountRequest'
+      responses:
+        '200':
+          description: Successful response with the calculated "from" amount.
+          content:
+            application/json:
+              schema: # SDK accesses (response).data.fromAmount
+                type: object
+                properties:
+                  fromAmount:
+                    type: string
+        default:
+          description: Error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiBasicResponse'
+  /balances:
+    post:
+      summary: Get Token Balances
+      description: Retrieves token balances for EVM and/or Cosmos addresses.
+      operationId: getAllBalances
+      parameters:
+        - $ref: '#/components/parameters/IntegratorIdHeader'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BalancesRequest'
+      responses:
+        '200':
+          description: Successful response with token balances.
+          content:
+            application/json:
+              schema: # SDK accesses (response).data.cosmosBalances / .evmBalances
+                $ref: '#/components/schemas/BalancesResponse'
+        default:
+          description: Error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiBasicResponse'
+  /config:
+    get:
+      summary: Get Integrator Configuration
+      description: Fetches integrator-specific configuration settings.
+      operationId: getIntegratorConfig
+      parameters:
+        - $ref: '#/components/parameters/IntegratorIdHeader'
+      responses:
+        '200':
+          description: Successful response with integrator configuration.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConfigResponse'
+        default:
+          description: Error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiBasicResponse'
