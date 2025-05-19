@@ -11,7 +11,7 @@
 part of openapi.api;
 
 class ApiClient {
-  ApiClient({this.basePath = 'https://v2.api.squidrouter.com/v2', this.authentication,});
+  ApiClient({this.basePath = 'https://v2.api.squidrouter.com', this.authentication,});
 
   final String basePath;
   final Authentication? authentication;
@@ -182,90 +182,58 @@ class ApiClient {
           return valueString == 'true' || valueString == '1';
         case 'DateTime':
           return value is DateTime ? value : DateTime.tryParse(value);
-        case 'ApiBasicResponse':
-          return ApiBasicResponse.fromJson(value);
+        case 'Action':
+          return Action.fromJson(value);
         case 'ApiBasicResponseError':
           return ApiBasicResponseError.fromJson(value);
-        case 'BalancesRequest':
-          return BalancesRequest.fromJson(value);
-        case 'BalancesResponse':
-          return BalancesResponse.fromJson(value);
+        case 'ApiBasicResponseErrorErrorsInner':
+          return ApiBasicResponseErrorErrorsInner.fromJson(value);
         case 'ChainData':
           return ChainData.fromJson(value);
-        case 'ChainDataChainNativeContracts':
-          return ChainDataChainNativeContracts.fromJson(value);
-        case 'ChainDataCompliance':
-          return ChainDataCompliance.fromJson(value);
         case 'ChainDataNativeCurrency':
           return ChainDataNativeCurrency.fromJson(value);
-        case 'ConfigResponse':
-          return ConfigResponse.fromJson(value);
-        case 'CosmosAddress':
-          return CosmosAddress.fromJson(value);
-        case 'CosmosBalance':
-          return CosmosBalance.fromJson(value);
-        case 'CosmosTransactionRequestData':
-          return CosmosTransactionRequestData.fromJson(value);
-        case 'CosmosTransactionRequestDataValue':
-          return CosmosTransactionRequestDataValue.fromJson(value);
-        case 'CosmosTransactionRequestDataValueFundsInner':
-          return CosmosTransactionRequestDataValueFundsInner.fromJson(value);
+        case 'ChainType':
+          return ChainTypeTypeTransformer().decode(value);
+        case 'ChainflipTransactionRequestData':
+          return ChainflipTransactionRequestData.fromJson(value);
+        case 'ChainflipTransactionRequestDataSourceAsset':
+          return ChainflipTransactionRequestDataSourceAsset.fromJson(value);
+        case 'DepositAddressResponseData':
+          return DepositAddressResponseData.fromJson(value);
+        case 'EvmContractCall':
+          return EvmContractCall.fromJson(value);
         case 'EvmTransactionRequestData':
           return EvmTransactionRequestData.fromJson(value);
         case 'FeeCost':
           return FeeCost.fromJson(value);
-        case 'FromAmountRequest':
-          return FromAmountRequest.fromJson(value);
-        case 'FromAmountResponse':
-          return FromAmountResponse.fromJson(value);
-        case 'GasCost':
-          return GasCost.fromJson(value);
-        case 'GetFromAmount200Response':
-          return GetFromAmount200Response.fromJson(value);
-        case 'GetStatusParams':
-          return GetStatusParams.fromJson(value);
-        case 'GetTokenPrice200Response':
-          return GetTokenPrice200Response.fromJson(value);
-        case 'MultipleTokensPriceRequest':
-          return MultipleTokensPriceRequest.fromJson(value);
-        case 'MultipleTokensPriceResponse':
-          return MultipleTokensPriceResponse.fromJson(value);
-        case 'RouteData':
-          return RouteData.fromJson(value);
+        case 'Hook':
+          return Hook.fromJson(value);
+        case 'HookCallPayload':
+          return HookCallPayload.fromJson(value);
+        case 'InlineObject':
+          return InlineObject.fromJson(value);
+        case 'Maintenance':
+          return Maintenance.fromJson(value);
         case 'RouteEstimate':
           return RouteEstimate.fromJson(value);
-        case 'RouteRequest':
-          return RouteRequest.fromJson(value);
+        case 'RouteRequestParams':
+          return RouteRequestParams.fromJson(value);
         case 'RouteResponse':
           return RouteResponse.fromJson(value);
-        case 'SdkInfoResponse':
-          return SdkInfoResponse.fromJson(value);
-        case 'SlippageConfig':
-          return SlippageConfig.fromJson(value);
-        case 'SolanaTransaction':
-          return SolanaTransaction.fromJson(value);
-        case 'StatusResponse':
-          return StatusResponse.fromJson(value);
+        case 'RouteResponseData':
+          return RouteResponseData.fromJson(value);
+        case 'RouteResponseDataTransactionRequest':
+          return RouteResponseDataTransactionRequest.fromJson(value);
+        case 'RouteResponseError':
+          return RouteResponseError.fromJson(value);
+        case 'SDKInfoResponseData':
+          return SDKInfoResponseData.fromJson(value);
+        case 'SquidCallType':
+          return SquidCallTypeTypeTransformer().decode(value);
+        case 'StatusResponseData':
+          return StatusResponseData.fromJson(value);
         case 'Token':
           return Token.fromJson(value);
-        case 'TokenAxelarNetworkIdentifier':
-          return TokenAxelarNetworkIdentifier.fromJson(value);
-        case 'TokenBalance':
-          return TokenBalance.fromJson(value);
-        case 'TokenPriceRequest':
-          return TokenPriceRequest.fromJson(value);
-        case 'TokenPriceResponse':
-          return TokenPriceResponse.fromJson(value);
-        case 'TransactionRequest':
-          return TransactionRequest.fromJson(value);
-        case 'TransactionRequestDataBase':
-          return TransactionRequestDataBase.fromJson(value);
-        case 'TransactionRequestOneOf':
-          return TransactionRequestOneOf.fromJson(value);
-        case 'TransactionStatus':
-          return TransactionStatus.fromJson(value);
-        case 'YupError':
-          return YupError.fromJson(value);
         default:
           dynamic match;
           if (value is List && (match = _regList.firstMatch(targetType)?.group(1)) != null) {

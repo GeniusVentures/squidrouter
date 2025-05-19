@@ -41,8 +41,8 @@ void main() {
       // TODO
     });
 
-    // String amountUSD
-    test('to test the property `amountUSD`', () async {
+    // String amountUsd
+    test('to test the property `amountUsd`', () async {
       // TODO
     });
 

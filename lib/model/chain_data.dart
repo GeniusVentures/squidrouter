@@ -26,11 +26,10 @@ class ChainData {
     this.swapAmountForGas,
     this.blockExplorerUrls = const [],
     this.gasMultiplier,
-    this.chainNativeContracts,
+    this.chainNativeContracts = const {},
     this.supportedCrossChainProtocols = const [],
-    this.compliance,
+    this.compliance = const {},
     this.maintenances = const [],
-    this.features = const [],
   });
 
   ///
@@ -77,15 +76,13 @@ class ChainData {
 
   double? gasMultiplier;
 
-  ChainDataChainNativeContracts? chainNativeContracts;
+  Map<String, Object>? chainNativeContracts;
 
   List<String>? supportedCrossChainProtocols;
 
-  ChainDataCompliance? compliance;
+  Map<String, Object>? compliance;
 
-  List<Object>? maintenances;
-
-  List<String>? features;
+  List<Maintenance>? maintenances;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is ChainData &&
@@ -102,11 +99,10 @@ class ChainData {
     other.swapAmountForGas == swapAmountForGas &&
     _deepEquality.equals(other.blockExplorerUrls, blockExplorerUrls) &&
     other.gasMultiplier == gasMultiplier &&
-    other.chainNativeContracts == chainNativeContracts &&
+    _deepEquality.equals(other.chainNativeContracts, chainNativeContracts) &&
     _deepEquality.equals(other.supportedCrossChainProtocols, supportedCrossChainProtocols) &&
-    other.compliance == compliance &&
-    _deepEquality.equals(other.maintenances, maintenances) &&
-    _deepEquality.equals(other.features, features);
+    _deepEquality.equals(other.compliance, compliance) &&
+    _deepEquality.equals(other.maintenances, maintenances);
 
   @override
   int get hashCode =>
@@ -127,11 +123,10 @@ class ChainData {
     (chainNativeContracts == null ? 0 : chainNativeContracts!.hashCode) +
     (supportedCrossChainProtocols == null ? 0 : supportedCrossChainProtocols!.hashCode) +
     (compliance == null ? 0 : compliance!.hashCode) +
-    (maintenances == null ? 0 : maintenances!.hashCode) +
-    (features == null ? 0 : features!.hashCode);
+    (maintenances == null ? 0 : maintenances!.hashCode);
 
   @override
-  String toString() => 'ChainData[chainName=$chainName, chainId=$chainId, chainType=$chainType, rpc=$rpc, chainIconURI=$chainIconURI, nativeCurrency=$nativeCurrency, axelarChainName=$axelarChainName, squidImplementation=$squidImplementation, estimatedRouteDuration=$estimatedRouteDuration, estimatedExpressRouteDuration=$estimatedExpressRouteDuration, swapAmountForGas=$swapAmountForGas, blockExplorerUrls=$blockExplorerUrls, gasMultiplier=$gasMultiplier, chainNativeContracts=$chainNativeContracts, supportedCrossChainProtocols=$supportedCrossChainProtocols, compliance=$compliance, maintenances=$maintenances, features=$features]';
+  String toString() => 'ChainData[chainName=$chainName, chainId=$chainId, chainType=$chainType, rpc=$rpc, chainIconURI=$chainIconURI, nativeCurrency=$nativeCurrency, axelarChainName=$axelarChainName, squidImplementation=$squidImplementation, estimatedRouteDuration=$estimatedRouteDuration, estimatedExpressRouteDuration=$estimatedExpressRouteDuration, swapAmountForGas=$swapAmountForGas, blockExplorerUrls=$blockExplorerUrls, gasMultiplier=$gasMultiplier, chainNativeContracts=$chainNativeContracts, supportedCrossChainProtocols=$supportedCrossChainProtocols, compliance=$compliance, maintenances=$maintenances]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -220,11 +215,6 @@ class ChainData {
     } else {
       json[r'maintenances'] = null;
     }
-    if (this.features != null) {
-      json[r'features'] = this.features;
-    } else {
-      json[r'features'] = null;
-    }
     return json;
   }
 
@@ -262,15 +252,12 @@ class ChainData {
             ? (json[r'blockExplorerUrls'] as Iterable).cast<String>().toList(growable: false)
             : const [],
         gasMultiplier: mapValueOfType<double>(json, r'gasMultiplier'),
-        chainNativeContracts: ChainDataChainNativeContracts.fromJson(json[r'chainNativeContracts']),
+        chainNativeContracts: mapCastOfType<String, Object>(json, r'chainNativeContracts') ?? const {},
         supportedCrossChainProtocols: json[r'supportedCrossChainProtocols'] is Iterable
             ? (json[r'supportedCrossChainProtocols'] as Iterable).cast<String>().toList(growable: false)
             : const [],
-        compliance: ChainDataCompliance.fromJson(json[r'compliance']),
-        maintenances: Object.listFromJson(json[r'maintenances']),
-        features: json[r'features'] is Iterable
-            ? (json[r'features'] as Iterable).cast<String>().toList(growable: false)
-            : const [],
+        compliance: mapCastOfType<String, Object>(json, r'compliance') ?? const {},
+        maintenances: Maintenance.listFromJson(json[r'maintenances']),
       );
     }
     return null;

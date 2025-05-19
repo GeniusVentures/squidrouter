@@ -81,7 +81,7 @@ void main() {
       // TODO
     });
 
-    // ChainDataChainNativeContracts chainNativeContracts
+    // Map<String, Object> chainNativeContracts (default value: const {})
     test('to test the property `chainNativeContracts`', () async {
       // TODO
     });
@@ -91,12 +91,12 @@ void main() {
       // TODO
     });
 
-    // ChainDataCompliance compliance
+    // Map<String, Object> compliance (default value: const {})
     test('to test the property `compliance`', () async {
       // TODO
     });
 
-    // List<Object> maintenances (default value: const [])
+    // List<Map<String, Object>> maintenances (default value: const [])
     test('to test the property `maintenances`', () async {
       // TODO
     });

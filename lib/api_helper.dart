@@ -55,6 +55,12 @@ String parameterToString(dynamic value) {
   if (value is DateTime) {
     return value.toUtc().toIso8601String();
   }
+  if (value is ChainType) {
+    return ChainTypeTypeTransformer().encode(value).toString();
+  }
+  if (value is SquidCallType) {
+    return SquidCallTypeTypeTransformer().encode(value).toString();
+  }
   return value.toString();
 }
 

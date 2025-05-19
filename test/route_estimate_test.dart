@@ -21,23 +21,19 @@ void main() {
       // TODO
     });
 
+    // String fromAmountUSD
+    test('to test the property `fromAmountUSD`', () async {
+      // TODO
+    });
+
     // String sendAmount
     test('to test the property `sendAmount`', () async {
       // TODO
     });
 
+    // Estimated amount of `toToken` to be received.
     // String toAmount
     test('to test the property `toAmount`', () async {
-      // TODO
-    });
-
-    // String toAmountMin
-    test('to test the property `toAmountMin`', () async {
-      // TODO
-    });
-
-    // String fromAmountUSD
-    test('to test the property `fromAmountUSD`', () async {
       // TODO
     });
 
@@ -46,28 +42,33 @@ void main() {
       // TODO
     });
 
+    // int routeMillis
+    test('to test the property `routeMillis`', () async {
+      // TODO
+    });
+
     // List<FeeCost> feeCosts (default value: const [])
     test('to test the property `feeCosts`', () async {
       // TODO
     });
 
-    // List<GasCost> gasCosts (default value: const [])
+    // List<FeeCost> gasCosts (default value: const [])
     test('to test the property `gasCosts`', () async {
       // TODO
     });
 
-    // int estimatedRouteDuration
-    test('to test the property `estimatedRouteDuration`', () async {
+    // bool isApprovalRequired
+    test('to test the property `isApprovalRequired`', () async {
       // TODO
     });
 
-    // String exchangeRate
-    test('to test the property `exchangeRate`', () async {
+    // Object approvalTx
+    test('to test the property `approvalTx`', () async {
       // TODO
     });
 
-    // String aggregatePriceImpact
-    test('to test the property `aggregatePriceImpact`', () async {
+    // List<Action> actions (default value: const [])
+    test('to test the property `actions`', () async {
       // TODO
     });
 

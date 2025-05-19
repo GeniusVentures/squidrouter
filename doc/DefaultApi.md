@@ -5,44 +5,34 @@
 import 'package:openapi/api.dart';
 ```
 
-All URIs are relative to *https://v2.api.squidrouter.com/v2*
+All URIs are relative to *https://v2.api.squidrouter.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getAllBalances**](DefaultApi.md#getallbalances) | **POST** /balances | Get Token Balances
-[**getFromAmount**](DefaultApi.md#getfromamount) | **POST** /from-amount | Get \"From\" Amount
-[**getIntegratorConfig**](DefaultApi.md#getintegratorconfig) | **GET** /config | Get Integrator Configuration
-[**getMultipleTokensPrice**](DefaultApi.md#getmultipletokensprice) | **POST** /tokens | Get Multiple Tokens Prices
-[**getRoute**](DefaultApi.md#getroute) | **POST** /route | Get Cross-Chain Route
-[**getSdkInfo**](DefaultApi.md#getsdkinfo) | **GET** /sdk-info | Get SDK Initialization Data
-[**getStatus**](DefaultApi.md#getstatus) | **POST** /status | Get Transaction Status
-[**getTokenPrice**](DefaultApi.md#gettokenprice) | **POST** /token-price | Get Token Price
+[**getDepositAddress**](DefaultApi.md#getdepositaddress) | **POST** /v2/deposit-address | Get deposit address for non-EVM to EVM swaps
+[**getRoute**](DefaultApi.md#getroute) | **POST** /v2/route | Get a cross-chain swap route
+[**getSDKInfo**](DefaultApi.md#getsdkinfo) | **GET** /v2/sdk-info | Get SDK information, including supported tokens and chains
+[**getStatus**](DefaultApi.md#getstatus) | **GET** /v2/status | Get the status of a transaction
 
 
-# **getAllBalances**
-> BalancesResponse getAllBalances(xIntegratorId, balancesRequest)
+# **getDepositAddress**
+> DepositAddressResponseData getDepositAddress(xIntegratorId, body)
 
-Get Token Balances
-
-Retrieves token balances for EVM and/or Cosmos addresses.
+Get deposit address for non-EVM to EVM swaps
 
 ### Example
 ```dart
 import 'package:openapi/api.dart';
-// TODO Configure API key authorization: ApiKeyAuth
-//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
-// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
 
 final api_instance = DefaultApi();
-final xIntegratorId = xIntegratorId_example; // String | The ID of the integrator using the API.
-final balancesRequest = BalancesRequest(); // BalancesRequest | 
+final xIntegratorId = your-integrator-id; // String | Your Squid integrator ID.
+final body = ChainflipTransactionRequestData(); // ChainflipTransactionRequestData | 
 
 try {
-    final result = api_instance.getAllBalances(xIntegratorId, balancesRequest);
+    final result = api_instance.getDepositAddress(xIntegratorId, body);
     print(result);
 } catch (e) {
-    print('Exception when calling DefaultApi->getAllBalances: $e\n');
+    print('Exception when calling DefaultApi->getDepositAddress: $e\n');
 }
 ```
 
@@ -50,161 +40,16 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xIntegratorId** | **String**| The ID of the integrator using the API. | 
- **balancesRequest** | [**BalancesRequest**](BalancesRequest.md)|  | 
+ **xIntegratorId** | **String**| Your Squid integrator ID. | 
+ **body** | **ChainflipTransactionRequestData**|  | 
 
 ### Return type
 
-[**BalancesResponse**](BalancesResponse.md)
+[**DepositAddressResponseData**](DepositAddressResponseData.md)
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getFromAmount**
-> GetFromAmount200Response getFromAmount(xIntegratorId, fromAmountRequest)
-
-Get \"From\" Amount
-
-Calculates the required \"from\" amount for a desired \"to\" amount.
-
-### Example
-```dart
-import 'package:openapi/api.dart';
-// TODO Configure API key authorization: ApiKeyAuth
-//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
-// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
-
-final api_instance = DefaultApi();
-final xIntegratorId = xIntegratorId_example; // String | The ID of the integrator using the API.
-final fromAmountRequest = FromAmountRequest(); // FromAmountRequest | 
-
-try {
-    final result = api_instance.getFromAmount(xIntegratorId, fromAmountRequest);
-    print(result);
-} catch (e) {
-    print('Exception when calling DefaultApi->getFromAmount: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **xIntegratorId** | **String**| The ID of the integrator using the API. | 
- **fromAmountRequest** | [**FromAmountRequest**](FromAmountRequest.md)|  | 
-
-### Return type
-
-[**GetFromAmount200Response**](GetFromAmount200Response.md)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getIntegratorConfig**
-> ConfigResponse getIntegratorConfig(xIntegratorId)
-
-Get Integrator Configuration
-
-Fetches integrator-specific configuration settings.
-
-### Example
-```dart
-import 'package:openapi/api.dart';
-// TODO Configure API key authorization: ApiKeyAuth
-//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
-// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
-
-final api_instance = DefaultApi();
-final xIntegratorId = xIntegratorId_example; // String | The ID of the integrator using the API.
-
-try {
-    final result = api_instance.getIntegratorConfig(xIntegratorId);
-    print(result);
-} catch (e) {
-    print('Exception when calling DefaultApi->getIntegratorConfig: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **xIntegratorId** | **String**| The ID of the integrator using the API. | 
-
-### Return type
-
-[**ConfigResponse**](ConfigResponse.md)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getMultipleTokensPrice**
-> MultipleTokensPriceResponse getMultipleTokensPrice(xIntegratorId, multipleTokensPriceRequest)
-
-Get Multiple Tokens Prices
-
-Retrieves prices for multiple tokens, optionally filtered by chain. The returned tokens will have their 'price' field populated.
-
-### Example
-```dart
-import 'package:openapi/api.dart';
-// TODO Configure API key authorization: ApiKeyAuth
-//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
-// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
-
-final api_instance = DefaultApi();
-final xIntegratorId = xIntegratorId_example; // String | The ID of the integrator using the API.
-final multipleTokensPriceRequest = MultipleTokensPriceRequest(); // MultipleTokensPriceRequest | 
-
-try {
-    final result = api_instance.getMultipleTokensPrice(xIntegratorId, multipleTokensPriceRequest);
-    print(result);
-} catch (e) {
-    print('Exception when calling DefaultApi->getMultipleTokensPrice: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **xIntegratorId** | **String**| The ID of the integrator using the API. | 
- **multipleTokensPriceRequest** | [**MultipleTokensPriceRequest**](MultipleTokensPriceRequest.md)|  | [optional] 
-
-### Return type
-
-[**MultipleTokensPriceResponse**](MultipleTokensPriceResponse.md)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+No authorization required
 
 ### HTTP request headers
 
@@ -214,26 +59,20 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getRoute**
-> RouteResponse getRoute(xIntegratorId, routeRequest)
+> RouteResponse getRoute(xIntegratorId, routeRequestParams)
 
-Get Cross-Chain Route
-
-Calculates the optimal cross-chain route for a given swap.
+Get a cross-chain swap route
 
 ### Example
 ```dart
 import 'package:openapi/api.dart';
-// TODO Configure API key authorization: ApiKeyAuth
-//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
-// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
 
 final api_instance = DefaultApi();
-final xIntegratorId = xIntegratorId_example; // String | The ID of the integrator using the API.
-final routeRequest = RouteRequest(); // RouteRequest | 
+final xIntegratorId = your-integrator-id; // String | Your Squid integrator ID.
+final routeRequestParams = RouteRequestParams(); // RouteRequestParams | 
 
 try {
-    final result = api_instance.getRoute(xIntegratorId, routeRequest);
+    final result = api_instance.getRoute(xIntegratorId, routeRequestParams);
     print(result);
 } catch (e) {
     print('Exception when calling DefaultApi->getRoute: $e\n');
@@ -244,8 +83,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xIntegratorId** | **String**| The ID of the integrator using the API. | 
- **routeRequest** | [**RouteRequest**](RouteRequest.md)|  | 
+ **xIntegratorId** | **String**| Your Squid integrator ID. | 
+ **routeRequestParams** | [**RouteRequestParams**](RouteRequestParams.md)|  | 
 
 ### Return type
 
@@ -253,7 +92,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+No authorization required
 
 ### HTTP request headers
 
@@ -262,29 +101,23 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **getSdkInfo**
-> SdkInfoResponse getSdkInfo(xIntegratorId)
+# **getSDKInfo**
+> SDKInfoResponseData getSDKInfo(xIntegratorId)
 
-Get SDK Initialization Data
-
-Fetches tokens, chains, and other configuration data required for the SDK.
+Get SDK information, including supported tokens and chains
 
 ### Example
 ```dart
 import 'package:openapi/api.dart';
-// TODO Configure API key authorization: ApiKeyAuth
-//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
-// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
 
 final api_instance = DefaultApi();
-final xIntegratorId = xIntegratorId_example; // String | The ID of the integrator using the API.
+final xIntegratorId = your-integrator-id; // String | Your Squid integrator ID.
 
 try {
-    final result = api_instance.getSdkInfo(xIntegratorId);
+    final result = api_instance.getSDKInfo(xIntegratorId);
     print(result);
 } catch (e) {
-    print('Exception when calling DefaultApi->getSdkInfo: $e\n');
+    print('Exception when calling DefaultApi->getSDKInfo: $e\n');
 }
 ```
 
@@ -292,15 +125,15 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xIntegratorId** | **String**| The ID of the integrator using the API. | 
+ **xIntegratorId** | **String**| Your Squid integrator ID. | 
 
 ### Return type
 
-[**SdkInfoResponse**](SdkInfoResponse.md)
+[**SDKInfoResponseData**](SDKInfoResponseData.md)
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+No authorization required
 
 ### HTTP request headers
 
@@ -310,26 +143,24 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getStatus**
-> StatusResponse getStatus(xIntegratorId, getStatusParams)
+> StatusResponseData getStatus(xIntegratorId, transactionId, requestId, fromChainId, toChainId, bridgeType)
 
-Get Transaction Status
-
-Retrieves the status of a cross-chain transaction.
+Get the status of a transaction
 
 ### Example
 ```dart
 import 'package:openapi/api.dart';
-// TODO Configure API key authorization: ApiKeyAuth
-//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
-// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
 
 final api_instance = DefaultApi();
-final xIntegratorId = xIntegratorId_example; // String | The ID of the integrator using the API.
-final getStatusParams = GetStatusParams(); // GetStatusParams | 
+final xIntegratorId = your-integrator-id; // String | Your Squid integrator ID.
+final transactionId = transactionId_example; // String | The transaction hash to check the status for.
+final requestId = requestId_example; // String | The request ID received from the /route endpoint.
+final fromChainId = fromChainId_example; // String | The source chain ID of the transaction.
+final toChainId = toChainId_example; // String | The destination chain ID of the transaction.
+final bridgeType = bridgeType_example; // String | Specifies the bridge type if applicable.
 
 try {
-    final result = api_instance.getStatus(xIntegratorId, getStatusParams);
+    final result = api_instance.getStatus(xIntegratorId, transactionId, requestId, fromChainId, toChainId, bridgeType);
     print(result);
 } catch (e) {
     print('Exception when calling DefaultApi->getStatus: $e\n');
@@ -340,69 +171,24 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xIntegratorId** | **String**| The ID of the integrator using the API. | 
- **getStatusParams** | [**GetStatusParams**](GetStatusParams.md)|  | 
+ **xIntegratorId** | **String**| Your Squid integrator ID. | 
+ **transactionId** | **String**| The transaction hash to check the status for. | 
+ **requestId** | **String**| The request ID received from the /route endpoint. | 
+ **fromChainId** | **String**| The source chain ID of the transaction. | 
+ **toChainId** | **String**| The destination chain ID of the transaction. | 
+ **bridgeType** | **String**| Specifies the bridge type if applicable. | [optional] 
 
 ### Return type
 
-[**StatusResponse**](StatusResponse.md)
+[**StatusResponseData**](StatusResponseData.md)
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getTokenPrice**
-> GetTokenPrice200Response getTokenPrice(xIntegratorId, tokenPriceRequest)
-
-Get Token Price
-
-Retrieves the price for a single token on a specific chain.
-
-### Example
-```dart
-import 'package:openapi/api.dart';
-// TODO Configure API key authorization: ApiKeyAuth
-//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
-// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
-
-final api_instance = DefaultApi();
-final xIntegratorId = xIntegratorId_example; // String | The ID of the integrator using the API.
-final tokenPriceRequest = TokenPriceRequest(); // TokenPriceRequest | 
-
-try {
-    final result = api_instance.getTokenPrice(xIntegratorId, tokenPriceRequest);
-    print(result);
-} catch (e) {
-    print('Exception when calling DefaultApi->getTokenPrice: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **xIntegratorId** | **String**| The ID of the integrator using the API. | 
- **tokenPriceRequest** | [**TokenPriceRequest**](TokenPriceRequest.md)|  | 
-
-### Return type
-
-[**GetTokenPrice200Response**](GetTokenPrice200Response.md)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

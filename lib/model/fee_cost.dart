@@ -13,21 +13,15 @@ part of openapi.api;
 class FeeCost {
   /// Returns a new [FeeCost] instance.
   FeeCost({
-    this.name,
+    required this.name,
     this.description,
-    this.percentage,
-    this.token,
-    this.amount,
-    this.amountUSD,
+    required this.percentage,
+    required this.token,
+    required this.amount,
+    required this.amountUsd,
   });
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? name;
+  String name;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -37,37 +31,13 @@ class FeeCost {
   ///
   String? description;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? percentage;
+  String percentage;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  Token? token;
+  Token token;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? amount;
+  String amount;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? amountUSD;
+  String amountUsd;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is FeeCost &&
@@ -76,53 +46,33 @@ class FeeCost {
     other.percentage == percentage &&
     other.token == token &&
     other.amount == amount &&
-    other.amountUSD == amountUSD;
+    other.amountUsd == amountUsd;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (name == null ? 0 : name!.hashCode) +
+    (name.hashCode) +
     (description == null ? 0 : description!.hashCode) +
-    (percentage == null ? 0 : percentage!.hashCode) +
-    (token == null ? 0 : token!.hashCode) +
-    (amount == null ? 0 : amount!.hashCode) +
-    (amountUSD == null ? 0 : amountUSD!.hashCode);
+    (percentage.hashCode) +
+    (token.hashCode) +
+    (amount.hashCode) +
+    (amountUsd.hashCode);
 
   @override
-  String toString() => 'FeeCost[name=$name, description=$description, percentage=$percentage, token=$token, amount=$amount, amountUSD=$amountUSD]';
+  String toString() => 'FeeCost[name=$name, description=$description, percentage=$percentage, token=$token, amount=$amount, amountUsd=$amountUsd]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.name != null) {
       json[r'name'] = this.name;
-    } else {
-      json[r'name'] = null;
-    }
     if (this.description != null) {
       json[r'description'] = this.description;
     } else {
       json[r'description'] = null;
     }
-    if (this.percentage != null) {
       json[r'percentage'] = this.percentage;
-    } else {
-      json[r'percentage'] = null;
-    }
-    if (this.token != null) {
       json[r'token'] = this.token;
-    } else {
-      json[r'token'] = null;
-    }
-    if (this.amount != null) {
       json[r'amount'] = this.amount;
-    } else {
-      json[r'amount'] = null;
-    }
-    if (this.amountUSD != null) {
-      json[r'amountUSD'] = this.amountUSD;
-    } else {
-      json[r'amountUSD'] = null;
-    }
+      json[r'amountUsd'] = this.amountUsd;
     return json;
   }
 
@@ -145,12 +95,12 @@ class FeeCost {
       }());
 
       return FeeCost(
-        name: mapValueOfType<String>(json, r'name'),
+        name: mapValueOfType<String>(json, r'name')!,
         description: mapValueOfType<String>(json, r'description'),
-        percentage: mapValueOfType<String>(json, r'percentage'),
-        token: Token.fromJson(json[r'token']),
-        amount: mapValueOfType<String>(json, r'amount'),
-        amountUSD: mapValueOfType<String>(json, r'amountUSD'),
+        percentage: mapValueOfType<String>(json, r'percentage')!,
+        token: Token.fromJson(json[r'token'])!,
+        amount: mapValueOfType<String>(json, r'amount')!,
+        amountUsd: mapValueOfType<String>(json, r'amountUsd')!,
       );
     }
     return null;
@@ -198,6 +148,11 @@ class FeeCost {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
+    'name',
+    'percentage',
+    'token',
+    'amount',
+    'amountUsd',
   };
 }
 

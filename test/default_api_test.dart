@@ -1,63 +1,168 @@
+// test/default_api_test.dart
+import 'package:openapi/api.dart';
 import 'package:test/test.dart';
-import 'package:squidrouter/squidrouter.dart';
-
+import 'api_test_helper.dart';
 
 /// tests for DefaultApi
 void main() {
-  final instance = Squidrouter().getDefaultApi();
+  late DefaultApi api;
 
-  group(DefaultApi, () {
-    // Get supported chains
-    //
-    // Returns supported chain/s
-    //
-    //Future<JsonObject> chainsGet({ JsonObject chainId }) async
-    test('test chainsGet', () async {
-      // TODO
+  setUpAll(() {
+    // Initialize API with test configuration
+    initializeTestApi();
+    api = squidTestApi;
+  });
+
+  group('tests for DefaultApi', () {
+    // Get deposit address for non-EVM to EVM swaps
+    test('test getDepositAddress', () async {
+      // This test requires a valid deposit channel from a previous route response
+      print('This test requires a valid Chainflip deposit channel from a prior /route response');
     });
 
-    // Get transaction route information
-    //
-    // Returns transaction route information and call data object
-    //
-    //Future<Route> routeGet(JsonObject fromChain, JsonObject toChain, JsonObject fromToken, JsonObject toToken, JsonObject fromAmount, JsonObject toAddress, JsonObject slippage, { JsonObject quoteOnly, JsonObject enableForecall, JsonObject customContractCalls, JsonObject prefer, JsonObject receiveGasOnDestination }) async
-    test('test routeGet', () async {
-      // TODO
+    // Get a cross-chain swap route
+    // Get a cross-chain swap route
+    test('test getRoute', () async {
+      await testApiThrottler.wait();
+
+      // Create empty Hook objects for preHook and postHook
+      final emptyHook = Hook(
+          chainType: ChainType.evm,
+          calls: []
+      );
+
+      // Create route request for a common testnet pair
+      final routeParams = RouteRequestParams(
+          fromChain: "56", // BNB Chain
+          toChain: "42161", // Arbitrum
+          fromToken: "0x55d398326f99059fF775485246999027B3197955", // USDT on BNB Chain
+          toToken: "0xaf88d065e77c8cC2239327C5EDb3A432268e5831", // USDC on Arbitrum
+          fromAmount: "10000000000000000", // 0.01 MATIC
+          toAddress: defaultTestRecipientAddress,
+          fromAddress: defaultTestEvmAddress,
+          slippage: 1.0,
+          quoteOnly: true, // Just get a quote to avoid actual transaction
+          preHook: emptyHook, // Add empty preHook object
+          postHook: emptyHook  // Add empty postHook object
+      );
+
+      try {
+        final response = await api.getRoute(testIntegratorId, routeParams);
+        expect(response, isNotNull);
+
+        // Check for requestId for status checks
+        print("Route request ID: ${response?.requestId}");
+        expect(response?.requestId, isNotNull);
+
+        // Check if a route was found
+        if (response?.route == null && response?.error != null) {
+          print("Route calculation returned error: ${response?.error?.message}");
+          expect(response?.errorType, isNotNull);
+        } else if (response?.route == null) {
+          print("Route calculation returned no route");
+        } else {
+          expect(response?.route?.estimate, isNotNull);
+          expect(response?.route?.transactionRequest, isNotNull);
+          print("Route calculated successfully with estimated toAmount: ${response?.route?.estimate?.toAmount}");
+        }
+      } on ApiException catch (e) {
+        printApiErrorDetails('getRoute', e);
+        fail("Route request failed: ${e.code} - ${e.message}");
+      }
     });
 
-    // Returns Squid SDK information
-    //
-    //Future<SdkInfo> sdkInfoGet() async
-    test('test sdkInfoGet', () async {
-      // TODO
+    // Get SDK information, including supported tokens and chains
+    test('test getSDKInfo', () async {
+      await testApiThrottler.wait();
+
+      try {
+        final response = await api.getSDKInfo(testIntegratorId);
+        expect(response, isNotNull);
+
+        // Validate response structure based on SDKInfoResponseData
+        if (response != null) {
+          // Check chains collection
+          if (response.chains != null && response.chains!.isNotEmpty) {
+            print("SDK info returned ${response.chains!.length} chains");
+            // Sample the first chain to ensure it has expected properties
+            var firstChain = response.chains!.first;
+            expect(firstChain.chainId, isNotNull);
+            expect(firstChain.chainName, isNotNull);
+            print("First chain: ${firstChain.chainName} (${firstChain.chainId})");
+          } else {
+            print("SDK info returned no chains or null chains list");
+          }
+
+          // Check tokens collection
+          if (response.tokens != null && response.tokens!.isNotEmpty) {
+            print("SDK info returned ${response.tokens!.length} tokens");
+            // Sample a token to ensure it has expected properties
+            var sampleToken = response.tokens!.first;
+            expect(sampleToken.symbol, isNotNull);
+            print("Sample token: ${sampleToken.symbol} on chain ${sampleToken.chainId}");
+          } else {
+            print("SDK info returned no tokens or null tokens list");
+          }
+
+          // Check maintenance status
+          if (response.isInMaintenanceMode == true) {
+            print("API is in maintenance mode: ${response.maintenanceMessage}");
+          }
+        }
+      } on ApiException catch (e) {
+        printApiErrorDetails('getSDKInfo', e);
+        fail("SDK info request failed: ${e.code} - ${e.message}");
+      }
     });
 
-    // Get transaction status
-    //
-    // Query Axelarscan for transaction status
-    //
-    //Future<Status> statusGet(JsonObject transactionId) async
-    test('test statusGet', () async {
-      // TODO
-    });
+    // Get the status of a transaction
+    // Get the status of a transaction
+    test('test getStatus', () async {
+      await testApiThrottler.wait();
 
-    // Get token price
-    //
-    // Returns token price
-    //
-    //Future<TokenPrice> tokenPriceGet(JsonObject chainId, JsonObject tokenAddress) async
-    test('test tokenPriceGet', () async {
-      // TODO
-    });
+      // Using a known non-existent transaction as a test
+      const testTxId = "0x0000000000000000000000000000000000000000000000000000000000000000";
+      const testRequestId = "test-request-id";
+      const fromChainId = "56";   // BNB Chain
+      const toChainId = "42161";  // Arbitrum
 
-    // Get supported tokens
-    //
-    // Returns supported token/s
-    //
-    //Future<JsonObject> tokensGet({ JsonObject chainId }) async
-    test('test tokensGet', () async {
-      // TODO
-    });
+      print("Checking status for non-existent transaction (expecting 404 or not_found status)...");
 
+      try {
+        final response = await api.getStatus(
+          testIntegratorId,
+          testTxId,
+          testRequestId,
+          fromChainId,
+          toChainId,
+        );
+
+        // If no exception is thrown, proceed to check the response
+        expect(response, isNotNull);
+        if (response != null) {
+          print("Transaction status: ${response.squidTransactionStatus}");
+          // The status should be one of these values for a fake transaction
+          expect(
+              response.squidTransactionStatus,
+              anyOf(
+                  equals(StatusResponseDataSquidTransactionStatusEnum.notFound),
+                  equals(StatusResponseDataSquidTransactionStatusEnum.anErrorHasOccurred)
+              )
+          );
+          print("✓ Received expected status for non-existent transaction");
+        }
+      } on ApiException catch (e) {
+        // For non-existent transactions, a 404 error is expected and acceptable
+        if (e.code == 404 && e.message != null && e.message!.contains('No transaction found')) {
+          // This is the expected behavior - silent pass
+          print("✓ Received expected 404 'No transaction found' error for non-existent transaction");
+        } else {
+          // Only print error details for unexpected errors
+          printApiErrorDetails('getStatus', e);
+          print("Unexpected API exception: ${e.code} - ${e.message}");
+          fail("Test failed with unexpected error");
+        }
+      }
+    });
   });
 }

@@ -26,13 +26,27 @@ class RouteResponse {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  RouteData? route;
+  RouteResponseData? route;
 
+  /// ID for tracking and retrieving status updates
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? requestId;
 
+  /// The integrator ID used for the request
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? integratorId;
 
-  ApiBasicResponseError? error;
+  RouteResponseError? error;
 
   String? errorType;
 
@@ -105,10 +119,10 @@ class RouteResponse {
       }());
 
       return RouteResponse(
-        route: RouteData.fromJson(json[r'route']),
+        route: RouteResponseData.fromJson(json[r'route']),
         requestId: mapValueOfType<String>(json, r'requestId'),
         integratorId: mapValueOfType<String>(json, r'integratorId'),
-        error: ApiBasicResponseError.fromJson(json[r'error']),
+        error: RouteResponseError.fromJson(json[r'error']),
         errorType: mapValueOfType<String>(json, r'errorType'),
       );
     }

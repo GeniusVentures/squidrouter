@@ -21,11 +21,10 @@ Name | Type | Description | Notes
 **swapAmountForGas** | **String** |  | [optional] 
 **blockExplorerUrls** | **List<String>** |  | [optional] [default to const []]
 **gasMultiplier** | **double** |  | [optional] 
-**chainNativeContracts** | [**ChainDataChainNativeContracts**](ChainDataChainNativeContracts.md) |  | [optional] 
+**chainNativeContracts** | [**Map<String, Object>**](Object.md) |  | [optional] [default to const {}]
 **supportedCrossChainProtocols** | **List<String>** |  | [optional] [default to const []]
-**compliance** | [**ChainDataCompliance**](ChainDataCompliance.md) |  | [optional] 
-**maintenances** | [**List<Object>**](Object.md) |  | [optional] [default to const []]
-**features** | **List<String>** |  | [optional] [default to const []]
+**compliance** | [**Map<String, Object>**](Object.md) |  | [optional] [default to const {}]
+**maintenances** | [**List<Maintenance>**](Maintenance.md) |  | [optional] [default to const []]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

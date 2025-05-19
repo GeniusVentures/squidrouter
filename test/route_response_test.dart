@@ -16,22 +16,24 @@ void main() {
   // final instance = RouteResponse();
 
   group('test RouteResponse', () {
-    // RouteData route
+    // RouteResponseData route
     test('to test the property `route`', () async {
       // TODO
     });
 
+    // ID for tracking and retrieving status updates
     // String requestId
     test('to test the property `requestId`', () async {
       // TODO
     });
 
+    // The integrator ID used for the request
     // String integratorId
     test('to test the property `integratorId`', () async {
       // TODO
     });
 
-    // ApiBasicResponseError error
+    // RouteResponseError error
     test('to test the property `error`', () async {
       // TODO
     });

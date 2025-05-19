@@ -20,11 +20,11 @@ class Token {
     this.decimals,
     this.logoURI,
     this.coingeckoId,
+    this.usdPrice,
     this.categories = const [],
     this.ibcDenom,
     this.bridgeOnly,
-    this.axelarNetworkIdentifier,
-    this.price,
+    this.axelarNetworkIdentifier = const {},
   });
 
   ///
@@ -71,16 +71,16 @@ class Token {
 
   String? coingeckoId;
 
+  /// Current USD price of the token.
+  double? usdPrice;
+
   List<String>? categories;
 
   String? ibcDenom;
 
   bool? bridgeOnly;
 
-  TokenAxelarNetworkIdentifier? axelarNetworkIdentifier;
-
-  /// Price of the token, usually in USD. Contextually populated by pricing endpoints.
-  double? price;
+  Map<String, Object>? axelarNetworkIdentifier;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is Token &&
@@ -91,11 +91,11 @@ class Token {
     other.decimals == decimals &&
     other.logoURI == logoURI &&
     other.coingeckoId == coingeckoId &&
+    other.usdPrice == usdPrice &&
     _deepEquality.equals(other.categories, categories) &&
     other.ibcDenom == ibcDenom &&
     other.bridgeOnly == bridgeOnly &&
-    other.axelarNetworkIdentifier == axelarNetworkIdentifier &&
-    other.price == price;
+    _deepEquality.equals(other.axelarNetworkIdentifier, axelarNetworkIdentifier);
 
   @override
   int get hashCode =>
@@ -107,14 +107,14 @@ class Token {
     (decimals == null ? 0 : decimals!.hashCode) +
     (logoURI == null ? 0 : logoURI!.hashCode) +
     (coingeckoId == null ? 0 : coingeckoId!.hashCode) +
+    (usdPrice == null ? 0 : usdPrice!.hashCode) +
     (categories == null ? 0 : categories!.hashCode) +
     (ibcDenom == null ? 0 : ibcDenom!.hashCode) +
     (bridgeOnly == null ? 0 : bridgeOnly!.hashCode) +
-    (axelarNetworkIdentifier == null ? 0 : axelarNetworkIdentifier!.hashCode) +
-    (price == null ? 0 : price!.hashCode);
+    (axelarNetworkIdentifier == null ? 0 : axelarNetworkIdentifier!.hashCode);
 
   @override
-  String toString() => 'Token[chainId=$chainId, address=$address, name=$name, symbol=$symbol, decimals=$decimals, logoURI=$logoURI, coingeckoId=$coingeckoId, categories=$categories, ibcDenom=$ibcDenom, bridgeOnly=$bridgeOnly, axelarNetworkIdentifier=$axelarNetworkIdentifier, price=$price]';
+  String toString() => 'Token[chainId=$chainId, address=$address, name=$name, symbol=$symbol, decimals=$decimals, logoURI=$logoURI, coingeckoId=$coingeckoId, usdPrice=$usdPrice, categories=$categories, ibcDenom=$ibcDenom, bridgeOnly=$bridgeOnly, axelarNetworkIdentifier=$axelarNetworkIdentifier]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -153,6 +153,11 @@ class Token {
     } else {
       json[r'coingeckoId'] = null;
     }
+    if (this.usdPrice != null) {
+      json[r'usdPrice'] = this.usdPrice;
+    } else {
+      json[r'usdPrice'] = null;
+    }
     if (this.categories != null) {
       json[r'categories'] = this.categories;
     } else {
@@ -172,11 +177,6 @@ class Token {
       json[r'axelarNetworkIdentifier'] = this.axelarNetworkIdentifier;
     } else {
       json[r'axelarNetworkIdentifier'] = null;
-    }
-    if (this.price != null) {
-      json[r'price'] = this.price;
-    } else {
-      json[r'price'] = null;
     }
     return json;
   }
@@ -207,13 +207,13 @@ class Token {
         decimals: mapValueOfType<int>(json, r'decimals'),
         logoURI: mapValueOfType<String>(json, r'logoURI'),
         coingeckoId: mapValueOfType<String>(json, r'coingeckoId'),
+        usdPrice: mapValueOfType<double>(json, r'usdPrice'),
         categories: json[r'categories'] is Iterable
             ? (json[r'categories'] as Iterable).cast<String>().toList(growable: false)
             : const [],
         ibcDenom: mapValueOfType<String>(json, r'ibcDenom'),
         bridgeOnly: mapValueOfType<bool>(json, r'bridgeOnly'),
-        axelarNetworkIdentifier: TokenAxelarNetworkIdentifier.fromJson(json[r'axelarNetworkIdentifier']),
-        price: mapValueOfType<double>(json, r'price'),
+        axelarNetworkIdentifier: mapCastOfType<String, Object>(json, r'axelarNetworkIdentifier') ?? const {},
       );
     }
     return null;

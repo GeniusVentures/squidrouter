@@ -16,43 +16,50 @@ void main() {
   // final instance = EvmTransactionRequestData();
 
   group('test EvmTransactionRequestData', () {
-    // String gasLimit
-    test('to test the property `gasLimit`', () async {
-      // TODO
-    });
-
-    // String gasPrice
-    test('to test the property `gasPrice`', () async {
-      // TODO
-    });
-
-    // String maxFeePerGas
-    test('to test the property `maxFeePerGas`', () async {
-      // TODO
-    });
-
-    // String maxPriorityFeePerGas
-    test('to test the property `maxPriorityFeePerGas`', () async {
-      // TODO
-    });
-
     // String routeType
     test('to test the property `routeType`', () async {
       // TODO
     });
 
+    // The target contract address for the transaction.
     // String target
     test('to test the property `target`', () async {
       // TODO
     });
 
+    // The ABI-encoded calldata for the transaction.
     // String data
     test('to test the property `data`', () async {
       // TODO
     });
 
-    // String value (default value: '0')
+    // Amount of native currency to send with the transaction, in wei.
+    // String value
     test('to test the property `value`', () async {
+      // TODO
+    });
+
+    // Estimated gas limit for the transaction.
+    // String gasLimit
+    test('to test the property `gasLimit`', () async {
+      // TODO
+    });
+
+    // Recommended gas price for the transaction, in wei. (May not be present for EIP-1559 chains)
+    // String gasPrice
+    test('to test the property `gasPrice`', () async {
+      // TODO
+    });
+
+    // (EIP-1559) Maximum fee per gas.
+    // String maxFeePerGas
+    test('to test the property `maxFeePerGas`', () async {
+      // TODO
+    });
+
+    // (EIP-1559) Maximum priority fee per gas.
+    // String maxPriorityFeePerGas
+    test('to test the property `maxPriorityFeePerGas`', () async {
       // TODO
     });
 

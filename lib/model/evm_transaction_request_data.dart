@@ -13,23 +13,15 @@ part of openapi.api;
 class EvmTransactionRequestData {
   /// Returns a new [EvmTransactionRequestData] instance.
   EvmTransactionRequestData({
+    this.routeType,
+    this.target,
+    this.data,
+    this.value,
     this.gasLimit,
     this.gasPrice,
     this.maxFeePerGas,
     this.maxPriorityFeePerGas,
-    this.routeType,
-    this.target,
-    this.data,
-    this.value = '0',
   });
-
-  String? gasLimit;
-
-  String? gasPrice;
-
-  String? maxFeePerGas;
-
-  String? maxPriorityFeePerGas;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -39,60 +31,97 @@ class EvmTransactionRequestData {
   ///
   String? routeType;
 
+  /// The target contract address for the transaction.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? target;
 
+  /// The ABI-encoded calldata for the transaction.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? data;
 
+  /// Amount of native currency to send with the transaction, in wei.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? value;
+
+  /// Estimated gas limit for the transaction.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? gasLimit;
+
+  /// Recommended gas price for the transaction, in wei. (May not be present for EIP-1559 chains)
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? gasPrice;
+
+  /// (EIP-1559) Maximum fee per gas.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? maxFeePerGas;
+
+  /// (EIP-1559) Maximum priority fee per gas.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? maxPriorityFeePerGas;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is EvmTransactionRequestData &&
-    other.gasLimit == gasLimit &&
-    other.gasPrice == gasPrice &&
-    other.maxFeePerGas == maxFeePerGas &&
-    other.maxPriorityFeePerGas == maxPriorityFeePerGas &&
     other.routeType == routeType &&
     other.target == target &&
     other.data == data &&
-    other.value == value;
+    other.value == value &&
+    other.gasLimit == gasLimit &&
+    other.gasPrice == gasPrice &&
+    other.maxFeePerGas == maxFeePerGas &&
+    other.maxPriorityFeePerGas == maxPriorityFeePerGas;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (gasLimit == null ? 0 : gasLimit!.hashCode) +
-    (gasPrice == null ? 0 : gasPrice!.hashCode) +
-    (maxFeePerGas == null ? 0 : maxFeePerGas!.hashCode) +
-    (maxPriorityFeePerGas == null ? 0 : maxPriorityFeePerGas!.hashCode) +
     (routeType == null ? 0 : routeType!.hashCode) +
     (target == null ? 0 : target!.hashCode) +
     (data == null ? 0 : data!.hashCode) +
-    (value == null ? 0 : value!.hashCode);
+    (value == null ? 0 : value!.hashCode) +
+    (gasLimit == null ? 0 : gasLimit!.hashCode) +
+    (gasPrice == null ? 0 : gasPrice!.hashCode) +
+    (maxFeePerGas == null ? 0 : maxFeePerGas!.hashCode) +
+    (maxPriorityFeePerGas == null ? 0 : maxPriorityFeePerGas!.hashCode);
 
   @override
-  String toString() => 'EvmTransactionRequestData[gasLimit=$gasLimit, gasPrice=$gasPrice, maxFeePerGas=$maxFeePerGas, maxPriorityFeePerGas=$maxPriorityFeePerGas, routeType=$routeType, target=$target, data=$data, value=$value]';
+  String toString() => 'EvmTransactionRequestData[routeType=$routeType, target=$target, data=$data, value=$value, gasLimit=$gasLimit, gasPrice=$gasPrice, maxFeePerGas=$maxFeePerGas, maxPriorityFeePerGas=$maxPriorityFeePerGas]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.gasLimit != null) {
-      json[r'gasLimit'] = this.gasLimit;
-    } else {
-      json[r'gasLimit'] = null;
-    }
-    if (this.gasPrice != null) {
-      json[r'gasPrice'] = this.gasPrice;
-    } else {
-      json[r'gasPrice'] = null;
-    }
-    if (this.maxFeePerGas != null) {
-      json[r'maxFeePerGas'] = this.maxFeePerGas;
-    } else {
-      json[r'maxFeePerGas'] = null;
-    }
-    if (this.maxPriorityFeePerGas != null) {
-      json[r'maxPriorityFeePerGas'] = this.maxPriorityFeePerGas;
-    } else {
-      json[r'maxPriorityFeePerGas'] = null;
-    }
     if (this.routeType != null) {
       json[r'routeType'] = this.routeType;
     } else {
@@ -112,6 +141,26 @@ class EvmTransactionRequestData {
       json[r'value'] = this.value;
     } else {
       json[r'value'] = null;
+    }
+    if (this.gasLimit != null) {
+      json[r'gasLimit'] = this.gasLimit;
+    } else {
+      json[r'gasLimit'] = null;
+    }
+    if (this.gasPrice != null) {
+      json[r'gasPrice'] = this.gasPrice;
+    } else {
+      json[r'gasPrice'] = null;
+    }
+    if (this.maxFeePerGas != null) {
+      json[r'maxFeePerGas'] = this.maxFeePerGas;
+    } else {
+      json[r'maxFeePerGas'] = null;
+    }
+    if (this.maxPriorityFeePerGas != null) {
+      json[r'maxPriorityFeePerGas'] = this.maxPriorityFeePerGas;
+    } else {
+      json[r'maxPriorityFeePerGas'] = null;
     }
     return json;
   }
@@ -135,14 +184,14 @@ class EvmTransactionRequestData {
       }());
 
       return EvmTransactionRequestData(
+        routeType: mapValueOfType<String>(json, r'routeType'),
+        target: mapValueOfType<String>(json, r'target'),
+        data: mapValueOfType<String>(json, r'data'),
+        value: mapValueOfType<String>(json, r'value'),
         gasLimit: mapValueOfType<String>(json, r'gasLimit'),
         gasPrice: mapValueOfType<String>(json, r'gasPrice'),
         maxFeePerGas: mapValueOfType<String>(json, r'maxFeePerGas'),
         maxPriorityFeePerGas: mapValueOfType<String>(json, r'maxPriorityFeePerGas'),
-        routeType: mapValueOfType<String>(json, r'routeType'),
-        target: mapValueOfType<String>(json, r'target'),
-        data: mapValueOfType<String>(json, r'data'),
-        value: mapValueOfType<String>(json, r'value') ?? '0',
       );
     }
     return null;

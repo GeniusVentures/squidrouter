@@ -13,20 +13,59 @@ part of openapi.api;
 class ApiBasicResponseError {
   /// Returns a new [ApiBasicResponseError] instance.
   ApiBasicResponseError({
+    this.errorType,
+    this.message,
+    this.errors = const [],
   });
+
+  /// A high-level classification of the error.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? errorType;
+
+  /// A general human-readable message describing the error.
+  String? message;
+
+  /// A list of specific validation errors.
+  List<ApiBasicResponseErrorErrorsInner>? errors;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is ApiBasicResponseError &&
+    other.errorType == errorType &&
+    other.message == message &&
+    _deepEquality.equals(other.errors, errors);
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
+    (errorType == null ? 0 : errorType!.hashCode) +
+    (message == null ? 0 : message!.hashCode) +
+    (errors == null ? 0 : errors!.hashCode);
 
   @override
-  String toString() => 'ApiBasicResponseError[]';
+  String toString() => 'ApiBasicResponseError[errorType=$errorType, message=$message, errors=$errors]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.errorType != null) {
+      json[r'errorType'] = this.errorType;
+    } else {
+      json[r'errorType'] = null;
+    }
+    if (this.message != null) {
+      json[r'message'] = this.message;
+    } else {
+      json[r'message'] = null;
+    }
+    if (this.errors != null) {
+      json[r'errors'] = this.errors;
+    } else {
+      json[r'errors'] = null;
+    }
     return json;
   }
 
@@ -49,6 +88,9 @@ class ApiBasicResponseError {
       }());
 
       return ApiBasicResponseError(
+        errorType: mapValueOfType<String>(json, r'errorType'),
+        message: mapValueOfType<String>(json, r'message'),
+        errors: ApiBasicResponseErrorErrorsInner.listFromJson(json[r'errors']),
       );
     }
     return null;
