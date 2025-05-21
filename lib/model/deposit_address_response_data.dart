@@ -60,13 +60,9 @@ class DepositAddressResponseData {
       json[r'depositAddress'] = this.depositAddress;
     if (this.amount != null) {
       json[r'amount'] = this.amount;
-    } else {
-      json[r'amount'] = null;
     }
     if (this.chainflipStatusTrackingId != null) {
       json[r'chainflipStatusTrackingId'] = this.chainflipStatusTrackingId;
-    } else {
-      json[r'chainflipStatusTrackingId'] = null;
     }
     return json;
   }

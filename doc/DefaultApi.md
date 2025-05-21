@@ -9,54 +9,11 @@ All URIs are relative to *https://v2.api.squidrouter.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getDepositAddress**](DefaultApi.md#getdepositaddress) | **POST** /v2/deposit-address | Get deposit address for non-EVM to EVM swaps
 [**getRoute**](DefaultApi.md#getroute) | **POST** /v2/route | Get a cross-chain swap route
 [**getSDKInfo**](DefaultApi.md#getsdkinfo) | **GET** /v2/sdk-info | Get SDK information, including supported tokens and chains
 [**getStatus**](DefaultApi.md#getstatus) | **GET** /v2/status | Get the status of a transaction
+[**v2DepositAddressPost**](DefaultApi.md#v2depositaddresspost) | **POST** /v2/deposit-address | Get deposit address for non-EVM to EVM swaps
 
-
-# **getDepositAddress**
-> DepositAddressResponseData getDepositAddress(xIntegratorId, body)
-
-Get deposit address for non-EVM to EVM swaps
-
-### Example
-```dart
-import 'package:openapi/api.dart';
-
-final api_instance = DefaultApi();
-final xIntegratorId = your-integrator-id; // String | Your Squid integrator ID.
-final body = ChainflipTransactionRequestData(); // ChainflipTransactionRequestData | 
-
-try {
-    final result = api_instance.getDepositAddress(xIntegratorId, body);
-    print(result);
-} catch (e) {
-    print('Exception when calling DefaultApi->getDepositAddress: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **xIntegratorId** | **String**| Your Squid integrator ID. | 
- **body** | **ChainflipTransactionRequestData**|  | 
-
-### Return type
-
-[**DepositAddressResponseData**](DepositAddressResponseData.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getRoute**
 > RouteResponse getRoute(xIntegratorId, routeRequestParams)
@@ -189,6 +146,49 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **v2DepositAddressPost**
+> DepositAddressResponseData v2DepositAddressPost(xIntegratorId, body)
+
+Get deposit address for non-EVM to EVM swaps
+
+### Example
+```dart
+import 'package:openapi/api.dart';
+
+final api_instance = DefaultApi();
+final xIntegratorId = your-integrator-id; // String | Your Squid integrator ID.
+final body = ChainflipTransactionRequestData(); // ChainflipTransactionRequestData | 
+
+try {
+    final result = api_instance.v2DepositAddressPost(xIntegratorId, body);
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->v2DepositAddressPost: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xIntegratorId** | **String**| Your Squid integrator ID. | 
+ **body** | **ChainflipTransactionRequestData**|  | 
+
+### Return type
+
+[**DepositAddressResponseData**](DepositAddressResponseData.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

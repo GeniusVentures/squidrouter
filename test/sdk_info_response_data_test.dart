@@ -21,6 +21,31 @@ void main() {
       // TODO
     });
 
+    // List<ChainData> chains (default value: const [])
+    test('to test the property `chains`', () async {
+      // TODO
+    });
+
+    // String axelarscanURL
+    test('to test the property `axelarscanURL`', () async {
+      // TODO
+    });
+
+    // bool isInMaintenanceMode
+    test('to test the property `isInMaintenanceMode`', () async {
+      // TODO
+    });
+
+    // String maintenanceMessage
+    test('to test the property `maintenanceMessage`', () async {
+      // TODO
+    });
+
+    // List<FeatureFlag> featureFlags (default value: const [])
+    test('to test the property `featureFlags`', () async {
+      // TODO
+    });
+
 
   });
 

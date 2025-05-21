@@ -16,7 +16,7 @@ void main() {
   // final instance = Action();
 
   group('test Action', () {
-    // String type
+    // ActionType type
     test('to test the property `type`', () async {
       // TODO
     });
@@ -54,6 +54,36 @@ void main() {
     // The DEX or bridge provider for this action.
     // String provider
     test('to test the property `provider`', () async {
+      // TODO
+    });
+
+    // Description of the action.
+    // String description
+    test('to test the property `description`', () async {
+      // TODO
+    });
+
+    // Logo URL for the provider.
+    // String logoURI
+    test('to test the property `logoURI`', () async {
+      // TODO
+    });
+
+    // Estimated duration in milliseconds.
+    // int estimatedDuration
+    test('to test the property `estimatedDuration`', () async {
+      // TODO
+    });
+
+    // Exchange rate for this action.
+    // String exchangeRate
+    test('to test the property `exchangeRate`', () async {
+      // TODO
+    });
+
+    // Price impact percentage.
+    // String priceImpact
+    test('to test the property `priceImpact`', () async {
       // TODO
     });
 

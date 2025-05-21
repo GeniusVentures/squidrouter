@@ -10,10 +10,10 @@
 
 part of openapi.api;
 
-class V2RoutePost200Response {
-  /// Returns a new [V2RoutePost200Response] instance.
-  V2RoutePost200Response({
-    this.route,
+class ComplianceData {
+  /// Returns a new [ComplianceData] instance.
+  ComplianceData({
+    this.trmIdentifier,
   });
 
   ///
@@ -22,34 +22,32 @@ class V2RoutePost200Response {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  RouteResponseData? route;
+  String? trmIdentifier;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is V2RoutePost200Response &&
-    other.route == route;
+  bool operator ==(Object other) => identical(this, other) || other is ComplianceData &&
+    other.trmIdentifier == trmIdentifier;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (route == null ? 0 : route!.hashCode);
+    (trmIdentifier == null ? 0 : trmIdentifier!.hashCode);
 
   @override
-  String toString() => 'V2RoutePost200Response[route=$route]';
+  String toString() => 'ComplianceData[trmIdentifier=$trmIdentifier]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.route != null) {
-      json[r'route'] = this.route;
-    } else {
-      json[r'route'] = null;
+    if (this.trmIdentifier != null) {
+      json[r'trmIdentifier'] = this.trmIdentifier;
     }
     return json;
   }
 
-  /// Returns a new [V2RoutePost200Response] instance and imports its values from
+  /// Returns a new [ComplianceData] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static V2RoutePost200Response? fromJson(dynamic value) {
+  static ComplianceData? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -58,24 +56,24 @@ class V2RoutePost200Response {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "V2RoutePost200Response[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "V2RoutePost200Response[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "ComplianceData[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "ComplianceData[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return V2RoutePost200Response(
-        route: RouteResponseData.fromJson(json[r'route']),
+      return ComplianceData(
+        trmIdentifier: mapValueOfType<String>(json, r'trmIdentifier'),
       );
     }
     return null;
   }
 
-  static List<V2RoutePost200Response> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <V2RoutePost200Response>[];
+  static List<ComplianceData> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ComplianceData>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = V2RoutePost200Response.fromJson(row);
+        final value = ComplianceData.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -84,12 +82,12 @@ class V2RoutePost200Response {
     return result.toList(growable: growable);
   }
 
-  static Map<String, V2RoutePost200Response> mapFromJson(dynamic json) {
-    final map = <String, V2RoutePost200Response>{};
+  static Map<String, ComplianceData> mapFromJson(dynamic json) {
+    final map = <String, ComplianceData>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = V2RoutePost200Response.fromJson(entry.value);
+        final value = ComplianceData.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -98,14 +96,14 @@ class V2RoutePost200Response {
     return map;
   }
 
-  // maps a json object with a list of V2RoutePost200Response-objects as value to a dart map
-  static Map<String, List<V2RoutePost200Response>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<V2RoutePost200Response>>{};
+  // maps a json object with a list of ComplianceData-objects as value to a dart map
+  static Map<String, List<ComplianceData>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<ComplianceData>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = V2RoutePost200Response.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = ComplianceData.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

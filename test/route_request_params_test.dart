@@ -65,7 +65,7 @@ void main() {
     });
 
     // If true, only a quote is returned without transaction data. Optional.
-    // bool quoteOnly (default value: false)
+    // bool quoteOnly
     test('to test the property `quoteOnly`', () async {
       // TODO
     });
@@ -81,8 +81,20 @@ void main() {
     });
 
     // Whether to enable forecall checks for the transaction. Optional.
-    // bool enableForecall (default value: false)
+    // bool enableForecall
     test('to test the property `enableForecall`', () async {
+      // TODO
+    });
+
+    // Whether to receive gas on the destination chain. Optional.
+    // bool receiveGasOnDestination
+    test('to test the property `receiveGasOnDestination`', () async {
+      // TODO
+    });
+
+    // Whether to bypass guardrails. Optional.
+    // bool bypassGuardrails
+    test('to test the property `bypassGuardrails`', () async {
       // TODO
     });
 

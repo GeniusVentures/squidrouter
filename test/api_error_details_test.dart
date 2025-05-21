@@ -11,12 +11,12 @@
 import 'package:openapi/api.dart';
 import 'package:test/test.dart';
 
-// tests for ApiBasicResponseErrorErrorsInner
+// tests for ApiErrorDetails
 void main() {
-  // final instance = ApiBasicResponseErrorErrorsInner();
+  // final instance = ApiErrorDetails();
 
-  group('test ApiBasicResponseErrorErrorsInner', () {
-    // Specific error message for a field or issue.
+  group('test ApiErrorDetails', () {
+    // Specific error message.
     // String message
     test('to test the property `message`', () async {
       // TODO
@@ -28,7 +28,7 @@ void main() {
       // TODO
     });
 
-    // An internal error code or specific validation rule code.
+    // Error code.
     // String code
     test('to test the property `code`', () async {
       // TODO

@@ -1,0 +1,117 @@
+
+/Volumes/SSDevelopment/Development/GeniusVentures/GeniusNetwork/GeniusWallet/squidrouter
+├── README.md
+├── analysis_options.yaml
+├── codelayout.txt
+├── doc
+|  ├── Action.md
+|  ├── ApiBasicResponseError.md
+|  ├── ApiBasicResponseErrorErrorsInner.md
+|  ├── ChainData.md
+|  ├── ChainDataNativeCurrency.md
+|  ├── ChainType.md
+|  ├── ChainflipTransactionRequestData.md
+|  ├── ChainflipTransactionRequestDataSourceAsset.md
+|  ├── DefaultApi.md
+|  ├── DepositAddressResponseData.md
+|  ├── EvmContractCall.md
+|  ├── EvmTransactionRequestData.md
+|  ├── FeeCost.md
+|  ├── Hook.md
+|  ├── HookCallPayload.md
+|  ├── InlineObject.md
+|  ├── RouteEstimate.md
+|  ├── RouteRequestParams.md
+|  ├── RouteResponse.md
+|  ├── RouteResponseData.md
+|  ├── RouteResponseDataTransactionRequest.md
+|  ├── RouteResponseError.md
+|  ├── SDKInfoResponseData.md
+|  ├── SquidCallType.md
+|  ├── StatusResponseData.md
+|  ├── Token.md
+|  └── V2RoutePost200Response.md
+├── git_push.sh
+├── lib
+|  ├── api
+|  |  └── default_api.dart
+|  ├── api.dart
+|  ├── api_client.dart
+|  ├── api_exception.dart
+|  ├── api_helper.dart
+|  ├── auth
+|  |  ├── api_key_auth.dart
+|  |  ├── authentication.dart
+|  |  ├── http_basic_auth.dart
+|  |  ├── http_bearer_auth.dart
+|  |  └── oauth.dart
+|  ├── http
+|  |  ├── http_request_throttler.dart
+|  |  └── http_retry_interceptor.dart
+|  └── model
+|     ├── action.dart
+|     ├── api_basic_response_error.dart
+|     ├── api_basic_response_error_errors_inner.dart
+|     ├── chain_data.dart
+|     ├── chain_data_native_currency.dart
+|     ├── chain_type.dart
+|     ├── chainflip_transaction_request_data.dart
+|     ├── chainflip_transaction_request_data_source_asset.dart
+|     ├── deposit_address_response_data.dart
+|     ├── evm_contract_call.dart
+|     ├── evm_transaction_request_data.dart
+|     ├── fee_cost.dart
+|     ├── hook.dart
+|     ├── hook_call_payload.dart
+|     ├── inline_object.dart
+|     ├── route_estimate.dart
+|     ├── route_request_params.dart
+|     ├── route_response.dart
+|     ├── route_response_data.dart
+|     ├── route_response_data_transaction_request.dart
+|     ├── route_response_error.dart
+|     ├── sdk_info_response_data.dart
+|     ├── squid_call_type.dart
+|     ├── status_response_data.dart
+|     ├── token.dart
+|     └── v2_route_post200_response.dart
+├── openapi
+|  ├── squid-api-v1.json
+|  └── squid-api-v2.yaml
+├── pubspec.lock
+├── pubspec.yaml
+└── test
+   ├── action_test.dart
+   ├── api_basic_response_error_errors_inner_test.dart
+   ├── api_basic_response_error_test.dart
+   ├── api_test_helper.dart
+   ├── chain_data_native_currency_test.dart
+   ├── chain_data_test.dart
+   ├── chain_type_test.dart
+   ├── chainflip_transaction_request_data_source_asset_test.dart
+   ├── chainflip_transaction_request_data_test.dart
+   ├── default_api_test.dart
+   ├── deposit_address_response_data_test.dart
+   ├── evm_contract_call_test.dart
+   ├── evm_transaction_request_data_test.dart
+   ├── fee_cost_test.dart
+   ├── hook_call_payload_test.dart
+   ├── hook_test.dart
+   ├── inline_object_test.dart
+   ├── route_estimate_test.dart
+   ├── route_request_params_test.dart
+   ├── route_response_data_test.dart
+   ├── route_response_data_transaction_request_test.dart
+   ├── route_response_error_test.dart
+   ├── route_response_test.dart
+   ├── sdk_info_response_data_test.dart
+   ├── squid_call_type_test.dart
+   ├── status_response_data_test.dart
+   ├── token_test.dart
+   └── v2_route_post200_response_test.dart
+
+directory: 8 file: 101
+
+
+
+[2K[1G

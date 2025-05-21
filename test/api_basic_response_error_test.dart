@@ -16,8 +16,7 @@ void main() {
   // final instance = ApiBasicResponseError();
 
   group('test ApiBasicResponseError', () {
-    // A high-level classification of the error.
-    // String errorType
+    // ErrorType errorType
     test('to test the property `errorType`', () async {
       // TODO
     });
@@ -29,8 +28,14 @@ void main() {
     });
 
     // A list of specific validation errors.
-    // List<ApiBasicResponseErrorErrorsInner> errors (default value: const [])
+    // List<ApiErrorDetails> errors (default value: const [])
     test('to test the property `errors`', () async {
+      // TODO
+    });
+
+    // Reason for the error.
+    // String reason
+    test('to test the property `reason`', () async {
       // TODO
     });
 

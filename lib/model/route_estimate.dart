@@ -18,7 +18,13 @@ class RouteEstimate {
     this.sendAmount,
     required this.toAmount,
     this.toAmountUSD,
+    this.toAmountMin,
+    this.toAmountMinUSD,
     this.routeMillis,
+    this.exchangeRate,
+    this.aggregatePriceImpact,
+    this.estimatedRouteDuration,
+    this.isBoostSupported,
     this.feeCosts = const [],
     this.gasCosts = const [],
     this.isApprovalRequired,
@@ -55,6 +61,24 @@ class RouteEstimate {
   ///
   String? toAmountUSD;
 
+  /// Minimum amount to be received after slippage.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? toAmountMin;
+
+  /// USD value of minimum amount.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? toAmountMinUSD;
+
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -63,9 +87,45 @@ class RouteEstimate {
   ///
   int? routeMillis;
 
-  List<FeeCost> feeCosts;
+  /// Exchange rate between fromToken and toToken.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? exchangeRate;
 
-  List<FeeCost> gasCosts;
+  /// Aggregate price impact percentage.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? aggregatePriceImpact;
+
+  /// Estimated duration in milliseconds.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? estimatedRouteDuration;
+
+  /// Whether route supports boost.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? isBoostSupported;
+
+  List<FeeCost>? feeCosts;
+
+  List<GasCost>? gasCosts;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -86,7 +146,13 @@ class RouteEstimate {
     other.sendAmount == sendAmount &&
     other.toAmount == toAmount &&
     other.toAmountUSD == toAmountUSD &&
+    other.toAmountMin == toAmountMin &&
+    other.toAmountMinUSD == toAmountMinUSD &&
     other.routeMillis == routeMillis &&
+    other.exchangeRate == exchangeRate &&
+    other.aggregatePriceImpact == aggregatePriceImpact &&
+    other.estimatedRouteDuration == estimatedRouteDuration &&
+    other.isBoostSupported == isBoostSupported &&
     _deepEquality.equals(other.feeCosts, feeCosts) &&
     _deepEquality.equals(other.gasCosts, gasCosts) &&
     other.isApprovalRequired == isApprovalRequired &&
@@ -101,46 +167,64 @@ class RouteEstimate {
     (sendAmount == null ? 0 : sendAmount!.hashCode) +
     (toAmount.hashCode) +
     (toAmountUSD == null ? 0 : toAmountUSD!.hashCode) +
+    (toAmountMin == null ? 0 : toAmountMin!.hashCode) +
+    (toAmountMinUSD == null ? 0 : toAmountMinUSD!.hashCode) +
     (routeMillis == null ? 0 : routeMillis!.hashCode) +
-    (feeCosts.hashCode) +
-    (gasCosts.hashCode) +
+    (exchangeRate == null ? 0 : exchangeRate!.hashCode) +
+    (aggregatePriceImpact == null ? 0 : aggregatePriceImpact!.hashCode) +
+    (estimatedRouteDuration == null ? 0 : estimatedRouteDuration!.hashCode) +
+    (isBoostSupported == null ? 0 : isBoostSupported!.hashCode) +
+    (feeCosts == null ? 0 : feeCosts!.hashCode) +
+    (gasCosts == null ? 0 : gasCosts!.hashCode) +
     (isApprovalRequired == null ? 0 : isApprovalRequired!.hashCode) +
     (approvalTx.hashCode) +
     (actions.hashCode);
 
   @override
-  String toString() => 'RouteEstimate[fromAmount=$fromAmount, fromAmountUSD=$fromAmountUSD, sendAmount=$sendAmount, toAmount=$toAmount, toAmountUSD=$toAmountUSD, routeMillis=$routeMillis, feeCosts=$feeCosts, gasCosts=$gasCosts, isApprovalRequired=$isApprovalRequired, approvalTx=$approvalTx, actions=$actions]';
+  String toString() => 'RouteEstimate[fromAmount=$fromAmount, fromAmountUSD=$fromAmountUSD, sendAmount=$sendAmount, toAmount=$toAmount, toAmountUSD=$toAmountUSD, toAmountMin=$toAmountMin, toAmountMinUSD=$toAmountMinUSD, routeMillis=$routeMillis, exchangeRate=$exchangeRate, aggregatePriceImpact=$aggregatePriceImpact, estimatedRouteDuration=$estimatedRouteDuration, isBoostSupported=$isBoostSupported, feeCosts=$feeCosts, gasCosts=$gasCosts, isApprovalRequired=$isApprovalRequired, approvalTx=$approvalTx, actions=$actions]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'fromAmount'] = this.fromAmount;
     if (this.fromAmountUSD != null) {
       json[r'fromAmountUSD'] = this.fromAmountUSD;
-    } else {
-      json[r'fromAmountUSD'] = null;
     }
     if (this.sendAmount != null) {
       json[r'sendAmount'] = this.sendAmount;
-    } else {
-      json[r'sendAmount'] = null;
     }
       json[r'toAmount'] = this.toAmount;
     if (this.toAmountUSD != null) {
       json[r'toAmountUSD'] = this.toAmountUSD;
-    } else {
-      json[r'toAmountUSD'] = null;
+    }
+    if (this.toAmountMin != null) {
+      json[r'toAmountMin'] = this.toAmountMin;
+    }
+    if (this.toAmountMinUSD != null) {
+      json[r'toAmountMinUSD'] = this.toAmountMinUSD;
     }
     if (this.routeMillis != null) {
       json[r'routeMillis'] = this.routeMillis;
-    } else {
-      json[r'routeMillis'] = null;
     }
+    if (this.exchangeRate != null) {
+      json[r'exchangeRate'] = this.exchangeRate;
+    }
+    if (this.aggregatePriceImpact != null) {
+      json[r'aggregatePriceImpact'] = this.aggregatePriceImpact;
+    }
+    if (this.estimatedRouteDuration != null) {
+      json[r'estimatedRouteDuration'] = this.estimatedRouteDuration;
+    }
+    if (this.isBoostSupported != null) {
+      json[r'isBoostSupported'] = this.isBoostSupported;
+    }
+    if (this.feeCosts != null) {
       json[r'feeCosts'] = this.feeCosts;
+    }
+    if (this.gasCosts != null) {
       json[r'gasCosts'] = this.gasCosts;
+    }
     if (this.isApprovalRequired != null) {
       json[r'isApprovalRequired'] = this.isApprovalRequired;
-    } else {
-      json[r'isApprovalRequired'] = null;
     }
       json[r'approvalTx'] = this.approvalTx;
       json[r'actions'] = this.actions;
@@ -171,9 +255,15 @@ class RouteEstimate {
         sendAmount: mapValueOfType<String>(json, r'sendAmount'),
         toAmount: mapValueOfType<String>(json, r'toAmount')!,
         toAmountUSD: mapValueOfType<String>(json, r'toAmountUSD'),
+        toAmountMin: mapValueOfType<String>(json, r'toAmountMin'),
+        toAmountMinUSD: mapValueOfType<String>(json, r'toAmountMinUSD'),
         routeMillis: mapValueOfType<int>(json, r'routeMillis'),
+        exchangeRate: mapValueOfType<String>(json, r'exchangeRate'),
+        aggregatePriceImpact: mapValueOfType<String>(json, r'aggregatePriceImpact'),
+        estimatedRouteDuration: mapValueOfType<int>(json, r'estimatedRouteDuration'),
+        isBoostSupported: mapValueOfType<bool>(json, r'isBoostSupported'),
         feeCosts: FeeCost.listFromJson(json[r'feeCosts']),
-        gasCosts: FeeCost.listFromJson(json[r'gasCosts']),
+        gasCosts: GasCost.listFromJson(json[r'gasCosts']),
         isApprovalRequired: mapValueOfType<bool>(json, r'isApprovalRequired'),
         approvalTx: mapCastOfType<String, Object>(json, r'approvalTx') ?? const {},
         actions: Action.listFromJson(json[r'actions']),
@@ -226,7 +316,6 @@ class RouteEstimate {
   static const requiredKeys = <String>{
     'fromAmount',
     'toAmount',
-    'feeCosts',
   };
 }
 

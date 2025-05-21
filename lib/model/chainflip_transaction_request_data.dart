@@ -53,7 +53,7 @@ class ChainflipTransactionRequestData {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  ChainflipTransactionRequestDataSourceAsset? sourceAsset;
+  ChainflipSourceAsset? sourceAsset;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -61,7 +61,7 @@ class ChainflipTransactionRequestData {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  ChainflipTransactionRequestDataSourceAsset? destinationAsset;
+  ChainflipDestinationAsset? destinationAsset;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -97,33 +97,21 @@ class ChainflipTransactionRequestData {
     final json = <String, dynamic>{};
     if (this.routeType != null) {
       json[r'routeType'] = this.routeType;
-    } else {
-      json[r'routeType'] = null;
     }
     if (this.depositChannelId != null) {
       json[r'depositChannelId'] = this.depositChannelId;
-    } else {
-      json[r'depositChannelId'] = null;
     }
     if (this.fromAmount != null) {
       json[r'fromAmount'] = this.fromAmount;
-    } else {
-      json[r'fromAmount'] = null;
     }
     if (this.sourceAsset != null) {
       json[r'sourceAsset'] = this.sourceAsset;
-    } else {
-      json[r'sourceAsset'] = null;
     }
     if (this.destinationAsset != null) {
       json[r'destinationAsset'] = this.destinationAsset;
-    } else {
-      json[r'destinationAsset'] = null;
     }
     if (this.destinationAddress != null) {
       json[r'destinationAddress'] = this.destinationAddress;
-    } else {
-      json[r'destinationAddress'] = null;
     }
     return json;
   }
@@ -150,8 +138,8 @@ class ChainflipTransactionRequestData {
         routeType: mapValueOfType<String>(json, r'routeType'),
         depositChannelId: mapValueOfType<String>(json, r'depositChannelId'),
         fromAmount: mapValueOfType<String>(json, r'fromAmount'),
-        sourceAsset: ChainflipTransactionRequestDataSourceAsset.fromJson(json[r'sourceAsset']),
-        destinationAsset: ChainflipTransactionRequestDataSourceAsset.fromJson(json[r'destinationAsset']),
+        sourceAsset: ChainflipSourceAsset.fromJson(json[r'sourceAsset']),
+        destinationAsset: ChainflipDestinationAsset.fromJson(json[r'destinationAsset']),
         destinationAddress: mapValueOfType<String>(json, r'destinationAddress'),
       );
     }

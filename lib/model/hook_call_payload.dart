@@ -53,13 +53,9 @@ class HookCallPayload {
     final json = <String, dynamic>{};
     if (this.tokenAddress != null) {
       json[r'tokenAddress'] = this.tokenAddress;
-    } else {
-      json[r'tokenAddress'] = null;
     }
     if (this.inputPos != null) {
       json[r'inputPos'] = this.inputPos;
-    } else {
-      json[r'inputPos'] = null;
     }
     return json;
   }

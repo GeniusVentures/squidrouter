@@ -11,16 +11,10 @@
 import 'package:openapi/api.dart';
 import 'package:test/test.dart';
 
-// tests for V2RoutePost200Response
+// tests for BridgeType
 void main() {
-  // final instance = V2RoutePost200Response();
 
-  group('test V2RoutePost200Response', () {
-    // RouteResponseData route
-    test('to test the property `route`', () async {
-      // TODO
-    });
-
+  group('test BridgeType', () {
 
   });
 

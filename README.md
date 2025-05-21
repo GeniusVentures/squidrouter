@@ -43,13 +43,13 @@ import 'package:openapi/api.dart';
 
 final api_instance = DefaultApi();
 final xIntegratorId = your-integrator-id; // String | Your Squid integrator ID.
-final body = ChainflipTransactionRequestData(); // ChainflipTransactionRequestData | 
+final routeRequestParams = RouteRequestParams(); // RouteRequestParams | 
 
 try {
-    final result = api_instance.getDepositAddress(xIntegratorId, body);
+    final result = api_instance.getRoute(xIntegratorId, routeRequestParams);
     print(result);
 } catch (e) {
-    print('Exception when calling DefaultApi->getDepositAddress: $e\n');
+    print('Exception when calling DefaultApi->getRoute: $e\n');
 }
 
 ```
@@ -60,26 +60,37 @@ All URIs are relative to *https://v2.api.squidrouter.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*DefaultApi* | [**getDepositAddress**](doc//DefaultApi.md#getdepositaddress) | **POST** /v2/deposit-address | Get deposit address for non-EVM to EVM swaps
 *DefaultApi* | [**getRoute**](doc//DefaultApi.md#getroute) | **POST** /v2/route | Get a cross-chain swap route
 *DefaultApi* | [**getSDKInfo**](doc//DefaultApi.md#getsdkinfo) | **GET** /v2/sdk-info | Get SDK information, including supported tokens and chains
 *DefaultApi* | [**getStatus**](doc//DefaultApi.md#getstatus) | **GET** /v2/status | Get the status of a transaction
+*DefaultApi* | [**v2DepositAddressPost**](doc//DefaultApi.md#v2depositaddresspost) | **POST** /v2/deposit-address | Get deposit address for non-EVM to EVM swaps
 
 
 ## Documentation For Models
 
  - [Action](doc//Action.md)
+ - [ActionType](doc//ActionType.md)
  - [ApiBasicResponseError](doc//ApiBasicResponseError.md)
- - [ApiBasicResponseErrorErrorsInner](doc//ApiBasicResponseErrorErrorsInner.md)
+ - [ApiErrorDetails](doc//ApiErrorDetails.md)
+ - [BridgeType](doc//BridgeType.md)
  - [ChainData](doc//ChainData.md)
  - [ChainDataNativeCurrency](doc//ChainDataNativeCurrency.md)
+ - [ChainNativeContracts](doc//ChainNativeContracts.md)
  - [ChainType](doc//ChainType.md)
+ - [ChainflipDestinationAsset](doc//ChainflipDestinationAsset.md)
+ - [ChainflipSourceAsset](doc//ChainflipSourceAsset.md)
  - [ChainflipTransactionRequestData](doc//ChainflipTransactionRequestData.md)
- - [ChainflipTransactionRequestDataSourceAsset](doc//ChainflipTransactionRequestDataSourceAsset.md)
+ - [ComplianceData](doc//ComplianceData.md)
  - [DepositAddressResponseData](doc//DepositAddressResponseData.md)
+ - [ErrorType](doc//ErrorType.md)
  - [EvmContractCall](doc//EvmContractCall.md)
  - [EvmTransactionRequestData](doc//EvmTransactionRequestData.md)
+ - [FallbackAddress](doc//FallbackAddress.md)
+ - [FeatureFlag](doc//FeatureFlag.md)
  - [FeeCost](doc//FeeCost.md)
+ - [FeeType](doc//FeeType.md)
+ - [GasCost](doc//GasCost.md)
+ - [GasCostType](doc//GasCostType.md)
  - [Hook](doc//Hook.md)
  - [HookCallPayload](doc//HookCallPayload.md)
  - [InlineObject](doc//InlineObject.md)
@@ -90,10 +101,13 @@ Class | Method | HTTP request | Description
  - [RouteResponseData](doc//RouteResponseData.md)
  - [RouteResponseDataTransactionRequest](doc//RouteResponseDataTransactionRequest.md)
  - [RouteResponseError](doc//RouteResponseError.md)
+ - [RouteStatusEntry](doc//RouteStatusEntry.md)
  - [SDKInfoResponseData](doc//SDKInfoResponseData.md)
  - [SquidCallType](doc//SquidCallType.md)
  - [StatusResponseData](doc//StatusResponseData.md)
  - [Token](doc//Token.md)
+ - [TransactionStatus](doc//TransactionStatus.md)
+ - [Volatility](doc//Volatility.md)
 
 
 ## Documentation For Authorization

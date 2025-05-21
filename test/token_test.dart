@@ -57,6 +57,67 @@ void main() {
       // TODO
     });
 
+    // List<String> categories (default value: const [])
+    test('to test the property `categories`', () async {
+      // TODO
+    });
+
+    // String ibcDenom
+    test('to test the property `ibcDenom`', () async {
+      // TODO
+    });
+
+    // bool bridgeOnly
+    test('to test the property `bridgeOnly`', () async {
+      // TODO
+    });
+
+    // Axelar network identifiers for the token.
+    // Map<String, String> axelarNetworkIdentifier (default value: const {})
+    test('to test the property `axelarNetworkIdentifier`', () async {
+      // TODO
+    });
+
+    // Volatility volatility
+    test('to test the property `volatility`', () async {
+      // TODO
+    });
+
+    // String axelarNetworkSymbol
+    test('to test the property `axelarNetworkSymbol`', () async {
+      // TODO
+    });
+
+    // String interchainTokenId
+    test('to test the property `interchainTokenId`', () async {
+      // TODO
+    });
+
+    // ChainType type
+    test('to test the property `type`', () async {
+      // TODO
+    });
+
+    // bool feeOnTransfer
+    test('to test the property `feeOnTransfer`', () async {
+      // TODO
+    });
+
+    // bool isLpToken
+    test('to test the property `isLpToken`', () async {
+      // TODO
+    });
+
+    // bool disabled
+    test('to test the property `disabled`', () async {
+      // TODO
+    });
+
+    // String originalAddress
+    test('to test the property `originalAddress`', () async {
+      // TODO
+    });
+
 
   });
 

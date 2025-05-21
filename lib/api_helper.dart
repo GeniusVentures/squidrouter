@@ -55,11 +55,29 @@ String parameterToString(dynamic value) {
   if (value is DateTime) {
     return value.toUtc().toIso8601String();
   }
+  if (value is ActionType) {
+    return ActionTypeTypeTransformer().encode(value).toString();
+  }
+  if (value is BridgeType) {
+    return BridgeTypeTypeTransformer().encode(value).toString();
+  }
   if (value is ChainType) {
     return ChainTypeTypeTransformer().encode(value).toString();
   }
+  if (value is ErrorType) {
+    return ErrorTypeTypeTransformer().encode(value).toString();
+  }
+  if (value is FeeType) {
+    return FeeTypeTypeTransformer().encode(value).toString();
+  }
+  if (value is GasCostType) {
+    return GasCostTypeTypeTransformer().encode(value).toString();
+  }
   if (value is SquidCallType) {
     return SquidCallTypeTypeTransformer().encode(value).toString();
+  }
+  if (value is Volatility) {
+    return VolatilityTypeTransformer().encode(value).toString();
   }
   return value.toString();
 }

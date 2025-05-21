@@ -21,9 +21,20 @@ class Action {
     this.toToken,
     this.toAmount,
     this.provider,
+    this.description,
+    this.logoURI,
+    this.estimatedDuration,
+    this.exchangeRate,
+    this.priceImpact,
   });
 
-  ActionTypeEnum? type;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  ActionType? type;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -82,6 +93,51 @@ class Action {
   ///
   String? provider;
 
+  /// Description of the action.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? description;
+
+  /// Logo URL for the provider.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? logoURI;
+
+  /// Estimated duration in milliseconds.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? estimatedDuration;
+
+  /// Exchange rate for this action.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? exchangeRate;
+
+  /// Price impact percentage.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? priceImpact;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is Action &&
     other.type == type &&
@@ -91,7 +147,12 @@ class Action {
     other.toChainId == toChainId &&
     other.toToken == toToken &&
     other.toAmount == toAmount &&
-    other.provider == provider;
+    other.provider == provider &&
+    other.description == description &&
+    other.logoURI == logoURI &&
+    other.estimatedDuration == estimatedDuration &&
+    other.exchangeRate == exchangeRate &&
+    other.priceImpact == priceImpact;
 
   @override
   int get hashCode =>
@@ -103,52 +164,56 @@ class Action {
     (toChainId == null ? 0 : toChainId!.hashCode) +
     (toToken == null ? 0 : toToken!.hashCode) +
     (toAmount == null ? 0 : toAmount!.hashCode) +
-    (provider == null ? 0 : provider!.hashCode);
+    (provider == null ? 0 : provider!.hashCode) +
+    (description == null ? 0 : description!.hashCode) +
+    (logoURI == null ? 0 : logoURI!.hashCode) +
+    (estimatedDuration == null ? 0 : estimatedDuration!.hashCode) +
+    (exchangeRate == null ? 0 : exchangeRate!.hashCode) +
+    (priceImpact == null ? 0 : priceImpact!.hashCode);
 
   @override
-  String toString() => 'Action[type=$type, fromChainId=$fromChainId, fromToken=$fromToken, fromAmount=$fromAmount, toChainId=$toChainId, toToken=$toToken, toAmount=$toAmount, provider=$provider]';
+  String toString() => 'Action[type=$type, fromChainId=$fromChainId, fromToken=$fromToken, fromAmount=$fromAmount, toChainId=$toChainId, toToken=$toToken, toAmount=$toAmount, provider=$provider, description=$description, logoURI=$logoURI, estimatedDuration=$estimatedDuration, exchangeRate=$exchangeRate, priceImpact=$priceImpact]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
     if (this.type != null) {
       json[r'type'] = this.type;
-    } else {
-      json[r'type'] = null;
     }
     if (this.fromChainId != null) {
       json[r'fromChainId'] = this.fromChainId;
-    } else {
-      json[r'fromChainId'] = null;
     }
     if (this.fromToken != null) {
       json[r'fromToken'] = this.fromToken;
-    } else {
-      json[r'fromToken'] = null;
     }
     if (this.fromAmount != null) {
       json[r'fromAmount'] = this.fromAmount;
-    } else {
-      json[r'fromAmount'] = null;
     }
     if (this.toChainId != null) {
       json[r'toChainId'] = this.toChainId;
-    } else {
-      json[r'toChainId'] = null;
     }
     if (this.toToken != null) {
       json[r'toToken'] = this.toToken;
-    } else {
-      json[r'toToken'] = null;
     }
     if (this.toAmount != null) {
       json[r'toAmount'] = this.toAmount;
-    } else {
-      json[r'toAmount'] = null;
     }
     if (this.provider != null) {
       json[r'provider'] = this.provider;
-    } else {
-      json[r'provider'] = null;
+    }
+    if (this.description != null) {
+      json[r'description'] = this.description;
+    }
+    if (this.logoURI != null) {
+      json[r'logoURI'] = this.logoURI;
+    }
+    if (this.estimatedDuration != null) {
+      json[r'estimatedDuration'] = this.estimatedDuration;
+    }
+    if (this.exchangeRate != null) {
+      json[r'exchangeRate'] = this.exchangeRate;
+    }
+    if (this.priceImpact != null) {
+      json[r'priceImpact'] = this.priceImpact;
     }
     return json;
   }
@@ -172,7 +237,7 @@ class Action {
       }());
 
       return Action(
-        type: ActionTypeEnum.fromJson(json[r'type']),
+        type: ActionType.fromJson(json[r'type']),
         fromChainId: mapValueOfType<String>(json, r'fromChainId'),
         fromToken: Token.fromJson(json[r'fromToken']),
         fromAmount: mapValueOfType<String>(json, r'fromAmount'),
@@ -180,6 +245,11 @@ class Action {
         toToken: Token.fromJson(json[r'toToken']),
         toAmount: mapValueOfType<String>(json, r'toAmount'),
         provider: mapValueOfType<String>(json, r'provider'),
+        description: mapValueOfType<String>(json, r'description'),
+        logoURI: mapValueOfType<String>(json, r'logoURI'),
+        estimatedDuration: mapValueOfType<int>(json, r'estimatedDuration'),
+        exchangeRate: mapValueOfType<String>(json, r'exchangeRate'),
+        priceImpact: mapValueOfType<String>(json, r'priceImpact'),
       );
     }
     return null;
@@ -229,84 +299,4 @@ class Action {
   static const requiredKeys = <String>{
   };
 }
-
-
-class ActionTypeEnum {
-  /// Instantiate a new enum with the provided [value].
-  const ActionTypeEnum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value;
-
-  String toJson() => value;
-
-  static const SWAP = ActionTypeEnum._(r'SWAP');
-  static const BRIDGE_CALL = ActionTypeEnum._(r'BRIDGE_CALL');
-  static const FEE = ActionTypeEnum._(r'FEE');
-  static const RFQ = ActionTypeEnum._(r'RFQ');
-
-  /// List of all possible values in this [enum][ActionTypeEnum].
-  static const values = <ActionTypeEnum>[
-    SWAP,
-    BRIDGE_CALL,
-    FEE,
-    RFQ,
-  ];
-
-  static ActionTypeEnum? fromJson(dynamic value) => ActionTypeEnumTypeTransformer().decode(value);
-
-  static List<ActionTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <ActionTypeEnum>[];
-    if (json is List && json.isNotEmpty) {
-      for (final row in json) {
-        final value = ActionTypeEnum.fromJson(row);
-        if (value != null) {
-          result.add(value);
-        }
-      }
-    }
-    return result.toList(growable: growable);
-  }
-}
-
-/// Transformation class that can [encode] an instance of [ActionTypeEnum] to String,
-/// and [decode] dynamic data back to [ActionTypeEnum].
-class ActionTypeEnumTypeTransformer {
-  factory ActionTypeEnumTypeTransformer() => _instance ??= const ActionTypeEnumTypeTransformer._();
-
-  const ActionTypeEnumTypeTransformer._();
-
-  String encode(ActionTypeEnum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a ActionTypeEnum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  ActionTypeEnum? decode(dynamic data, {bool allowNull = true}) {
-    if (data != null) {
-      switch (data) {
-        case r'SWAP': return ActionTypeEnum.SWAP;
-        case r'BRIDGE_CALL': return ActionTypeEnum.BRIDGE_CALL;
-        case r'FEE': return ActionTypeEnum.FEE;
-        case r'RFQ': return ActionTypeEnum.RFQ;
-        default:
-          if (!allowNull) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [ActionTypeEnumTypeTransformer] instance.
-  static ActionTypeEnumTypeTransformer? _instance;
-}
-
 

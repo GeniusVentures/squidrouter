@@ -25,13 +25,15 @@ class ChainType {
 
   static const evm = ChainType._(r'evm');
   static const cosmos = ChainType._(r'cosmos');
-  static const axelar = ChainType._(r'axelar');
+  static const bitcoin = ChainType._(r'bitcoin');
+  static const solana = ChainType._(r'solana');
 
   /// List of all possible values in this [enum][ChainType].
   static const values = <ChainType>[
     evm,
     cosmos,
-    axelar,
+    bitcoin,
+    solana,
   ];
 
   static ChainType? fromJson(dynamic value) => ChainTypeTypeTransformer().decode(value);
@@ -72,7 +74,8 @@ class ChainTypeTypeTransformer {
       switch (data) {
         case r'evm': return ChainType.evm;
         case r'cosmos': return ChainType.cosmos;
-        case r'axelar': return ChainType.axelar;
+        case r'bitcoin': return ChainType.bitcoin;
+        case r'solana': return ChainType.solana;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

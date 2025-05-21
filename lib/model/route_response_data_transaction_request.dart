@@ -21,6 +21,9 @@ class RouteResponseDataTransactionRequest {
     this.gasPrice,
     this.maxFeePerGas,
     this.maxPriorityFeePerGas,
+    this.requestId,
+    this.expiry,
+    this.expiryOffset,
     this.depositChannelId,
     this.fromAmount,
     this.sourceAsset,
@@ -99,6 +102,33 @@ class RouteResponseDataTransactionRequest {
   ///
   String? maxPriorityFeePerGas;
 
+  /// The unique request ID for this transaction.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? requestId;
+
+  /// Expiration timestamp for this transaction.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? expiry;
+
+  /// Expiry offset duration.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? expiryOffset;
+
   /// The Chainflip deposit channel ID.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -123,7 +153,7 @@ class RouteResponseDataTransactionRequest {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  ChainflipTransactionRequestDataSourceAsset? sourceAsset;
+  ChainflipSourceAsset? sourceAsset;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -131,7 +161,7 @@ class RouteResponseDataTransactionRequest {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  ChainflipTransactionRequestDataSourceAsset? destinationAsset;
+  ChainflipDestinationAsset? destinationAsset;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -151,6 +181,9 @@ class RouteResponseDataTransactionRequest {
     other.gasPrice == gasPrice &&
     other.maxFeePerGas == maxFeePerGas &&
     other.maxPriorityFeePerGas == maxPriorityFeePerGas &&
+    other.requestId == requestId &&
+    other.expiry == expiry &&
+    other.expiryOffset == expiryOffset &&
     other.depositChannelId == depositChannelId &&
     other.fromAmount == fromAmount &&
     other.sourceAsset == sourceAsset &&
@@ -168,6 +201,9 @@ class RouteResponseDataTransactionRequest {
     (gasPrice == null ? 0 : gasPrice!.hashCode) +
     (maxFeePerGas == null ? 0 : maxFeePerGas!.hashCode) +
     (maxPriorityFeePerGas == null ? 0 : maxPriorityFeePerGas!.hashCode) +
+    (requestId == null ? 0 : requestId!.hashCode) +
+    (expiry == null ? 0 : expiry!.hashCode) +
+    (expiryOffset == null ? 0 : expiryOffset!.hashCode) +
     (depositChannelId == null ? 0 : depositChannelId!.hashCode) +
     (fromAmount == null ? 0 : fromAmount!.hashCode) +
     (sourceAsset == null ? 0 : sourceAsset!.hashCode) +
@@ -175,74 +211,57 @@ class RouteResponseDataTransactionRequest {
     (destinationAddress == null ? 0 : destinationAddress!.hashCode);
 
   @override
-  String toString() => 'RouteResponseDataTransactionRequest[routeType=$routeType, target=$target, data=$data, value=$value, gasLimit=$gasLimit, gasPrice=$gasPrice, maxFeePerGas=$maxFeePerGas, maxPriorityFeePerGas=$maxPriorityFeePerGas, depositChannelId=$depositChannelId, fromAmount=$fromAmount, sourceAsset=$sourceAsset, destinationAsset=$destinationAsset, destinationAddress=$destinationAddress]';
+  String toString() => 'RouteResponseDataTransactionRequest[routeType=$routeType, target=$target, data=$data, value=$value, gasLimit=$gasLimit, gasPrice=$gasPrice, maxFeePerGas=$maxFeePerGas, maxPriorityFeePerGas=$maxPriorityFeePerGas, requestId=$requestId, expiry=$expiry, expiryOffset=$expiryOffset, depositChannelId=$depositChannelId, fromAmount=$fromAmount, sourceAsset=$sourceAsset, destinationAsset=$destinationAsset, destinationAddress=$destinationAddress]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
     if (this.routeType != null) {
       json[r'routeType'] = this.routeType;
-    } else {
-      json[r'routeType'] = null;
     }
     if (this.target != null) {
       json[r'target'] = this.target;
-    } else {
-      json[r'target'] = null;
     }
     if (this.data != null) {
       json[r'data'] = this.data;
-    } else {
-      json[r'data'] = null;
     }
     if (this.value != null) {
       json[r'value'] = this.value;
-    } else {
-      json[r'value'] = null;
     }
     if (this.gasLimit != null) {
       json[r'gasLimit'] = this.gasLimit;
-    } else {
-      json[r'gasLimit'] = null;
     }
     if (this.gasPrice != null) {
       json[r'gasPrice'] = this.gasPrice;
-    } else {
-      json[r'gasPrice'] = null;
     }
     if (this.maxFeePerGas != null) {
       json[r'maxFeePerGas'] = this.maxFeePerGas;
-    } else {
-      json[r'maxFeePerGas'] = null;
     }
     if (this.maxPriorityFeePerGas != null) {
       json[r'maxPriorityFeePerGas'] = this.maxPriorityFeePerGas;
-    } else {
-      json[r'maxPriorityFeePerGas'] = null;
+    }
+    if (this.requestId != null) {
+      json[r'requestId'] = this.requestId;
+    }
+    if (this.expiry != null) {
+      json[r'expiry'] = this.expiry;
+    }
+    if (this.expiryOffset != null) {
+      json[r'expiryOffset'] = this.expiryOffset;
     }
     if (this.depositChannelId != null) {
       json[r'depositChannelId'] = this.depositChannelId;
-    } else {
-      json[r'depositChannelId'] = null;
     }
     if (this.fromAmount != null) {
       json[r'fromAmount'] = this.fromAmount;
-    } else {
-      json[r'fromAmount'] = null;
     }
     if (this.sourceAsset != null) {
       json[r'sourceAsset'] = this.sourceAsset;
-    } else {
-      json[r'sourceAsset'] = null;
     }
     if (this.destinationAsset != null) {
       json[r'destinationAsset'] = this.destinationAsset;
-    } else {
-      json[r'destinationAsset'] = null;
     }
     if (this.destinationAddress != null) {
       json[r'destinationAddress'] = this.destinationAddress;
-    } else {
-      json[r'destinationAddress'] = null;
     }
     return json;
   }
@@ -274,10 +293,13 @@ class RouteResponseDataTransactionRequest {
         gasPrice: mapValueOfType<String>(json, r'gasPrice'),
         maxFeePerGas: mapValueOfType<String>(json, r'maxFeePerGas'),
         maxPriorityFeePerGas: mapValueOfType<String>(json, r'maxPriorityFeePerGas'),
+        requestId: mapValueOfType<String>(json, r'requestId'),
+        expiry: mapValueOfType<String>(json, r'expiry'),
+        expiryOffset: mapValueOfType<String>(json, r'expiryOffset'),
         depositChannelId: mapValueOfType<String>(json, r'depositChannelId'),
         fromAmount: mapValueOfType<String>(json, r'fromAmount'),
-        sourceAsset: ChainflipTransactionRequestDataSourceAsset.fromJson(json[r'sourceAsset']),
-        destinationAsset: ChainflipTransactionRequestDataSourceAsset.fromJson(json[r'destinationAsset']),
+        sourceAsset: ChainflipSourceAsset.fromJson(json[r'sourceAsset']),
+        destinationAsset: ChainflipDestinationAsset.fromJson(json[r'destinationAsset']),
         destinationAddress: mapValueOfType<String>(json, r'destinationAddress'),
       );
     }

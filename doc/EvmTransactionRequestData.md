@@ -16,6 +16,9 @@ Name | Type | Description | Notes
 **gasPrice** | **String** | Recommended gas price for the transaction, in wei. (May not be present for EIP-1559 chains) | [optional] 
 **maxFeePerGas** | **String** | (EIP-1559) Maximum fee per gas. | [optional] 
 **maxPriorityFeePerGas** | **String** | (EIP-1559) Maximum priority fee per gas. | [optional] 
+**requestId** | **String** | The unique request ID for this transaction. | [optional] 
+**expiry** | **String** | Expiration timestamp for this transaction. | [optional] 
+**expiryOffset** | **String** | Expiry offset duration. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

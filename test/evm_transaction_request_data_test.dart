@@ -63,6 +63,24 @@ void main() {
       // TODO
     });
 
+    // The unique request ID for this transaction.
+    // String requestId
+    test('to test the property `requestId`', () async {
+      // TODO
+    });
+
+    // Expiration timestamp for this transaction.
+    // String expiry
+    test('to test the property `expiry`', () async {
+      // TODO
+    });
+
+    // Expiry offset duration.
+    // String expiryOffset
+    test('to test the property `expiryOffset`', () async {
+      // TODO
+    });
+
 
   });
 

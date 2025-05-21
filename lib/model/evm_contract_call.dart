@@ -83,14 +83,10 @@ class EvmContractCall {
       json[r'target'] = this.target;
     if (this.value != null) {
       json[r'value'] = this.value;
-    } else {
-      json[r'value'] = null;
     }
       json[r'callData'] = this.callData;
     if (this.payload != null) {
       json[r'payload'] = this.payload;
-    } else {
-      json[r'payload'] = null;
     }
       json[r'estimatedGas'] = this.estimatedGas;
     return json;

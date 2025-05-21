@@ -25,6 +25,14 @@ class Token {
     this.ibcDenom,
     this.bridgeOnly,
     this.axelarNetworkIdentifier = const {},
+    this.volatility,
+    this.axelarNetworkSymbol,
+    this.interchainTokenId,
+    this.type,
+    this.feeOnTransfer,
+    this.isLpToken,
+    this.disabled,
+    this.originalAddress,
   });
 
   ///
@@ -80,7 +88,36 @@ class Token {
 
   bool? bridgeOnly;
 
-  Map<String, Object>? axelarNetworkIdentifier;
+  /// Axelar network identifiers for the token.
+  Map<String, String> axelarNetworkIdentifier;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  Volatility? volatility;
+
+  String? axelarNetworkSymbol;
+
+  String? interchainTokenId;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  ChainType? type;
+
+  bool? feeOnTransfer;
+
+  bool? isLpToken;
+
+  bool? disabled;
+
+  String? originalAddress;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is Token &&
@@ -95,7 +132,15 @@ class Token {
     _deepEquality.equals(other.categories, categories) &&
     other.ibcDenom == ibcDenom &&
     other.bridgeOnly == bridgeOnly &&
-    _deepEquality.equals(other.axelarNetworkIdentifier, axelarNetworkIdentifier);
+    _deepEquality.equals(other.axelarNetworkIdentifier, axelarNetworkIdentifier) &&
+    other.volatility == volatility &&
+    other.axelarNetworkSymbol == axelarNetworkSymbol &&
+    other.interchainTokenId == interchainTokenId &&
+    other.type == type &&
+    other.feeOnTransfer == feeOnTransfer &&
+    other.isLpToken == isLpToken &&
+    other.disabled == disabled &&
+    other.originalAddress == originalAddress;
 
   @override
   int get hashCode =>
@@ -111,72 +156,78 @@ class Token {
     (categories == null ? 0 : categories!.hashCode) +
     (ibcDenom == null ? 0 : ibcDenom!.hashCode) +
     (bridgeOnly == null ? 0 : bridgeOnly!.hashCode) +
-    (axelarNetworkIdentifier == null ? 0 : axelarNetworkIdentifier!.hashCode);
+    (axelarNetworkIdentifier.hashCode) +
+    (volatility == null ? 0 : volatility!.hashCode) +
+    (axelarNetworkSymbol == null ? 0 : axelarNetworkSymbol!.hashCode) +
+    (interchainTokenId == null ? 0 : interchainTokenId!.hashCode) +
+    (type == null ? 0 : type!.hashCode) +
+    (feeOnTransfer == null ? 0 : feeOnTransfer!.hashCode) +
+    (isLpToken == null ? 0 : isLpToken!.hashCode) +
+    (disabled == null ? 0 : disabled!.hashCode) +
+    (originalAddress == null ? 0 : originalAddress!.hashCode);
 
   @override
-  String toString() => 'Token[chainId=$chainId, address=$address, name=$name, symbol=$symbol, decimals=$decimals, logoURI=$logoURI, coingeckoId=$coingeckoId, usdPrice=$usdPrice, categories=$categories, ibcDenom=$ibcDenom, bridgeOnly=$bridgeOnly, axelarNetworkIdentifier=$axelarNetworkIdentifier]';
+  String toString() => 'Token[chainId=$chainId, address=$address, name=$name, symbol=$symbol, decimals=$decimals, logoURI=$logoURI, coingeckoId=$coingeckoId, usdPrice=$usdPrice, categories=$categories, ibcDenom=$ibcDenom, bridgeOnly=$bridgeOnly, axelarNetworkIdentifier=$axelarNetworkIdentifier, volatility=$volatility, axelarNetworkSymbol=$axelarNetworkSymbol, interchainTokenId=$interchainTokenId, type=$type, feeOnTransfer=$feeOnTransfer, isLpToken=$isLpToken, disabled=$disabled, originalAddress=$originalAddress]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
     if (this.chainId != null) {
       json[r'chainId'] = this.chainId;
-    } else {
-      json[r'chainId'] = null;
     }
     if (this.address != null) {
       json[r'address'] = this.address;
-    } else {
-      json[r'address'] = null;
     }
     if (this.name != null) {
       json[r'name'] = this.name;
-    } else {
-      json[r'name'] = null;
     }
     if (this.symbol != null) {
       json[r'symbol'] = this.symbol;
-    } else {
-      json[r'symbol'] = null;
     }
     if (this.decimals != null) {
       json[r'decimals'] = this.decimals;
-    } else {
-      json[r'decimals'] = null;
     }
     if (this.logoURI != null) {
       json[r'logoURI'] = this.logoURI;
-    } else {
-      json[r'logoURI'] = null;
     }
     if (this.coingeckoId != null) {
       json[r'coingeckoId'] = this.coingeckoId;
-    } else {
-      json[r'coingeckoId'] = null;
     }
     if (this.usdPrice != null) {
       json[r'usdPrice'] = this.usdPrice;
-    } else {
-      json[r'usdPrice'] = null;
     }
     if (this.categories != null) {
       json[r'categories'] = this.categories;
-    } else {
-      json[r'categories'] = null;
     }
     if (this.ibcDenom != null) {
       json[r'ibcDenom'] = this.ibcDenom;
-    } else {
-      json[r'ibcDenom'] = null;
     }
     if (this.bridgeOnly != null) {
       json[r'bridgeOnly'] = this.bridgeOnly;
-    } else {
-      json[r'bridgeOnly'] = null;
     }
-    if (this.axelarNetworkIdentifier != null) {
       json[r'axelarNetworkIdentifier'] = this.axelarNetworkIdentifier;
-    } else {
-      json[r'axelarNetworkIdentifier'] = null;
+    if (this.volatility != null) {
+      json[r'volatility'] = this.volatility;
+    }
+    if (this.axelarNetworkSymbol != null) {
+      json[r'axelarNetworkSymbol'] = this.axelarNetworkSymbol;
+    }
+    if (this.interchainTokenId != null) {
+      json[r'interchainTokenId'] = this.interchainTokenId;
+    }
+    if (this.type != null) {
+      json[r'type'] = this.type;
+    }
+    if (this.feeOnTransfer != null) {
+      json[r'feeOnTransfer'] = this.feeOnTransfer;
+    }
+    if (this.isLpToken != null) {
+      json[r'isLpToken'] = this.isLpToken;
+    }
+    if (this.disabled != null) {
+      json[r'disabled'] = this.disabled;
+    }
+    if (this.originalAddress != null) {
+      json[r'originalAddress'] = this.originalAddress;
     }
     return json;
   }
@@ -213,7 +264,15 @@ class Token {
             : const [],
         ibcDenom: mapValueOfType<String>(json, r'ibcDenom'),
         bridgeOnly: mapValueOfType<bool>(json, r'bridgeOnly'),
-        axelarNetworkIdentifier: mapCastOfType<String, Object>(json, r'axelarNetworkIdentifier') ?? const {},
+        axelarNetworkIdentifier: mapCastOfType<String, String>(json, r'axelarNetworkIdentifier') ?? const {},
+        volatility: Volatility.fromJson(json[r'volatility']),
+        axelarNetworkSymbol: mapValueOfType<String>(json, r'axelarNetworkSymbol'),
+        interchainTokenId: mapValueOfType<String>(json, r'interchainTokenId'),
+        type: ChainType.fromJson(json[r'type']),
+        feeOnTransfer: mapValueOfType<bool>(json, r'feeOnTransfer'),
+        isLpToken: mapValueOfType<bool>(json, r'isLpToken'),
+        disabled: mapValueOfType<bool>(json, r'disabled'),
+        originalAddress: mapValueOfType<String>(json, r'originalAddress'),
       );
     }
     return null;

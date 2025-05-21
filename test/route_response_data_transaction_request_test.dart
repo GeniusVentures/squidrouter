@@ -63,6 +63,24 @@ void main() {
       // TODO
     });
 
+    // The unique request ID for this transaction.
+    // String requestId
+    test('to test the property `requestId`', () async {
+      // TODO
+    });
+
+    // Expiration timestamp for this transaction.
+    // String expiry
+    test('to test the property `expiry`', () async {
+      // TODO
+    });
+
+    // Expiry offset duration.
+    // String expiryOffset
+    test('to test the property `expiryOffset`', () async {
+      // TODO
+    });
+
     // The Chainflip deposit channel ID.
     // String depositChannelId
     test('to test the property `depositChannelId`', () async {
@@ -75,12 +93,12 @@ void main() {
       // TODO
     });
 
-    // ChainflipTransactionRequestDataSourceAsset sourceAsset
+    // ChainflipSourceAsset sourceAsset
     test('to test the property `sourceAsset`', () async {
       // TODO
     });
 
-    // ChainflipTransactionRequestDataSourceAsset destinationAsset
+    // ChainflipDestinationAsset destinationAsset
     test('to test the property `destinationAsset`', () async {
       // TODO
     });

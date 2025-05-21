@@ -18,6 +18,7 @@ class SDKInfoResponseData {
     this.axelarscanURL,
     this.isInMaintenanceMode,
     this.maintenanceMessage,
+    this.featureFlags = const [],
   });
 
   List<Token>? tokens;
@@ -30,13 +31,16 @@ class SDKInfoResponseData {
 
   String? maintenanceMessage;
 
+  List<FeatureFlag>? featureFlags;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is SDKInfoResponseData &&
     _deepEquality.equals(other.tokens, tokens) &&
     _deepEquality.equals(other.chains, chains) &&
     other.axelarscanURL == axelarscanURL &&
     other.isInMaintenanceMode == isInMaintenanceMode &&
-    other.maintenanceMessage == maintenanceMessage;
+    other.maintenanceMessage == maintenanceMessage &&
+    _deepEquality.equals(other.featureFlags, featureFlags);
 
   @override
   int get hashCode =>
@@ -45,37 +49,31 @@ class SDKInfoResponseData {
     (chains == null ? 0 : chains!.hashCode) +
     (axelarscanURL == null ? 0 : axelarscanURL!.hashCode) +
     (isInMaintenanceMode == null ? 0 : isInMaintenanceMode!.hashCode) +
-    (maintenanceMessage == null ? 0 : maintenanceMessage!.hashCode);
+    (maintenanceMessage == null ? 0 : maintenanceMessage!.hashCode) +
+    (featureFlags == null ? 0 : featureFlags!.hashCode);
 
   @override
-  String toString() => 'SDKInfoResponseData[tokens=$tokens, chains=$chains, axelarscanURL=$axelarscanURL, isInMaintenanceMode=$isInMaintenanceMode, maintenanceMessage=$maintenanceMessage]';
+  String toString() => 'SDKInfoResponseData[tokens=$tokens, chains=$chains, axelarscanURL=$axelarscanURL, isInMaintenanceMode=$isInMaintenanceMode, maintenanceMessage=$maintenanceMessage, featureFlags=$featureFlags]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
     if (this.tokens != null) {
       json[r'tokens'] = this.tokens;
-    } else {
-      json[r'tokens'] = null;
     }
     if (this.chains != null) {
       json[r'chains'] = this.chains;
-    } else {
-      json[r'chains'] = null;
     }
     if (this.axelarscanURL != null) {
       json[r'axelarscanURL'] = this.axelarscanURL;
-    } else {
-      json[r'axelarscanURL'] = null;
     }
     if (this.isInMaintenanceMode != null) {
       json[r'isInMaintenanceMode'] = this.isInMaintenanceMode;
-    } else {
-      json[r'isInMaintenanceMode'] = null;
     }
     if (this.maintenanceMessage != null) {
       json[r'maintenanceMessage'] = this.maintenanceMessage;
-    } else {
-      json[r'maintenanceMessage'] = null;
+    }
+    if (this.featureFlags != null) {
+      json[r'featureFlags'] = this.featureFlags;
     }
     return json;
   }
@@ -104,6 +102,7 @@ class SDKInfoResponseData {
         axelarscanURL: mapValueOfType<String>(json, r'axelarscanURL'),
         isInMaintenanceMode: mapValueOfType<bool>(json, r'isInMaintenanceMode'),
         maintenanceMessage: mapValueOfType<String>(json, r'maintenanceMessage'),
+        featureFlags: FeatureFlag.listFromJson(json[r'featureFlags']),
       );
     }
     return null;

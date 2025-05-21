@@ -184,28 +184,50 @@ class ApiClient {
           return value is DateTime ? value : DateTime.tryParse(value);
         case 'Action':
           return Action.fromJson(value);
+        case 'ActionType':
+          return ActionTypeTypeTransformer().decode(value);
         case 'ApiBasicResponseError':
           return ApiBasicResponseError.fromJson(value);
-        case 'ApiBasicResponseErrorErrorsInner':
-          return ApiBasicResponseErrorErrorsInner.fromJson(value);
+        case 'ApiErrorDetails':
+          return ApiErrorDetails.fromJson(value);
+        case 'BridgeType':
+          return BridgeTypeTypeTransformer().decode(value);
         case 'ChainData':
           return ChainData.fromJson(value);
         case 'ChainDataNativeCurrency':
           return ChainDataNativeCurrency.fromJson(value);
+        case 'ChainNativeContracts':
+          return ChainNativeContracts.fromJson(value);
         case 'ChainType':
           return ChainTypeTypeTransformer().decode(value);
+        case 'ChainflipDestinationAsset':
+          return ChainflipDestinationAsset.fromJson(value);
+        case 'ChainflipSourceAsset':
+          return ChainflipSourceAsset.fromJson(value);
         case 'ChainflipTransactionRequestData':
           return ChainflipTransactionRequestData.fromJson(value);
-        case 'ChainflipTransactionRequestDataSourceAsset':
-          return ChainflipTransactionRequestDataSourceAsset.fromJson(value);
+        case 'ComplianceData':
+          return ComplianceData.fromJson(value);
         case 'DepositAddressResponseData':
           return DepositAddressResponseData.fromJson(value);
+        case 'ErrorType':
+          return ErrorTypeTypeTransformer().decode(value);
         case 'EvmContractCall':
           return EvmContractCall.fromJson(value);
         case 'EvmTransactionRequestData':
           return EvmTransactionRequestData.fromJson(value);
+        case 'FallbackAddress':
+          return FallbackAddress.fromJson(value);
+        case 'FeatureFlag':
+          return FeatureFlag.fromJson(value);
         case 'FeeCost':
           return FeeCost.fromJson(value);
+        case 'FeeType':
+          return FeeTypeTypeTransformer().decode(value);
+        case 'GasCost':
+          return GasCost.fromJson(value);
+        case 'GasCostType':
+          return GasCostTypeTypeTransformer().decode(value);
         case 'Hook':
           return Hook.fromJson(value);
         case 'HookCallPayload':
@@ -226,6 +248,8 @@ class ApiClient {
           return RouteResponseDataTransactionRequest.fromJson(value);
         case 'RouteResponseError':
           return RouteResponseError.fromJson(value);
+        case 'RouteStatusEntry':
+          return RouteStatusEntry.fromJson(value);
         case 'SDKInfoResponseData':
           return SDKInfoResponseData.fromJson(value);
         case 'SquidCallType':
@@ -234,6 +258,10 @@ class ApiClient {
           return StatusResponseData.fromJson(value);
         case 'Token':
           return Token.fromJson(value);
+        case 'TransactionStatus':
+          return TransactionStatus.fromJson(value);
+        case 'Volatility':
+          return VolatilityTypeTransformer().decode(value);
         default:
           dynamic match;
           if (value is List && (match = _regList.firstMatch(targetType)?.group(1)) != null) {

@@ -11,18 +11,13 @@
 import 'package:openapi/api.dart';
 import 'package:test/test.dart';
 
-// tests for ChainflipTransactionRequestDataSourceAsset
+// tests for ComplianceData
 void main() {
-  // final instance = ChainflipTransactionRequestDataSourceAsset();
+  // final instance = ComplianceData();
 
-  group('test ChainflipTransactionRequestDataSourceAsset', () {
-    // String symbol
-    test('to test the property `symbol`', () async {
-      // TODO
-    });
-
-    // String chainName
-    test('to test the property `chainName`', () async {
+  group('test ComplianceData', () {
+    // String trmIdentifier
+    test('to test the property `trmIdentifier`', () async {
       // TODO
     });
 

@@ -25,25 +25,17 @@ void main() {
     test('test getRoute', () async {
       await testApiThrottler.wait();
 
-      // Create empty Hook objects for preHook and postHook
-      final emptyHook = Hook(
-          chainType: ChainType.evm,
-          calls: []
-      );
-
       // Create route request for a common testnet pair
       final routeParams = RouteRequestParams(
           fromChain: "56", // BNB Chain
           toChain: "42161", // Arbitrum
           fromToken: "0x55d398326f99059fF775485246999027B3197955", // USDT on BNB Chain
           toToken: "0xaf88d065e77c8cC2239327C5EDb3A432268e5831", // USDC on Arbitrum
-          fromAmount: "10000000000000000", // 0.01 MATIC
+          fromAmount: "100000", // .01 USDT
           toAddress: defaultTestRecipientAddress,
           fromAddress: defaultTestEvmAddress,
-          slippage: 1.0,
-          quoteOnly: true, // Just get a quote to avoid actual transaction
-          preHook: emptyHook, // Add empty preHook object
-          postHook: emptyHook  // Add empty postHook object
+          //slippage: 1.0,
+          //quoteOnly: true, // Just get a quote to avoid actual transaction
       );
 
       try {

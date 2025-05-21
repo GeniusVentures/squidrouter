@@ -26,6 +26,11 @@ void main() {
       // TODO
     });
 
+    // RouteRequestParams params
+    test('to test the property `params`', () async {
+      // TODO
+    });
+
 
   });
 

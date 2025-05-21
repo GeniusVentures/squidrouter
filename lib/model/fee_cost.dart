@@ -15,10 +15,13 @@ class FeeCost {
   FeeCost({
     required this.name,
     this.description,
-    required this.percentage,
+    this.percentage,
+    this.gasLimit,
+    this.gasMultiplier,
     required this.token,
     required this.amount,
     required this.amountUsd,
+    this.logoURI,
   });
 
   String name;
@@ -31,7 +34,31 @@ class FeeCost {
   ///
   String? description;
 
-  String percentage;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? percentage;
+
+  /// Gas limit for this fee, if applicable.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? gasLimit;
+
+  /// Gas multiplier for this fee, if applicable.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? gasMultiplier;
 
   Token token;
 
@@ -39,40 +66,64 @@ class FeeCost {
 
   String amountUsd;
 
+  /// Logo URL for the fee provider.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? logoURI;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is FeeCost &&
     other.name == name &&
     other.description == description &&
     other.percentage == percentage &&
+    other.gasLimit == gasLimit &&
+    other.gasMultiplier == gasMultiplier &&
     other.token == token &&
     other.amount == amount &&
-    other.amountUsd == amountUsd;
+    other.amountUsd == amountUsd &&
+    other.logoURI == logoURI;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (name.hashCode) +
     (description == null ? 0 : description!.hashCode) +
-    (percentage.hashCode) +
+    (percentage == null ? 0 : percentage!.hashCode) +
+    (gasLimit == null ? 0 : gasLimit!.hashCode) +
+    (gasMultiplier == null ? 0 : gasMultiplier!.hashCode) +
     (token.hashCode) +
     (amount.hashCode) +
-    (amountUsd.hashCode);
+    (amountUsd.hashCode) +
+    (logoURI == null ? 0 : logoURI!.hashCode);
 
   @override
-  String toString() => 'FeeCost[name=$name, description=$description, percentage=$percentage, token=$token, amount=$amount, amountUsd=$amountUsd]';
+  String toString() => 'FeeCost[name=$name, description=$description, percentage=$percentage, gasLimit=$gasLimit, gasMultiplier=$gasMultiplier, token=$token, amount=$amount, amountUsd=$amountUsd, logoURI=$logoURI]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'name'] = this.name;
     if (this.description != null) {
       json[r'description'] = this.description;
-    } else {
-      json[r'description'] = null;
     }
+    if (this.percentage != null) {
       json[r'percentage'] = this.percentage;
+    }
+    if (this.gasLimit != null) {
+      json[r'gasLimit'] = this.gasLimit;
+    }
+    if (this.gasMultiplier != null) {
+      json[r'gasMultiplier'] = this.gasMultiplier;
+    }
       json[r'token'] = this.token;
       json[r'amount'] = this.amount;
       json[r'amountUsd'] = this.amountUsd;
+    if (this.logoURI != null) {
+      json[r'logoURI'] = this.logoURI;
+    }
     return json;
   }
 
@@ -97,10 +148,13 @@ class FeeCost {
       return FeeCost(
         name: mapValueOfType<String>(json, r'name')!,
         description: mapValueOfType<String>(json, r'description'),
-        percentage: mapValueOfType<String>(json, r'percentage')!,
+        percentage: mapValueOfType<String>(json, r'percentage'),
+        gasLimit: mapValueOfType<String>(json, r'gasLimit'),
+        gasMultiplier: num.parse('${json[r'gasMultiplier']}'),
         token: Token.fromJson(json[r'token'])!,
         amount: mapValueOfType<String>(json, r'amount')!,
         amountUsd: mapValueOfType<String>(json, r'amountUsd')!,
+        logoURI: mapValueOfType<String>(json, r'logoURI'),
       );
     }
     return null;
@@ -149,7 +203,6 @@ class FeeCost {
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
     'name',
-    'percentage',
     'token',
     'amount',
     'amountUsd',

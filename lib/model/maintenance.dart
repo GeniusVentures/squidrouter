@@ -73,23 +73,15 @@ class Maintenance {
     final json = <String, dynamic>{};
     if (this.type != null) {
       json[r'type'] = this.type;
-    } else {
-      json[r'type'] = null;
     }
     if (this.message != null) {
       json[r'message'] = this.message;
-    } else {
-      json[r'message'] = null;
     }
     if (this.startTime != null) {
       json[r'startTime'] = this.startTime!.toUtc().toIso8601String();
-    } else {
-      json[r'startTime'] = null;
     }
     if (this.endTime != null) {
       json[r'endTime'] = this.endTime!.toUtc().toIso8601String();
-    } else {
-      json[r'endTime'] = null;
     }
     return json;
   }

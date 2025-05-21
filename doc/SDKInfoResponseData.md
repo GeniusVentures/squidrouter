@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **axelarscanURL** | **String** |  | [optional] 
 **isInMaintenanceMode** | **bool** |  | [optional] 
 **maintenanceMessage** | **String** |  | [optional] 
+**featureFlags** | [**List<FeatureFlag>**](FeatureFlag.md) |  | [optional] [default to const []]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

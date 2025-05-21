@@ -15,6 +15,7 @@ class RouteResponseData {
   RouteResponseData({
     this.transactionRequest,
     this.estimate,
+    this.params,
   });
 
   ///
@@ -33,31 +34,40 @@ class RouteResponseData {
   ///
   RouteEstimate? estimate;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  RouteRequestParams? params;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is RouteResponseData &&
     other.transactionRequest == transactionRequest &&
-    other.estimate == estimate;
+    other.estimate == estimate &&
+    other.params == params;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (transactionRequest == null ? 0 : transactionRequest!.hashCode) +
-    (estimate == null ? 0 : estimate!.hashCode);
+    (estimate == null ? 0 : estimate!.hashCode) +
+    (params == null ? 0 : params!.hashCode);
 
   @override
-  String toString() => 'RouteResponseData[transactionRequest=$transactionRequest, estimate=$estimate]';
+  String toString() => 'RouteResponseData[transactionRequest=$transactionRequest, estimate=$estimate, params=$params]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
     if (this.transactionRequest != null) {
       json[r'transactionRequest'] = this.transactionRequest;
-    } else {
-      json[r'transactionRequest'] = null;
     }
     if (this.estimate != null) {
       json[r'estimate'] = this.estimate;
-    } else {
-      json[r'estimate'] = null;
+    }
+    if (this.params != null) {
+      json[r'params'] = this.params;
     }
     return json;
   }
@@ -83,6 +93,7 @@ class RouteResponseData {
       return RouteResponseData(
         transactionRequest: RouteResponseDataTransactionRequest.fromJson(json[r'transactionRequest']),
         estimate: RouteEstimate.fromJson(json[r'estimate']),
+        params: RouteRequestParams.fromJson(json[r'params']),
       );
     }
     return null;

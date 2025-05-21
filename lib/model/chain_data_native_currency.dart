@@ -67,23 +67,15 @@ class ChainDataNativeCurrency {
     final json = <String, dynamic>{};
     if (this.name != null) {
       json[r'name'] = this.name;
-    } else {
-      json[r'name'] = null;
     }
     if (this.symbol != null) {
       json[r'symbol'] = this.symbol;
-    } else {
-      json[r'symbol'] = null;
     }
     if (this.decimals != null) {
       json[r'decimals'] = this.decimals;
-    } else {
-      json[r'decimals'] = null;
     }
     if (this.icon != null) {
       json[r'icon'] = this.icon;
-    } else {
-      json[r'icon'] = null;
     }
     return json;
   }

@@ -100,29 +100,19 @@ class Hook {
       json[r'chainType'] = this.chainType;
     if (this.fundAmount != null) {
       json[r'fundAmount'] = this.fundAmount;
-    } else {
-      json[r'fundAmount'] = null;
     }
     if (this.fundToken != null) {
       json[r'fundToken'] = this.fundToken;
-    } else {
-      json[r'fundToken'] = null;
     }
       json[r'calls'] = this.calls;
     if (this.provider != null) {
       json[r'provider'] = this.provider;
-    } else {
-      json[r'provider'] = null;
     }
     if (this.description != null) {
       json[r'description'] = this.description;
-    } else {
-      json[r'description'] = null;
     }
     if (this.logoURI != null) {
       json[r'logoURI'] = this.logoURI;
-    } else {
-      json[r'logoURI'] = null;
     }
     return json;
   }

@@ -31,6 +31,18 @@ void main() {
       // TODO
     });
 
+    // Gas limit for this fee, if applicable.
+    // String gasLimit
+    test('to test the property `gasLimit`', () async {
+      // TODO
+    });
+
+    // Gas multiplier for this fee, if applicable.
+    // num gasMultiplier
+    test('to test the property `gasMultiplier`', () async {
+      // TODO
+    });
+
     // Token token
     test('to test the property `token`', () async {
       // TODO
@@ -43,6 +55,12 @@ void main() {
 
     // String amountUsd
     test('to test the property `amountUsd`', () async {
+      // TODO
+    });
+
+    // Logo URL for the fee provider.
+    // String logoURI
+    test('to test the property `logoURI`', () async {
       // TODO
     });
 

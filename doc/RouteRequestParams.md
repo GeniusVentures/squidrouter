@@ -14,12 +14,14 @@ Name | Type | Description | Notes
 **fromAmount** | **String** | The amount of `fromToken` to swap, in its smallest unit. | 
 **toChain** | **String** | The destination chain ID. | 
 **toToken** | **String** | The destination token address. | 
-**toAddress** | **String** | The recipient address on the destination chain. | 
+**toAddress** | **String** | The recipient address on the destination chain. | [optional] 
 **slippage** | **double** | Slippage tolerance in percentage (e.g., 1 for 1%). Optional. | [optional] 
-**quoteOnly** | **bool** | If true, only a quote is returned without transaction data. Optional. | [optional] [default to false]
+**quoteOnly** | **bool** | If true, only a quote is returned without transaction data. Optional. | [optional] 
 **preHook** | [**Hook**](Hook.md) |  | [optional] 
 **postHook** | [**Hook**](Hook.md) |  | [optional] 
-**enableForecall** | **bool** | Whether to enable forecall checks for the transaction. Optional. | [optional] [default to false]
+**enableForecall** | **bool** | Whether to enable forecall checks for the transaction. Optional. | [optional] 
+**receiveGasOnDestination** | **bool** | Whether to receive gas on the destination chain. Optional. | [optional] 
+**bypassGuardrails** | **bool** | Whether to bypass guardrails. Optional. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

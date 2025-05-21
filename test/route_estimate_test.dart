@@ -42,8 +42,44 @@ void main() {
       // TODO
     });
 
+    // Minimum amount to be received after slippage.
+    // String toAmountMin
+    test('to test the property `toAmountMin`', () async {
+      // TODO
+    });
+
+    // USD value of minimum amount.
+    // String toAmountMinUSD
+    test('to test the property `toAmountMinUSD`', () async {
+      // TODO
+    });
+
     // int routeMillis
     test('to test the property `routeMillis`', () async {
+      // TODO
+    });
+
+    // Exchange rate between fromToken and toToken.
+    // String exchangeRate
+    test('to test the property `exchangeRate`', () async {
+      // TODO
+    });
+
+    // Aggregate price impact percentage.
+    // String aggregatePriceImpact
+    test('to test the property `aggregatePriceImpact`', () async {
+      // TODO
+    });
+
+    // Estimated duration in milliseconds.
+    // int estimatedRouteDuration
+    test('to test the property `estimatedRouteDuration`', () async {
+      // TODO
+    });
+
+    // Whether route supports boost.
+    // bool isBoostSupported
+    test('to test the property `isBoostSupported`', () async {
       // TODO
     });
 
@@ -52,7 +88,7 @@ void main() {
       // TODO
     });
 
-    // List<FeeCost> gasCosts (default value: const [])
+    // List<GasCost> gasCosts (default value: const [])
     test('to test the property `gasCosts`', () async {
       // TODO
     });
@@ -62,7 +98,7 @@ void main() {
       // TODO
     });
 
-    // Object approvalTx
+    // Map<String, Object> approvalTx (default value: const {})
     test('to test the property `approvalTx`', () async {
       // TODO
     });

@@ -33,12 +33,12 @@ void main() {
       // TODO
     });
 
-    // ChainflipTransactionRequestDataSourceAsset sourceAsset
+    // ChainflipSourceAsset sourceAsset
     test('to test the property `sourceAsset`', () async {
       // TODO
     });
 
-    // ChainflipTransactionRequestDataSourceAsset destinationAsset
+    // ChainflipDestinationAsset destinationAsset
     test('to test the property `destinationAsset`', () async {
       // TODO
     });

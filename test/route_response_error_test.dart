@@ -16,6 +16,21 @@ void main() {
   // final instance = RouteResponseError();
 
   group('test RouteResponseError', () {
+    // String message
+    test('to test the property `message`', () async {
+      // TODO
+    });
+
+    // String path
+    test('to test the property `path`', () async {
+      // TODO
+    });
+
+    // String type
+    test('to test the property `type`', () async {
+      // TODO
+    });
+
 
   });
 

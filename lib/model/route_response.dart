@@ -46,6 +46,12 @@ class RouteResponse {
   ///
   String? integratorId;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   RouteResponseError? error;
 
   String? errorType;
@@ -74,28 +80,18 @@ class RouteResponse {
     final json = <String, dynamic>{};
     if (this.route != null) {
       json[r'route'] = this.route;
-    } else {
-      json[r'route'] = null;
     }
     if (this.requestId != null) {
       json[r'requestId'] = this.requestId;
-    } else {
-      json[r'requestId'] = null;
     }
     if (this.integratorId != null) {
       json[r'integratorId'] = this.integratorId;
-    } else {
-      json[r'integratorId'] = null;
     }
     if (this.error != null) {
       json[r'error'] = this.error;
-    } else {
-      json[r'error'] = null;
     }
     if (this.errorType != null) {
       json[r'errorType'] = this.errorType;
-    } else {
-      json[r'errorType'] = null;
     }
     return json;
   }

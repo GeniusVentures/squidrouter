@@ -19,12 +19,14 @@ class RouteRequestParams {
     required this.fromAmount,
     required this.toChain,
     required this.toToken,
-    required this.toAddress,
+    this.toAddress,
     this.slippage,
-    this.quoteOnly = false,
+    this.quoteOnly,
     this.preHook,
     this.postHook,
-    this.enableForecall = false,
+    this.enableForecall,
+    this.receiveGasOnDestination,
+    this.bypassGuardrails,
   });
 
   /// The address of the sender.
@@ -52,7 +54,13 @@ class RouteRequestParams {
   String toToken;
 
   /// The recipient address on the destination chain.
-  String toAddress;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? toAddress;
 
   /// Slippage tolerance in percentage (e.g., 1 for 1%). Optional.
   ///
@@ -64,7 +72,13 @@ class RouteRequestParams {
   double? slippage;
 
   /// If true, only a quote is returned without transaction data. Optional.
-  bool quoteOnly;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? quoteOnly;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -83,7 +97,31 @@ class RouteRequestParams {
   Hook? postHook;
 
   /// Whether to enable forecall checks for the transaction. Optional.
-  bool enableForecall;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? enableForecall;
+
+  /// Whether to receive gas on the destination chain. Optional.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? receiveGasOnDestination;
+
+  /// Whether to bypass guardrails. Optional.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? bypassGuardrails;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is RouteRequestParams &&
@@ -98,7 +136,9 @@ class RouteRequestParams {
     other.quoteOnly == quoteOnly &&
     other.preHook == preHook &&
     other.postHook == postHook &&
-    other.enableForecall == enableForecall;
+    other.enableForecall == enableForecall &&
+    other.receiveGasOnDestination == receiveGasOnDestination &&
+    other.bypassGuardrails == bypassGuardrails;
 
   @override
   int get hashCode =>
@@ -109,46 +149,52 @@ class RouteRequestParams {
     (fromAmount.hashCode) +
     (toChain.hashCode) +
     (toToken.hashCode) +
-    (toAddress.hashCode) +
+    (toAddress == null ? 0 : toAddress!.hashCode) +
     (slippage == null ? 0 : slippage!.hashCode) +
-    (quoteOnly.hashCode) +
+    (quoteOnly == null ? 0 : quoteOnly!.hashCode) +
     (preHook == null ? 0 : preHook!.hashCode) +
     (postHook == null ? 0 : postHook!.hashCode) +
-    (enableForecall.hashCode);
+    (enableForecall == null ? 0 : enableForecall!.hashCode) +
+    (receiveGasOnDestination == null ? 0 : receiveGasOnDestination!.hashCode) +
+    (bypassGuardrails == null ? 0 : bypassGuardrails!.hashCode);
 
   @override
-  String toString() => 'RouteRequestParams[fromAddress=$fromAddress, fromChain=$fromChain, fromToken=$fromToken, fromAmount=$fromAmount, toChain=$toChain, toToken=$toToken, toAddress=$toAddress, slippage=$slippage, quoteOnly=$quoteOnly, preHook=$preHook, postHook=$postHook, enableForecall=$enableForecall]';
+  String toString() => 'RouteRequestParams[fromAddress=$fromAddress, fromChain=$fromChain, fromToken=$fromToken, fromAmount=$fromAmount, toChain=$toChain, toToken=$toToken, toAddress=$toAddress, slippage=$slippage, quoteOnly=$quoteOnly, preHook=$preHook, postHook=$postHook, enableForecall=$enableForecall, receiveGasOnDestination=$receiveGasOnDestination, bypassGuardrails=$bypassGuardrails]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
     if (this.fromAddress != null) {
       json[r'fromAddress'] = this.fromAddress;
-    } else {
-      json[r'fromAddress'] = null;
     }
       json[r'fromChain'] = this.fromChain;
       json[r'fromToken'] = this.fromToken;
       json[r'fromAmount'] = this.fromAmount;
       json[r'toChain'] = this.toChain;
       json[r'toToken'] = this.toToken;
+    if (this.toAddress != null) {
       json[r'toAddress'] = this.toAddress;
+    }
     if (this.slippage != null) {
       json[r'slippage'] = this.slippage;
-    } else {
-      json[r'slippage'] = null;
     }
+    if (this.quoteOnly != null) {
       json[r'quoteOnly'] = this.quoteOnly;
+    }
     if (this.preHook != null) {
       json[r'preHook'] = this.preHook;
-    } else {
-      json[r'preHook'] = null;
     }
     if (this.postHook != null) {
       json[r'postHook'] = this.postHook;
-    } else {
-      json[r'postHook'] = null;
     }
+    if (this.enableForecall != null) {
       json[r'enableForecall'] = this.enableForecall;
+    }
+    if (this.receiveGasOnDestination != null) {
+      json[r'receiveGasOnDestination'] = this.receiveGasOnDestination;
+    }
+    if (this.bypassGuardrails != null) {
+      json[r'bypassGuardrails'] = this.bypassGuardrails;
+    }
     return json;
   }
 
@@ -177,12 +223,14 @@ class RouteRequestParams {
         fromAmount: mapValueOfType<String>(json, r'fromAmount')!,
         toChain: mapValueOfType<String>(json, r'toChain')!,
         toToken: mapValueOfType<String>(json, r'toToken')!,
-        toAddress: mapValueOfType<String>(json, r'toAddress')!,
+        toAddress: mapValueOfType<String>(json, r'toAddress'),
         slippage: mapValueOfType<double>(json, r'slippage'),
-        quoteOnly: mapValueOfType<bool>(json, r'quoteOnly') ?? false,
+        quoteOnly: mapValueOfType<bool>(json, r'quoteOnly'),
         preHook: Hook.fromJson(json[r'preHook']),
         postHook: Hook.fromJson(json[r'postHook']),
-        enableForecall: mapValueOfType<bool>(json, r'enableForecall') ?? false,
+        enableForecall: mapValueOfType<bool>(json, r'enableForecall'),
+        receiveGasOnDestination: mapValueOfType<bool>(json, r'receiveGasOnDestination'),
+        bypassGuardrails: mapValueOfType<bool>(json, r'bypassGuardrails'),
       );
     }
     return null;
@@ -235,7 +283,6 @@ class RouteRequestParams {
     'fromAmount',
     'toChain',
     'toToken',
-    'toAddress',
   };
 }
 

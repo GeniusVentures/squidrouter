@@ -19,7 +19,15 @@ Name | Type | Description | Notes
 **categories** | **List<String>** |  | [optional] [default to const []]
 **ibcDenom** | **String** |  | [optional] 
 **bridgeOnly** | **bool** |  | [optional] 
-**axelarNetworkIdentifier** | [**Map<String, Object>**](Object.md) |  | [optional] [default to const {}]
+**axelarNetworkIdentifier** | **Map<String, String>** | Axelar network identifiers for the token. | [optional] [default to const {}]
+**volatility** | [**Volatility**](Volatility.md) |  | [optional] 
+**axelarNetworkSymbol** | **String** |  | [optional] 
+**interchainTokenId** | **String** |  | [optional] 
+**type** | [**ChainType**](ChainType.md) |  | [optional] 
+**feeOnTransfer** | **bool** |  | [optional] 
+**isLpToken** | **bool** |  | [optional] 
+**disabled** | **bool** |  | [optional] 
+**originalAddress** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

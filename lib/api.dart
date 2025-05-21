@@ -31,17 +31,28 @@ part 'auth/http_bearer_auth.dart';
 part 'api/default_api.dart';
 
 part 'model/action.dart';
+part 'model/action_type.dart';
 part 'model/api_basic_response_error.dart';
-part 'model/api_basic_response_error_errors_inner.dart';
+part 'model/api_error_details.dart';
+part 'model/bridge_type.dart';
 part 'model/chain_data.dart';
 part 'model/chain_data_native_currency.dart';
+part 'model/chain_native_contracts.dart';
 part 'model/chain_type.dart';
+part 'model/chainflip_destination_asset.dart';
+part 'model/chainflip_source_asset.dart';
 part 'model/chainflip_transaction_request_data.dart';
-part 'model/chainflip_transaction_request_data_source_asset.dart';
+part 'model/compliance_data.dart';
 part 'model/deposit_address_response_data.dart';
+part 'model/error_type.dart';
 part 'model/evm_contract_call.dart';
 part 'model/evm_transaction_request_data.dart';
+part 'model/fallback_address.dart';
+part 'model/feature_flag.dart';
 part 'model/fee_cost.dart';
+part 'model/fee_type.dart';
+part 'model/gas_cost.dart';
+part 'model/gas_cost_type.dart';
 part 'model/hook.dart';
 part 'model/hook_call_payload.dart';
 part 'model/inline_object.dart';
@@ -52,10 +63,13 @@ part 'model/route_response.dart';
 part 'model/route_response_data.dart';
 part 'model/route_response_data_transaction_request.dart';
 part 'model/route_response_error.dart';
+part 'model/route_status_entry.dart';
 part 'model/sdk_info_response_data.dart';
 part 'model/squid_call_type.dart';
 part 'model/status_response_data.dart';
 part 'model/token.dart';
+part 'model/transaction_status.dart';
+part 'model/volatility.dart';
 
 
 /// An [ApiClient] instance that uses the default values obtained from

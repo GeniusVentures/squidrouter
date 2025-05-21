@@ -51,6 +51,12 @@ void main() {
       // TODO
     });
 
+    // Network identifier.
+    // String networkIdentifier
+    test('to test the property `networkIdentifier`', () async {
+      // TODO
+    });
+
     // String squidImplementation
     test('to test the property `squidImplementation`', () async {
       // TODO
@@ -81,7 +87,7 @@ void main() {
       // TODO
     });
 
-    // Map<String, Object> chainNativeContracts (default value: const {})
+    // ChainNativeContracts chainNativeContracts
     test('to test the property `chainNativeContracts`', () async {
       // TODO
     });
@@ -91,18 +97,24 @@ void main() {
       // TODO
     });
 
-    // Map<String, Object> compliance (default value: const {})
+    // ComplianceData compliance
     test('to test the property `compliance`', () async {
       // TODO
     });
 
-    // List<Map<String, Object>> maintenances (default value: const [])
+    // List<Maintenance> maintenances (default value: const [])
     test('to test the property `maintenances`', () async {
       // TODO
     });
 
-    // List<String> features (default value: const [])
-    test('to test the property `features`', () async {
+    // bool boostSupported
+    test('to test the property `boostSupported`', () async {
+      // TODO
+    });
+
+    // Whether same-chain swaps are supported.
+    // bool sameChainSwapsSupported
+    test('to test the property `sameChainSwapsSupported`', () async {
       // TODO
     });
 

@@ -40,8 +40,6 @@ class InlineObject {
     final json = <String, dynamic>{};
     if (this.route != null) {
       json[r'route'] = this.route;
-    } else {
-      json[r'route'] = null;
     }
     return json;
   }

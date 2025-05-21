@@ -62,18 +62,12 @@ class RouteResponseError {
     final json = <String, dynamic>{};
     if (this.message != null) {
       json[r'message'] = this.message;
-    } else {
-      json[r'message'] = null;
     }
     if (this.path != null) {
       json[r'path'] = this.path;
-    } else {
-      json[r'path'] = null;
     }
     if (this.type != null) {
       json[r'type'] = this.type;
-    } else {
-      json[r'type'] = null;
     }
     return json;
   }
