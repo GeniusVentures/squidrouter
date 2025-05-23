@@ -16,7 +16,7 @@ void main() {
   // final instance = FeatureFlag();
 
   group('test FeatureFlag', () {
-    // String feature
+    // FeatureFlagType feature
     test('to test the property `feature`', () async {
       // TODO
     });

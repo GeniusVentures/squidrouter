@@ -23,7 +23,7 @@ class Action {
     this.provider,
     this.description,
     this.logoURI,
-    this.estimatedDuration,
+    this.estimatedDuration = 0,
     this.exchangeRate,
     this.priceImpact,
   });
@@ -112,13 +112,7 @@ class Action {
   String? logoURI;
 
   /// Estimated duration in milliseconds.
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? estimatedDuration;
+  int estimatedDuration;
 
   /// Exchange rate for this action.
   ///
@@ -167,7 +161,7 @@ class Action {
     (provider == null ? 0 : provider!.hashCode) +
     (description == null ? 0 : description!.hashCode) +
     (logoURI == null ? 0 : logoURI!.hashCode) +
-    (estimatedDuration == null ? 0 : estimatedDuration!.hashCode) +
+    (estimatedDuration.hashCode) +
     (exchangeRate == null ? 0 : exchangeRate!.hashCode) +
     (priceImpact == null ? 0 : priceImpact!.hashCode);
 
@@ -206,9 +200,7 @@ class Action {
     if (this.logoURI != null) {
       json[r'logoURI'] = this.logoURI;
     }
-    if (this.estimatedDuration != null) {
       json[r'estimatedDuration'] = this.estimatedDuration;
-    }
     if (this.exchangeRate != null) {
       json[r'exchangeRate'] = this.exchangeRate;
     }
@@ -247,7 +239,7 @@ class Action {
         provider: mapValueOfType<String>(json, r'provider'),
         description: mapValueOfType<String>(json, r'description'),
         logoURI: mapValueOfType<String>(json, r'logoURI'),
-        estimatedDuration: mapValueOfType<int>(json, r'estimatedDuration'),
+        estimatedDuration: mapValueOfType<int>(json, r'estimatedDuration') ?? 0,
         exchangeRate: mapValueOfType<String>(json, r'exchangeRate'),
         priceImpact: mapValueOfType<String>(json, r'priceImpact'),
       );

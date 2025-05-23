@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **provider** | **String** | The DEX or bridge provider for this action. | [optional] 
 **description** | **String** | Description of the action. | [optional] 
 **logoURI** | **String** | Logo URL for the provider. | [optional] 
-**estimatedDuration** | **int** | Estimated duration in milliseconds. | [optional] 
+**estimatedDuration** | **int** | Estimated duration in milliseconds. | [optional] [default to 0]
 **exchangeRate** | **String** | Exchange rate for this action. | [optional] 
 **priceImpact** | **String** | Price impact percentage. | [optional] 
 

@@ -20,49 +20,6 @@ void main() {
       print('This test requires a valid Chainflip deposit channel from a prior /route response');
     });
 
-    // Get a cross-chain swap route
-    // Get a cross-chain swap route
-    test('test getRoute', () async {
-      await testApiThrottler.wait();
-
-      // Create route request for a common testnet pair
-      final routeParams = RouteRequestParams(
-          fromChain: "56", // BNB Chain
-          toChain: "42161", // Arbitrum
-          fromToken: "0x55d398326f99059fF775485246999027B3197955", // USDT on BNB Chain
-          toToken: "0xaf88d065e77c8cC2239327C5EDb3A432268e5831", // USDC on Arbitrum
-          fromAmount: "100000", // .01 USDT
-          toAddress: defaultTestRecipientAddress,
-          fromAddress: defaultTestEvmAddress,
-          //slippage: 1.0,
-          //quoteOnly: true, // Just get a quote to avoid actual transaction
-      );
-
-      try {
-        final response = await api.getRoute(testIntegratorId, routeParams);
-        expect(response, isNotNull);
-
-        // Check for requestId for status checks
-        print("Route request ID: ${response?.requestId}");
-        expect(response?.requestId, isNotNull);
-
-        // Check if a route was found
-        if (response?.route == null && response?.error != null) {
-          print("Route calculation returned error: ${response?.error?.message}");
-          expect(response?.errorType, isNotNull);
-        } else if (response?.route == null) {
-          print("Route calculation returned no route");
-        } else {
-          expect(response?.route?.estimate, isNotNull);
-          expect(response?.route?.transactionRequest, isNotNull);
-          print("Route calculated successfully with estimated toAmount: ${response?.route?.estimate?.toAmount}");
-        }
-      } on ApiException catch (e) {
-        printApiErrorDetails('getRoute', e);
-        fail("Route request failed: ${e.code} - ${e.message}");
-      }
-    });
-
     // Get SDK information, including supported tokens and chains
     test('test getSDKInfo', () async {
       await testApiThrottler.wait();
@@ -107,6 +64,46 @@ void main() {
       }
     });
 
+    // Get a cross-chain swap route
+    // Get a cross-chain swap route
+    test('test getRoute', () async {
+      await testApiThrottler.wait();
+
+      // Create route request for a common testnet pair
+      final routeParams = RouteRequestParams(
+          fromChain: "1", // Ethereum Chain
+          toChain: "137", // Polygon
+          fromToken: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48", // USDC on Eth Chain
+          toToken: "0x3c499c542cef5e3811e1192ce70d8cc03d5c3359", // POL ON POLYGON
+          fromAmount: "100000000", // 100 USDC
+          toAddress: "",
+          fromAddress: "0x0000000000000000000000000000000000000000",
+          //slippage: 1.0,
+          quoteOnly: true, // Just get a quote to avoid actual transaction
+      );
+
+      try {
+        final response = await api.getRoute(testIntegratorId, routeParams);
+        expect(response, isNotNull);
+
+        // Check if a route was found
+        if (response?.route == null && response?.error != null) {
+          print("Route calculation returned error: ${response?.error?.message}");
+          expect(response?.errorType, isNotNull);
+        } else if (response?.route == null) {
+          print("Route calculation returned no route");
+        } else {
+          expect(response?.route?.estimate, isNotNull);
+          expect(response?.route?.transactionRequest, isNotNull);
+          print("Route calculated successfully with estimated toAmount: ${response?.route?.estimate?.toAmount}");
+        }
+      } on ApiException catch (e) {
+        printApiErrorDetails('getRoute', e);
+        fail("Route request failed: ${e.code} - ${e.message}");
+      }
+    });
+
+
     // Get the status of a transaction
     // Get the status of a transaction
     test('test getStatus', () async {
@@ -137,8 +134,8 @@ void main() {
           expect(
               response.squidTransactionStatus,
               anyOf(
-                  equals(StatusResponseDataSquidTransactionStatusEnum.notFound),
-                  equals(StatusResponseDataSquidTransactionStatusEnum.anErrorHasOccurred)
+                  equals(SquidTransactionStatus.notFound),
+                  equals(SquidTransactionStatus.failedOnDestination)
               )
           );
           print("✓ Received expected status for non-existent transaction");

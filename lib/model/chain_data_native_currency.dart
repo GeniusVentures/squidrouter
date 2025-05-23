@@ -15,7 +15,7 @@ class ChainDataNativeCurrency {
   ChainDataNativeCurrency({
     this.name,
     this.symbol,
-    this.decimals,
+    this.decimals = 18,
     this.icon,
   });
 
@@ -35,13 +35,7 @@ class ChainDataNativeCurrency {
   ///
   String? symbol;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? decimals;
+  int decimals;
 
   String? icon;
 
@@ -57,7 +51,7 @@ class ChainDataNativeCurrency {
     // ignore: unnecessary_parenthesis
     (name == null ? 0 : name!.hashCode) +
     (symbol == null ? 0 : symbol!.hashCode) +
-    (decimals == null ? 0 : decimals!.hashCode) +
+    (decimals.hashCode) +
     (icon == null ? 0 : icon!.hashCode);
 
   @override
@@ -71,11 +65,11 @@ class ChainDataNativeCurrency {
     if (this.symbol != null) {
       json[r'symbol'] = this.symbol;
     }
-    if (this.decimals != null) {
       json[r'decimals'] = this.decimals;
-    }
     if (this.icon != null) {
       json[r'icon'] = this.icon;
+    } else {
+      json[r'icon'] = null;
     }
     return json;
   }
@@ -101,7 +95,7 @@ class ChainDataNativeCurrency {
       return ChainDataNativeCurrency(
         name: mapValueOfType<String>(json, r'name'),
         symbol: mapValueOfType<String>(json, r'symbol'),
-        decimals: mapValueOfType<int>(json, r'decimals'),
+        decimals: mapValueOfType<int>(json, r'decimals') ?? 18,
         icon: mapValueOfType<String>(json, r'icon'),
       );
     }

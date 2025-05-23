@@ -26,38 +26,14 @@ class FeeCost {
 
   String name;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? description;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? percentage;
 
   /// Gas limit for this fee, if applicable.
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? gasLimit;
 
   /// Gas multiplier for this fee, if applicable.
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   num? gasMultiplier;
 
   Token token;
@@ -67,12 +43,6 @@ class FeeCost {
   String amountUsd;
 
   /// Logo URL for the fee provider.
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? logoURI;
 
   @override
@@ -108,21 +78,31 @@ class FeeCost {
       json[r'name'] = this.name;
     if (this.description != null) {
       json[r'description'] = this.description;
+    } else {
+      json[r'description'] = null;
     }
     if (this.percentage != null) {
       json[r'percentage'] = this.percentage;
+    } else {
+      json[r'percentage'] = null;
     }
     if (this.gasLimit != null) {
       json[r'gasLimit'] = this.gasLimit;
+    } else {
+      json[r'gasLimit'] = null;
     }
     if (this.gasMultiplier != null) {
       json[r'gasMultiplier'] = this.gasMultiplier;
+    } else {
+      json[r'gasMultiplier'] = null;
     }
       json[r'token'] = this.token;
       json[r'amount'] = this.amount;
       json[r'amountUsd'] = this.amountUsd;
     if (this.logoURI != null) {
       json[r'logoURI'] = this.logoURI;
+    } else {
+      json[r'logoURI'] = null;
     }
     return json;
   }
@@ -150,7 +130,9 @@ class FeeCost {
         description: mapValueOfType<String>(json, r'description'),
         percentage: mapValueOfType<String>(json, r'percentage'),
         gasLimit: mapValueOfType<String>(json, r'gasLimit'),
-        gasMultiplier: num.parse('${json[r'gasMultiplier']}'),
+        gasMultiplier: json[r'gasMultiplier'] == null
+            ? null
+            : num.parse('${json[r'gasMultiplier']}'),
         token: Token.fromJson(json[r'token'])!,
         amount: mapValueOfType<String>(json, r'amount')!,
         amountUsd: mapValueOfType<String>(json, r'amountUsd')!,

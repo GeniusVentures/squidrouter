@@ -59,21 +59,33 @@ class SDKInfoResponseData {
     final json = <String, dynamic>{};
     if (this.tokens != null) {
       json[r'tokens'] = this.tokens;
+    } else {
+      json[r'tokens'] = null;
     }
     if (this.chains != null) {
       json[r'chains'] = this.chains;
+    } else {
+      json[r'chains'] = null;
     }
     if (this.axelarscanURL != null) {
       json[r'axelarscanURL'] = this.axelarscanURL;
+    } else {
+      json[r'axelarscanURL'] = null;
     }
     if (this.isInMaintenanceMode != null) {
       json[r'isInMaintenanceMode'] = this.isInMaintenanceMode;
+    } else {
+      json[r'isInMaintenanceMode'] = null;
     }
     if (this.maintenanceMessage != null) {
       json[r'maintenanceMessage'] = this.maintenanceMessage;
+    } else {
+      json[r'maintenanceMessage'] = null;
     }
     if (this.featureFlags != null) {
       json[r'featureFlags'] = this.featureFlags;
+    } else {
+      json[r'featureFlags'] = null;
     }
     return json;
   }

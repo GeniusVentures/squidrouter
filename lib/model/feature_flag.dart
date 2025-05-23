@@ -24,7 +24,7 @@ class FeatureFlag {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? feature;
+  FeatureFlagType? feature;
 
   List<String> allowedIntegrators;
 
@@ -83,7 +83,7 @@ class FeatureFlag {
       }());
 
       return FeatureFlag(
-        feature: mapValueOfType<String>(json, r'feature'),
+        feature: FeatureFlagType.fromJson(json[r'feature']),
         allowedIntegrators: json[r'allowedIntegrators'] is Iterable
             ? (json[r'allowedIntegrators'] as Iterable).cast<String>().toList(growable: false)
             : const [],

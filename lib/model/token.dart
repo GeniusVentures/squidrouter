@@ -17,7 +17,7 @@ class Token {
     this.address,
     this.name,
     this.symbol,
-    this.decimals,
+    this.decimals = 18,
     this.logoURI,
     this.coingeckoId,
     this.usdPrice,
@@ -33,6 +33,8 @@ class Token {
     this.isLpToken,
     this.disabled,
     this.originalAddress,
+    this.subGraphOnly,
+    this.subGraphIds = const [],
   });
 
   ///
@@ -67,13 +69,7 @@ class Token {
   ///
   String? symbol;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? decimals;
+  int decimals;
 
   String? logoURI;
 
@@ -119,6 +115,10 @@ class Token {
 
   String? originalAddress;
 
+  bool? subGraphOnly;
+
+  List<String>? subGraphIds;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is Token &&
     other.chainId == chainId &&
@@ -140,7 +140,9 @@ class Token {
     other.feeOnTransfer == feeOnTransfer &&
     other.isLpToken == isLpToken &&
     other.disabled == disabled &&
-    other.originalAddress == originalAddress;
+    other.originalAddress == originalAddress &&
+    other.subGraphOnly == subGraphOnly &&
+    _deepEquality.equals(other.subGraphIds, subGraphIds);
 
   @override
   int get hashCode =>
@@ -149,7 +151,7 @@ class Token {
     (address == null ? 0 : address!.hashCode) +
     (name == null ? 0 : name!.hashCode) +
     (symbol == null ? 0 : symbol!.hashCode) +
-    (decimals == null ? 0 : decimals!.hashCode) +
+    (decimals.hashCode) +
     (logoURI == null ? 0 : logoURI!.hashCode) +
     (coingeckoId == null ? 0 : coingeckoId!.hashCode) +
     (usdPrice == null ? 0 : usdPrice!.hashCode) +
@@ -164,10 +166,12 @@ class Token {
     (feeOnTransfer == null ? 0 : feeOnTransfer!.hashCode) +
     (isLpToken == null ? 0 : isLpToken!.hashCode) +
     (disabled == null ? 0 : disabled!.hashCode) +
-    (originalAddress == null ? 0 : originalAddress!.hashCode);
+    (originalAddress == null ? 0 : originalAddress!.hashCode) +
+    (subGraphOnly == null ? 0 : subGraphOnly!.hashCode) +
+    (subGraphIds == null ? 0 : subGraphIds!.hashCode);
 
   @override
-  String toString() => 'Token[chainId=$chainId, address=$address, name=$name, symbol=$symbol, decimals=$decimals, logoURI=$logoURI, coingeckoId=$coingeckoId, usdPrice=$usdPrice, categories=$categories, ibcDenom=$ibcDenom, bridgeOnly=$bridgeOnly, axelarNetworkIdentifier=$axelarNetworkIdentifier, volatility=$volatility, axelarNetworkSymbol=$axelarNetworkSymbol, interchainTokenId=$interchainTokenId, type=$type, feeOnTransfer=$feeOnTransfer, isLpToken=$isLpToken, disabled=$disabled, originalAddress=$originalAddress]';
+  String toString() => 'Token[chainId=$chainId, address=$address, name=$name, symbol=$symbol, decimals=$decimals, logoURI=$logoURI, coingeckoId=$coingeckoId, usdPrice=$usdPrice, categories=$categories, ibcDenom=$ibcDenom, bridgeOnly=$bridgeOnly, axelarNetworkIdentifier=$axelarNetworkIdentifier, volatility=$volatility, axelarNetworkSymbol=$axelarNetworkSymbol, interchainTokenId=$interchainTokenId, type=$type, feeOnTransfer=$feeOnTransfer, isLpToken=$isLpToken, disabled=$disabled, originalAddress=$originalAddress, subGraphOnly=$subGraphOnly, subGraphIds=$subGraphIds]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -183,26 +187,36 @@ class Token {
     if (this.symbol != null) {
       json[r'symbol'] = this.symbol;
     }
-    if (this.decimals != null) {
       json[r'decimals'] = this.decimals;
-    }
     if (this.logoURI != null) {
       json[r'logoURI'] = this.logoURI;
+    } else {
+      json[r'logoURI'] = null;
     }
     if (this.coingeckoId != null) {
       json[r'coingeckoId'] = this.coingeckoId;
+    } else {
+      json[r'coingeckoId'] = null;
     }
     if (this.usdPrice != null) {
       json[r'usdPrice'] = this.usdPrice;
+    } else {
+      json[r'usdPrice'] = null;
     }
     if (this.categories != null) {
       json[r'categories'] = this.categories;
+    } else {
+      json[r'categories'] = null;
     }
     if (this.ibcDenom != null) {
       json[r'ibcDenom'] = this.ibcDenom;
+    } else {
+      json[r'ibcDenom'] = null;
     }
     if (this.bridgeOnly != null) {
       json[r'bridgeOnly'] = this.bridgeOnly;
+    } else {
+      json[r'bridgeOnly'] = null;
     }
       json[r'axelarNetworkIdentifier'] = this.axelarNetworkIdentifier;
     if (this.volatility != null) {
@@ -210,24 +224,46 @@ class Token {
     }
     if (this.axelarNetworkSymbol != null) {
       json[r'axelarNetworkSymbol'] = this.axelarNetworkSymbol;
+    } else {
+      json[r'axelarNetworkSymbol'] = null;
     }
     if (this.interchainTokenId != null) {
       json[r'interchainTokenId'] = this.interchainTokenId;
+    } else {
+      json[r'interchainTokenId'] = null;
     }
     if (this.type != null) {
       json[r'type'] = this.type;
     }
     if (this.feeOnTransfer != null) {
       json[r'feeOnTransfer'] = this.feeOnTransfer;
+    } else {
+      json[r'feeOnTransfer'] = null;
     }
     if (this.isLpToken != null) {
       json[r'isLpToken'] = this.isLpToken;
+    } else {
+      json[r'isLpToken'] = null;
     }
     if (this.disabled != null) {
       json[r'disabled'] = this.disabled;
+    } else {
+      json[r'disabled'] = null;
     }
     if (this.originalAddress != null) {
       json[r'originalAddress'] = this.originalAddress;
+    } else {
+      json[r'originalAddress'] = null;
+    }
+    if (this.subGraphOnly != null) {
+      json[r'subGraphOnly'] = this.subGraphOnly;
+    } else {
+      json[r'subGraphOnly'] = null;
+    }
+    if (this.subGraphIds != null) {
+      json[r'subGraphIds'] = this.subGraphIds;
+    } else {
+      json[r'subGraphIds'] = null;
     }
     return json;
   }
@@ -255,7 +291,7 @@ class Token {
         address: mapValueOfType<String>(json, r'address'),
         name: mapValueOfType<String>(json, r'name'),
         symbol: mapValueOfType<String>(json, r'symbol'),
-        decimals: mapValueOfType<int>(json, r'decimals'),
+        decimals: mapValueOfType<int>(json, r'decimals') ?? 18,
         logoURI: mapValueOfType<String>(json, r'logoURI'),
         coingeckoId: mapValueOfType<String>(json, r'coingeckoId'),
         usdPrice: mapValueOfType<double>(json, r'usdPrice'),
@@ -273,6 +309,10 @@ class Token {
         isLpToken: mapValueOfType<bool>(json, r'isLpToken'),
         disabled: mapValueOfType<bool>(json, r'disabled'),
         originalAddress: mapValueOfType<String>(json, r'originalAddress'),
+        subGraphOnly: mapValueOfType<bool>(json, r'subGraphOnly'),
+        subGraphIds: json[r'subGraphIds'] is Iterable
+            ? (json[r'subGraphIds'] as Iterable).cast<String>().toList(growable: false)
+            : const [],
       );
     }
     return null;

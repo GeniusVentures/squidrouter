@@ -23,25 +23,23 @@ class ActionType {
 
   String toJson() => value;
 
-  static const SWAP = ActionType._(r'SWAP');
-  static const BRIDGE_CALL = ActionType._(r'BRIDGE_CALL');
-  static const FEE = ActionType._(r'FEE');
-  static const RFQ = ActionType._(r'RFQ');
-  static const WRAP = ActionType._(r'WRAP');
-  static const BRIDGE = ActionType._(r'BRIDGE');
-  static const IBC_TRANSFER = ActionType._(r'IBC_TRANSFER');
-  static const CUSTOM = ActionType._(r'CUSTOM');
+  static const swap = ActionType._(r'swap');
+  static const wrap = ActionType._(r'wrap');
+  static const bridge = ActionType._(r'bridge');
+  static const ibcTransfer = ActionType._(r'ibc-transfer');
+  static const custom = ActionType._(r'custom');
+  static const fee = ActionType._(r'fee');
+  static const rfq = ActionType._(r'rfq');
 
   /// List of all possible values in this [enum][ActionType].
   static const values = <ActionType>[
-    SWAP,
-    BRIDGE_CALL,
-    FEE,
-    RFQ,
-    WRAP,
-    BRIDGE,
-    IBC_TRANSFER,
-    CUSTOM,
+    swap,
+    wrap,
+    bridge,
+    ibcTransfer,
+    custom,
+    fee,
+    rfq,
   ];
 
   static ActionType? fromJson(dynamic value) => ActionTypeTypeTransformer().decode(value);
@@ -80,14 +78,13 @@ class ActionTypeTypeTransformer {
   ActionType? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'SWAP': return ActionType.SWAP;
-        case r'BRIDGE_CALL': return ActionType.BRIDGE_CALL;
-        case r'FEE': return ActionType.FEE;
-        case r'RFQ': return ActionType.RFQ;
-        case r'WRAP': return ActionType.WRAP;
-        case r'BRIDGE': return ActionType.BRIDGE;
-        case r'IBC_TRANSFER': return ActionType.IBC_TRANSFER;
-        case r'CUSTOM': return ActionType.CUSTOM;
+        case r'swap': return ActionType.swap;
+        case r'wrap': return ActionType.wrap;
+        case r'bridge': return ActionType.bridge;
+        case r'ibc-transfer': return ActionType.ibcTransfer;
+        case r'custom': return ActionType.custom;
+        case r'fee': return ActionType.fee;
+        case r'rfq': return ActionType.rfq;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

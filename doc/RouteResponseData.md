@@ -8,7 +8,7 @@ import 'package:openapi/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**transactionRequest** | [**RouteResponseDataTransactionRequest**](RouteResponseDataTransactionRequest.md) |  | [optional] 
+**transactionRequest** | [**TransactionRequest**](TransactionRequest.md) |  | [optional] 
 **estimate** | [**RouteEstimate**](RouteEstimate.md) |  | [optional] 
 **params** | [**RouteRequestParams**](RouteRequestParams.md) |  | [optional] 
 

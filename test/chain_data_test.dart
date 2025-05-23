@@ -46,13 +46,12 @@ void main() {
       // TODO
     });
 
-    // String axelarChainName
+    // ChainName axelarChainName
     test('to test the property `axelarChainName`', () async {
       // TODO
     });
 
-    // Network identifier.
-    // String networkIdentifier
+    // NetworkIdentifier networkIdentifier
     test('to test the property `networkIdentifier`', () async {
       // TODO
     });
@@ -115,6 +114,16 @@ void main() {
     // Whether same-chain swaps are supported.
     // bool sameChainSwapsSupported
     test('to test the property `sameChainSwapsSupported`', () async {
+      // TODO
+    });
+
+    // bool enableBoostByDefault
+    test('to test the property `enableBoostByDefault`', () async {
+      // TODO
+    });
+
+    // String interchainService
+    test('to test the property `interchainService`', () async {
       // TODO
     });
 

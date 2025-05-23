@@ -55,17 +55,50 @@ String parameterToString(dynamic value) {
   if (value is DateTime) {
     return value.toUtc().toIso8601String();
   }
+  if (value is ActionStage) {
+    return ActionStageTypeTransformer().encode(value).toString();
+  }
   if (value is ActionType) {
     return ActionTypeTypeTransformer().encode(value).toString();
+  }
+  if (value is AxelarRouteAction) {
+    return AxelarRouteActionTypeTransformer().encode(value).toString();
+  }
+  if (value is BridgeProvider) {
+    return BridgeProviderTypeTransformer().encode(value).toString();
   }
   if (value is BridgeType) {
     return BridgeTypeTypeTransformer().encode(value).toString();
   }
+  if (value is CCTPStatus) {
+    return CCTPStatusTypeTransformer().encode(value).toString();
+  }
+  if (value is ChainName) {
+    return ChainNameTypeTransformer().encode(value).toString();
+  }
   if (value is ChainType) {
     return ChainTypeTypeTransformer().encode(value).toString();
   }
+  if (value is CosmosCallType) {
+    return CosmosCallTypeTypeTransformer().encode(value).toString();
+  }
+  if (value is CosmosChainFeatures) {
+    return CosmosChainFeaturesTypeTransformer().encode(value).toString();
+  }
+  if (value is DexName) {
+    return DexNameTypeTransformer().encode(value).toString();
+  }
+  if (value is DexType) {
+    return DexTypeTypeTransformer().encode(value).toString();
+  }
   if (value is ErrorType) {
     return ErrorTypeTypeTransformer().encode(value).toString();
+  }
+  if (value is FEESENUM) {
+    return FEESENUMTypeTransformer().encode(value).toString();
+  }
+  if (value is FeatureFlagType) {
+    return FeatureFlagTypeTypeTransformer().encode(value).toString();
   }
   if (value is FeeType) {
     return FeeTypeTypeTransformer().encode(value).toString();
@@ -73,11 +106,41 @@ String parameterToString(dynamic value) {
   if (value is GasCostType) {
     return GasCostTypeTypeTransformer().encode(value).toString();
   }
+  if (value is NetworkIdentifier) {
+    return NetworkIdentifierTypeTransformer().encode(value).toString();
+  }
+  if (value is RouteActionStatus) {
+    return RouteActionStatusTypeTransformer().encode(value).toString();
+  }
+  if (value is SendTokenStatus) {
+    return SendTokenStatusTypeTransformer().encode(value).toString();
+  }
   if (value is SquidCallType) {
     return SquidCallTypeTypeTransformer().encode(value).toString();
   }
+  if (value is SquidDataType) {
+    return SquidDataTypeTypeTransformer().encode(value).toString();
+  }
+  if (value is SquidRouteType) {
+    return SquidRouteTypeTypeTransformer().encode(value).toString();
+  }
+  if (value is SquidTransactionStatus) {
+    return SquidTransactionStatusTypeTransformer().encode(value).toString();
+  }
+  if (value is TRMIdentifier) {
+    return TRMIdentifierTypeTransformer().encode(value).toString();
+  }
   if (value is Volatility) {
     return VolatilityTypeTransformer().encode(value).toString();
+  }
+  if (value is WrapDirection) {
+    return WrapDirectionTypeTransformer().encode(value).toString();
+  }
+  if (value is WrapperName) {
+    return WrapperNameTypeTransformer().encode(value).toString();
+  }
+  if (value is WrapperType) {
+    return WrapperTypeTypeTransformer().encode(value).toString();
   }
   return value.toString();
 }

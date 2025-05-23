@@ -43,13 +43,13 @@ import 'package:openapi/api.dart';
 
 final api_instance = DefaultApi();
 final xIntegratorId = your-integrator-id; // String | Your Squid integrator ID.
-final routeRequestParams = RouteRequestParams(); // RouteRequestParams | 
+final body = ChainflipTransactionRequestData(); // ChainflipTransactionRequestData | 
 
 try {
-    final result = api_instance.getRoute(xIntegratorId, routeRequestParams);
+    final result = api_instance.getDepositAddress(xIntegratorId, body);
     print(result);
 } catch (e) {
-    print('Exception when calling DefaultApi->getRoute: $e\n');
+    print('Exception when calling DefaultApi->getDepositAddress: $e\n');
 }
 
 ```
@@ -60,54 +60,123 @@ All URIs are relative to *https://v2.api.squidrouter.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*DefaultApi* | [**getDepositAddress**](doc//DefaultApi.md#getdepositaddress) | **POST** /v2/deposit-address | Get deposit address for non-EVM to EVM swaps
 *DefaultApi* | [**getRoute**](doc//DefaultApi.md#getroute) | **POST** /v2/route | Get a cross-chain swap route
 *DefaultApi* | [**getSDKInfo**](doc//DefaultApi.md#getsdkinfo) | **GET** /v2/sdk-info | Get SDK information, including supported tokens and chains
 *DefaultApi* | [**getStatus**](doc//DefaultApi.md#getstatus) | **GET** /v2/status | Get the status of a transaction
-*DefaultApi* | [**v2DepositAddressPost**](doc//DefaultApi.md#v2depositaddresspost) | **POST** /v2/deposit-address | Get deposit address for non-EVM to EVM swaps
 
 
 ## Documentation For Models
 
  - [Action](doc//Action.md)
+ - [ActionDetails](doc//ActionDetails.md)
+ - [ActionStage](doc//ActionStage.md)
  - [ActionType](doc//ActionType.md)
  - [ApiBasicResponseError](doc//ApiBasicResponseError.md)
  - [ApiErrorDetails](doc//ApiErrorDetails.md)
+ - [AxelarFeeData](doc//AxelarFeeData.md)
+ - [AxelarRouteAction](doc//AxelarRouteAction.md)
+ - [BankSend](doc//BankSend.md)
+ - [BridgeDetails](doc//BridgeDetails.md)
+ - [BridgeProvider](doc//BridgeProvider.md)
  - [BridgeType](doc//BridgeType.md)
+ - [CCTPStatus](doc//CCTPStatus.md)
+ - [ChainCall](doc//ChainCall.md)
  - [ChainData](doc//ChainData.md)
  - [ChainDataNativeCurrency](doc//ChainDataNativeCurrency.md)
+ - [ChainFee](doc//ChainFee.md)
+ - [ChainName](doc//ChainName.md)
  - [ChainNativeContracts](doc//ChainNativeContracts.md)
  - [ChainType](doc//ChainType.md)
  - [ChainflipDestinationAsset](doc//ChainflipDestinationAsset.md)
  - [ChainflipSourceAsset](doc//ChainflipSourceAsset.md)
  - [ChainflipTransactionRequestData](doc//ChainflipTransactionRequestData.md)
  - [ComplianceData](doc//ComplianceData.md)
+ - [CosmosActionUnion](doc//CosmosActionUnion.md)
+ - [CosmosBankSendCall](doc//CosmosBankSendCall.md)
+ - [CosmosCall](doc//CosmosCall.md)
+ - [CosmosCallType](doc//CosmosCallType.md)
+ - [CosmosCallUnion](doc//CosmosCallUnion.md)
+ - [CosmosCctpCall](doc//CosmosCctpCall.md)
+ - [CosmosCctpValue](doc//CosmosCctpValue.md)
+ - [CosmosChainFeatures](doc//CosmosChainFeatures.md)
+ - [CosmosCoin](doc//CosmosCoin.md)
+ - [CosmosGmpCall](doc//CosmosGmpCall.md)
+ - [CosmosIbcTransferCall](doc//CosmosIbcTransferCall.md)
+ - [CosmosIbcTransferValue](doc//CosmosIbcTransferValue.md)
+ - [CosmosMulticallContractCall](doc//CosmosMulticallContractCall.md)
+ - [CosmosPfmCall](doc//CosmosPfmCall.md)
+ - [CosmosToken](doc//CosmosToken.md)
+ - [CustomCallDetails](doc//CustomCallDetails.md)
  - [DepositAddressResponseData](doc//DepositAddressResponseData.md)
+ - [Dex](doc//Dex.md)
+ - [DexName](doc//DexName.md)
+ - [DexType](doc//DexType.md)
  - [ErrorType](doc//ErrorType.md)
  - [EvmContractCall](doc//EvmContractCall.md)
  - [EvmTransactionRequestData](doc//EvmTransactionRequestData.md)
+ - [FEESENUM](doc//FEESENUM.md)
  - [FallbackAddress](doc//FallbackAddress.md)
  - [FeatureFlag](doc//FeatureFlag.md)
+ - [FeatureFlagType](doc//FeatureFlagType.md)
  - [FeeCost](doc//FeeCost.md)
+ - [FeeData](doc//FeeData.md)
+ - [FeeDetails](doc//FeeDetails.md)
  - [FeeType](doc//FeeType.md)
+ - [FieldToBinary](doc//FieldToBinary.md)
+ - [FieldToProtoBinaryAction](doc//FieldToProtoBinaryAction.md)
  - [GasCost](doc//GasCost.md)
  - [GasCostType](doc//GasCostType.md)
+ - [GmpFee](doc//GmpFee.md)
  - [Hook](doc//Hook.md)
  - [HookCallPayload](doc//HookCallPayload.md)
+ - [IbcTracking](doc//IbcTracking.md)
+ - [IbcTrackingAction](doc//IbcTrackingAction.md)
  - [InlineObject](doc//InlineObject.md)
+ - [Integrator](doc//Integrator.md)
+ - [IntegratorFee](doc//IntegratorFee.md)
+ - [LiquidityProviderDetails](doc//LiquidityProviderDetails.md)
  - [Maintenance](doc//Maintenance.md)
+ - [NativeBalanceFetch](doc//NativeBalanceFetch.md)
+ - [NativeBalanceFetchAction](doc//NativeBalanceFetchAction.md)
+ - [NetworkIdentifier](doc//NetworkIdentifier.md)
+ - [Order](doc//Order.md)
+ - [OsmosisPool](doc//OsmosisPool.md)
+ - [Path](doc//Path.md)
+ - [PathAction](doc//PathAction.md)
+ - [PathParams](doc//PathParams.md)
+ - [PfmForward](doc//PfmForward.md)
+ - [PlatformFee](doc//PlatformFee.md)
+ - [Quote](doc//Quote.md)
+ - [QuoteAction](doc//QuoteAction.md)
+ - [RouteActionStatus](doc//RouteActionStatus.md)
  - [RouteEstimate](doc//RouteEstimate.md)
  - [RouteRequestParams](doc//RouteRequestParams.md)
  - [RouteResponse](doc//RouteResponse.md)
  - [RouteResponseData](doc//RouteResponseData.md)
- - [RouteResponseDataTransactionRequest](doc//RouteResponseDataTransactionRequest.md)
  - [RouteResponseError](doc//RouteResponseError.md)
  - [RouteStatusEntry](doc//RouteStatusEntry.md)
  - [SDKInfoResponseData](doc//SDKInfoResponseData.md)
+ - [SendInstruction](doc//SendInstruction.md)
+ - [SendTokenStatus](doc//SendTokenStatus.md)
  - [SquidCallType](doc//SquidCallType.md)
+ - [SquidDataType](doc//SquidDataType.md)
+ - [SquidRouteType](doc//SquidRouteType.md)
+ - [SquidTransactionStatus](doc//SquidTransactionStatus.md)
  - [StatusResponseData](doc//StatusResponseData.md)
+ - [SwapDetails](doc//SwapDetails.md)
+ - [TRMIdentifier](doc//TRMIdentifier.md)
+ - [TierFee](doc//TierFee.md)
  - [Token](doc//Token.md)
+ - [TokenFee](doc//TokenFee.md)
+ - [TransactionRequest](doc//TransactionRequest.md)
  - [TransactionStatus](doc//TransactionStatus.md)
  - [Volatility](doc//Volatility.md)
+ - [WrapDetails](doc//WrapDetails.md)
+ - [WrapDirection](doc//WrapDirection.md)
+ - [Wrapper](doc//Wrapper.md)
+ - [WrapperName](doc//WrapperName.md)
+ - [WrapperType](doc//WrapperType.md)
 
 
 ## Documentation For Authorization

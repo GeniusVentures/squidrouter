@@ -184,18 +184,40 @@ class ApiClient {
           return value is DateTime ? value : DateTime.tryParse(value);
         case 'Action':
           return Action.fromJson(value);
+        case 'ActionDetails':
+          return ActionDetails.fromJson(value);
+        case 'ActionStage':
+          return ActionStageTypeTransformer().decode(value);
         case 'ActionType':
           return ActionTypeTypeTransformer().decode(value);
         case 'ApiBasicResponseError':
           return ApiBasicResponseError.fromJson(value);
         case 'ApiErrorDetails':
           return ApiErrorDetails.fromJson(value);
+        case 'AxelarFeeData':
+          return AxelarFeeData.fromJson(value);
+        case 'AxelarRouteAction':
+          return AxelarRouteActionTypeTransformer().decode(value);
+        case 'BankSend':
+          return BankSend.fromJson(value);
+        case 'BridgeDetails':
+          return BridgeDetails.fromJson(value);
+        case 'BridgeProvider':
+          return BridgeProviderTypeTransformer().decode(value);
         case 'BridgeType':
           return BridgeTypeTypeTransformer().decode(value);
+        case 'CCTPStatus':
+          return CCTPStatusTypeTransformer().decode(value);
+        case 'ChainCall':
+          return ChainCall.fromJson(value);
         case 'ChainData':
           return ChainData.fromJson(value);
         case 'ChainDataNativeCurrency':
           return ChainDataNativeCurrency.fromJson(value);
+        case 'ChainFee':
+          return ChainFee.fromJson(value);
+        case 'ChainName':
+          return ChainNameTypeTransformer().decode(value);
         case 'ChainNativeContracts':
           return ChainNativeContracts.fromJson(value);
         case 'ChainType':
@@ -208,34 +230,122 @@ class ApiClient {
           return ChainflipTransactionRequestData.fromJson(value);
         case 'ComplianceData':
           return ComplianceData.fromJson(value);
+        case 'CosmosActionUnion':
+          return CosmosActionUnion.fromJson(value);
+        case 'CosmosBankSendCall':
+          return CosmosBankSendCall.fromJson(value);
+        case 'CosmosCall':
+          return CosmosCall.fromJson(value);
+        case 'CosmosCallType':
+          return CosmosCallTypeTypeTransformer().decode(value);
+        case 'CosmosCallUnion':
+          return CosmosCallUnion.fromJson(value);
+        case 'CosmosCctpCall':
+          return CosmosCctpCall.fromJson(value);
+        case 'CosmosCctpValue':
+          return CosmosCctpValue.fromJson(value);
+        case 'CosmosChainFeatures':
+          return CosmosChainFeaturesTypeTransformer().decode(value);
+        case 'CosmosCoin':
+          return CosmosCoin.fromJson(value);
+        case 'CosmosGmpCall':
+          return CosmosGmpCall.fromJson(value);
+        case 'CosmosIbcTransferCall':
+          return CosmosIbcTransferCall.fromJson(value);
+        case 'CosmosIbcTransferValue':
+          return CosmosIbcTransferValue.fromJson(value);
+        case 'CosmosMulticallContractCall':
+          return CosmosMulticallContractCall.fromJson(value);
+        case 'CosmosPfmCall':
+          return CosmosPfmCall.fromJson(value);
+        case 'CosmosToken':
+          return CosmosToken.fromJson(value);
+        case 'CustomCallDetails':
+          return CustomCallDetails.fromJson(value);
         case 'DepositAddressResponseData':
           return DepositAddressResponseData.fromJson(value);
+        case 'Dex':
+          return Dex.fromJson(value);
+        case 'DexName':
+          return DexNameTypeTransformer().decode(value);
+        case 'DexType':
+          return DexTypeTypeTransformer().decode(value);
         case 'ErrorType':
           return ErrorTypeTypeTransformer().decode(value);
         case 'EvmContractCall':
           return EvmContractCall.fromJson(value);
         case 'EvmTransactionRequestData':
           return EvmTransactionRequestData.fromJson(value);
+        case 'FEESENUM':
+          return FEESENUMTypeTransformer().decode(value);
         case 'FallbackAddress':
           return FallbackAddress.fromJson(value);
         case 'FeatureFlag':
           return FeatureFlag.fromJson(value);
+        case 'FeatureFlagType':
+          return FeatureFlagTypeTypeTransformer().decode(value);
         case 'FeeCost':
           return FeeCost.fromJson(value);
+        case 'FeeData':
+          return FeeData.fromJson(value);
+        case 'FeeDetails':
+          return FeeDetails.fromJson(value);
         case 'FeeType':
           return FeeTypeTypeTransformer().decode(value);
+        case 'FieldToBinary':
+          return FieldToBinary.fromJson(value);
+        case 'FieldToProtoBinaryAction':
+          return FieldToProtoBinaryAction.fromJson(value);
         case 'GasCost':
           return GasCost.fromJson(value);
         case 'GasCostType':
           return GasCostTypeTypeTransformer().decode(value);
+        case 'GmpFee':
+          return GmpFee.fromJson(value);
         case 'Hook':
           return Hook.fromJson(value);
         case 'HookCallPayload':
           return HookCallPayload.fromJson(value);
+        case 'IbcTracking':
+          return IbcTracking.fromJson(value);
+        case 'IbcTrackingAction':
+          return IbcTrackingAction.fromJson(value);
         case 'InlineObject':
           return InlineObject.fromJson(value);
+        case 'Integrator':
+          return Integrator.fromJson(value);
+        case 'IntegratorFee':
+          return IntegratorFee.fromJson(value);
+        case 'LiquidityProviderDetails':
+          return LiquidityProviderDetails.fromJson(value);
         case 'Maintenance':
           return Maintenance.fromJson(value);
+        case 'NativeBalanceFetch':
+          return NativeBalanceFetch.fromJson(value);
+        case 'NativeBalanceFetchAction':
+          return NativeBalanceFetchAction.fromJson(value);
+        case 'NetworkIdentifier':
+          return NetworkIdentifierTypeTransformer().decode(value);
+        case 'Order':
+          return Order.fromJson(value);
+        case 'OsmosisPool':
+          return OsmosisPool.fromJson(value);
+        case 'Path':
+          return Path.fromJson(value);
+        case 'PathAction':
+          return PathAction.fromJson(value);
+        case 'PathParams':
+          return PathParams.fromJson(value);
+        case 'PfmForward':
+          return PfmForward.fromJson(value);
+        case 'PlatformFee':
+          return PlatformFee.fromJson(value);
+        case 'Quote':
+          return Quote.fromJson(value);
+        case 'QuoteAction':
+          return QuoteAction.fromJson(value);
+        case 'RouteActionStatus':
+          return RouteActionStatusTypeTransformer().decode(value);
         case 'RouteEstimate':
           return RouteEstimate.fromJson(value);
         case 'RouteRequestParams':
@@ -244,24 +354,52 @@ class ApiClient {
           return RouteResponse.fromJson(value);
         case 'RouteResponseData':
           return RouteResponseData.fromJson(value);
-        case 'RouteResponseDataTransactionRequest':
-          return RouteResponseDataTransactionRequest.fromJson(value);
         case 'RouteResponseError':
           return RouteResponseError.fromJson(value);
         case 'RouteStatusEntry':
           return RouteStatusEntry.fromJson(value);
         case 'SDKInfoResponseData':
           return SDKInfoResponseData.fromJson(value);
+        case 'SendInstruction':
+          return SendInstruction.fromJson(value);
+        case 'SendTokenStatus':
+          return SendTokenStatusTypeTransformer().decode(value);
         case 'SquidCallType':
           return SquidCallTypeTypeTransformer().decode(value);
+        case 'SquidDataType':
+          return SquidDataTypeTypeTransformer().decode(value);
+        case 'SquidRouteType':
+          return SquidRouteTypeTypeTransformer().decode(value);
+        case 'SquidTransactionStatus':
+          return SquidTransactionStatusTypeTransformer().decode(value);
         case 'StatusResponseData':
           return StatusResponseData.fromJson(value);
+        case 'SwapDetails':
+          return SwapDetails.fromJson(value);
+        case 'TRMIdentifier':
+          return TRMIdentifierTypeTransformer().decode(value);
+        case 'TierFee':
+          return TierFee.fromJson(value);
         case 'Token':
           return Token.fromJson(value);
+        case 'TokenFee':
+          return TokenFee.fromJson(value);
+        case 'TransactionRequest':
+          return TransactionRequest.fromJson(value);
         case 'TransactionStatus':
           return TransactionStatus.fromJson(value);
         case 'Volatility':
           return VolatilityTypeTransformer().decode(value);
+        case 'WrapDetails':
+          return WrapDetails.fromJson(value);
+        case 'WrapDirection':
+          return WrapDirectionTypeTransformer().decode(value);
+        case 'Wrapper':
+          return Wrapper.fromJson(value);
+        case 'WrapperName':
+          return WrapperNameTypeTransformer().decode(value);
+        case 'WrapperType':
+          return WrapperTypeTypeTransformer().decode(value);
         default:
           dynamic match;
           if (value is List && (match = _regList.firstMatch(targetType)?.group(1)) != null) {

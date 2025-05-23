@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **address** | **String** |  | [optional] 
 **name** | **String** |  | [optional] 
 **symbol** | **String** |  | [optional] 
-**decimals** | **int** |  | [optional] 
+**decimals** | **int** |  | [optional] [default to 18]
 **logoURI** | **String** |  | [optional] 
 **coingeckoId** | **String** |  | [optional] 
 **usdPrice** | **double** | Current USD price of the token. | [optional] 
@@ -28,6 +28,8 @@ Name | Type | Description | Notes
 **isLpToken** | **bool** |  | [optional] 
 **disabled** | **bool** |  | [optional] 
 **originalAddress** | **String** |  | [optional] 
+**subGraphOnly** | **bool** |  | [optional] 
+**subGraphIds** | **List<String>** |  | [optional] [default to const []]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

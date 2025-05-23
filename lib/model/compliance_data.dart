@@ -22,7 +22,7 @@ class ComplianceData {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? trmIdentifier;
+  TRMIdentifier? trmIdentifier;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is ComplianceData &&
@@ -63,7 +63,7 @@ class ComplianceData {
       }());
 
       return ComplianceData(
-        trmIdentifier: mapValueOfType<String>(json, r'trmIdentifier'),
+        trmIdentifier: TRMIdentifier.fromJson(json[r'trmIdentifier']),
       );
     }
     return null;

@@ -217,51 +217,83 @@ class RouteResponseDataTransactionRequest {
     final json = <String, dynamic>{};
     if (this.routeType != null) {
       json[r'routeType'] = this.routeType;
+    } else {
+      json[r'routeType'] = null;
     }
     if (this.target != null) {
       json[r'target'] = this.target;
+    } else {
+      json[r'target'] = null;
     }
     if (this.data != null) {
       json[r'data'] = this.data;
+    } else {
+      json[r'data'] = null;
     }
     if (this.value != null) {
       json[r'value'] = this.value;
+    } else {
+      json[r'value'] = null;
     }
     if (this.gasLimit != null) {
       json[r'gasLimit'] = this.gasLimit;
+    } else {
+      json[r'gasLimit'] = null;
     }
     if (this.gasPrice != null) {
       json[r'gasPrice'] = this.gasPrice;
+    } else {
+      json[r'gasPrice'] = null;
     }
     if (this.maxFeePerGas != null) {
       json[r'maxFeePerGas'] = this.maxFeePerGas;
+    } else {
+      json[r'maxFeePerGas'] = null;
     }
     if (this.maxPriorityFeePerGas != null) {
       json[r'maxPriorityFeePerGas'] = this.maxPriorityFeePerGas;
+    } else {
+      json[r'maxPriorityFeePerGas'] = null;
     }
     if (this.requestId != null) {
       json[r'requestId'] = this.requestId;
+    } else {
+      json[r'requestId'] = null;
     }
     if (this.expiry != null) {
       json[r'expiry'] = this.expiry;
+    } else {
+      json[r'expiry'] = null;
     }
     if (this.expiryOffset != null) {
       json[r'expiryOffset'] = this.expiryOffset;
+    } else {
+      json[r'expiryOffset'] = null;
     }
     if (this.depositChannelId != null) {
       json[r'depositChannelId'] = this.depositChannelId;
+    } else {
+      json[r'depositChannelId'] = null;
     }
     if (this.fromAmount != null) {
       json[r'fromAmount'] = this.fromAmount;
+    } else {
+      json[r'fromAmount'] = null;
     }
     if (this.sourceAsset != null) {
       json[r'sourceAsset'] = this.sourceAsset;
+    } else {
+      json[r'sourceAsset'] = null;
     }
     if (this.destinationAsset != null) {
       json[r'destinationAsset'] = this.destinationAsset;
+    } else {
+      json[r'destinationAsset'] = null;
     }
     if (this.destinationAddress != null) {
       json[r'destinationAddress'] = this.destinationAddress;
+    } else {
+      json[r'destinationAddress'] = null;
     }
     return json;
   }

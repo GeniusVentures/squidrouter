@@ -20,10 +20,10 @@ class RouteEstimate {
     this.toAmountUSD,
     this.toAmountMin,
     this.toAmountMinUSD,
-    this.routeMillis,
+    this.routeMillis = 0,
     this.exchangeRate,
     this.aggregatePriceImpact,
-    this.estimatedRouteDuration,
+    this.estimatedRouteDuration = 0,
     this.isBoostSupported,
     this.feeCosts = const [],
     this.gasCosts = const [],
@@ -79,13 +79,7 @@ class RouteEstimate {
   ///
   String? toAmountMinUSD;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? routeMillis;
+  int routeMillis;
 
   /// Exchange rate between fromToken and toToken.
   ///
@@ -106,13 +100,7 @@ class RouteEstimate {
   String? aggregatePriceImpact;
 
   /// Estimated duration in milliseconds.
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? estimatedRouteDuration;
+  int estimatedRouteDuration;
 
   /// Whether route supports boost.
   ///
@@ -169,10 +157,10 @@ class RouteEstimate {
     (toAmountUSD == null ? 0 : toAmountUSD!.hashCode) +
     (toAmountMin == null ? 0 : toAmountMin!.hashCode) +
     (toAmountMinUSD == null ? 0 : toAmountMinUSD!.hashCode) +
-    (routeMillis == null ? 0 : routeMillis!.hashCode) +
+    (routeMillis.hashCode) +
     (exchangeRate == null ? 0 : exchangeRate!.hashCode) +
     (aggregatePriceImpact == null ? 0 : aggregatePriceImpact!.hashCode) +
-    (estimatedRouteDuration == null ? 0 : estimatedRouteDuration!.hashCode) +
+    (estimatedRouteDuration.hashCode) +
     (isBoostSupported == null ? 0 : isBoostSupported!.hashCode) +
     (feeCosts == null ? 0 : feeCosts!.hashCode) +
     (gasCosts == null ? 0 : gasCosts!.hashCode) +
@@ -202,26 +190,26 @@ class RouteEstimate {
     if (this.toAmountMinUSD != null) {
       json[r'toAmountMinUSD'] = this.toAmountMinUSD;
     }
-    if (this.routeMillis != null) {
       json[r'routeMillis'] = this.routeMillis;
-    }
     if (this.exchangeRate != null) {
       json[r'exchangeRate'] = this.exchangeRate;
     }
     if (this.aggregatePriceImpact != null) {
       json[r'aggregatePriceImpact'] = this.aggregatePriceImpact;
     }
-    if (this.estimatedRouteDuration != null) {
       json[r'estimatedRouteDuration'] = this.estimatedRouteDuration;
-    }
     if (this.isBoostSupported != null) {
       json[r'isBoostSupported'] = this.isBoostSupported;
     }
     if (this.feeCosts != null) {
       json[r'feeCosts'] = this.feeCosts;
+    } else {
+      json[r'feeCosts'] = null;
     }
     if (this.gasCosts != null) {
       json[r'gasCosts'] = this.gasCosts;
+    } else {
+      json[r'gasCosts'] = null;
     }
     if (this.isApprovalRequired != null) {
       json[r'isApprovalRequired'] = this.isApprovalRequired;
@@ -257,10 +245,10 @@ class RouteEstimate {
         toAmountUSD: mapValueOfType<String>(json, r'toAmountUSD'),
         toAmountMin: mapValueOfType<String>(json, r'toAmountMin'),
         toAmountMinUSD: mapValueOfType<String>(json, r'toAmountMinUSD'),
-        routeMillis: mapValueOfType<int>(json, r'routeMillis'),
+        routeMillis: mapValueOfType<int>(json, r'routeMillis') ?? 0,
         exchangeRate: mapValueOfType<String>(json, r'exchangeRate'),
         aggregatePriceImpact: mapValueOfType<String>(json, r'aggregatePriceImpact'),
-        estimatedRouteDuration: mapValueOfType<int>(json, r'estimatedRouteDuration'),
+        estimatedRouteDuration: mapValueOfType<int>(json, r'estimatedRouteDuration') ?? 0,
         isBoostSupported: mapValueOfType<bool>(json, r'isBoostSupported'),
         feeCosts: FeeCost.listFromJson(json[r'feeCosts']),
         gasCosts: GasCost.listFromJson(json[r'gasCosts']),

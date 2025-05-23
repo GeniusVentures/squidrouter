@@ -92,6 +92,8 @@ class RouteResponse {
     }
     if (this.errorType != null) {
       json[r'errorType'] = this.errorType;
+    } else {
+      json[r'errorType'] = null;
     }
     return json;
   }

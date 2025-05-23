@@ -30,7 +30,7 @@ class BridgeType {
   static const ibc = BridgeType._(r'ibc');
   static const chainflip = BridgeType._(r'chainflip');
   static const rfq = BridgeType._(r'rfq');
-  static const itb = BridgeType._(r'itb');
+  static const immutableTokenBridge = BridgeType._(r'immutable-token-bridge');
 
   /// List of all possible values in this [enum][BridgeType].
   static const values = <BridgeType>[
@@ -41,7 +41,7 @@ class BridgeType {
     ibc,
     chainflip,
     rfq,
-    itb,
+    immutableTokenBridge,
   ];
 
   static BridgeType? fromJson(dynamic value) => BridgeTypeTypeTransformer().decode(value);
@@ -87,7 +87,7 @@ class BridgeTypeTypeTransformer {
         case r'ibc': return BridgeType.ibc;
         case r'chainflip': return BridgeType.chainflip;
         case r'rfq': return BridgeType.rfq;
-        case r'itb': return BridgeType.itb;
+        case r'immutable-token-bridge': return BridgeType.immutableTokenBridge;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

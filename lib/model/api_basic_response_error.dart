@@ -61,12 +61,18 @@ class ApiBasicResponseError {
     }
     if (this.message != null) {
       json[r'message'] = this.message;
+    } else {
+      json[r'message'] = null;
     }
     if (this.errors != null) {
       json[r'errors'] = this.errors;
+    } else {
+      json[r'errors'] = null;
     }
     if (this.reason != null) {
       json[r'reason'] = this.reason;
+    } else {
+      json[r'reason'] = null;
     }
     return json;
   }

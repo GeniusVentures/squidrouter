@@ -33,6 +33,8 @@ class ChainData {
     this.maintenances = const [],
     this.boostSupported,
     this.sameChainSwapsSupported,
+    this.enableBoostByDefault,
+    this.interchainService,
   });
 
   ///
@@ -65,16 +67,21 @@ class ChainData {
   ///
   ChainDataNativeCurrency? nativeCurrency;
 
-  String? axelarChainName;
-
-  /// Network identifier.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? networkIdentifier;
+  ChainName? axelarChainName;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  NetworkIdentifier? networkIdentifier;
 
   ChainDataSquidImplementationEnum? squidImplementation;
 
@@ -119,6 +126,10 @@ class ChainData {
   ///
   bool? sameChainSwapsSupported;
 
+  bool? enableBoostByDefault;
+
+  String? interchainService;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is ChainData &&
     other.chainName == chainName &&
@@ -140,7 +151,9 @@ class ChainData {
     other.compliance == compliance &&
     _deepEquality.equals(other.maintenances, maintenances) &&
     other.boostSupported == boostSupported &&
-    other.sameChainSwapsSupported == sameChainSwapsSupported;
+    other.sameChainSwapsSupported == sameChainSwapsSupported &&
+    other.enableBoostByDefault == enableBoostByDefault &&
+    other.interchainService == interchainService;
 
   @override
   int get hashCode =>
@@ -164,10 +177,12 @@ class ChainData {
     (compliance == null ? 0 : compliance!.hashCode) +
     (maintenances == null ? 0 : maintenances!.hashCode) +
     (boostSupported == null ? 0 : boostSupported!.hashCode) +
-    (sameChainSwapsSupported == null ? 0 : sameChainSwapsSupported!.hashCode);
+    (sameChainSwapsSupported == null ? 0 : sameChainSwapsSupported!.hashCode) +
+    (enableBoostByDefault == null ? 0 : enableBoostByDefault!.hashCode) +
+    (interchainService == null ? 0 : interchainService!.hashCode);
 
   @override
-  String toString() => 'ChainData[chainName=$chainName, chainId=$chainId, chainType=$chainType, rpc=$rpc, chainIconURI=$chainIconURI, nativeCurrency=$nativeCurrency, axelarChainName=$axelarChainName, networkIdentifier=$networkIdentifier, squidImplementation=$squidImplementation, estimatedRouteDuration=$estimatedRouteDuration, estimatedExpressRouteDuration=$estimatedExpressRouteDuration, swapAmountForGas=$swapAmountForGas, blockExplorerUrls=$blockExplorerUrls, gasMultiplier=$gasMultiplier, chainNativeContracts=$chainNativeContracts, supportedCrossChainProtocols=$supportedCrossChainProtocols, compliance=$compliance, maintenances=$maintenances, boostSupported=$boostSupported, sameChainSwapsSupported=$sameChainSwapsSupported]';
+  String toString() => 'ChainData[chainName=$chainName, chainId=$chainId, chainType=$chainType, rpc=$rpc, chainIconURI=$chainIconURI, nativeCurrency=$nativeCurrency, axelarChainName=$axelarChainName, networkIdentifier=$networkIdentifier, squidImplementation=$squidImplementation, estimatedRouteDuration=$estimatedRouteDuration, estimatedExpressRouteDuration=$estimatedExpressRouteDuration, swapAmountForGas=$swapAmountForGas, blockExplorerUrls=$blockExplorerUrls, gasMultiplier=$gasMultiplier, chainNativeContracts=$chainNativeContracts, supportedCrossChainProtocols=$supportedCrossChainProtocols, compliance=$compliance, maintenances=$maintenances, boostSupported=$boostSupported, sameChainSwapsSupported=$sameChainSwapsSupported, enableBoostByDefault=$enableBoostByDefault, interchainService=$interchainService]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -182,9 +197,13 @@ class ChainData {
     }
     if (this.rpc != null) {
       json[r'rpc'] = this.rpc;
+    } else {
+      json[r'rpc'] = null;
     }
     if (this.chainIconURI != null) {
       json[r'chainIconURI'] = this.chainIconURI;
+    } else {
+      json[r'chainIconURI'] = null;
     }
     if (this.nativeCurrency != null) {
       json[r'nativeCurrency'] = this.nativeCurrency;
@@ -197,39 +216,67 @@ class ChainData {
     }
     if (this.squidImplementation != null) {
       json[r'squidImplementation'] = this.squidImplementation;
+    } else {
+      json[r'squidImplementation'] = null;
     }
     if (this.estimatedRouteDuration != null) {
       json[r'estimatedRouteDuration'] = this.estimatedRouteDuration;
+    } else {
+      json[r'estimatedRouteDuration'] = null;
     }
     if (this.estimatedExpressRouteDuration != null) {
       json[r'estimatedExpressRouteDuration'] = this.estimatedExpressRouteDuration;
+    } else {
+      json[r'estimatedExpressRouteDuration'] = null;
     }
     if (this.swapAmountForGas != null) {
       json[r'swapAmountForGas'] = this.swapAmountForGas;
+    } else {
+      json[r'swapAmountForGas'] = null;
     }
     if (this.blockExplorerUrls != null) {
       json[r'blockExplorerUrls'] = this.blockExplorerUrls;
+    } else {
+      json[r'blockExplorerUrls'] = null;
     }
     if (this.gasMultiplier != null) {
       json[r'gasMultiplier'] = this.gasMultiplier;
+    } else {
+      json[r'gasMultiplier'] = null;
     }
     if (this.chainNativeContracts != null) {
       json[r'chainNativeContracts'] = this.chainNativeContracts;
     }
     if (this.supportedCrossChainProtocols != null) {
       json[r'supportedCrossChainProtocols'] = this.supportedCrossChainProtocols;
+    } else {
+      json[r'supportedCrossChainProtocols'] = null;
     }
     if (this.compliance != null) {
       json[r'compliance'] = this.compliance;
     }
     if (this.maintenances != null) {
       json[r'maintenances'] = this.maintenances;
+    } else {
+      json[r'maintenances'] = null;
     }
     if (this.boostSupported != null) {
       json[r'boostSupported'] = this.boostSupported;
+    } else {
+      json[r'boostSupported'] = null;
     }
     if (this.sameChainSwapsSupported != null) {
       json[r'sameChainSwapsSupported'] = this.sameChainSwapsSupported;
+    }
+    if (this.enableBoostByDefault != null) {
+      json[r'enableBoostByDefault'] = this.enableBoostByDefault;
+    } else {
+      json[r'enableBoostByDefault'] = null;
+    }
+    if (this.interchainService != null) {
+      json[r'interchainService'] = this.interchainService;
+    } else {
+      json[r'interchainService'] = null;
     }
     return json;
   }
@@ -259,8 +306,8 @@ class ChainData {
         rpc: mapValueOfType<String>(json, r'rpc'),
         chainIconURI: mapValueOfType<String>(json, r'chainIconURI'),
         nativeCurrency: ChainDataNativeCurrency.fromJson(json[r'nativeCurrency']),
-        axelarChainName: mapValueOfType<String>(json, r'axelarChainName'),
-        networkIdentifier: mapValueOfType<String>(json, r'networkIdentifier'),
+        axelarChainName: ChainName.fromJson(json[r'axelarChainName']),
+        networkIdentifier: NetworkIdentifier.fromJson(json[r'networkIdentifier']),
         squidImplementation: ChainDataSquidImplementationEnum.fromJson(json[r'squidImplementation']),
         estimatedRouteDuration: mapValueOfType<int>(json, r'estimatedRouteDuration'),
         estimatedExpressRouteDuration: mapValueOfType<int>(json, r'estimatedExpressRouteDuration'),
@@ -277,6 +324,8 @@ class ChainData {
         maintenances: Maintenance.listFromJson(json[r'maintenances']),
         boostSupported: mapValueOfType<bool>(json, r'boostSupported'),
         sameChainSwapsSupported: mapValueOfType<bool>(json, r'sameChainSwapsSupported'),
+        enableBoostByDefault: mapValueOfType<bool>(json, r'enableBoostByDefault'),
+        interchainService: mapValueOfType<String>(json, r'interchainService'),
       );
     }
     return null;

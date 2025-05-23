@@ -24,7 +24,7 @@ class RouteResponseData {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  RouteResponseDataTransactionRequest? transactionRequest;
+  TransactionRequest? transactionRequest;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -91,7 +91,7 @@ class RouteResponseData {
       }());
 
       return RouteResponseData(
-        transactionRequest: RouteResponseDataTransactionRequest.fromJson(json[r'transactionRequest']),
+        transactionRequest: TransactionRequest.fromJson(json[r'transactionRequest']),
         estimate: RouteEstimate.fromJson(json[r'estimate']),
         params: RouteRequestParams.fromJson(json[r'params']),
       );

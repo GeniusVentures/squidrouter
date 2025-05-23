@@ -8,7 +8,7 @@ import 'package:openapi/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**feature** | **String** |  | [optional] 
+**feature** | [**FeatureFlagType**](FeatureFlagType.md) |  | [optional] 
 **allowedIntegrators** | **List<String>** |  | [optional] [default to const []]
 **enabled** | **bool** |  | [optional] 
 

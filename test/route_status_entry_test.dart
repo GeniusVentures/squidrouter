@@ -26,12 +26,12 @@ void main() {
       // TODO
     });
 
-    // String status
+    // RouteActionStatus status
     test('to test the property `status`', () async {
       // TODO
     });
 
-    // String action
+    // AxelarRouteAction action
     test('to test the property `action`', () async {
       // TODO
     });

@@ -25,7 +25,7 @@ class StatusResponseData {
     this.routeStatus = const [],
   });
 
-  StatusResponseDataSquidTransactionStatusEnum squidTransactionStatus;
+  SquidTransactionStatus squidTransactionStatus;
 
   /// Transaction ID.
   ///
@@ -170,7 +170,7 @@ class StatusResponseData {
       }());
 
       return StatusResponseData(
-        squidTransactionStatus: StatusResponseDataSquidTransactionStatusEnum.fromJson(json[r'squidTransactionStatus'])!,
+        squidTransactionStatus: SquidTransactionStatus.fromJson(json[r'squidTransactionStatus'])!,
         id: mapValueOfType<String>(json, r'id'),
         status: mapValueOfType<String>(json, r'status'),
         gasStatus: mapValueOfType<String>(json, r'gasStatus'),
@@ -230,96 +230,4 @@ class StatusResponseData {
     'squidTransactionStatus',
   };
 }
-
-
-class StatusResponseDataSquidTransactionStatusEnum {
-  /// Instantiate a new enum with the provided [value].
-  const StatusResponseDataSquidTransactionStatusEnum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value;
-
-  String toJson() => value;
-
-  static const success = StatusResponseDataSquidTransactionStatusEnum._(r'success');
-  static const needsGas = StatusResponseDataSquidTransactionStatusEnum._(r'needs_gas');
-  static const ongoing = StatusResponseDataSquidTransactionStatusEnum._(r'ongoing');
-  static const partialSuccess = StatusResponseDataSquidTransactionStatusEnum._(r'partial_success');
-  static const anErrorHasOccurred = StatusResponseDataSquidTransactionStatusEnum._(r'an_error_has_occurred');
-  static const notFound = StatusResponseDataSquidTransactionStatusEnum._(r'not_found');
-  static const failedOnDestination = StatusResponseDataSquidTransactionStatusEnum._(r'failed_on_destination');
-  static const refunded = StatusResponseDataSquidTransactionStatusEnum._(r'refunded');
-
-  /// List of all possible values in this [enum][StatusResponseDataSquidTransactionStatusEnum].
-  static const values = <StatusResponseDataSquidTransactionStatusEnum>[
-    success,
-    needsGas,
-    ongoing,
-    partialSuccess,
-    anErrorHasOccurred,
-    notFound,
-    failedOnDestination,
-    refunded,
-  ];
-
-  static StatusResponseDataSquidTransactionStatusEnum? fromJson(dynamic value) => StatusResponseDataSquidTransactionStatusEnumTypeTransformer().decode(value);
-
-  static List<StatusResponseDataSquidTransactionStatusEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <StatusResponseDataSquidTransactionStatusEnum>[];
-    if (json is List && json.isNotEmpty) {
-      for (final row in json) {
-        final value = StatusResponseDataSquidTransactionStatusEnum.fromJson(row);
-        if (value != null) {
-          result.add(value);
-        }
-      }
-    }
-    return result.toList(growable: growable);
-  }
-}
-
-/// Transformation class that can [encode] an instance of [StatusResponseDataSquidTransactionStatusEnum] to String,
-/// and [decode] dynamic data back to [StatusResponseDataSquidTransactionStatusEnum].
-class StatusResponseDataSquidTransactionStatusEnumTypeTransformer {
-  factory StatusResponseDataSquidTransactionStatusEnumTypeTransformer() => _instance ??= const StatusResponseDataSquidTransactionStatusEnumTypeTransformer._();
-
-  const StatusResponseDataSquidTransactionStatusEnumTypeTransformer._();
-
-  String encode(StatusResponseDataSquidTransactionStatusEnum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a StatusResponseDataSquidTransactionStatusEnum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  StatusResponseDataSquidTransactionStatusEnum? decode(dynamic data, {bool allowNull = true}) {
-    if (data != null) {
-      switch (data) {
-        case r'success': return StatusResponseDataSquidTransactionStatusEnum.success;
-        case r'needs_gas': return StatusResponseDataSquidTransactionStatusEnum.needsGas;
-        case r'ongoing': return StatusResponseDataSquidTransactionStatusEnum.ongoing;
-        case r'partial_success': return StatusResponseDataSquidTransactionStatusEnum.partialSuccess;
-        case r'an_error_has_occurred': return StatusResponseDataSquidTransactionStatusEnum.anErrorHasOccurred;
-        case r'not_found': return StatusResponseDataSquidTransactionStatusEnum.notFound;
-        case r'failed_on_destination': return StatusResponseDataSquidTransactionStatusEnum.failedOnDestination;
-        case r'refunded': return StatusResponseDataSquidTransactionStatusEnum.refunded;
-        default:
-          if (!allowNull) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [StatusResponseDataSquidTransactionStatusEnumTypeTransformer] instance.
-  static StatusResponseDataSquidTransactionStatusEnumTypeTransformer? _instance;
-}
-
 

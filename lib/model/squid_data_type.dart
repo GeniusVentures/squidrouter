@@ -1,0 +1,85 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.18
+
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
+
+part of openapi.api;
+
+/// Squid data type.
+class SquidDataType {
+  /// Instantiate a new enum with the provided [value].
+  const SquidDataType._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const ON_CHAIN_EXECUTION = SquidDataType._(r'ON_CHAIN_EXECUTION');
+  static const CHAINFLIP_DEPOSIT_ADDRESS = SquidDataType._(r'CHAINFLIP_DEPOSIT_ADDRESS');
+
+  /// List of all possible values in this [enum][SquidDataType].
+  static const values = <SquidDataType>[
+    ON_CHAIN_EXECUTION,
+    CHAINFLIP_DEPOSIT_ADDRESS,
+  ];
+
+  static SquidDataType? fromJson(dynamic value) => SquidDataTypeTypeTransformer().decode(value);
+
+  static List<SquidDataType> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <SquidDataType>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = SquidDataType.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [SquidDataType] to String,
+/// and [decode] dynamic data back to [SquidDataType].
+class SquidDataTypeTypeTransformer {
+  factory SquidDataTypeTypeTransformer() => _instance ??= const SquidDataTypeTypeTransformer._();
+
+  const SquidDataTypeTypeTransformer._();
+
+  String encode(SquidDataType data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a SquidDataType.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  SquidDataType? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'ON_CHAIN_EXECUTION': return SquidDataType.ON_CHAIN_EXECUTION;
+        case r'CHAINFLIP_DEPOSIT_ADDRESS': return SquidDataType.CHAINFLIP_DEPOSIT_ADDRESS;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [SquidDataTypeTypeTransformer] instance.
+  static SquidDataTypeTypeTransformer? _instance;
+}
+

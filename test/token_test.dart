@@ -118,6 +118,16 @@ void main() {
       // TODO
     });
 
+    // bool subGraphOnly
+    test('to test the property `subGraphOnly`', () async {
+      // TODO
+    });
+
+    // List<String> subGraphIds (default value: const [])
+    test('to test the property `subGraphIds`', () async {
+      // TODO
+    });
+
 
   });
 

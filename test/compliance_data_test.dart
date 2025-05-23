@@ -16,7 +16,7 @@ void main() {
   // final instance = ComplianceData();
 
   group('test ComplianceData', () {
-    // String trmIdentifier
+    // TRMIdentifier trmIdentifier
     test('to test the property `trmIdentifier`', () async {
       // TODO
     });

@@ -23,25 +23,25 @@ class FeeType {
 
   String toJson() => value;
 
-  static const AXELAR_FEE = FeeType._(r'AXELAR_FEE');
-  static const GAS_RECEIVER_FEE = FeeType._(r'GAS_RECEIVER_FEE');
-  static const BOOST_FEE = FeeType._(r'BOOST_FEE');
-  static const INTEGRATOR_FEE = FeeType._(r'INTEGRATOR_FEE');
-  static const CHAINFLIP_FEE = FeeType._(r'CHAINFLIP_FEE');
-  static const EXECUTION_FEE = FeeType._(r'EXECUTION_FEE');
-  static const SETTLEMENT_FEE = FeeType._(r'SETTLEMENT_FEE');
-  static const SERVICE_FEE = FeeType._(r'SERVICE_FEE');
+  static const axelarFee = FeeType._(r'Axelar fee');
+  static const gasReceiverFee = FeeType._(r'Gas receiver fee');
+  static const boostFee = FeeType._(r'Boost fee');
+  static const integratorFee = FeeType._(r'Integrator fee');
+  static const chainflipFee = FeeType._(r'Chainflip fee');
+  static const executionFee = FeeType._(r'Execution fee');
+  static const settlementFee = FeeType._(r'Settlement fee');
+  static const serviceFee = FeeType._(r'Service fee');
 
   /// List of all possible values in this [enum][FeeType].
   static const values = <FeeType>[
-    AXELAR_FEE,
-    GAS_RECEIVER_FEE,
-    BOOST_FEE,
-    INTEGRATOR_FEE,
-    CHAINFLIP_FEE,
-    EXECUTION_FEE,
-    SETTLEMENT_FEE,
-    SERVICE_FEE,
+    axelarFee,
+    gasReceiverFee,
+    boostFee,
+    integratorFee,
+    chainflipFee,
+    executionFee,
+    settlementFee,
+    serviceFee,
   ];
 
   static FeeType? fromJson(dynamic value) => FeeTypeTypeTransformer().decode(value);
@@ -80,14 +80,14 @@ class FeeTypeTypeTransformer {
   FeeType? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'AXELAR_FEE': return FeeType.AXELAR_FEE;
-        case r'GAS_RECEIVER_FEE': return FeeType.GAS_RECEIVER_FEE;
-        case r'BOOST_FEE': return FeeType.BOOST_FEE;
-        case r'INTEGRATOR_FEE': return FeeType.INTEGRATOR_FEE;
-        case r'CHAINFLIP_FEE': return FeeType.CHAINFLIP_FEE;
-        case r'EXECUTION_FEE': return FeeType.EXECUTION_FEE;
-        case r'SETTLEMENT_FEE': return FeeType.SETTLEMENT_FEE;
-        case r'SERVICE_FEE': return FeeType.SERVICE_FEE;
+        case r'Axelar fee': return FeeType.axelarFee;
+        case r'Gas receiver fee': return FeeType.gasReceiverFee;
+        case r'Boost fee': return FeeType.boostFee;
+        case r'Integrator fee': return FeeType.integratorFee;
+        case r'Chainflip fee': return FeeType.chainflipFee;
+        case r'Execution fee': return FeeType.executionFee;
+        case r'Settlement fee': return FeeType.settlementFee;
+        case r'Service fee': return FeeType.serviceFee;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

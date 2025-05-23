@@ -16,7 +16,7 @@ void main() {
   // final instance = StatusResponseData();
 
   group('test StatusResponseData', () {
-    // String squidTransactionStatus
+    // SquidTransactionStatus squidTransactionStatus
     test('to test the property `squidTransactionStatus`', () async {
       // TODO
     });

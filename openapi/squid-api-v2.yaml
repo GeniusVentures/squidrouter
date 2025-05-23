@@ -33,6 +33,7 @@ components:
 
     HookCallPayload:
       type: object
+      title: HookCallPayload
       properties:
         tokenAddress:
           type: string
@@ -45,6 +46,7 @@ components:
 
     EvmContractCall:
       type: object
+      title: EvmContractCall
       properties:
         chainType:
           $ref: '#/components/schemas/ChainType'
@@ -53,7 +55,7 @@ components:
         target:
           type: string
           description: The address of the contract to call.
-          example: "0x794a61358D6845594F94dc1DB02A252b5b4814aD" # Aave Pool
+          example: "0x794a61358D6845594F94dc1DB02A252b5b4814aD"
         value:
           type: string
           description: Amount of native currency to send with the call, in wei.
@@ -77,6 +79,7 @@ components:
 
     Hook:
       type: object
+      title: Hook
       properties:
         chainType:
           $ref: '#/components/schemas/ChainType'
@@ -111,17 +114,18 @@ components:
 
     RouteRequestParams:
       type: object
+      title: RouteRequestParams
       properties:
         fromAddress:
           type: string
           description: The address of the sender.
           example: "0x..."
         fromChain:
-          type: string # Chain ID
+          type: string
           description: The source chain ID.
           example: "56"
         fromToken:
-          type: string # Token address
+          type: string
           description: The source token address.
           example: "0x55d398326f99059fF775485246999027B3197955"
         fromAmount:
@@ -129,11 +133,11 @@ components:
           description: The amount of `fromToken` to swap, in its smallest unit.
           example: "100000000000000000"
         toChain:
-          type: string # Chain ID
+          type: string
           description: The destination chain ID.
           example: "42161"
         toToken:
-          type: string # Token address
+          type: string
           description: The destination token address.
           example: "0xaf88d065e77c8cC2239327C5EDb3A432268e5831"
         toAddress:
@@ -172,6 +176,7 @@ components:
 
     FallbackAddress:
       type: object
+      title: FallbackAddress
       properties:
         coinType:
           type: integer
@@ -185,6 +190,7 @@ components:
 
     EvmTransactionRequestData:
       type: object
+      title: EvmTransactionRequestData
       properties:
         routeType:
           type: string
@@ -230,6 +236,7 @@ components:
 
     ChainflipSourceAsset:
       type: object
+      title: ChainflipSourceAsset
       properties:
         symbol:
           type: string
@@ -238,6 +245,7 @@ components:
 
     ChainflipDestinationAsset:
       type: object
+      title: ChainflipDestinationAsset
       properties:
         symbol:
           type: string
@@ -246,6 +254,7 @@ components:
 
     ChainflipTransactionRequestData:
       type: object
+      title: ChainflipTransactionRequestData
       properties:
         routeType:
           type: string
@@ -263,27 +272,33 @@ components:
         destinationAddress:
           type: string
 
+    TransactionRequest:
+      oneOf:
+        - $ref: '#/components/schemas/EvmTransactionRequestData'
+        - $ref: '#/components/schemas/ChainflipTransactionRequestData'
+
     FeeType:
       type: string
       enum:
-        - AXELAR_FEE
-        - GAS_RECEIVER_FEE
-        - BOOST_FEE
-        - INTEGRATOR_FEE
-        - CHAINFLIP_FEE
-        - EXECUTION_FEE
-        - SETTLEMENT_FEE
-        - SERVICE_FEE
+        - Axelar fee
+        - Gas receiver fee
+        - Boost fee
+        - Integrator fee
+        - Chainflip fee
+        - Execution fee
+        - Settlement fee
+        - Service fee
       description: Type of fee applied to the transaction.
 
     GasCostType:
       type: string
       enum:
-        - EXECUTE_CALL
+        - executeCall
       description: Type of gas cost.
 
     FeeCost:
       type: object
+      title: FeeCost
       properties:
         name:
           type: string
@@ -291,15 +306,19 @@ components:
         description:
           type: string
           example: "Cross-chain fee for using Squid"
+          nullable: true
         percentage:
           type: string
-          example: "0.001" # 0.1%
+          example: "0.001"
+          nullable: true
         gasLimit:
           type: string
           description: Gas limit for this fee, if applicable.
+          nullable: true
         gasMultiplier:
           type: number
           description: Gas multiplier for this fee, if applicable.
+          nullable: true
         token:
           $ref: '#/components/schemas/Token'
         amount:
@@ -311,6 +330,7 @@ components:
         logoURI:
           type: string
           description: Logo URL for the fee provider.
+          nullable: true
       required:
         - name
         - token
@@ -319,6 +339,7 @@ components:
 
     GasCost:
       type: object
+      title: GasCost
       properties:
         type:
           $ref: '#/components/schemas/GasCostType'
@@ -342,11 +363,19 @@ components:
 
     ActionType:
       type: string
-      enum: [SWAP, BRIDGE_CALL, FEE, RFQ, WRAP, BRIDGE, IBC_TRANSFER, CUSTOM]
-      example: "SWAP"
+      enum:
+        - swap
+        - wrap
+        - bridge
+        - ibc-transfer
+        - custom
+        - fee
+        - rfq
+      example: "swap"
 
     Action:
       type: object
+      title: Action
       properties:
         type:
           $ref: '#/components/schemas/ActionType'
@@ -375,6 +404,7 @@ components:
         estimatedDuration:
           type: integer
           description: Estimated duration in milliseconds.
+          default: 0
         exchangeRate:
           type: string
           description: Exchange rate for this action.
@@ -384,6 +414,7 @@ components:
 
     RouteResponseError:
       type: object
+      title: RouteResponseError
       properties:
         message:
           type: string
@@ -394,6 +425,7 @@ components:
 
     RouteResponse:
       type: object
+      title: RouteResponse
       properties:
         route:
           $ref: '#/components/schemas/RouteResponseData'
@@ -413,6 +445,7 @@ components:
 
     RouteEstimate:
       type: object
+      title: RouteEstimate
       properties:
         fromAmount:
           type: string
@@ -434,6 +467,7 @@ components:
           description: USD value of minimum amount.
         routeMillis:
           type: integer
+          default: 0
         exchangeRate:
           type: string
           description: Exchange rate between fromToken and toToken.
@@ -443,6 +477,7 @@ components:
         estimatedRouteDuration:
           type: integer
           description: Estimated duration in milliseconds.
+          default: 0
         isBoostSupported:
           type: boolean
           description: Whether route supports boost.
@@ -462,7 +497,7 @@ components:
           type: boolean
         approvalTx:
           type: object
-          additionalProperties: true  # Allow any properties in this object
+          additionalProperties: true
         actions:
           type: array
           items:
@@ -473,11 +508,10 @@ components:
 
     RouteResponseData:
       type: object
+      title: RouteResponseData
       properties:
         transactionRequest:
-          oneOf:
-            - $ref: '#/components/schemas/EvmTransactionRequestData'
-            - $ref: '#/components/schemas/ChainflipTransactionRequestData'
+          $ref: '#/components/schemas/TransactionRequest'
         estimate:
           $ref: '#/components/schemas/RouteEstimate'
         params:
@@ -504,11 +538,13 @@ components:
 
     TransactionChainData:
       type: object
+      title: TransactionChainData
       additionalProperties: true
       description: Chain-specific transaction data in key-value format.
 
     TransactionStatus:
       type: object
+      title: TransactionStatus
       properties:
         transactionId:
           type: string
@@ -527,78 +563,532 @@ components:
         destinationAddress:
           type: string
 
-    RouteStatusEntry:
-      type: object
-      properties:
-        chainId:
-          type: string
-        txHash:
-          type: string
-        status:
-          type: string
-          enum:
-            - success
-            - failure
-            - not_found
-            - unknown
-            - awaiting
-            - refunded
-        action:
-          type: string
-          enum:
-            - call
-            - executed
-            - ibc_transfer
-            - send
-            - vote
-            - ibc_send
-            - gas_paid
-            - approved
+    FeatureFlagType:
+      type: string
+      enum:
+        - maintenance
+        - bitcoin
+        - solana
+        - chainflip
+        - coral
+        - chainflipMultihop
+      description: Feature flag type identifier.
 
-    StatusResponseData:
-      type: object
-      properties:
-        squidTransactionStatus:
-          type: string
-          enum:
-            - success
-            - needs_gas
-            - ongoing
-            - partial_success
-            - an_error_has_occurred
-            - not_found
-            - failed_on_destination
-            - refunded
-          example: "success"
-        id:
-          type: string
-          description: Transaction ID.
-        status:
-          type: string
-          description: Transaction status.
-        gasStatus:
-          type: string
-          description: Gas status of the transaction.
-        isGMPTransaction:
-          type: boolean
-          description: Whether this is a GMP transaction.
-        axelarTransactionUrl:
-          type: string
-          description: URL to view transaction on Axelar.
-        fromChain:
-          $ref: '#/components/schemas/TransactionStatus'
-        toChain:
-          $ref: '#/components/schemas/TransactionStatus'
-        timeSpent:
-          type: object
-          additionalProperties:
-            type: number
-        routeStatus:
-          type: array
-          items:
-            $ref: '#/components/schemas/RouteStatusEntry'
-      required:
-        - squidTransactionStatus
+    TRMIdentifier:
+      type: string
+      enum:
+        - algorand
+        - arbitrum
+        - avalanche_c_chain
+        - base
+        - berachain
+        - binance
+        - binance_smart_chain
+        - bitcoin
+        - bitcoin_cash
+        - bytom
+        - cardano
+        - celo
+        - cosmos
+        - dash
+        - dogecoin
+        - elastos
+        - ethereum
+        - ethereum_classic
+        - elrond
+        - fantom
+        - filecoin
+        - hedera
+        - icon
+        - iost
+        - iota
+        - klaytn
+        - lisk
+        - litecoin
+        - monero
+        - nebulas
+        - neo
+        - oasis
+        - omni
+        - ontology
+        - optimism
+        - pai
+        - polkadot
+        - polygon
+        - qtum
+        - ripple
+        - solana
+        - steem
+        - stellar
+        - tezos
+        - tron
+        - zcash
+        - zilliqa
+      description: TRM compliance identifier.
+
+    SquidTransactionStatus:
+      type: string
+      enum:
+        - success
+        - needs_gas
+        - ongoing
+        - partial_success
+        - not_found
+        - failed_on_destination
+        - refunded
+      description: Squid transaction status.
+
+    AxelarRouteAction:
+      type: string
+      enum:
+        - call
+        - executed
+        - ibc_transfer
+        - send
+        - vote
+        - ibc_send
+        - gas_paid
+        - approved
+      description: Axelar route action type.
+
+    RouteActionStatus:
+      type: string
+      enum:
+        - success
+        - failure
+        - not_found
+        - unknown
+        - awaiting
+        - refunded
+      description: Route action status.
+
+    CCTPStatus:
+      type: string
+      enum:
+        - error
+        - complete
+        - pending
+      description: CCTP status.
+
+    SendTokenStatus:
+      type: string
+      enum:
+        - asset_sent
+        - executed
+      description: Send token status.
+
+    CosmosChainFeatures:
+      type: string
+      enum:
+        - packet-forward-middleware
+        - legacy-ibc
+        - cosmwasm
+      description: Cosmos chain features.
+
+    SquidRouteType:
+      type: string
+      enum:
+        - CALL_BRIDGE_CALL
+        - CALL_BRIDGE
+        - BRIDGE_CALL
+        - BRIDGE
+        - EVM_ONLY
+        - COSMOS_ONLY
+        - SOLANA_ONLY
+        - RFQ
+        - FUND_AND_RUN_MULTICALL
+      description: Squid route type.
+
+    SquidDataType:
+      type: string
+      enum:
+        - ON_CHAIN_EXECUTION
+        - CHAINFLIP_DEPOSIT_ADDRESS
+      description: Squid data type.
+
+    CosmosCallType:
+      type: integer
+      enum: [0, 1, 2, 3, 4]
+      description: |
+        Cosmos call type:
+        0: MULTICALL
+        1: IBC_TRANSFER  
+        2: PFM
+        3: GMP
+        4: CCTP
+
+    ActionStage:
+      type: integer
+      enum: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+      description: |
+        Action stage:
+        0: EVM_SOURCE
+        1: EVM_DESTINATION
+        2: EVM_TRANSIENT
+        3: EVM_ONLY
+        4: COSMOS_SOURCE
+        5: COSMOS_DESTINATION
+        6: COSMOS_TRANSIENT
+        7: COSMOS_ONLY
+        8: BTC_SOURCE
+        9: BTC_DESTINATION
+        10: SOLANA_SOURCE
+        11: SOLANA_DESTINATION
+        12: SOLANA_ONLY
+
+    FEES_ENUM:
+      type: string
+      enum:
+        - PLATFORM
+        - INTEGRATOR
+        - CHAIN
+        - TOKEN
+        - TIER
+      description: Fee enum types.
+
+    BridgeProvider:
+      type: string
+      enum:
+        - Axelar
+        - CCTP
+        - Noble CCTP
+        - IBC
+        - IBC Packet forward middleware
+        - Chainflip
+        - CORAL
+        - Immutable
+      description: Bridge provider name for cross-chain operations.
+
+    ChainName:
+      type: string
+      enum:
+        - Arbitrum
+        - arbitrum
+        - aurora
+        - Avalanche
+        - base
+        - binance
+        - celo
+        - centrifuge
+        - Ethereum
+        - Ethereum-2
+        - Fantom
+        - filecoin
+        - filecoin-2
+        - immutable
+        - kava
+        - mantle
+        - Moonbeam
+        - optimism
+        - polygon-zkevm
+        - Polygon
+        - linea
+        - scroll
+        - blast
+        - fraxtal
+        - berachain
+        - agoric
+        - assetmantle
+        - axelarnet
+        - carbon
+        - comdex
+        - cosmoshub
+        - crescent
+        - evmos
+        - fetch
+        - injective
+        - juno
+        - ki
+        - kujira
+        - neutron
+        - noble
+        - osmosis
+        - osmosis-7
+        - regen
+        - sei
+        - secret-snip
+        - stargaze
+        - stride
+        - terra-2
+        - umee
+        - dydx
+        - acre
+        - archway
+        - bitcanna
+        - bitsong
+        - cheqd
+        - celestia
+        - coreum
+        - decentr
+        - desmos
+        - dig
+        - dymension
+        - irisnet
+        - impacthub
+        - jackal
+        - lumnetwork
+        - likecoin
+        - kava-ibc
+        - nolus
+        - xpla
+        - akash
+        - chihuahua
+        - cronos
+        - gravitybridge
+        - mars
+        - migaloo
+        - persistence
+        - omniflixhub
+        - quicksilver
+        - sommelier
+        - terra
+        - teritori
+        - sentinel
+        - humans
+        - c4e
+        - saga
+        - nibiru
+        - lava
+        - kyve
+        - xion
+        - hub
+        - saga_evm
+        - maria
+        - nirvana
+        - bitcoin
+        - solana
+      description: Chain name identifier.
+
+    NetworkIdentifier:
+      type: string
+      enum:
+        - ethereum
+        - avalanche
+        - arbitrum
+        - aurora
+        - base
+        - binance
+        - celo
+        - fantom
+        - filecoin
+        - immutable
+        - kava
+        - mantle
+        - moonbeam
+        - optimism
+        - polygon
+        - linea
+        - scroll
+        - blast
+        - fraxtal
+        - berachain
+        - agoric
+        - assetmantle
+        - axelar
+        - axelarnet
+        - carbon
+        - comdex
+        - cosmoshub
+        - crescent
+        - evmos
+        - fetch
+        - injective
+        - juno
+        - ki
+        - kujira
+        - noble
+        - neutron
+        - osmosis
+        - regen
+        - sei
+        - secret-snip
+        - stargaze
+        - stride
+        - terra-2
+        - umee
+        - dydx
+        - acre
+        - archway
+        - bitcanna
+        - bitsong
+        - cheqd
+        - celestia
+        - coreum
+        - decentr
+        - desmos
+        - dymension
+        - irisnet
+        - impacthub
+        - jackal
+        - lumnetwork
+        - likecoin
+        - kava-ibc
+        - nolus
+        - xpla
+        - akash
+        - chihuahua
+        - cronos
+        - gravitybridge
+        - mars
+        - migaloo
+        - persistence
+        - omniflixhub
+        - quicksilver
+        - sommelier
+        - terra
+        - teritori
+        - sentinel
+        - humans
+        - c4e
+        - saga
+        - nibiru
+        - lava
+        - kyve
+        - xion
+        - hub
+        - saga_evm
+        - maria
+        - nirvana
+        - bitcoin
+        - solana
+      description: Network identifier.
+
+    DexName:
+      type: string
+      enum:
+        - Agni V3
+        - Aerodrome Solidly
+        - Aerodrome V3
+        - Apeswap V2
+        - Apeswap V3
+        - Astroport
+        - Balancer V2
+        - Baseswap V2
+        - Baseswap V3
+        - Beamswap V2
+        - Beamswap V3
+        - Beamswap Saddle
+        - Camelot V3
+        - Curve V2
+        - Ellipsis
+        - Equilibre
+        - Equalizer
+        - Fraxswap V2
+        - FusionX V2
+        - FusionX V3
+        - GMX
+        - Horizon V2
+        - Horizon V3
+        - KyberSwap
+        - kyberswap Aggregator
+        - Kinetix V3
+        - Lynex V3
+        - Mento V2
+        - Nile Solidly
+        - Nile V3
+        - OpenOcean
+        - Osmosis
+        - Pancakeswap V2
+        - Pancakeswap V3
+        - Pancakeswap Stable
+        - Pangolin V2
+        - Pharaoh Solidly
+        - Pharaoh V3
+        - Platypus
+        - Quickswap V2
+        - Quickswap V3
+        - Ramses Solidly
+        - Ra V3
+        - Ramses V3
+        - Spookyswap V2
+        - Stellaswap V2
+        - Stellaswap V3
+        - Stellaswap Saddle
+        - Sushiswap V2
+        - Sushiswap V3
+        - Swapbased V2
+        - SynthSwap V2
+        - SynthSwap V3
+        - Skydrome
+        - Thena Solidly
+        - Thena V3
+        - Trader Joe V2
+        - Trader Joe V2.1
+        - Trader Joe V2.2
+        - Trident
+        - Thruster V3
+        - Thruster V2
+        - Ubeswap V2
+        - Ubeswap V3
+        - Uniswap V2
+        - Uniswap V3
+        - Wagmi V3
+        - Wigoswap V2
+        - Wombat
+        - Velodrome Solidly
+        - Velodrome V2
+        - Velodrome V3
+        - Velocimeter
+        - Zyberswap V2
+        - Zyberswap V3
+      description: DEX name identifier.
+
+    DexType:
+      type: string
+      enum:
+        - algebra
+        - balancer-v2
+        - curve
+        - gmx
+        - kyberswap-elastic
+        - platypus
+        - pancakeswap-stable
+        - saddle
+        - slipstream
+        - solidly
+        - traderjoe-v21
+        - traderjoe-v22
+        - trident
+        - wombat
+        - uniswap-v2
+        - uniswap-v3
+        - mento-v2
+        - osmosis
+        - astroport
+      description: DEX type identifier.
+
+    WrapperType:
+      type: string
+      enum:
+        - WrappedNative
+        - Overnight
+        - Deus
+        - WstETH
+        - WrappedMAI
+        - WrappedUSDY
+        - ConverterDAIUSDS
+        - ConverterMKRSKY
+      description: Wrapper type identifier.
+
+    WrapperName:
+      type: string
+      enum:
+        - Native Wrapper
+        - Overnight Finance
+        - DEUS Finance
+        - Lido Wrapped stETH
+        - QiDAO Wrapped MAI
+        - Ondo Finance
+        - DAI USDS Converter
+        - MKR SKY Converter
+      description: Wrapper name identifier.
+
+    WrapDirection:
+      type: string
+      enum:
+        - wrap
+        - unwrap
+      description: Wrap direction.
 
     BridgeType:
       type: string
@@ -610,7 +1100,7 @@ components:
         - ibc
         - chainflip
         - rfq
-        - itb
+        - immutable-token-bridge
       description: Type of bridge used for cross-chain operations.
 
     DepositAddressRequestData:
@@ -618,6 +1108,7 @@ components:
 
     DepositAddressResponseData:
       type: object
+      title: DepositAddressResponseData
       properties:
         depositAddress:
           type: string
@@ -636,6 +1127,7 @@ components:
 
     ChainDataNativeCurrency:
       type: object
+      title: ChainDataNativeCurrency
       properties:
         name:
           type: string
@@ -643,6 +1135,7 @@ components:
           type: string
         decimals:
           type: integer
+          default: 18
         icon:
           type: string
           format: uri
@@ -650,6 +1143,7 @@ components:
 
     ChainNativeContracts:
       type: object
+      title: ChainNativeContracts
       properties:
         wrappedNativeToken:
           type: string
@@ -664,14 +1158,16 @@ components:
 
     ComplianceData:
       type: object
+      title: ComplianceData
       properties:
         trmIdentifier:
-          type: string
+          $ref: '#/components/schemas/TRMIdentifier'
       additionalProperties:
         type: string
 
     Maintenance:
       type: object
+      title: Maintenance
       properties:
         type:
           type: string
@@ -685,8 +1181,74 @@ components:
           format: date-time
       additionalProperties: false
 
+    Volatility:
+      type: integer
+      enum: [0, 1, 2, 3]
+      description: |
+        Token volatility classification:
+        0: SUPER_STABLE
+        1: STABLE
+        2: HIGH_CAP
+        3: VOLATILE
+
+    Dex:
+      type: object
+      title: Dex
+      properties:
+        name:
+          $ref: '#/components/schemas/DexName'
+        chainId:
+          type: string
+        type:
+          $ref: '#/components/schemas/DexType'
+        properties:
+          type: object
+          additionalProperties: true
+        logoURI:
+          type: string
+      required:
+        - name
+        - chainId
+        - type
+        - logoURI
+
+    Wrapper:
+      type: object
+      title: Wrapper
+      properties:
+        chainId:
+          type: string
+        address:
+          type: string
+        coinAddresses:
+          type: array
+          items:
+            type: string
+        coinNames:
+          type: array
+          items:
+            type: string
+        type:
+          $ref: '#/components/schemas/WrapperType'
+        name:
+          $ref: '#/components/schemas/WrapperName'
+        logoURI:
+          type: string
+        properties:
+          type: object
+          additionalProperties: true
+      required:
+        - chainId
+        - address
+        - coinAddresses
+        - coinNames
+        - type
+        - name
+        - logoURI
+
     ChainData:
       type: object
+      title: ChainData
       properties:
         chainName:
           type: string
@@ -706,10 +1268,10 @@ components:
         nativeCurrency:
           $ref: '#/components/schemas/ChainDataNativeCurrency'
         axelarChainName:
-          type: string
+          $ref: '#/components/schemas/ChainName'
           nullable: true
         networkIdentifier:
-          type: string
+          $ref: '#/components/schemas/NetworkIdentifier'
           description: Network identifier.
         squidImplementation:
           type: string
@@ -755,25 +1317,23 @@ components:
         sameChainSwapsSupported:
           type: boolean
           description: Whether same-chain swaps are supported.
-
-    Volatility:
-      type: integer
-      enum: [0, 1, 2, 3]
-      description: |
-        Token volatility classification:
-        0: SUPER_STABLE
-        1: STABLE
-        2: HIGH_CAP
-        3: VOLATILE
+        enableBoostByDefault:
+          type: boolean
+          nullable: true
+        interchainService:
+          type: string
+          nullable: true
 
     AxelarNetworkIdentifier:
       type: object
+      title: AxelarNetworkIdentifier
       additionalProperties:
         type: string
       description: Axelar network identifiers for the token.
 
     Token:
       type: object
+      title: Token
       properties:
         chainId:
           type: string
@@ -790,6 +1350,7 @@ components:
         decimals:
           type: integer
           example: 6
+          default: 18
         logoURI:
           type: string
           format: url
@@ -821,6 +1382,7 @@ components:
           nullable: true
         volatility:
           $ref: '#/components/schemas/Volatility'
+          nullable: true
         axelarNetworkSymbol:
           type: string
           nullable: true
@@ -829,6 +1391,7 @@ components:
           nullable: true
         type:
           $ref: '#/components/schemas/ChainType'
+          nullable: true
         feeOnTransfer:
           type: boolean
           nullable: true
@@ -841,12 +1404,21 @@ components:
         originalAddress:
           type: string
           nullable: true
+        subGraphOnly:
+          type: boolean
+          nullable: true
+        subGraphIds:
+          type: array
+          items:
+            type: string
+          nullable: true
 
     FeatureFlag:
       type: object
+      title: FeatureFlag
       properties:
         feature:
-          type: string
+          $ref: '#/components/schemas/FeatureFlagType'
         allowedIntegrators:
           type: array
           items:
@@ -854,8 +1426,59 @@ components:
         enabled:
           type: boolean
 
+    RouteStatusEntry:
+      type: object
+      title: RouteStatusEntry
+      properties:
+        chainId:
+          type: string
+        txHash:
+          type: string
+        status:
+          $ref: '#/components/schemas/RouteActionStatus'
+        action:
+          $ref: '#/components/schemas/AxelarRouteAction'
+
+    StatusResponseData:
+      type: object
+      title: StatusResponseData
+      properties:
+        squidTransactionStatus:
+          $ref: '#/components/schemas/SquidTransactionStatus'
+          example: "success"
+        id:
+          type: string
+          description: Transaction ID.
+        status:
+          type: string
+          description: Transaction status.
+        gasStatus:
+          type: string
+          description: Gas status of the transaction.
+        isGMPTransaction:
+          type: boolean
+          description: Whether this is a GMP transaction.
+        axelarTransactionUrl:
+          type: string
+          description: URL to view transaction on Axelar.
+        fromChain:
+          $ref: '#/components/schemas/TransactionStatus'
+        toChain:
+          $ref: '#/components/schemas/TransactionStatus'
+        timeSpent:
+          type: object
+          additionalProperties:
+            type: number
+        routeStatus:
+          type: array
+          items:
+            $ref: '#/components/schemas/RouteStatusEntry'
+      required:
+        - squidTransactionStatus
+
     SDKInfoResponseData:
       type: object
+      title: SDKInfoResponseData
       properties:
         tokens:
           type: array
@@ -882,8 +1505,967 @@ components:
             $ref: '#/components/schemas/FeatureFlag'
           nullable: true
 
+    FeeData:
+      type: object
+      title: FeeData
+      properties:
+        lastBaseFeePerGas:
+          type: string
+          nullable: true
+        maxFeePerGas:
+          type: string
+          nullable: true
+        maxPriorityFeePerGas:
+          type: string
+          nullable: true
+        gasPrice:
+          type: string
+      required:
+        - gasPrice
+
+    AxelarFeeData:
+      type: object
+      title: AxelarFeeData
+      properties:
+        baseFee:
+          type: string
+        expressFee:
+          type: string
+        executeMultiplier:
+          type: string
+        expressMultiplier:
+          type: string
+        expressSupported:
+          type: boolean
+      required:
+        - baseFee
+        - expressFee
+        - executeMultiplier
+        - expressMultiplier
+        - expressSupported
+
+    Quote:
+      type: object
+      title: Quote
+      properties:
+        actions:
+          type: array
+          items:
+            $ref: '#/components/schemas/QuoteAction'
+        fromAmount:
+          type: string
+        toAmount:
+          type: string
+        toAmountMin:
+          type: string
+        exchangeRate:
+          type: string
+        aggregatePriceImpact:
+          type: string
+        estimatedRouteDuration:
+          type: integer
+          default: 0
+        fromAmountUSD:
+          type: string
+          nullable: true
+        toAmountUSD:
+          type: string
+          nullable: true
+        toAmountMinUSD:
+          type: string
+          nullable: true
+        aggregateSlippage:
+          type: number
+          nullable: true
+      required:
+        - actions
+        - fromAmount
+        - toAmount
+        - toAmountMin
+        - exchangeRate
+        - aggregatePriceImpact
+        - estimatedRouteDuration
+
+    ActionDetails:
+      oneOf:
+        - $ref: '#/components/schemas/SwapDetails'
+        - $ref: '#/components/schemas/WrapDetails'
+        - $ref: '#/components/schemas/BridgeDetails'
+        - $ref: '#/components/schemas/CustomCallDetails'
+        - $ref: '#/components/schemas/FeeDetails'
+        - $ref: '#/components/schemas/LiquidityProviderDetails'
+
+    QuoteAction:
+      type: object
+      title: QuoteAction
+      properties:
+        type:
+          $ref: '#/components/schemas/ActionType'
+        chainType:
+          $ref: '#/components/schemas/ChainType'
+        fromChain:
+          $ref: '#/components/schemas/ChainData'
+        toChain:
+          $ref: '#/components/schemas/ChainData'
+        fromToken:
+          $ref: '#/components/schemas/Token'
+        toToken:
+          $ref: '#/components/schemas/Token'
+        fromAmount:
+          type: string
+        toAmount:
+          type: string
+        toAmountMin:
+          type: string
+        exchangeRate:
+          type: string
+        priceImpact:
+          type: string
+        stage:
+          $ref: '#/components/schemas/ActionStage'
+          nullable: true
+        data:
+          $ref: '#/components/schemas/ActionDetails'
+      required:
+        - type
+        - chainType
+        - fromChain
+        - toChain
+        - fromToken
+        - toToken
+        - fromAmount
+        - toAmount
+        - toAmountMin
+        - exchangeRate
+        - priceImpact
+        - data
+
+    SwapDetails:
+      type: object
+      title: SwapDetails
+      properties:
+        target:
+          type: string
+        path:
+          type: array
+          items:
+            type: string
+        dex:
+          $ref: '#/components/schemas/Dex'
+        calls:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChainCall'
+        poolId:
+          type: string
+        poolFee:
+          type: string
+        tickSpacing:
+          type: integer
+          default: 0
+        binStep:
+          type: integer
+          default: 0
+        osmosisPools:
+          type: array
+          items:
+            type: object
+            title: OsmosisPool
+            properties:
+              poolId:
+                type: string
+              tokenOutDenom:
+                type: string
+        coinAddresses:
+          type: array
+          items:
+            type: string
+        isStable:
+          type: boolean
+          nullable: true
+        exchangeId:
+          type: string
+          nullable: true
+        exchangeProvider:
+          type: string
+          nullable: true
+        address:
+          type: string
+          nullable: true
+        custom:
+          type: object
+          additionalProperties: true
+          nullable: true
+        logoURI:
+          type: string
+          nullable: true
+        provider:
+          type: string
+          nullable: true
+      required:
+        - target
+        - path
+        - dex
+        - calls
+
+    WrapDetails:
+      type: object
+      title: WrapDetails
+      properties:
+        target:
+          type: string
+        path:
+          type: array
+          items:
+            type: string
+        type:
+          $ref: '#/components/schemas/WrapperType'
+        address:
+          type: string
+        wrapper:
+          type: string
+        coinAddresses:
+          type: array
+          items:
+            type: string
+        direction:
+          $ref: '#/components/schemas/WrapDirection'
+        calls:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChainCall'
+        custom:
+          type: object
+          additionalProperties: true
+          nullable: true
+        logoURI:
+          type: string
+          nullable: true
+        name:
+          type: string
+          nullable: true
+        provider:
+          type: string
+          nullable: true
+      required:
+        - target
+        - path
+        - type
+        - address
+        - wrapper
+        - coinAddresses
+        - direction
+        - calls
+
+    BridgeDetails:
+      type: object
+      title: BridgeDetails
+      properties:
+        target:
+          type: string
+        provider:
+          type: string
+        type:
+          $ref: '#/components/schemas/BridgeType'
+        name:
+          type: string
+        logoURI:
+          type: string
+          nullable: true
+        calls:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChainCall'
+          nullable: true
+      required:
+        - target
+        - provider
+        - type
+        - name
+
+    CustomCallDetails:
+      type: object
+      title: CustomCallDetails
+      properties:
+        name:
+          type: string
+        logoURI:
+          type: string
+          nullable: true
+        provider:
+          type: string
+          nullable: true
+        calls:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChainCall'
+      required:
+        - name
+        - calls
+
+    LiquidityProviderDetails:
+      type: object
+      title: LiquidityProviderDetails
+      properties:
+        liquidityProvider:
+          type: string
+        target:
+          type: string
+        provider:
+          type: string
+        type:
+          $ref: '#/components/schemas/BridgeType'
+        name:
+          type: string
+        logoURI:
+          type: string
+          nullable: true
+        calls:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChainCall'
+          nullable: true
+        fillerAddress:
+          type: string
+        expiry:
+          type: string
+      required:
+        - liquidityProvider
+        - target
+        - provider
+        - type
+        - name
+        - fillerAddress
+        - expiry
+
+    FeeDetails:
+      type: object
+      title: FeeDetails
+      properties:
+        calls:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChainCall'
+          nullable: true
+        platformFee:
+          $ref: '#/components/schemas/PlatformFee'
+        integratorFee:
+          $ref: '#/components/schemas/IntegratorFee'
+        chainFee:
+          $ref: '#/components/schemas/ChainFee'
+        tokenFee:
+          $ref: '#/components/schemas/TokenFee'
+        tierFee:
+          $ref: '#/components/schemas/TierFee'
+        totalFeeAmount:
+          type: string
+          format: int64
+        platformFeeAmount:
+          type: string
+          format: int64
+        integratorFeeAmount:
+          type: string
+          format: int64
+        integratorFee2Amount:
+          type: string
+          format: int64
+        squidFeeAmount:
+          type: string
+          format: int64
+        chainFeeAmount:
+          type: string
+          format: int64
+        tokenFeeAmount:
+          type: string
+          format: int64
+        tierFeeAmount:
+          type: string
+          format: int64
+        logoURI:
+          type: string
+      required:
+        - platformFee
+        - integratorFee
+        - chainFee
+        - tokenFee
+        - tierFee
+        - totalFeeAmount
+        - platformFeeAmount
+        - integratorFeeAmount
+        - integratorFee2Amount
+        - squidFeeAmount
+        - chainFeeAmount
+        - tokenFeeAmount
+        - tierFeeAmount
+        - logoURI
+
+    PlatformFee:
+      type: object
+      title: PlatformFee
+      properties:
+        type:
+          type: string
+          enum: [PLATFORM]
+        flat:
+          type: number
+          default: 0
+        percentage:
+          type: number
+          default: 0
+        enabled:
+          type: boolean
+        address:
+          type: string
+      required:
+        - type
+        - flat
+        - percentage
+        - enabled
+        - address
+
+    IntegratorFee:
+      type: object
+      title: IntegratorFee
+      properties:
+        type:
+          type: string
+          enum: [INTEGRATOR]
+        flat:
+          type: number
+          default: 0
+        percentage:
+          type: number
+          default: 0
+        flat2:
+          type: number
+          nullable: true
+        percentage2:
+          type: number
+          nullable: true
+        squidFlat:
+          type: number
+          default: 0
+        squidPercentage:
+          type: number
+          default: 0
+        enabled:
+          type: boolean
+        waivePlatformFee:
+          type: boolean
+        address:
+          type: string
+        address2:
+          type: string
+          nullable: true
+        integrator:
+          $ref: '#/components/schemas/Integrator'
+          nullable: true
+      required:
+        - type
+        - flat
+        - percentage
+        - squidFlat
+        - squidPercentage
+        - enabled
+        - waivePlatformFee
+        - address
+
+    ChainFee:
+      type: object
+      title: ChainFee
+      properties:
+        type:
+          type: string
+          enum: [CHAIN]
+        flat:
+          type: number
+          default: 0
+        percentage:
+          type: number
+          default: 0
+        enabled:
+          type: boolean
+        waivePlatformFee:
+          type: boolean
+        chain:
+          $ref: '#/components/schemas/ChainData'
+          nullable: true
+      required:
+        - type
+        - flat
+        - percentage
+        - enabled
+        - waivePlatformFee
+
+    TokenFee:
+      type: object
+      title: TokenFee
+      properties:
+        type:
+          type: string
+          enum: [TOKEN]
+        flat:
+          type: number
+          default: 0
+        percentage:
+          type: number
+          default: 0
+        enabled:
+          type: boolean
+        waivePlatformFee:
+          type: boolean
+        token:
+          $ref: '#/components/schemas/Token'
+          nullable: true
+      required:
+        - type
+        - flat
+        - percentage
+        - enabled
+        - waivePlatformFee
+
+    TierFee:
+      type: object
+      title: TierFee
+      properties:
+        type:
+          type: string
+          enum: [TIER]
+        tier:
+          $ref: '#/components/schemas/Volatility'
+        flat:
+          type: number
+          default: 0
+        percentage:
+          type: number
+          default: 0
+        enabled:
+          type: boolean
+        waivePlatformFee:
+          type: boolean
+      required:
+        - type
+        - tier
+        - flat
+        - percentage
+        - enabled
+        - waivePlatformFee
+
+    Integrator:
+      type: object
+      title: Integrator
+      properties:
+        id:
+          type: string
+        enabled:
+          type: boolean
+      required:
+        - id
+        - enabled
+
+    ChainCall:
+      oneOf:
+        - $ref: '#/components/schemas/EvmContractCall'
+        - $ref: '#/components/schemas/CosmosCall'
+
+    CosmosCall:
+      type: object
+      title: CosmosCall
+      properties:
+        chainType:
+          type: string
+          enum: [cosmos]
+        callType:
+          $ref: '#/components/schemas/CosmosCallType'
+        call:
+          $ref: '#/components/schemas/CosmosCallUnion'
+      required:
+        - chainType
+        - callType
+        - call
+
+    CosmosCallUnion:
+      oneOf:
+        - $ref: '#/components/schemas/CosmosMulticallContractCall'
+        - $ref: '#/components/schemas/CosmosIbcTransferCall'
+        - $ref: '#/components/schemas/CosmosPfmCall'
+        - $ref: '#/components/schemas/CosmosGmpCall'
+        - $ref: '#/components/schemas/CosmosBankSendCall'
+        - $ref: '#/components/schemas/CosmosCctpCall'
+
+    CosmosMulticallContractCall:
+      type: object
+      title: CosmosMulticallContractCall
+      properties:
+        msg:
+          type: object
+        actions:
+          type: array
+          items:
+            $ref: '#/components/schemas/CosmosActionUnion'
+      required:
+        - msg
+        - actions
+
+    CosmosActionUnion:
+      oneOf:
+        - $ref: '#/components/schemas/NativeBalanceFetchAction'
+        - $ref: '#/components/schemas/IbcTrackingAction'
+        - $ref: '#/components/schemas/FieldToProtoBinaryAction'
+
+    NativeBalanceFetchAction:
+      type: object
+      title: NativeBalanceFetchAction
+      properties:
+        native_balance_fetch:
+          type: object
+          title: NativeBalanceFetch
+          properties:
+            denom:
+              type: string
+            replacer:
+              type: string
+          required:
+            - denom
+            - replacer
+      required:
+        - native_balance_fetch
+
+    IbcTrackingAction:
+      type: object
+      title: IbcTrackingAction
+      properties:
+        ibc_tracking:
+          type: object
+          title: IbcTracking
+          properties:
+            channel:
+              type: string
+            denom:
+              type: string
+            amount:
+              type: string
+              nullable: true
+            amount_pointer:
+              type: string
+              nullable: true
+          required:
+            - channel
+            - denom
+      required:
+        - ibc_tracking
+
+    FieldToProtoBinaryAction:
+      type: object
+      title: FieldToProtoBinaryAction
+      properties:
+        field_to_binary:
+          type: object
+          title: FieldToBinary
+          properties:
+            replacer:
+              type: string
+            proto_msg_type:
+              type: string
+              enum: [ibc_transfer, osmosis_swap_exact_amt_in]
+          required:
+            - replacer
+            - proto_msg_type
+      required:
+        - field_to_binary
+
+    CosmosIbcTransferCall:
+      type: object
+      title: CosmosIbcTransferCall
+      properties:
+        typeUrl:
+          type: string
+          enum: ["/ibc.applications.transfer.v1.MsgTransfer"]
+        value:
+          type: object
+          title: CosmosIbcTransferValue
+          properties:
+            sourcePort:
+              type: string
+              enum: [transfer]
+            sourceChannel:
+              type: string
+            token:
+              type: object
+              title: CosmosToken
+              properties:
+                denom:
+                  type: string
+                amount:
+                  type: string
+              required:
+                - denom
+                - amount
+            sender:
+              type: string
+            receiver:
+              type: string
+            timeoutTimestamp:
+              type: integer
+              format: int64
+              default: 0
+            memo:
+              type: string
+          required:
+            - sourcePort
+            - sourceChannel
+            - token
+            - sender
+            - receiver
+            - timeoutTimestamp
+            - memo
+      required:
+        - typeUrl
+        - value
+
+    CosmosPfmCall:
+      type: object
+      title: CosmosPfmCall
+      properties:
+        forward:
+          type: object
+          title: PfmForward
+          properties:
+            receiver:
+              type: string
+            port:
+              type: string
+              enum: [transfer]
+            channel:
+              type: string
+            next:
+              type: object
+              nullable: true
+          required:
+            - receiver
+            - port
+            - channel
+      required:
+        - forward
+
+    CosmosGmpCall:
+      type: object
+      title: CosmosGmpCall
+      properties:
+        destination_chain:
+          type: string
+        destination_address:
+          type: string
+        payload:
+          type: array
+          items:
+            type: integer
+          nullable: true
+        type:
+          type: integer
+          default: 0
+        fee:
+          type: object
+          title: GmpFee
+          properties:
+            amount:
+              type: string
+            recipient:
+              type: string
+          required:
+            - amount
+            - recipient
+          nullable: true
+      required:
+        - destination_chain
+        - destination_address
+        - type
+
+    CosmosBankSendCall:
+      type: object
+      title: CosmosBankSendCall
+      properties:
+        bank:
+          type: object
+          title: BankSend
+          properties:
+            send:
+              type: object
+              title: SendInstruction
+              properties:
+                to_address:
+                  type: string
+                amount:
+                  type: array
+                  items:
+                    type: object
+                    title: CosmosCoin
+                    properties:
+                      denom:
+                        type: string
+                      amount:
+                        type: string
+                    required:
+                      - denom
+                      - amount
+              required:
+                - to_address
+                - amount
+          required:
+            - send
+      required:
+        - bank
+
+    CosmosCctpCall:
+      type: object
+      title: CosmosCctpCall
+      properties:
+        typeUrl:
+          type: string
+          enum: ["/circle.cctp.v1.MsgDepositForBurn"]
+        value:
+          type: object
+          title: CosmosCctpValue
+          properties:
+            from:
+              type: string
+            amount:
+              type: string
+            destinationDomain:
+              type: integer
+              default: 0
+            mintRecipient:
+              type: string
+            burnToken:
+              type: string
+          required:
+            - from
+            - amount
+            - destinationDomain
+            - mintRecipient
+            - burnToken
+      required:
+        - typeUrl
+        - value
+
+    PathParams:
+      type: object
+      title: PathParams
+      properties:
+        fromChainId:
+          type: string
+        toChainId:
+          type: string
+        fromToken:
+          type: string
+        toToken:
+          type: string
+        amountInUsd:
+          type: number
+          default: 0
+      required:
+        - fromChainId
+        - toChainId
+        - fromToken
+        - toToken
+        - amountInUsd
+
+    Path:
+      type: object
+      title: Path
+      properties:
+        fromChain:
+          $ref: '#/components/schemas/ChainData'
+        fromToken:
+          $ref: '#/components/schemas/Token'
+        toChain:
+          $ref: '#/components/schemas/ChainData'
+        toToken:
+          $ref: '#/components/schemas/Token'
+        actions:
+          type: array
+          items:
+            $ref: '#/components/schemas/PathAction'
+      required:
+        - fromChain
+        - fromToken
+        - toChain
+        - toToken
+        - actions
+
+    PathAction:
+      type: object
+      title: PathAction
+      properties:
+        type:
+          $ref: '#/components/schemas/ActionType'
+        chainType:
+          $ref: '#/components/schemas/ChainType'
+        fromChain:
+          $ref: '#/components/schemas/ChainData'
+        toChain:
+          $ref: '#/components/schemas/ChainData'
+        fromToken:
+          $ref: '#/components/schemas/Token'
+        toToken:
+          $ref: '#/components/schemas/Token'
+        data:
+          type: object
+          additionalProperties: true
+      required:
+        - type
+        - chainType
+        - fromChain
+        - toChain
+        - fromToken
+        - toToken
+        - data
+
+    Order:
+      type: object
+      title: Order
+      properties:
+        fromAddress:
+          type: string
+        toAddress:
+          type: string
+        filler:
+          type: string
+        fromToken:
+          type: string
+        toToken:
+          type: string
+        expiry:
+          type: string
+        fromAmount:
+          type: string
+        fillAmount:
+          type: string
+        feeRate:
+          type: string
+        fromChain:
+          type: string
+        toChain:
+          type: string
+        postHookHash:
+          type: string
+      required:
+        - fromAddress
+        - toAddress
+        - filler
+        - fromToken
+        - toToken
+        - expiry
+        - fromAmount
+        - fillAmount
+        - feeRate
+        - fromChain
+        - toChain
+        - postHookHash
+
     ApiErrorDetails:
       type: object
+      title: ApiErrorDetails
       properties:
         message:
           type: string
@@ -901,6 +2483,7 @@ components:
 
     ApiBasicResponseError:
       type: object
+      title: ApiBasicResponseError
       properties:
         errorType:
           $ref: '#/components/schemas/ErrorType'
@@ -1092,7 +2675,7 @@ paths:
 
   /v2/deposit-address:
     post:
-      operationId: v2DepositAddressPost
+      operationId: getDepositAddress
       summary: Get deposit address for non-EVM to EVM swaps
       parameters:
         - $ref: '#/components/parameters/IntegratorIdHeader'

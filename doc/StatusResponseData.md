@@ -8,7 +8,7 @@ import 'package:openapi/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**squidTransactionStatus** | **String** |  | 
+**squidTransactionStatus** | [**SquidTransactionStatus**](SquidTransactionStatus.md) |  | 
 **id** | **String** | Transaction ID. | [optional] 
 **status** | **String** | Transaction status. | [optional] 
 **gasStatus** | **String** | Gas status of the transaction. | [optional] 

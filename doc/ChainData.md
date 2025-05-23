@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 **rpc** | **String** |  | [optional] 
 **chainIconURI** | **String** |  | [optional] 
 **nativeCurrency** | [**ChainDataNativeCurrency**](ChainDataNativeCurrency.md) |  | [optional] 
-**axelarChainName** | **String** |  | [optional] 
-**networkIdentifier** | **String** | Network identifier. | [optional] 
+**axelarChainName** | [**ChainName**](ChainName.md) |  | [optional] 
+**networkIdentifier** | [**NetworkIdentifier**](NetworkIdentifier.md) |  | [optional] 
 **squidImplementation** | **String** |  | [optional] 
 **estimatedRouteDuration** | **int** |  | [optional] 
 **estimatedExpressRouteDuration** | **int** |  | [optional] 
@@ -28,6 +28,8 @@ Name | Type | Description | Notes
 **maintenances** | [**List<Maintenance>**](Maintenance.md) |  | [optional] [default to const []]
 **boostSupported** | **bool** |  | [optional] 
 **sameChainSwapsSupported** | **bool** | Whether same-chain swaps are supported. | [optional] 
+**enableBoostByDefault** | **bool** |  | [optional] 
+**interchainService** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

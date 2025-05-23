@@ -35,9 +35,21 @@ class RouteStatusEntry {
   ///
   String? txHash;
 
-  RouteStatusEntryStatusEnum? status;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  RouteActionStatus? status;
 
-  RouteStatusEntryActionEnum? action;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  AxelarRouteAction? action;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is RouteStatusEntry &&
@@ -95,8 +107,8 @@ class RouteStatusEntry {
       return RouteStatusEntry(
         chainId: mapValueOfType<String>(json, r'chainId'),
         txHash: mapValueOfType<String>(json, r'txHash'),
-        status: RouteStatusEntryStatusEnum.fromJson(json[r'status']),
-        action: RouteStatusEntryActionEnum.fromJson(json[r'action']),
+        status: RouteActionStatus.fromJson(json[r'status']),
+        action: AxelarRouteAction.fromJson(json[r'action']),
       );
     }
     return null;
@@ -146,182 +158,4 @@ class RouteStatusEntry {
   static const requiredKeys = <String>{
   };
 }
-
-
-class RouteStatusEntryStatusEnum {
-  /// Instantiate a new enum with the provided [value].
-  const RouteStatusEntryStatusEnum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value;
-
-  String toJson() => value;
-
-  static const success = RouteStatusEntryStatusEnum._(r'success');
-  static const failure = RouteStatusEntryStatusEnum._(r'failure');
-  static const notFound = RouteStatusEntryStatusEnum._(r'not_found');
-  static const unknown = RouteStatusEntryStatusEnum._(r'unknown');
-  static const awaiting = RouteStatusEntryStatusEnum._(r'awaiting');
-  static const refunded = RouteStatusEntryStatusEnum._(r'refunded');
-
-  /// List of all possible values in this [enum][RouteStatusEntryStatusEnum].
-  static const values = <RouteStatusEntryStatusEnum>[
-    success,
-    failure,
-    notFound,
-    unknown,
-    awaiting,
-    refunded,
-  ];
-
-  static RouteStatusEntryStatusEnum? fromJson(dynamic value) => RouteStatusEntryStatusEnumTypeTransformer().decode(value);
-
-  static List<RouteStatusEntryStatusEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <RouteStatusEntryStatusEnum>[];
-    if (json is List && json.isNotEmpty) {
-      for (final row in json) {
-        final value = RouteStatusEntryStatusEnum.fromJson(row);
-        if (value != null) {
-          result.add(value);
-        }
-      }
-    }
-    return result.toList(growable: growable);
-  }
-}
-
-/// Transformation class that can [encode] an instance of [RouteStatusEntryStatusEnum] to String,
-/// and [decode] dynamic data back to [RouteStatusEntryStatusEnum].
-class RouteStatusEntryStatusEnumTypeTransformer {
-  factory RouteStatusEntryStatusEnumTypeTransformer() => _instance ??= const RouteStatusEntryStatusEnumTypeTransformer._();
-
-  const RouteStatusEntryStatusEnumTypeTransformer._();
-
-  String encode(RouteStatusEntryStatusEnum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a RouteStatusEntryStatusEnum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  RouteStatusEntryStatusEnum? decode(dynamic data, {bool allowNull = true}) {
-    if (data != null) {
-      switch (data) {
-        case r'success': return RouteStatusEntryStatusEnum.success;
-        case r'failure': return RouteStatusEntryStatusEnum.failure;
-        case r'not_found': return RouteStatusEntryStatusEnum.notFound;
-        case r'unknown': return RouteStatusEntryStatusEnum.unknown;
-        case r'awaiting': return RouteStatusEntryStatusEnum.awaiting;
-        case r'refunded': return RouteStatusEntryStatusEnum.refunded;
-        default:
-          if (!allowNull) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [RouteStatusEntryStatusEnumTypeTransformer] instance.
-  static RouteStatusEntryStatusEnumTypeTransformer? _instance;
-}
-
-
-
-class RouteStatusEntryActionEnum {
-  /// Instantiate a new enum with the provided [value].
-  const RouteStatusEntryActionEnum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value;
-
-  String toJson() => value;
-
-  static const call = RouteStatusEntryActionEnum._(r'call');
-  static const executed = RouteStatusEntryActionEnum._(r'executed');
-  static const ibcTransfer = RouteStatusEntryActionEnum._(r'ibc_transfer');
-  static const send = RouteStatusEntryActionEnum._(r'send');
-  static const vote = RouteStatusEntryActionEnum._(r'vote');
-  static const ibcSend = RouteStatusEntryActionEnum._(r'ibc_send');
-  static const gasPaid = RouteStatusEntryActionEnum._(r'gas_paid');
-  static const approved = RouteStatusEntryActionEnum._(r'approved');
-
-  /// List of all possible values in this [enum][RouteStatusEntryActionEnum].
-  static const values = <RouteStatusEntryActionEnum>[
-    call,
-    executed,
-    ibcTransfer,
-    send,
-    vote,
-    ibcSend,
-    gasPaid,
-    approved,
-  ];
-
-  static RouteStatusEntryActionEnum? fromJson(dynamic value) => RouteStatusEntryActionEnumTypeTransformer().decode(value);
-
-  static List<RouteStatusEntryActionEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <RouteStatusEntryActionEnum>[];
-    if (json is List && json.isNotEmpty) {
-      for (final row in json) {
-        final value = RouteStatusEntryActionEnum.fromJson(row);
-        if (value != null) {
-          result.add(value);
-        }
-      }
-    }
-    return result.toList(growable: growable);
-  }
-}
-
-/// Transformation class that can [encode] an instance of [RouteStatusEntryActionEnum] to String,
-/// and [decode] dynamic data back to [RouteStatusEntryActionEnum].
-class RouteStatusEntryActionEnumTypeTransformer {
-  factory RouteStatusEntryActionEnumTypeTransformer() => _instance ??= const RouteStatusEntryActionEnumTypeTransformer._();
-
-  const RouteStatusEntryActionEnumTypeTransformer._();
-
-  String encode(RouteStatusEntryActionEnum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a RouteStatusEntryActionEnum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  RouteStatusEntryActionEnum? decode(dynamic data, {bool allowNull = true}) {
-    if (data != null) {
-      switch (data) {
-        case r'call': return RouteStatusEntryActionEnum.call;
-        case r'executed': return RouteStatusEntryActionEnum.executed;
-        case r'ibc_transfer': return RouteStatusEntryActionEnum.ibcTransfer;
-        case r'send': return RouteStatusEntryActionEnum.send;
-        case r'vote': return RouteStatusEntryActionEnum.vote;
-        case r'ibc_send': return RouteStatusEntryActionEnum.ibcSend;
-        case r'gas_paid': return RouteStatusEntryActionEnum.gasPaid;
-        case r'approved': return RouteStatusEntryActionEnum.approved;
-        default:
-          if (!allowNull) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [RouteStatusEntryActionEnumTypeTransformer] instance.
-  static RouteStatusEntryActionEnumTypeTransformer? _instance;
-}
-
 
