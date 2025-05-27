@@ -31,12 +31,12 @@ void main() {
       // TODO
     });
 
-    // CosmosCctpCallValue value
+    // CosmosCctpValue value
     test('to test the property `value`', () async {
       // TODO
     });
 
-    // CosmosPfmCallForward forward
+    // PfmForward forward
     test('to test the property `forward`', () async {
       // TODO
     });
@@ -61,12 +61,12 @@ void main() {
       // TODO
     });
 
-    // CosmosGmpCallFee fee
+    // GmpFee fee
     test('to test the property `fee`', () async {
       // TODO
     });
 
-    // CosmosBankSendCallBank bank
+    // BankSend bank
     test('to test the property `bank`', () async {
       // TODO
     });

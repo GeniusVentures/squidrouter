@@ -16,7 +16,7 @@ void main() {
   // final instance = FieldToProtoBinaryAction();
 
   group('test FieldToProtoBinaryAction', () {
-    // FieldToProtoBinaryActionFieldToBinary fieldToBinary
+    // FieldToBinary fieldToBinary
     test('to test the property `fieldToBinary`', () async {
       // TODO
     });

@@ -54,7 +54,7 @@ void main() {
       // TODO
     });
 
-    // int routeMillis
+    // int routeMillis (default value: 0)
     test('to test the property `routeMillis`', () async {
       // TODO
     });
@@ -72,7 +72,7 @@ void main() {
     });
 
     // Estimated duration in milliseconds.
-    // int estimatedRouteDuration
+    // int estimatedRouteDuration (default value: 0)
     test('to test the property `estimatedRouteDuration`', () async {
       // TODO
     });

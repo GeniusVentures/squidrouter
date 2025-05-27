@@ -16,7 +16,7 @@ void main() {
   // final instance = CosmosCall();
 
   group('test CosmosCall', () {
-    // String chainType
+    // ChainType chainType
     test('to test the property `chainType`', () async {
       // TODO
     });
@@ -26,7 +26,7 @@ void main() {
       // TODO
     });
 
-    // CosmosCallCall call
+    // CosmosCallUnion call
     test('to test the property `call`', () async {
       // TODO
     });

@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-part of openapi.api;
+part of squidrouter;
 
 /// Action stage: 0: EVM_SOURCE 1: EVM_DESTINATION 2: EVM_TRANSIENT 3: EVM_ONLY 4: COSMOS_SOURCE 5: COSMOS_DESTINATION 6: COSMOS_TRANSIENT 7: COSMOS_ONLY 8: BTC_SOURCE 9: BTC_DESTINATION 10: SOLANA_SOURCE 11: SOLANA_DESTINATION 12: SOLANA_ONLY 
 class ActionStage {

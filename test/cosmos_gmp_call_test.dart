@@ -31,12 +31,12 @@ void main() {
       // TODO
     });
 
-    // int type
+    // int type (default value: 0)
     test('to test the property `type`', () async {
       // TODO
     });
 
-    // CosmosGmpCallFee fee
+    // GmpFee fee
     test('to test the property `fee`', () async {
       // TODO
     });

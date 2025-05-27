@@ -21,7 +21,7 @@ void main() {
       // TODO
     });
 
-    // List<CosmosMulticallContractCallActionsInner> actions (default value: const [])
+    // List<CosmosActionUnion> actions (default value: const [])
     test('to test the property `actions`', () async {
       // TODO
     });

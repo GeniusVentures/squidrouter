@@ -36,7 +36,7 @@ void main() {
       // TODO
     });
 
-    // int decimals
+    // int decimals (default value: 18)
     test('to test the property `decimals`', () async {
       // TODO
     });

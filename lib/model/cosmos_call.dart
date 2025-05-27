@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-part of openapi.api;
+part of squidrouter;
 
 class CosmosCall {
   /// Returns a new [CosmosCall] instance.
@@ -18,7 +18,7 @@ class CosmosCall {
     required this.call,
   });
 
-  CosmosCallChainTypeEnum chainType;
+  ChainType chainType;
 
   CosmosCallType callType;
 
@@ -67,7 +67,7 @@ class CosmosCall {
       }());
 
       return CosmosCall(
-        chainType: CosmosCallChainTypeEnum.fromJson(json[r'chainType'])!,
+        chainType: ChainType.fromJson(json[r'chainType'])!,
         callType: CosmosCallType.fromJson(json[r'callType'])!,
         call: CosmosCallUnion.fromJson(json[r'call'])!,
       );
@@ -122,75 +122,4 @@ class CosmosCall {
     'call',
   };
 }
-
-
-class CosmosCallChainTypeEnum {
-  /// Instantiate a new enum with the provided [value].
-  const CosmosCallChainTypeEnum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value;
-
-  String toJson() => value;
-
-  static const cosmos = CosmosCallChainTypeEnum._(r'cosmos');
-
-  /// List of all possible values in this [enum][CosmosCallChainTypeEnum].
-  static const values = <CosmosCallChainTypeEnum>[
-    cosmos,
-  ];
-
-  static CosmosCallChainTypeEnum? fromJson(dynamic value) => CosmosCallChainTypeEnumTypeTransformer().decode(value);
-
-  static List<CosmosCallChainTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <CosmosCallChainTypeEnum>[];
-    if (json is List && json.isNotEmpty) {
-      for (final row in json) {
-        final value = CosmosCallChainTypeEnum.fromJson(row);
-        if (value != null) {
-          result.add(value);
-        }
-      }
-    }
-    return result.toList(growable: growable);
-  }
-}
-
-/// Transformation class that can [encode] an instance of [CosmosCallChainTypeEnum] to String,
-/// and [decode] dynamic data back to [CosmosCallChainTypeEnum].
-class CosmosCallChainTypeEnumTypeTransformer {
-  factory CosmosCallChainTypeEnumTypeTransformer() => _instance ??= const CosmosCallChainTypeEnumTypeTransformer._();
-
-  const CosmosCallChainTypeEnumTypeTransformer._();
-
-  String encode(CosmosCallChainTypeEnum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a CosmosCallChainTypeEnum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  CosmosCallChainTypeEnum? decode(dynamic data, {bool allowNull = true}) {
-    if (data != null) {
-      switch (data) {
-        case r'cosmos': return CosmosCallChainTypeEnum.cosmos;
-        default:
-          if (!allowNull) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [CosmosCallChainTypeEnumTypeTransformer] instance.
-  static CosmosCallChainTypeEnumTypeTransformer? _instance;
-}
-
 

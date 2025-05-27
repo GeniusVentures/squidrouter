@@ -19,7 +19,7 @@ components:
         - bitcoin
         - solana
       description: The type of blockchain.
-
+      default: evm
     SquidCallType:
       type: integer
       description: |
@@ -30,6 +30,7 @@ components:
         3: COLLECT_TOKEN_BALANCE
       enum: [0, 1, 2, 3]
       example: 1
+      default: 0
 
     HookCallPayload:
       type: object
@@ -1255,8 +1256,8 @@ components:
         chainId:
           type: string
         chainType:
-          type: string
-          enum: [evm, cosmos, bitcoin, solana]
+          $ref: '#/components/schemas/ChainType'
+          default: evm
         rpc:
           type: string
           format: uri
@@ -1323,6 +1324,10 @@ components:
         interchainService:
           type: string
           nullable: true
+      required:
+        - chainName
+        - chainId
+        - chainType
 
     AxelarNetworkIdentifier:
       type: object
@@ -2073,8 +2078,8 @@ components:
       title: CosmosCall
       properties:
         chainType:
-          type: string
-          enum: [cosmos]
+          $ref: '#/components/schemas/ChainType'
+          default: cosmos
         callType:
           $ref: '#/components/schemas/CosmosCallType'
         call:

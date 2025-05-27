@@ -4,7 +4,7 @@ import 'dart:convert'; // Only if used for debugging error bodies
 import 'dart:io' show File; // For checking .env file existence
 import 'dart:math';
 
-import 'package:openapi/api.dart'; // Your generated SDK (assuming pubName=openapi)
+import 'package:squidrouter/api.dart'; // Your generated SDK (assuming pubName=openapi)
 import 'package:dio/dio.dart';
 import 'package:dotenv/dotenv.dart' as dotenv_package; // Aliased
 

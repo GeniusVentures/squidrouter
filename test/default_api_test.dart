@@ -1,5 +1,5 @@
 // test/default_api_test.dart
-import 'package:openapi/api.dart';
+import 'package:squidrouter/api.dart';
 import 'package:test/test.dart';
 import 'api_test_helper.dart';
 

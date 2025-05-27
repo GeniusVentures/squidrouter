@@ -36,7 +36,7 @@ void main() {
       // TODO
     });
 
-    // num amountInUsd
+    // num amountInUsd (default value: 0)
     test('to test the property `amountInUsd`', () async {
       // TODO
     });

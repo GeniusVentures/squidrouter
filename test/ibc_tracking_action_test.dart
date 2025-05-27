@@ -16,7 +16,7 @@ void main() {
   // final instance = IbcTrackingAction();
 
   group('test IbcTrackingAction', () {
-    // IbcTrackingActionIbcTracking ibcTracking
+    // IbcTracking ibcTracking
     test('to test the property `ibcTracking`', () async {
       // TODO
     });

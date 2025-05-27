@@ -21,12 +21,12 @@ void main() {
       // TODO
     });
 
-    // num flat
+    // num flat (default value: 0)
     test('to test the property `flat`', () async {
       // TODO
     });
 
-    // num percentage
+    // num percentage (default value: 0)
     test('to test the property `percentage`', () async {
       // TODO
     });
@@ -41,12 +41,12 @@ void main() {
       // TODO
     });
 
-    // num squidFlat
+    // num squidFlat (default value: 0)
     test('to test the property `squidFlat`', () async {
       // TODO
     });
 
-    // num squidPercentage
+    // num squidPercentage (default value: 0)
     test('to test the property `squidPercentage`', () async {
       // TODO
     });

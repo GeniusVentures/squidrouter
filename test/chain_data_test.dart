@@ -26,7 +26,7 @@ void main() {
       // TODO
     });
 
-    // String chainType
+    // ChainType chainType
     test('to test the property `chainType`', () async {
       // TODO
     });

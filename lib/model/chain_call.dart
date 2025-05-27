@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-part of openapi.api;
+part of squidrouter;
 
 class ChainCall {
   /// Returns a new [ChainCall] instance.
@@ -23,7 +23,7 @@ class ChainCall {
     required this.call,
   });
 
-  ChainCallChainTypeEnum chainType;
+  ChainType chainType;
 
   CosmosCallType callType;
 
@@ -117,7 +117,7 @@ class ChainCall {
       }());
 
       return ChainCall(
-        chainType: ChainCallChainTypeEnum.fromJson(json[r'chainType'])!,
+        chainType: ChainType.fromJson(json[r'chainType'])!,
         callType: CosmosCallType.fromJson(json[r'callType'])!,
         target: mapValueOfType<String>(json, r'target')!,
         value: mapValueOfType<String>(json, r'value'),
@@ -180,75 +180,4 @@ class ChainCall {
     'call',
   };
 }
-
-
-class ChainCallChainTypeEnum {
-  /// Instantiate a new enum with the provided [value].
-  const ChainCallChainTypeEnum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value;
-
-  String toJson() => value;
-
-  static const cosmos = ChainCallChainTypeEnum._(r'cosmos');
-
-  /// List of all possible values in this [enum][ChainCallChainTypeEnum].
-  static const values = <ChainCallChainTypeEnum>[
-    cosmos,
-  ];
-
-  static ChainCallChainTypeEnum? fromJson(dynamic value) => ChainCallChainTypeEnumTypeTransformer().decode(value);
-
-  static List<ChainCallChainTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <ChainCallChainTypeEnum>[];
-    if (json is List && json.isNotEmpty) {
-      for (final row in json) {
-        final value = ChainCallChainTypeEnum.fromJson(row);
-        if (value != null) {
-          result.add(value);
-        }
-      }
-    }
-    return result.toList(growable: growable);
-  }
-}
-
-/// Transformation class that can [encode] an instance of [ChainCallChainTypeEnum] to String,
-/// and [decode] dynamic data back to [ChainCallChainTypeEnum].
-class ChainCallChainTypeEnumTypeTransformer {
-  factory ChainCallChainTypeEnumTypeTransformer() => _instance ??= const ChainCallChainTypeEnumTypeTransformer._();
-
-  const ChainCallChainTypeEnumTypeTransformer._();
-
-  String encode(ChainCallChainTypeEnum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a ChainCallChainTypeEnum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  ChainCallChainTypeEnum? decode(dynamic data, {bool allowNull = true}) {
-    if (data != null) {
-      switch (data) {
-        case r'cosmos': return ChainCallChainTypeEnum.cosmos;
-        default:
-          if (!allowNull) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [ChainCallChainTypeEnumTypeTransformer] instance.
-  static ChainCallChainTypeEnumTypeTransformer? _instance;
-}
-
 

@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-part of openapi.api;
+part of squidrouter;
 
 /// Cosmos call type: 0: MULTICALL 1: IBC_TRANSFER   2: PFM 3: GMP 4: CCTP 
 class CosmosCallType {

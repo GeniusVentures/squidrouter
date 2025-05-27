@@ -1,7 +1,7 @@
-name: 'openapi'
+name: 'squidrouter'
 version: '1.0.0'
-description: 'OpenAPI API client'
-homepage: 'homepage'
+description: 'Squid Router OpenAPI client'
+homepage: 'http://github.com/GeniusVentures/squidrouter-client-dart'
 environment:
   sdk: '>=2.12.0 <4.0.0'
 dependencies:

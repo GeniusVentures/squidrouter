@@ -76,7 +76,7 @@ void main() {
       // TODO
     });
 
-    // QuoteActionData data
+    // ActionDetails data
     test('to test the property `data`', () async {
       // TODO
     });

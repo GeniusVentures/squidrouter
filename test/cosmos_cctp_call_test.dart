@@ -21,7 +21,7 @@ void main() {
       // TODO
     });
 
-    // CosmosCctpCallValue value
+    // CosmosCctpValue value
     test('to test the property `value`', () async {
       // TODO
     });

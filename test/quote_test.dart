@@ -46,7 +46,7 @@ void main() {
       // TODO
     });
 
-    // int estimatedRouteDuration
+    // int estimatedRouteDuration (default value: 0)
     test('to test the property `estimatedRouteDuration`', () async {
       // TODO
     });

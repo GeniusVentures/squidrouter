@@ -26,12 +26,12 @@ void main() {
       // TODO
     });
 
-    // num flat
+    // num flat (default value: 0)
     test('to test the property `flat`', () async {
       // TODO
     });
 
-    // num percentage
+    // num percentage (default value: 0)
     test('to test the property `percentage`', () async {
       // TODO
     });

@@ -21,7 +21,7 @@ void main() {
       // TODO
     });
 
-    // CosmosIbcTransferCallValue value
+    // CosmosIbcTransferValue value
     test('to test the property `value`', () async {
       // TODO
     });

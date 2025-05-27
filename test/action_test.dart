@@ -70,7 +70,7 @@ void main() {
     });
 
     // Estimated duration in milliseconds.
-    // int estimatedDuration
+    // int estimatedDuration (default value: 0)
     test('to test the property `estimatedDuration`', () async {
       // TODO
     });

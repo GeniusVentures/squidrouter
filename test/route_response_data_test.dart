@@ -16,7 +16,7 @@ void main() {
   // final instance = RouteResponseData();
 
   group('test RouteResponseData', () {
-    // RouteResponseDataTransactionRequest transactionRequest
+    // TransactionRequest transactionRequest
     test('to test the property `transactionRequest`', () async {
       // TODO
     });

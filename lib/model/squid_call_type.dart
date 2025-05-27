@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-part of openapi.api;
+part of squidrouter;
 
 /// Type of call for hooks. 0: DEFAULT (target contract call) 1: FULL_TOKEN_BALANCE (use full balance of specified token for an input parameter) 2: CALL_DATA / FULL_NATIVE_BALANCE (use `value` field as is for native token transfers or `payload` for substituting into callData) 3: COLLECT_TOKEN_BALANCE 
 class SquidCallType {

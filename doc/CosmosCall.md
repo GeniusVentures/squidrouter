@@ -8,7 +8,7 @@ import 'package:openapi/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**chainType** | **String** |  | 
+**chainType** | [**ChainType**](ChainType.md) |  | 
 **callType** | [**CosmosCallType**](CosmosCallType.md) |  | 
 **call** | [**CosmosCallUnion**](CosmosCallUnion.md) |  | 
 

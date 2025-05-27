@@ -16,7 +16,7 @@ void main() {
   // final instance = NativeBalanceFetchAction();
 
   group('test NativeBalanceFetchAction', () {
-    // NativeBalanceFetchActionNativeBalanceFetch nativeBalanceFetch
+    // NativeBalanceFetch nativeBalanceFetch
     test('to test the property `nativeBalanceFetch`', () async {
       // TODO
     });

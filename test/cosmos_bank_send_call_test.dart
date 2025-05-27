@@ -16,7 +16,7 @@ void main() {
   // final instance = CosmosBankSendCall();
 
   group('test CosmosBankSendCall', () {
-    // CosmosBankSendCallBank bank
+    // BankSend bank
     test('to test the property `bank`', () async {
       // TODO
     });

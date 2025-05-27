@@ -56,7 +56,7 @@ void main() {
       // TODO
     });
 
-    // List<SwapDetailsOsmosisPoolsInner> osmosisPools (default value: const [])
+    // List<OsmosisPool> osmosisPools (default value: const [])
     test('to test the property `osmosisPools`', () async {
       // TODO
     });

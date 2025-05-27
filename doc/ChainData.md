@@ -8,9 +8,9 @@ import 'package:openapi/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**chainName** | **String** |  | [optional] 
-**chainId** | **String** |  | [optional] 
-**chainType** | **String** |  | [optional] 
+**chainName** | **String** |  | 
+**chainId** | **String** |  | 
+**chainType** | [**ChainType**](ChainType.md) |  | 
 **rpc** | **String** |  | [optional] 
 **chainIconURI** | **String** |  | [optional] 
 **nativeCurrency** | [**ChainDataNativeCurrency**](ChainDataNativeCurrency.md) |  | [optional] 

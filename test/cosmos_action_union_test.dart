@@ -16,17 +16,17 @@ void main() {
   // final instance = CosmosActionUnion();
 
   group('test CosmosActionUnion', () {
-    // NativeBalanceFetchActionNativeBalanceFetch nativeBalanceFetch
+    // NativeBalanceFetch nativeBalanceFetch
     test('to test the property `nativeBalanceFetch`', () async {
       // TODO
     });
 
-    // IbcTrackingActionIbcTracking ibcTracking
+    // IbcTracking ibcTracking
     test('to test the property `ibcTracking`', () async {
       // TODO
     });
 
-    // FieldToProtoBinaryActionFieldToBinary fieldToBinary
+    // FieldToBinary fieldToBinary
     test('to test the property `fieldToBinary`', () async {
       // TODO
     });

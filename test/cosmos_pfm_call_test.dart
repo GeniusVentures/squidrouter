@@ -16,7 +16,7 @@ void main() {
   // final instance = CosmosPfmCall();
 
   group('test CosmosPfmCall', () {
-    // CosmosPfmCallForward forward
+    // PfmForward forward
     test('to test the property `forward`', () async {
       // TODO
     });

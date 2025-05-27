@@ -5,32 +5,134 @@
 ├── codelayout.txt
 ├── doc
 |  ├── Action.md
+|  ├── ActionDetails.md
+|  ├── ActionStage.md
+|  ├── ActionType.md
 |  ├── ApiBasicResponseError.md
-|  ├── ApiBasicResponseErrorErrorsInner.md
+|  ├── ApiErrorDetails.md
+|  ├── AxelarFeeData.md
+|  ├── AxelarRouteAction.md
+|  ├── BankSend.md
+|  ├── BridgeDetails.md
+|  ├── BridgeProvider.md
+|  ├── BridgeType.md
+|  ├── CCTPStatus.md
+|  ├── ChainCall.md
 |  ├── ChainData.md
 |  ├── ChainDataNativeCurrency.md
+|  ├── ChainFee.md
+|  ├── ChainName.md
+|  ├── ChainNativeContracts.md
 |  ├── ChainType.md
+|  ├── ChainflipDestinationAsset.md
+|  ├── ChainflipSourceAsset.md
 |  ├── ChainflipTransactionRequestData.md
-|  ├── ChainflipTransactionRequestDataSourceAsset.md
+|  ├── ComplianceData.md
+|  ├── CosmosActionUnion.md
+|  ├── CosmosBankSendCall.md
+|  ├── CosmosBankSendCallBank.md
+|  ├── CosmosBankSendCallBankSend.md
+|  ├── CosmosCall.md
+|  ├── CosmosCallCall.md
+|  ├── CosmosCallType.md
+|  ├── CosmosCallUnion.md
+|  ├── CosmosCctpCall.md
+|  ├── CosmosCctpCallValue.md
+|  ├── CosmosCctpValue.md
+|  ├── CosmosChainFeatures.md
+|  ├── CosmosCoin.md
+|  ├── CosmosGmpCall.md
+|  ├── CosmosGmpCallFee.md
+|  ├── CosmosIbcTransferCall.md
+|  ├── CosmosIbcTransferCallValue.md
+|  ├── CosmosIbcTransferCallValueToken.md
+|  ├── CosmosIbcTransferValue.md
+|  ├── CosmosMulticallContractCall.md
+|  ├── CosmosMulticallContractCallActionsInner.md
+|  ├── CosmosPfmCall.md
+|  ├── CosmosPfmCallForward.md
+|  ├── CosmosToken.md
+|  ├── CustomCallDetails.md
 |  ├── DefaultApi.md
 |  ├── DepositAddressResponseData.md
+|  ├── Dex.md
+|  ├── DexName.md
+|  ├── DexType.md
+|  ├── ErrorType.md
 |  ├── EvmContractCall.md
 |  ├── EvmTransactionRequestData.md
+|  ├── FEESENUM.md
+|  ├── FallbackAddress.md
+|  ├── FeatureFlag.md
+|  ├── FeatureFlagType.md
 |  ├── FeeCost.md
+|  ├── FeeData.md
+|  ├── FeeDetails.md
+|  ├── FeeType.md
+|  ├── FieldToBinary.md
+|  ├── FieldToProtoBinaryAction.md
+|  ├── FieldToProtoBinaryActionFieldToBinary.md
+|  ├── GasCost.md
+|  ├── GasCostType.md
+|  ├── GmpFee.md
 |  ├── Hook.md
 |  ├── HookCallPayload.md
+|  ├── IbcTracking.md
+|  ├── IbcTrackingAction.md
+|  ├── IbcTrackingActionIbcTracking.md
 |  ├── InlineObject.md
+|  ├── Integrator.md
+|  ├── IntegratorFee.md
+|  ├── LiquidityProviderDetails.md
+|  ├── Maintenance.md
+|  ├── NativeBalanceFetch.md
+|  ├── NativeBalanceFetchAction.md
+|  ├── NativeBalanceFetchActionNativeBalanceFetch.md
+|  ├── NetworkIdentifier.md
+|  ├── Order.md
+|  ├── OsmosisPool.md
+|  ├── Path.md
+|  ├── PathAction.md
+|  ├── PathParams.md
+|  ├── PfmForward.md
+|  ├── PlatformFee.md
+|  ├── Quote.md
+|  ├── QuoteAction.md
+|  ├── QuoteActionData.md
+|  ├── RouteActionStatus.md
 |  ├── RouteEstimate.md
 |  ├── RouteRequestParams.md
 |  ├── RouteResponse.md
 |  ├── RouteResponseData.md
 |  ├── RouteResponseDataTransactionRequest.md
 |  ├── RouteResponseError.md
+|  ├── RouteStatusEntry.md
 |  ├── SDKInfoResponseData.md
+|  ├── SendInstruction.md
+|  ├── SendTokenStatus.md
 |  ├── SquidCallType.md
+|  ├── SquidDataType.md
+|  ├── SquidRouteType.md
+|  ├── SquidTransactionStatus.md
 |  ├── StatusResponseData.md
+|  ├── SwapDetails.md
+|  ├── SwapDetailsOsmosisPoolsInner.md
+|  ├── TRMIdentifier.md
+|  ├── TierFee.md
 |  ├── Token.md
-|  └── V2RoutePost200Response.md
+|  ├── TokenFee.md
+|  ├── TransactionRequest.md
+|  ├── TransactionStatus.md
+|  ├── Volatility.md
+|  ├── WrapDetails.md
+|  ├── WrapDirection.md
+|  ├── Wrapper.md
+|  ├── WrapperName.md
+|  └── WrapperType.md
+├── examples
+|  ├── squid_client_example.dart
+|  └── squid_sdk_example.dart
+├── gen-code.sh
 ├── git_push.sh
 ├── lib
 |  ├── api
@@ -48,69 +150,273 @@
 |  ├── http
 |  |  ├── http_request_throttler.dart
 |  |  └── http_retry_interceptor.dart
-|  └── model
-|     ├── action.dart
-|     ├── api_basic_response_error.dart
-|     ├── api_basic_response_error_errors_inner.dart
-|     ├── chain_data.dart
-|     ├── chain_data_native_currency.dart
-|     ├── chain_type.dart
-|     ├── chainflip_transaction_request_data.dart
-|     ├── chainflip_transaction_request_data_source_asset.dart
-|     ├── deposit_address_response_data.dart
-|     ├── evm_contract_call.dart
-|     ├── evm_transaction_request_data.dart
-|     ├── fee_cost.dart
-|     ├── hook.dart
-|     ├── hook_call_payload.dart
-|     ├── inline_object.dart
-|     ├── route_estimate.dart
-|     ├── route_request_params.dart
-|     ├── route_response.dart
-|     ├── route_response_data.dart
-|     ├── route_response_data_transaction_request.dart
-|     ├── route_response_error.dart
-|     ├── sdk_info_response_data.dart
-|     ├── squid_call_type.dart
-|     ├── status_response_data.dart
-|     ├── token.dart
-|     └── v2_route_post200_response.dart
+|  ├── model
+|  |  ├── action.dart
+|  |  ├── action_details.dart
+|  |  ├── action_stage.dart
+|  |  ├── action_type.dart
+|  |  ├── api_basic_response_error.dart
+|  |  ├── api_error_details.dart
+|  |  ├── axelar_fee_data.dart
+|  |  ├── axelar_route_action.dart
+|  |  ├── bank_send.dart
+|  |  ├── bridge_details.dart
+|  |  ├── bridge_provider.dart
+|  |  ├── bridge_type.dart
+|  |  ├── cctp_status.dart
+|  |  ├── chain_call.dart
+|  |  ├── chain_data.dart
+|  |  ├── chain_data_native_currency.dart
+|  |  ├── chain_fee.dart
+|  |  ├── chain_name.dart
+|  |  ├── chain_native_contracts.dart
+|  |  ├── chain_type.dart
+|  |  ├── chainflip_destination_asset.dart
+|  |  ├── chainflip_source_asset.dart
+|  |  ├── chainflip_transaction_request_data.dart
+|  |  ├── compliance_data.dart
+|  |  ├── cosmos_action_union.dart
+|  |  ├── cosmos_bank_send_call.dart
+|  |  ├── cosmos_bank_send_call_bank.dart
+|  |  ├── cosmos_bank_send_call_bank_send.dart
+|  |  ├── cosmos_call.dart
+|  |  ├── cosmos_call_call.dart
+|  |  ├── cosmos_call_type.dart
+|  |  ├── cosmos_call_union.dart
+|  |  ├── cosmos_cctp_call.dart
+|  |  ├── cosmos_cctp_call_value.dart
+|  |  ├── cosmos_cctp_value.dart
+|  |  ├── cosmos_chain_features.dart
+|  |  ├── cosmos_coin.dart
+|  |  ├── cosmos_gmp_call.dart
+|  |  ├── cosmos_gmp_call_fee.dart
+|  |  ├── cosmos_ibc_transfer_call.dart
+|  |  ├── cosmos_ibc_transfer_call_value.dart
+|  |  ├── cosmos_ibc_transfer_call_value_token.dart
+|  |  ├── cosmos_ibc_transfer_value.dart
+|  |  ├── cosmos_multicall_contract_call.dart
+|  |  ├── cosmos_multicall_contract_call_actions_inner.dart
+|  |  ├── cosmos_pfm_call.dart
+|  |  ├── cosmos_pfm_call_forward.dart
+|  |  ├── cosmos_token.dart
+|  |  ├── custom_call_details.dart
+|  |  ├── deposit_address_response_data.dart
+|  |  ├── dex.dart
+|  |  ├── dex_name.dart
+|  |  ├── dex_type.dart
+|  |  ├── error_type.dart
+|  |  ├── evm_contract_call.dart
+|  |  ├── evm_transaction_request_data.dart
+|  |  ├── fallback_address.dart
+|  |  ├── feature_flag.dart
+|  |  ├── feature_flag_type.dart
+|  |  ├── fee_cost.dart
+|  |  ├── fee_data.dart
+|  |  ├── fee_details.dart
+|  |  ├── fee_type.dart
+|  |  ├── feesenum.dart
+|  |  ├── field_to_binary.dart
+|  |  ├── field_to_proto_binary_action.dart
+|  |  ├── field_to_proto_binary_action_field_to_binary.dart
+|  |  ├── gas_cost.dart
+|  |  ├── gas_cost_type.dart
+|  |  ├── gmp_fee.dart
+|  |  ├── hook.dart
+|  |  ├── hook_call_payload.dart
+|  |  ├── ibc_tracking.dart
+|  |  ├── ibc_tracking_action.dart
+|  |  ├── ibc_tracking_action_ibc_tracking.dart
+|  |  ├── inline_object.dart
+|  |  ├── integrator.dart
+|  |  ├── integrator_fee.dart
+|  |  ├── liquidity_provider_details.dart
+|  |  ├── maintenance.dart
+|  |  ├── native_balance_fetch.dart
+|  |  ├── native_balance_fetch_action.dart
+|  |  ├── native_balance_fetch_action_native_balance_fetch.dart
+|  |  ├── network_identifier.dart
+|  |  ├── order.dart
+|  |  ├── osmosis_pool.dart
+|  |  ├── path.dart
+|  |  ├── path_action.dart
+|  |  ├── path_params.dart
+|  |  ├── pfm_forward.dart
+|  |  ├── platform_fee.dart
+|  |  ├── quote.dart
+|  |  ├── quote_action.dart
+|  |  ├── quote_action_data.dart
+|  |  ├── route_action_status.dart
+|  |  ├── route_estimate.dart
+|  |  ├── route_request_params.dart
+|  |  ├── route_response.dart
+|  |  ├── route_response_data.dart
+|  |  ├── route_response_data_transaction_request.dart
+|  |  ├── route_response_error.dart
+|  |  ├── route_status_entry.dart
+|  |  ├── sdk_info_response_data.dart
+|  |  ├── send_instruction.dart
+|  |  ├── send_token_status.dart
+|  |  ├── squid_call_type.dart
+|  |  ├── squid_data_type.dart
+|  |  ├── squid_route_type.dart
+|  |  ├── squid_transaction_status.dart
+|  |  ├── status_response_data.dart
+|  |  ├── swap_details.dart
+|  |  ├── swap_details_osmosis_pools_inner.dart
+|  |  ├── tier_fee.dart
+|  |  ├── token.dart
+|  |  ├── token_fee.dart
+|  |  ├── transaction_request.dart
+|  |  ├── transaction_status.dart
+|  |  ├── trm_identifier.dart
+|  |  ├── volatility.dart
+|  |  ├── wrap_details.dart
+|  |  ├── wrap_direction.dart
+|  |  ├── wrapper.dart
+|  |  ├── wrapper_name.dart
+|  |  └── wrapper_type.dart
+|  ├── squidrouter
+|  |  ├── handlers
+|  |  ├── squid_client_wrapper.dart
+|  |  ├── squid_config.dart
+|  |  ├── squid_constants.dart
+|  |  ├── squid_types.dart
+|  |  └── utils
+|  └── squidrouter.dart
 ├── openapi
 |  ├── squid-api-v1.json
 |  └── squid-api-v2.yaml
 ├── pubspec.lock
 ├── pubspec.yaml
 └── test
+   ├── action_details_test.dart
+   ├── action_stage_test.dart
    ├── action_test.dart
-   ├── api_basic_response_error_errors_inner_test.dart
+   ├── action_type_test.dart
    ├── api_basic_response_error_test.dart
+   ├── api_error_details_test.dart
    ├── api_test_helper.dart
+   ├── axelar_fee_data_test.dart
+   ├── axelar_route_action_test.dart
+   ├── bank_send_test.dart
+   ├── bridge_details_test.dart
+   ├── bridge_provider_test.dart
+   ├── bridge_type_test.dart
+   ├── cctp_status_test.dart
+   ├── chain_call_test.dart
    ├── chain_data_native_currency_test.dart
    ├── chain_data_test.dart
+   ├── chain_fee_test.dart
+   ├── chain_name_test.dart
+   ├── chain_native_contracts_test.dart
    ├── chain_type_test.dart
-   ├── chainflip_transaction_request_data_source_asset_test.dart
+   ├── chainflip_destination_asset_test.dart
+   ├── chainflip_source_asset_test.dart
    ├── chainflip_transaction_request_data_test.dart
+   ├── compliance_data_test.dart
+   ├── cosmos_action_union_test.dart
+   ├── cosmos_bank_send_call_bank_send_test.dart
+   ├── cosmos_bank_send_call_bank_test.dart
+   ├── cosmos_bank_send_call_test.dart
+   ├── cosmos_call_call_test.dart
+   ├── cosmos_call_test.dart
+   ├── cosmos_call_type_test.dart
+   ├── cosmos_call_union_test.dart
+   ├── cosmos_cctp_call_test.dart
+   ├── cosmos_cctp_call_value_test.dart
+   ├── cosmos_cctp_value_test.dart
+   ├── cosmos_chain_features_test.dart
+   ├── cosmos_coin_test.dart
+   ├── cosmos_gmp_call_fee_test.dart
+   ├── cosmos_gmp_call_test.dart
+   ├── cosmos_ibc_transfer_call_test.dart
+   ├── cosmos_ibc_transfer_call_value_test.dart
+   ├── cosmos_ibc_transfer_call_value_token_test.dart
+   ├── cosmos_ibc_transfer_value_test.dart
+   ├── cosmos_multicall_contract_call_actions_inner_test.dart
+   ├── cosmos_multicall_contract_call_test.dart
+   ├── cosmos_pfm_call_forward_test.dart
+   ├── cosmos_pfm_call_test.dart
+   ├── cosmos_token_test.dart
+   ├── custom_call_details_test.dart
    ├── default_api_test.dart
    ├── deposit_address_response_data_test.dart
+   ├── dex_name_test.dart
+   ├── dex_test.dart
+   ├── dex_type_test.dart
+   ├── error_type_test.dart
    ├── evm_contract_call_test.dart
    ├── evm_transaction_request_data_test.dart
+   ├── fallback_address_test.dart
+   ├── feature_flag_test.dart
+   ├── feature_flag_type_test.dart
    ├── fee_cost_test.dart
+   ├── fee_data_test.dart
+   ├── fee_details_test.dart
+   ├── fee_type_test.dart
+   ├── feesenum_test.dart
+   ├── field_to_binary_test.dart
+   ├── field_to_proto_binary_action_field_to_binary_test.dart
+   ├── field_to_proto_binary_action_test.dart
+   ├── gas_cost_test.dart
+   ├── gas_cost_type_test.dart
+   ├── gmp_fee_test.dart
    ├── hook_call_payload_test.dart
    ├── hook_test.dart
+   ├── ibc_tracking_action_ibc_tracking_test.dart
+   ├── ibc_tracking_action_test.dart
+   ├── ibc_tracking_test.dart
    ├── inline_object_test.dart
+   ├── integrator_fee_test.dart
+   ├── integrator_test.dart
+   ├── liquidity_provider_details_test.dart
+   ├── maintenance_test.dart
+   ├── native_balance_fetch_action_native_balance_fetch_test.dart
+   ├── native_balance_fetch_action_test.dart
+   ├── native_balance_fetch_test.dart
+   ├── network_identifier_test.dart
+   ├── order_test.dart
+   ├── osmosis_pool_test.dart
+   ├── path_action_test.dart
+   ├── path_params_test.dart
+   ├── path_test.dart
+   ├── pfm_forward_test.dart
+   ├── platform_fee_test.dart
+   ├── quote_action_data_test.dart
+   ├── quote_action_test.dart
+   ├── quote_test.dart
+   ├── route_action_status_test.dart
    ├── route_estimate_test.dart
    ├── route_request_params_test.dart
    ├── route_response_data_test.dart
    ├── route_response_data_transaction_request_test.dart
    ├── route_response_error_test.dart
    ├── route_response_test.dart
+   ├── route_status_entry_test.dart
    ├── sdk_info_response_data_test.dart
+   ├── send_instruction_test.dart
+   ├── send_token_status_test.dart
    ├── squid_call_type_test.dart
+   ├── squid_data_type_test.dart
+   ├── squid_route_type_test.dart
+   ├── squid_transaction_status_test.dart
    ├── status_response_data_test.dart
+   ├── swap_details_osmosis_pools_inner_test.dart
+   ├── swap_details_test.dart
+   ├── tier_fee_test.dart
+   ├── token_fee_test.dart
    ├── token_test.dart
-   └── v2_route_post200_response_test.dart
+   ├── transaction_request_test.dart
+   ├── transaction_status_test.dart
+   ├── trm_identifier_test.dart
+   ├── volatility_test.dart
+   ├── wrap_details_test.dart
+   ├── wrap_direction_test.dart
+   ├── wrapper_name_test.dart
+   ├── wrapper_test.dart
+   └── wrapper_type_test.dart
 
-directory: 8 file: 101
+directory: 12 file: 403
 
 
 

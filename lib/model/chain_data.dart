@@ -8,14 +8,14 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-part of openapi.api;
+part of squidrouter;
 
 class ChainData {
   /// Returns a new [ChainData] instance.
   ChainData({
-    this.chainName,
-    this.chainId,
-    this.chainType,
+    required this.chainName,
+    required this.chainId,
+    required this.chainType,
     this.rpc,
     this.chainIconURI,
     this.nativeCurrency,
@@ -37,23 +37,11 @@ class ChainData {
     this.interchainService,
   });
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? chainName;
+  String chainName;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? chainId;
+  String chainId;
 
-  ChainDataChainTypeEnum? chainType;
+  ChainType chainType;
 
   String? rpc;
 
@@ -158,9 +146,9 @@ class ChainData {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (chainName == null ? 0 : chainName!.hashCode) +
-    (chainId == null ? 0 : chainId!.hashCode) +
-    (chainType == null ? 0 : chainType!.hashCode) +
+    (chainName.hashCode) +
+    (chainId.hashCode) +
+    (chainType.hashCode) +
     (rpc == null ? 0 : rpc!.hashCode) +
     (chainIconURI == null ? 0 : chainIconURI!.hashCode) +
     (nativeCurrency == null ? 0 : nativeCurrency!.hashCode) +
@@ -186,15 +174,9 @@ class ChainData {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.chainName != null) {
       json[r'chainName'] = this.chainName;
-    }
-    if (this.chainId != null) {
       json[r'chainId'] = this.chainId;
-    }
-    if (this.chainType != null) {
       json[r'chainType'] = this.chainType;
-    }
     if (this.rpc != null) {
       json[r'rpc'] = this.rpc;
     } else {
@@ -300,9 +282,9 @@ class ChainData {
       }());
 
       return ChainData(
-        chainName: mapValueOfType<String>(json, r'chainName'),
-        chainId: mapValueOfType<String>(json, r'chainId'),
-        chainType: ChainDataChainTypeEnum.fromJson(json[r'chainType']),
+        chainName: mapValueOfType<String>(json, r'chainName')!,
+        chainId: mapValueOfType<String>(json, r'chainId')!,
+        chainType: ChainType.fromJson(json[r'chainType'])!,
         rpc: mapValueOfType<String>(json, r'rpc'),
         chainIconURI: mapValueOfType<String>(json, r'chainIconURI'),
         nativeCurrency: ChainDataNativeCurrency.fromJson(json[r'nativeCurrency']),
@@ -373,88 +355,11 @@ class ChainData {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
+    'chainName',
+    'chainId',
+    'chainType',
   };
 }
-
-
-class ChainDataChainTypeEnum {
-  /// Instantiate a new enum with the provided [value].
-  const ChainDataChainTypeEnum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value;
-
-  String toJson() => value;
-
-  static const evm = ChainDataChainTypeEnum._(r'evm');
-  static const cosmos = ChainDataChainTypeEnum._(r'cosmos');
-  static const bitcoin = ChainDataChainTypeEnum._(r'bitcoin');
-  static const solana = ChainDataChainTypeEnum._(r'solana');
-
-  /// List of all possible values in this [enum][ChainDataChainTypeEnum].
-  static const values = <ChainDataChainTypeEnum>[
-    evm,
-    cosmos,
-    bitcoin,
-    solana,
-  ];
-
-  static ChainDataChainTypeEnum? fromJson(dynamic value) => ChainDataChainTypeEnumTypeTransformer().decode(value);
-
-  static List<ChainDataChainTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <ChainDataChainTypeEnum>[];
-    if (json is List && json.isNotEmpty) {
-      for (final row in json) {
-        final value = ChainDataChainTypeEnum.fromJson(row);
-        if (value != null) {
-          result.add(value);
-        }
-      }
-    }
-    return result.toList(growable: growable);
-  }
-}
-
-/// Transformation class that can [encode] an instance of [ChainDataChainTypeEnum] to String,
-/// and [decode] dynamic data back to [ChainDataChainTypeEnum].
-class ChainDataChainTypeEnumTypeTransformer {
-  factory ChainDataChainTypeEnumTypeTransformer() => _instance ??= const ChainDataChainTypeEnumTypeTransformer._();
-
-  const ChainDataChainTypeEnumTypeTransformer._();
-
-  String encode(ChainDataChainTypeEnum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a ChainDataChainTypeEnum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  ChainDataChainTypeEnum? decode(dynamic data, {bool allowNull = true}) {
-    if (data != null) {
-      switch (data) {
-        case r'evm': return ChainDataChainTypeEnum.evm;
-        case r'cosmos': return ChainDataChainTypeEnum.cosmos;
-        case r'bitcoin': return ChainDataChainTypeEnum.bitcoin;
-        case r'solana': return ChainDataChainTypeEnum.solana;
-        default:
-          if (!allowNull) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [ChainDataChainTypeEnumTypeTransformer] instance.
-  static ChainDataChainTypeEnumTypeTransformer? _instance;
-}
-
 
 
 class ChainDataSquidImplementationEnum {
