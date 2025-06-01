@@ -23,17 +23,19 @@ class ChainType {
 
   String toJson() => value;
 
-  static const evm = ChainType._(r'evm');
-  static const cosmos = ChainType._(r'cosmos');
-  static const bitcoin = ChainType._(r'bitcoin');
-  static const solana = ChainType._(r'solana');
+  static const EVM = ChainType._(r'evm');
+  static const COSMOS = ChainType._(r'cosmos');
+  static const BTC = ChainType._(r'bitcoin');
+  static const SOLANA = ChainType._(r'solana');
+  static const SUI = ChainType._(r'sui');
 
   /// List of all possible values in this [enum][ChainType].
   static const values = <ChainType>[
-    evm,
-    cosmos,
-    bitcoin,
-    solana,
+    EVM,
+    COSMOS,
+    BTC,
+    SOLANA,
+    SUI,
   ];
 
   static ChainType? fromJson(dynamic value) => ChainTypeTypeTransformer().decode(value);
@@ -72,10 +74,11 @@ class ChainTypeTypeTransformer {
   ChainType? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'evm': return ChainType.evm;
-        case r'cosmos': return ChainType.cosmos;
-        case r'bitcoin': return ChainType.bitcoin;
-        case r'solana': return ChainType.solana;
+        case r'evm': return ChainType.EVM;
+        case r'cosmos': return ChainType.COSMOS;
+        case r'bitcoin': return ChainType.BTC;
+        case r'solana': return ChainType.SOLANA;
+        case r'sui': return ChainType.SUI;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

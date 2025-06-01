@@ -23,21 +23,21 @@ class FeatureFlagType {
 
   String toJson() => value;
 
-  static const maintenance = FeatureFlagType._(r'maintenance');
-  static const bitcoin = FeatureFlagType._(r'bitcoin');
-  static const solana = FeatureFlagType._(r'solana');
-  static const chainflip = FeatureFlagType._(r'chainflip');
-  static const coral = FeatureFlagType._(r'coral');
-  static const chainflipMultihop = FeatureFlagType._(r'chainflipMultihop');
+  static const MaintenanceMode = FeatureFlagType._(r'maintenance');
+  static const Bitcoin = FeatureFlagType._(r'bitcoin');
+  static const Solana = FeatureFlagType._(r'solana');
+  static const Chainflip = FeatureFlagType._(r'chainflip');
+  static const Coral = FeatureFlagType._(r'coral');
+  static const ChainflipMultihop = FeatureFlagType._(r'chainflipMultihop');
 
   /// List of all possible values in this [enum][FeatureFlagType].
   static const values = <FeatureFlagType>[
-    maintenance,
-    bitcoin,
-    solana,
-    chainflip,
-    coral,
-    chainflipMultihop,
+    MaintenanceMode,
+    Bitcoin,
+    Solana,
+    Chainflip,
+    Coral,
+    ChainflipMultihop,
   ];
 
   static FeatureFlagType? fromJson(dynamic value) => FeatureFlagTypeTypeTransformer().decode(value);
@@ -76,12 +76,12 @@ class FeatureFlagTypeTypeTransformer {
   FeatureFlagType? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'maintenance': return FeatureFlagType.maintenance;
-        case r'bitcoin': return FeatureFlagType.bitcoin;
-        case r'solana': return FeatureFlagType.solana;
-        case r'chainflip': return FeatureFlagType.chainflip;
-        case r'coral': return FeatureFlagType.coral;
-        case r'chainflipMultihop': return FeatureFlagType.chainflipMultihop;
+        case r'maintenance': return FeatureFlagType.MaintenanceMode;
+        case r'bitcoin': return FeatureFlagType.Bitcoin;
+        case r'solana': return FeatureFlagType.Solana;
+        case r'chainflip': return FeatureFlagType.Chainflip;
+        case r'coral': return FeatureFlagType.Coral;
+        case r'chainflipMultihop': return FeatureFlagType.ChainflipMultihop;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

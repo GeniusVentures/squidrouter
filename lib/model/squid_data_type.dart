@@ -23,13 +23,13 @@ class SquidDataType {
 
   String toJson() => value;
 
-  static const ON_CHAIN_EXECUTION = SquidDataType._(r'ON_CHAIN_EXECUTION');
-  static const CHAINFLIP_DEPOSIT_ADDRESS = SquidDataType._(r'CHAINFLIP_DEPOSIT_ADDRESS');
+  static const OnChainExecution = SquidDataType._(r'ON_CHAIN_EXECUTION');
+  static const ChainflipDepositAddress = SquidDataType._(r'CHAINFLIP_DEPOSIT_ADDRESS');
 
   /// List of all possible values in this [enum][SquidDataType].
   static const values = <SquidDataType>[
-    ON_CHAIN_EXECUTION,
-    CHAINFLIP_DEPOSIT_ADDRESS,
+    OnChainExecution,
+    ChainflipDepositAddress,
   ];
 
   static SquidDataType? fromJson(dynamic value) => SquidDataTypeTypeTransformer().decode(value);
@@ -68,8 +68,8 @@ class SquidDataTypeTypeTransformer {
   SquidDataType? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'ON_CHAIN_EXECUTION': return SquidDataType.ON_CHAIN_EXECUTION;
-        case r'CHAINFLIP_DEPOSIT_ADDRESS': return SquidDataType.CHAINFLIP_DEPOSIT_ADDRESS;
+        case r'ON_CHAIN_EXECUTION': return SquidDataType.OnChainExecution;
+        case r'CHAINFLIP_DEPOSIT_ADDRESS': return SquidDataType.ChainflipDepositAddress;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

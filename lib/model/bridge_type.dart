@@ -23,25 +23,25 @@ class BridgeType {
 
   String toJson() => value;
 
-  static const axelarGmp = BridgeType._(r'axelar-gmp');
-  static const axelarIts = BridgeType._(r'axelar-its');
-  static const cctp = BridgeType._(r'cctp');
-  static const nobleCctp = BridgeType._(r'noble-cctp');
-  static const ibc = BridgeType._(r'ibc');
-  static const chainflip = BridgeType._(r'chainflip');
-  static const rfq = BridgeType._(r'rfq');
-  static const immutableTokenBridge = BridgeType._(r'immutable-token-bridge');
+  static const AXELAR_GMP = BridgeType._(r'axelar-gmp');
+  static const AXELAR_ITS = BridgeType._(r'axelar-its');
+  static const CCTP = BridgeType._(r'cctp');
+  static const NOBLE_CCTP = BridgeType._(r'noble-cctp');
+  static const IBC = BridgeType._(r'ibc');
+  static const CHAINFLIP = BridgeType._(r'chainflip');
+  static const RFQ = BridgeType._(r'rfq');
+  static const ITB = BridgeType._(r'immutable-token-bridge');
 
   /// List of all possible values in this [enum][BridgeType].
   static const values = <BridgeType>[
-    axelarGmp,
-    axelarIts,
-    cctp,
-    nobleCctp,
-    ibc,
-    chainflip,
-    rfq,
-    immutableTokenBridge,
+    AXELAR_GMP,
+    AXELAR_ITS,
+    CCTP,
+    NOBLE_CCTP,
+    IBC,
+    CHAINFLIP,
+    RFQ,
+    ITB,
   ];
 
   static BridgeType? fromJson(dynamic value) => BridgeTypeTypeTransformer().decode(value);
@@ -80,14 +80,14 @@ class BridgeTypeTypeTransformer {
   BridgeType? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'axelar-gmp': return BridgeType.axelarGmp;
-        case r'axelar-its': return BridgeType.axelarIts;
-        case r'cctp': return BridgeType.cctp;
-        case r'noble-cctp': return BridgeType.nobleCctp;
-        case r'ibc': return BridgeType.ibc;
-        case r'chainflip': return BridgeType.chainflip;
-        case r'rfq': return BridgeType.rfq;
-        case r'immutable-token-bridge': return BridgeType.immutableTokenBridge;
+        case r'axelar-gmp': return BridgeType.AXELAR_GMP;
+        case r'axelar-its': return BridgeType.AXELAR_ITS;
+        case r'cctp': return BridgeType.CCTP;
+        case r'noble-cctp': return BridgeType.NOBLE_CCTP;
+        case r'ibc': return BridgeType.IBC;
+        case r'chainflip': return BridgeType.CHAINFLIP;
+        case r'rfq': return BridgeType.RFQ;
+        case r'immutable-token-bridge': return BridgeType.ITB;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

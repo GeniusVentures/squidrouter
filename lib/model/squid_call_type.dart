@@ -23,17 +23,17 @@ class SquidCallType {
 
   int toJson() => value;
 
-  static const number0 = SquidCallType._(0);
-  static const number1 = SquidCallType._(1);
-  static const number2 = SquidCallType._(2);
-  static const number3 = SquidCallType._(3);
+  static const DEFAULT = SquidCallType._(0);
+  static const FULL_TOKEN_BALANCE = SquidCallType._(1);
+  static const CALL_DATA = SquidCallType._(2);
+  static const COLLECT_TOKEN_BALANCE = SquidCallType._(3);
 
   /// List of all possible values in this [enum][SquidCallType].
   static const values = <SquidCallType>[
-    number0,
-    number1,
-    number2,
-    number3,
+    DEFAULT,
+    FULL_TOKEN_BALANCE,
+    CALL_DATA,
+    COLLECT_TOKEN_BALANCE,
   ];
 
   static SquidCallType? fromJson(dynamic value) => SquidCallTypeTypeTransformer().decode(value);
@@ -72,10 +72,10 @@ class SquidCallTypeTypeTransformer {
   SquidCallType? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case 0: return SquidCallType.number0;
-        case 1: return SquidCallType.number1;
-        case 2: return SquidCallType.number2;
-        case 3: return SquidCallType.number3;
+        case 0: return SquidCallType.DEFAULT;
+        case 1: return SquidCallType.FULL_TOKEN_BALANCE;
+        case 2: return SquidCallType.CALL_DATA;
+        case 3: return SquidCallType.COLLECT_TOKEN_BALANCE;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

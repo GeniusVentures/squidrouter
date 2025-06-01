@@ -23,13 +23,13 @@ class SendTokenStatus {
 
   String toJson() => value;
 
-  static const assetSent = SendTokenStatus._(r'asset_sent');
-  static const executed = SendTokenStatus._(r'executed');
+  static const ASSET_SENT = SendTokenStatus._(r'asset_sent');
+  static const EXECUTED = SendTokenStatus._(r'executed');
 
   /// List of all possible values in this [enum][SendTokenStatus].
   static const values = <SendTokenStatus>[
-    assetSent,
-    executed,
+    ASSET_SENT,
+    EXECUTED,
   ];
 
   static SendTokenStatus? fromJson(dynamic value) => SendTokenStatusTypeTransformer().decode(value);
@@ -68,8 +68,8 @@ class SendTokenStatusTypeTransformer {
   SendTokenStatus? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'asset_sent': return SendTokenStatus.assetSent;
-        case r'executed': return SendTokenStatus.executed;
+        case r'asset_sent': return SendTokenStatus.ASSET_SENT;
+        case r'executed': return SendTokenStatus.EXECUTED;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

@@ -23,21 +23,21 @@ class RouteActionStatus {
 
   String toJson() => value;
 
-  static const success = RouteActionStatus._(r'success');
-  static const failure = RouteActionStatus._(r'failure');
-  static const notFound = RouteActionStatus._(r'not_found');
-  static const unknown = RouteActionStatus._(r'unknown');
-  static const awaiting = RouteActionStatus._(r'awaiting');
-  static const refunded = RouteActionStatus._(r'refunded');
+  static const SUCCESS = RouteActionStatus._(r'success');
+  static const FAILURE = RouteActionStatus._(r'failure');
+  static const NOT_FOUND = RouteActionStatus._(r'not_found');
+  static const UNKNOWN = RouteActionStatus._(r'unknown');
+  static const AWAITING = RouteActionStatus._(r'awaiting');
+  static const REFUNDED = RouteActionStatus._(r'refunded');
 
   /// List of all possible values in this [enum][RouteActionStatus].
   static const values = <RouteActionStatus>[
-    success,
-    failure,
-    notFound,
-    unknown,
-    awaiting,
-    refunded,
+    SUCCESS,
+    FAILURE,
+    NOT_FOUND,
+    UNKNOWN,
+    AWAITING,
+    REFUNDED,
   ];
 
   static RouteActionStatus? fromJson(dynamic value) => RouteActionStatusTypeTransformer().decode(value);
@@ -76,12 +76,12 @@ class RouteActionStatusTypeTransformer {
   RouteActionStatus? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'success': return RouteActionStatus.success;
-        case r'failure': return RouteActionStatus.failure;
-        case r'not_found': return RouteActionStatus.notFound;
-        case r'unknown': return RouteActionStatus.unknown;
-        case r'awaiting': return RouteActionStatus.awaiting;
-        case r'refunded': return RouteActionStatus.refunded;
+        case r'success': return RouteActionStatus.SUCCESS;
+        case r'failure': return RouteActionStatus.FAILURE;
+        case r'not_found': return RouteActionStatus.NOT_FOUND;
+        case r'unknown': return RouteActionStatus.UNKNOWN;
+        case r'awaiting': return RouteActionStatus.AWAITING;
+        case r'refunded': return RouteActionStatus.REFUNDED;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

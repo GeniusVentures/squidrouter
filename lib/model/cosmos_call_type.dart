@@ -23,19 +23,19 @@ class CosmosCallType {
 
   int toJson() => value;
 
-  static const number0 = CosmosCallType._(0);
-  static const number1 = CosmosCallType._(1);
-  static const number2 = CosmosCallType._(2);
-  static const number3 = CosmosCallType._(3);
-  static const number4 = CosmosCallType._(4);
+  static const MULTICALL = CosmosCallType._(0);
+  static const IBC_TRANSFER = CosmosCallType._(1);
+  static const PFM = CosmosCallType._(2);
+  static const GMP = CosmosCallType._(3);
+  static const CCTP = CosmosCallType._(4);
 
   /// List of all possible values in this [enum][CosmosCallType].
   static const values = <CosmosCallType>[
-    number0,
-    number1,
-    number2,
-    number3,
-    number4,
+    MULTICALL,
+    IBC_TRANSFER,
+    PFM,
+    GMP,
+    CCTP,
   ];
 
   static CosmosCallType? fromJson(dynamic value) => CosmosCallTypeTypeTransformer().decode(value);
@@ -74,11 +74,11 @@ class CosmosCallTypeTypeTransformer {
   CosmosCallType? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case 0: return CosmosCallType.number0;
-        case 1: return CosmosCallType.number1;
-        case 2: return CosmosCallType.number2;
-        case 3: return CosmosCallType.number3;
-        case 4: return CosmosCallType.number4;
+        case 0: return CosmosCallType.MULTICALL;
+        case 1: return CosmosCallType.IBC_TRANSFER;
+        case 2: return CosmosCallType.PFM;
+        case 3: return CosmosCallType.GMP;
+        case 4: return CosmosCallType.CCTP;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

@@ -23,47 +23,47 @@ class DexType {
 
   String toJson() => value;
 
-  static const algebra = DexType._(r'algebra');
-  static const balancerV2 = DexType._(r'balancer-v2');
-  static const curve = DexType._(r'curve');
-  static const gmx = DexType._(r'gmx');
-  static const kyberswapElastic = DexType._(r'kyberswap-elastic');
-  static const platypus = DexType._(r'platypus');
-  static const pancakeswapStable = DexType._(r'pancakeswap-stable');
-  static const saddle = DexType._(r'saddle');
-  static const slipstream = DexType._(r'slipstream');
-  static const solidly = DexType._(r'solidly');
-  static const traderjoeV21 = DexType._(r'traderjoe-v21');
-  static const traderjoeV22 = DexType._(r'traderjoe-v22');
-  static const trident = DexType._(r'trident');
-  static const wombat = DexType._(r'wombat');
-  static const uniswapV2 = DexType._(r'uniswap-v2');
-  static const uniswapV3 = DexType._(r'uniswap-v3');
-  static const mentoV2 = DexType._(r'mento-v2');
-  static const osmosis = DexType._(r'osmosis');
-  static const astroport = DexType._(r'astroport');
+  static const ALGEBRA = DexType._(r'algebra');
+  static const BALANCER_V2 = DexType._(r'balancer-v2');
+  static const CURVE = DexType._(r'curve');
+  static const GMX = DexType._(r'gmx');
+  static const KYBERSWAP_ELASTIC = DexType._(r'kyberswap-elastic');
+  static const PLATYPUS = DexType._(r'platypus');
+  static const PANCAKESWAP_STABLE = DexType._(r'pancakeswap-stable');
+  static const SADDLE = DexType._(r'saddle');
+  static const SLIPSTREAM = DexType._(r'slipstream');
+  static const SOLIDLY = DexType._(r'solidly');
+  static const TRADERJOE_V21 = DexType._(r'traderjoe-v21');
+  static const TRADERJOE_V22 = DexType._(r'traderjoe-v22');
+  static const TRIDENT = DexType._(r'trident');
+  static const WOMBAT = DexType._(r'wombat');
+  static const UNISWAP_V2 = DexType._(r'uniswap-v2');
+  static const UNISWAP_V3 = DexType._(r'uniswap-v3');
+  static const MENTO_V2 = DexType._(r'mento-v2');
+  static const OSMOSIS = DexType._(r'osmosis');
+  static const ASTROPORT = DexType._(r'astroport');
 
   /// List of all possible values in this [enum][DexType].
   static const values = <DexType>[
-    algebra,
-    balancerV2,
-    curve,
-    gmx,
-    kyberswapElastic,
-    platypus,
-    pancakeswapStable,
-    saddle,
-    slipstream,
-    solidly,
-    traderjoeV21,
-    traderjoeV22,
-    trident,
-    wombat,
-    uniswapV2,
-    uniswapV3,
-    mentoV2,
-    osmosis,
-    astroport,
+    ALGEBRA,
+    BALANCER_V2,
+    CURVE,
+    GMX,
+    KYBERSWAP_ELASTIC,
+    PLATYPUS,
+    PANCAKESWAP_STABLE,
+    SADDLE,
+    SLIPSTREAM,
+    SOLIDLY,
+    TRADERJOE_V21,
+    TRADERJOE_V22,
+    TRIDENT,
+    WOMBAT,
+    UNISWAP_V2,
+    UNISWAP_V3,
+    MENTO_V2,
+    OSMOSIS,
+    ASTROPORT,
   ];
 
   static DexType? fromJson(dynamic value) => DexTypeTypeTransformer().decode(value);
@@ -102,25 +102,25 @@ class DexTypeTypeTransformer {
   DexType? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'algebra': return DexType.algebra;
-        case r'balancer-v2': return DexType.balancerV2;
-        case r'curve': return DexType.curve;
-        case r'gmx': return DexType.gmx;
-        case r'kyberswap-elastic': return DexType.kyberswapElastic;
-        case r'platypus': return DexType.platypus;
-        case r'pancakeswap-stable': return DexType.pancakeswapStable;
-        case r'saddle': return DexType.saddle;
-        case r'slipstream': return DexType.slipstream;
-        case r'solidly': return DexType.solidly;
-        case r'traderjoe-v21': return DexType.traderjoeV21;
-        case r'traderjoe-v22': return DexType.traderjoeV22;
-        case r'trident': return DexType.trident;
-        case r'wombat': return DexType.wombat;
-        case r'uniswap-v2': return DexType.uniswapV2;
-        case r'uniswap-v3': return DexType.uniswapV3;
-        case r'mento-v2': return DexType.mentoV2;
-        case r'osmosis': return DexType.osmosis;
-        case r'astroport': return DexType.astroport;
+        case r'algebra': return DexType.ALGEBRA;
+        case r'balancer-v2': return DexType.BALANCER_V2;
+        case r'curve': return DexType.CURVE;
+        case r'gmx': return DexType.GMX;
+        case r'kyberswap-elastic': return DexType.KYBERSWAP_ELASTIC;
+        case r'platypus': return DexType.PLATYPUS;
+        case r'pancakeswap-stable': return DexType.PANCAKESWAP_STABLE;
+        case r'saddle': return DexType.SADDLE;
+        case r'slipstream': return DexType.SLIPSTREAM;
+        case r'solidly': return DexType.SOLIDLY;
+        case r'traderjoe-v21': return DexType.TRADERJOE_V21;
+        case r'traderjoe-v22': return DexType.TRADERJOE_V22;
+        case r'trident': return DexType.TRIDENT;
+        case r'wombat': return DexType.WOMBAT;
+        case r'uniswap-v2': return DexType.UNISWAP_V2;
+        case r'uniswap-v3': return DexType.UNISWAP_V3;
+        case r'mento-v2': return DexType.MENTO_V2;
+        case r'osmosis': return DexType.OSMOSIS;
+        case r'astroport': return DexType.ASTROPORT;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

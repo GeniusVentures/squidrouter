@@ -23,25 +23,25 @@ class WrapperName {
 
   String toJson() => value;
 
-  static const nativeWrapper = WrapperName._(r'Native Wrapper');
-  static const overnightFinance = WrapperName._(r'Overnight Finance');
-  static const dEUSFinance = WrapperName._(r'DEUS Finance');
-  static const lidoWrappedStETH = WrapperName._(r'Lido Wrapped stETH');
-  static const qiDAOWrappedMAI = WrapperName._(r'QiDAO Wrapped MAI');
-  static const ondoFinance = WrapperName._(r'Ondo Finance');
-  static const dAIUSDSConverter = WrapperName._(r'DAI USDS Converter');
-  static const mKRSKYConverter = WrapperName._(r'MKR SKY Converter');
+  static const WRAPPED_NATIVE = WrapperName._(r'Native Wrapper');
+  static const OVERNIGHT = WrapperName._(r'Overnight Finance');
+  static const DEUS = WrapperName._(r'DEUS Finance');
+  static const WSTETH = WrapperName._(r'Lido Wrapped stETH');
+  static const WRAPPED_MAI = WrapperName._(r'QiDAO Wrapped MAI');
+  static const WRAPPED_USDY = WrapperName._(r'Ondo Finance');
+  static const SKY_PROTOCOL_USDS = WrapperName._(r'DAI USDS Converter');
+  static const SKY_PROTOCOL_SKY = WrapperName._(r'MKR SKY Converter');
 
   /// List of all possible values in this [enum][WrapperName].
   static const values = <WrapperName>[
-    nativeWrapper,
-    overnightFinance,
-    dEUSFinance,
-    lidoWrappedStETH,
-    qiDAOWrappedMAI,
-    ondoFinance,
-    dAIUSDSConverter,
-    mKRSKYConverter,
+    WRAPPED_NATIVE,
+    OVERNIGHT,
+    DEUS,
+    WSTETH,
+    WRAPPED_MAI,
+    WRAPPED_USDY,
+    SKY_PROTOCOL_USDS,
+    SKY_PROTOCOL_SKY,
   ];
 
   static WrapperName? fromJson(dynamic value) => WrapperNameTypeTransformer().decode(value);
@@ -80,14 +80,14 @@ class WrapperNameTypeTransformer {
   WrapperName? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'Native Wrapper': return WrapperName.nativeWrapper;
-        case r'Overnight Finance': return WrapperName.overnightFinance;
-        case r'DEUS Finance': return WrapperName.dEUSFinance;
-        case r'Lido Wrapped stETH': return WrapperName.lidoWrappedStETH;
-        case r'QiDAO Wrapped MAI': return WrapperName.qiDAOWrappedMAI;
-        case r'Ondo Finance': return WrapperName.ondoFinance;
-        case r'DAI USDS Converter': return WrapperName.dAIUSDSConverter;
-        case r'MKR SKY Converter': return WrapperName.mKRSKYConverter;
+        case r'Native Wrapper': return WrapperName.WRAPPED_NATIVE;
+        case r'Overnight Finance': return WrapperName.OVERNIGHT;
+        case r'DEUS Finance': return WrapperName.DEUS;
+        case r'Lido Wrapped stETH': return WrapperName.WSTETH;
+        case r'QiDAO Wrapped MAI': return WrapperName.WRAPPED_MAI;
+        case r'Ondo Finance': return WrapperName.WRAPPED_USDY;
+        case r'DAI USDS Converter': return WrapperName.SKY_PROTOCOL_USDS;
+        case r'MKR SKY Converter': return WrapperName.SKY_PROTOCOL_SKY;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

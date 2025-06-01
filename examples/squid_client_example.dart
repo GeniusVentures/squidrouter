@@ -18,14 +18,21 @@ Future<void> main() async {
     await squid.init();
     print('SDK initialized with ${squid.tokens.length} tokens and ${squid.chains.length} chains');
 
-    // Example 1: Get all balances for a user
-    print('\nFetching EVM balances...');
-    final evmBalances = await squid.getEvmBalances(
-      userAddress: '0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe',
-      chains: ['1', '137', '42161'], // Ethereum, Polygon, Arbitrum
+    // Example 1: Get balances for specific tokens
+    print('\nFetching token balances...');
+    final tokenAddresses = [
+      TokenChainAddress(chainId: '1', address: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48'), // USDC on Ethereum
+      TokenChainAddress(chainId: '137', address: '0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174'), // USDC on Polygon
+      TokenChainAddress(chainId: '42161', address: '0xaf88d065e77c8cC2239327C5EDb3A432268e5831'), // USDC on Arbitrum
+    ];
+
+    final balances = await squid.getBalances(
+      userAddress: '0x28C6c06298d514Db089934071355E5743bf21d60', // Binance exchange address
+      tokenAddresses: tokenAddresses,
     );
 
-    for (final balance in evmBalances) {
+    // Display EVM balances
+    for (final balance in balances['evm'] ?? []) {
       if (balance.balance != '0') {
         final formatted = squid.formatTokenAmount(balance.balance, balance.decimals);
         print('${balance.symbol} on chain ${balance.chainId}: $formatted');
@@ -125,27 +132,24 @@ Future<void> main() async {
       print('Status check failed (expected for fake tx)');
     }
 
-    // Example 7: Get all balances including Cosmos
-    print('\nFetching all balances (EVM + Cosmos)...');
-    final allBalances = await squid.getAllBalances(
-      evmAddress: '0x742d35Cc6634C0532925a3b844Bc9e7595f8E123',
-      cosmosAddresses: [
-        CosmosAddress(
-          coinType: 118,
-          chainId: 'cosmoshub-4',
-          address: 'cosmos1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-        ),
-        CosmosAddress(
-          coinType: 118,
-          chainId: 'osmosis-1',
-          address: 'osmo1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-        ),
-      ],
-      chainIds: ['1', '137', 'cosmoshub-4', 'osmosis-1'],
+    // Example 7: Get all balances including multiple chain types
+    print('\nFetching all balances (EVM + Cosmos + Bitcoin)...');
+    final mixedTokenAddresses = [
+      // EVM tokens
+      TokenChainAddress(chainId: '1', address: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48'), // USDC on Ethereum
+      TokenChainAddress(chainId: '137', address: '0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174'), // USDC on Polygon
+      // Bitcoin (for native BTC, address should be the user address)
+      TokenChainAddress(chainId: 'bitcoin', address: '1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa'),
+    ];
+
+    final allBalances = await squid.getBalances(
+      userAddress: '0x28C6c06298d514Db089934071355E5743bf21d60', // Binance exchange address
+      tokenAddresses: mixedTokenAddresses,
     );
 
     print('Found ${allBalances['evm']?.length ?? 0} EVM balances');
     print('Found ${allBalances['cosmos']?.length ?? 0} Cosmos balances');
+    print('Found ${allBalances['bitcoin']?.length ?? 0} Bitcoin balances');
 
     // Example 8: Working with specific chains
     print('\nGetting chain information...');

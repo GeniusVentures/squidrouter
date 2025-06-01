@@ -134,8 +134,8 @@ void main() {
           expect(
               response.squidTransactionStatus,
               anyOf(
-                  equals(SquidTransactionStatus.notFound),
-                  equals(SquidTransactionStatus.failedOnDestination)
+                  equals(SquidTransactionStatus.NOT_FOUND),
+                  equals(SquidTransactionStatus.FAILED_DESTINATION)
               )
           );
           print("✓ Received expected status for non-existent transaction");

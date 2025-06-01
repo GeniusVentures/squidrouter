@@ -23,25 +23,25 @@ class BridgeProvider {
 
   String toJson() => value;
 
-  static const axelar = BridgeProvider._(r'Axelar');
+  static const AXELAR = BridgeProvider._(r'Axelar');
   static const CCTP = BridgeProvider._(r'CCTP');
-  static const nobleCCTP = BridgeProvider._(r'Noble CCTP');
+  static const NOBLE_CCTP = BridgeProvider._(r'Noble CCTP');
   static const IBC = BridgeProvider._(r'IBC');
-  static const iBCPacketForwardMiddleware = BridgeProvider._(r'IBC Packet forward middleware');
-  static const chainflip = BridgeProvider._(r'Chainflip');
-  static const CORAL = BridgeProvider._(r'CORAL');
-  static const immutable = BridgeProvider._(r'Immutable');
+  static const PFM = BridgeProvider._(r'IBC Packet forward middleware');
+  static const CHAINFLIP = BridgeProvider._(r'Chainflip');
+  static const RFQ = BridgeProvider._(r'CORAL');
+  static const IMMUTABLE = BridgeProvider._(r'Immutable');
 
   /// List of all possible values in this [enum][BridgeProvider].
   static const values = <BridgeProvider>[
-    axelar,
+    AXELAR,
     CCTP,
-    nobleCCTP,
+    NOBLE_CCTP,
     IBC,
-    iBCPacketForwardMiddleware,
-    chainflip,
-    CORAL,
-    immutable,
+    PFM,
+    CHAINFLIP,
+    RFQ,
+    IMMUTABLE,
   ];
 
   static BridgeProvider? fromJson(dynamic value) => BridgeProviderTypeTransformer().decode(value);
@@ -80,14 +80,14 @@ class BridgeProviderTypeTransformer {
   BridgeProvider? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'Axelar': return BridgeProvider.axelar;
+        case r'Axelar': return BridgeProvider.AXELAR;
         case r'CCTP': return BridgeProvider.CCTP;
-        case r'Noble CCTP': return BridgeProvider.nobleCCTP;
+        case r'Noble CCTP': return BridgeProvider.NOBLE_CCTP;
         case r'IBC': return BridgeProvider.IBC;
-        case r'IBC Packet forward middleware': return BridgeProvider.iBCPacketForwardMiddleware;
-        case r'Chainflip': return BridgeProvider.chainflip;
-        case r'CORAL': return BridgeProvider.CORAL;
-        case r'Immutable': return BridgeProvider.immutable;
+        case r'IBC Packet forward middleware': return BridgeProvider.PFM;
+        case r'Chainflip': return BridgeProvider.CHAINFLIP;
+        case r'CORAL': return BridgeProvider.RFQ;
+        case r'Immutable': return BridgeProvider.IMMUTABLE;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

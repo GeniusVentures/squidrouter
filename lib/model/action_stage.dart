@@ -23,35 +23,35 @@ class ActionStage {
 
   int toJson() => value;
 
-  static const number0 = ActionStage._(0);
-  static const number1 = ActionStage._(1);
-  static const number2 = ActionStage._(2);
-  static const number3 = ActionStage._(3);
-  static const number4 = ActionStage._(4);
-  static const number5 = ActionStage._(5);
-  static const number6 = ActionStage._(6);
-  static const number7 = ActionStage._(7);
-  static const number8 = ActionStage._(8);
-  static const number9 = ActionStage._(9);
-  static const number10 = ActionStage._(10);
-  static const number11 = ActionStage._(11);
-  static const number12 = ActionStage._(12);
+  static const EVM_SOURCE = ActionStage._(0);
+  static const EVM_DESTINATION = ActionStage._(1);
+  static const EVM_TRANSIENT = ActionStage._(2);
+  static const EVM_ONLY = ActionStage._(3);
+  static const COSMOS_SOURCE = ActionStage._(4);
+  static const COSMOS_DESTINATION = ActionStage._(5);
+  static const COSMOS_TRANSIENT = ActionStage._(6);
+  static const COSMOS_ONLY = ActionStage._(7);
+  static const BTC_SOURCE = ActionStage._(8);
+  static const BTC_DESTINATION = ActionStage._(9);
+  static const SOLANA_SOURCE = ActionStage._(10);
+  static const SOLANA_DESTINATION = ActionStage._(11);
+  static const SOLANA_ONLY = ActionStage._(12);
 
   /// List of all possible values in this [enum][ActionStage].
   static const values = <ActionStage>[
-    number0,
-    number1,
-    number2,
-    number3,
-    number4,
-    number5,
-    number6,
-    number7,
-    number8,
-    number9,
-    number10,
-    number11,
-    number12,
+    EVM_SOURCE,
+    EVM_DESTINATION,
+    EVM_TRANSIENT,
+    EVM_ONLY,
+    COSMOS_SOURCE,
+    COSMOS_DESTINATION,
+    COSMOS_TRANSIENT,
+    COSMOS_ONLY,
+    BTC_SOURCE,
+    BTC_DESTINATION,
+    SOLANA_SOURCE,
+    SOLANA_DESTINATION,
+    SOLANA_ONLY,
   ];
 
   static ActionStage? fromJson(dynamic value) => ActionStageTypeTransformer().decode(value);
@@ -90,19 +90,19 @@ class ActionStageTypeTransformer {
   ActionStage? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case 0: return ActionStage.number0;
-        case 1: return ActionStage.number1;
-        case 2: return ActionStage.number2;
-        case 3: return ActionStage.number3;
-        case 4: return ActionStage.number4;
-        case 5: return ActionStage.number5;
-        case 6: return ActionStage.number6;
-        case 7: return ActionStage.number7;
-        case 8: return ActionStage.number8;
-        case 9: return ActionStage.number9;
-        case 10: return ActionStage.number10;
-        case 11: return ActionStage.number11;
-        case 12: return ActionStage.number12;
+        case 0: return ActionStage.EVM_SOURCE;
+        case 1: return ActionStage.EVM_DESTINATION;
+        case 2: return ActionStage.EVM_TRANSIENT;
+        case 3: return ActionStage.EVM_ONLY;
+        case 4: return ActionStage.COSMOS_SOURCE;
+        case 5: return ActionStage.COSMOS_DESTINATION;
+        case 6: return ActionStage.COSMOS_TRANSIENT;
+        case 7: return ActionStage.COSMOS_ONLY;
+        case 8: return ActionStage.BTC_SOURCE;
+        case 9: return ActionStage.BTC_DESTINATION;
+        case 10: return ActionStage.SOLANA_SOURCE;
+        case 11: return ActionStage.SOLANA_DESTINATION;
+        case 12: return ActionStage.SOLANA_ONLY;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

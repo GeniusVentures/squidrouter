@@ -23,25 +23,25 @@ class WrapperType {
 
   String toJson() => value;
 
-  static const wrappedNative = WrapperType._(r'WrappedNative');
-  static const overnight = WrapperType._(r'Overnight');
-  static const deus = WrapperType._(r'Deus');
-  static const wstETH = WrapperType._(r'WstETH');
-  static const wrappedMAI = WrapperType._(r'WrappedMAI');
-  static const wrappedUSDY = WrapperType._(r'WrappedUSDY');
-  static const converterDAIUSDS = WrapperType._(r'ConverterDAIUSDS');
-  static const converterMKRSKY = WrapperType._(r'ConverterMKRSKY');
+  static const WRAPPED_NATIVE = WrapperType._(r'WrappedNative');
+  static const OVERNIGHT = WrapperType._(r'Overnight');
+  static const DEUS = WrapperType._(r'Deus');
+  static const WSTETH = WrapperType._(r'WstETH');
+  static const WRAPPED_MAI = WrapperType._(r'WrappedMAI');
+  static const WRAPPED_USDY = WrapperType._(r'WrappedUSDY');
+  static const CONVERTER_DAI_USDS = WrapperType._(r'ConverterDAIUSDS');
+  static const CONVERTER_MKR_SKY = WrapperType._(r'ConverterMKRSKY');
 
   /// List of all possible values in this [enum][WrapperType].
   static const values = <WrapperType>[
-    wrappedNative,
-    overnight,
-    deus,
-    wstETH,
-    wrappedMAI,
-    wrappedUSDY,
-    converterDAIUSDS,
-    converterMKRSKY,
+    WRAPPED_NATIVE,
+    OVERNIGHT,
+    DEUS,
+    WSTETH,
+    WRAPPED_MAI,
+    WRAPPED_USDY,
+    CONVERTER_DAI_USDS,
+    CONVERTER_MKR_SKY,
   ];
 
   static WrapperType? fromJson(dynamic value) => WrapperTypeTypeTransformer().decode(value);
@@ -80,14 +80,14 @@ class WrapperTypeTypeTransformer {
   WrapperType? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'WrappedNative': return WrapperType.wrappedNative;
-        case r'Overnight': return WrapperType.overnight;
-        case r'Deus': return WrapperType.deus;
-        case r'WstETH': return WrapperType.wstETH;
-        case r'WrappedMAI': return WrapperType.wrappedMAI;
-        case r'WrappedUSDY': return WrapperType.wrappedUSDY;
-        case r'ConverterDAIUSDS': return WrapperType.converterDAIUSDS;
-        case r'ConverterMKRSKY': return WrapperType.converterMKRSKY;
+        case r'WrappedNative': return WrapperType.WRAPPED_NATIVE;
+        case r'Overnight': return WrapperType.OVERNIGHT;
+        case r'Deus': return WrapperType.DEUS;
+        case r'WstETH': return WrapperType.WSTETH;
+        case r'WrappedMAI': return WrapperType.WRAPPED_MAI;
+        case r'WrappedUSDY': return WrapperType.WRAPPED_USDY;
+        case r'ConverterDAIUSDS': return WrapperType.CONVERTER_DAI_USDS;
+        case r'ConverterMKRSKY': return WrapperType.CONVERTER_MKR_SKY;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

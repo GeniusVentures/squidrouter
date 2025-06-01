@@ -23,23 +23,23 @@ class ActionType {
 
   String toJson() => value;
 
-  static const swap = ActionType._(r'swap');
-  static const wrap = ActionType._(r'wrap');
-  static const bridge = ActionType._(r'bridge');
-  static const ibcTransfer = ActionType._(r'ibc-transfer');
-  static const custom = ActionType._(r'custom');
-  static const fee = ActionType._(r'fee');
-  static const rfq = ActionType._(r'rfq');
+  static const SWAP = ActionType._(r'swap');
+  static const WRAP = ActionType._(r'wrap');
+  static const BRIDGE = ActionType._(r'bridge');
+  static const IBC_TRANSFER = ActionType._(r'ibc-transfer');
+  static const CUSTOM = ActionType._(r'custom');
+  static const FEE = ActionType._(r'fee');
+  static const RFQ = ActionType._(r'rfq');
 
   /// List of all possible values in this [enum][ActionType].
   static const values = <ActionType>[
-    swap,
-    wrap,
-    bridge,
-    ibcTransfer,
-    custom,
-    fee,
-    rfq,
+    SWAP,
+    WRAP,
+    BRIDGE,
+    IBC_TRANSFER,
+    CUSTOM,
+    FEE,
+    RFQ,
   ];
 
   static ActionType? fromJson(dynamic value) => ActionTypeTypeTransformer().decode(value);
@@ -78,13 +78,13 @@ class ActionTypeTypeTransformer {
   ActionType? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'swap': return ActionType.swap;
-        case r'wrap': return ActionType.wrap;
-        case r'bridge': return ActionType.bridge;
-        case r'ibc-transfer': return ActionType.ibcTransfer;
-        case r'custom': return ActionType.custom;
-        case r'fee': return ActionType.fee;
-        case r'rfq': return ActionType.rfq;
+        case r'swap': return ActionType.SWAP;
+        case r'wrap': return ActionType.WRAP;
+        case r'bridge': return ActionType.BRIDGE;
+        case r'ibc-transfer': return ActionType.IBC_TRANSFER;
+        case r'custom': return ActionType.CUSTOM;
+        case r'fee': return ActionType.FEE;
+        case r'rfq': return ActionType.RFQ;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

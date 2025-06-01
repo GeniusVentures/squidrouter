@@ -23,11 +23,11 @@ class GasCostType {
 
   String toJson() => value;
 
-  static const executeCall = GasCostType._(r'executeCall');
+  static const EXECUTE_CALL = GasCostType._(r'executeCall');
 
   /// List of all possible values in this [enum][GasCostType].
   static const values = <GasCostType>[
-    executeCall,
+    EXECUTE_CALL,
   ];
 
   static GasCostType? fromJson(dynamic value) => GasCostTypeTypeTransformer().decode(value);
@@ -66,7 +66,7 @@ class GasCostTypeTypeTransformer {
   GasCostType? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'executeCall': return GasCostType.executeCall;
+        case r'executeCall': return GasCostType.EXECUTE_CALL;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

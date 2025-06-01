@@ -23,15 +23,15 @@ class CosmosChainFeatures {
 
   String toJson() => value;
 
-  static const packetForwardMiddleware = CosmosChainFeatures._(r'packet-forward-middleware');
-  static const legacyIbc = CosmosChainFeatures._(r'legacy-ibc');
-  static const cosmwasm = CosmosChainFeatures._(r'cosmwasm');
+  static const PACKET_FORWARD_MIDDLEWARE = CosmosChainFeatures._(r'packet-forward-middleware');
+  static const LEGACY_IBC = CosmosChainFeatures._(r'legacy-ibc');
+  static const COSMWASM = CosmosChainFeatures._(r'cosmwasm');
 
   /// List of all possible values in this [enum][CosmosChainFeatures].
   static const values = <CosmosChainFeatures>[
-    packetForwardMiddleware,
-    legacyIbc,
-    cosmwasm,
+    PACKET_FORWARD_MIDDLEWARE,
+    LEGACY_IBC,
+    COSMWASM,
   ];
 
   static CosmosChainFeatures? fromJson(dynamic value) => CosmosChainFeaturesTypeTransformer().decode(value);
@@ -70,9 +70,9 @@ class CosmosChainFeaturesTypeTransformer {
   CosmosChainFeatures? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'packet-forward-middleware': return CosmosChainFeatures.packetForwardMiddleware;
-        case r'legacy-ibc': return CosmosChainFeatures.legacyIbc;
-        case r'cosmwasm': return CosmosChainFeatures.cosmwasm;
+        case r'packet-forward-middleware': return CosmosChainFeatures.PACKET_FORWARD_MIDDLEWARE;
+        case r'legacy-ibc': return CosmosChainFeatures.LEGACY_IBC;
+        case r'cosmwasm': return CosmosChainFeatures.COSMWASM;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

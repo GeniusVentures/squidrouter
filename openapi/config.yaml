@@ -2,3 +2,4 @@ pubDescription: Squid Router OpenAPI API client
 pubHomepage: http://github.com/GeniusVentures/squidrouter-client-dart
 pubLibrary: squidrouter
 pubname: squidrouter
+useEnumExtension: true

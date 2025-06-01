@@ -18,7 +18,14 @@ components:
         - cosmos
         - bitcoin
         - solana
+        - sui
       description: The type of blockchain.
+      x-enum-varnames:
+        - EVM
+        - COSMOS
+        - BTC
+        - SOLANA
+        - SUI
       default: evm
     SquidCallType:
       type: integer
@@ -29,7 +36,12 @@ components:
         2: CALL_DATA / FULL_NATIVE_BALANCE (use `value` field as is for native token transfers or `payload` for substituting into callData)
         3: COLLECT_TOKEN_BALANCE
       enum: [0, 1, 2, 3]
-      example: 1
+      x-enum-varnames:
+        - DEFAULT
+        - FULL_TOKEN_BALANCE
+        - CALL_DATA
+        - COLLECT_TOKEN_BALANCE
+      example: FULL_TOKEN_BALANCE
       default: 0
 
     HookCallPayload:
@@ -289,12 +301,23 @@ components:
         - Execution fee
         - Settlement fee
         - Service fee
+      x-enum-varnames:
+        - AXELAR_FEE
+        - GAS_RECEIVER_FEE
+        - BOOST_FEE
+        - INTEGRATOR_FEE
+        - CHAINFLIP_FEE
+        - EXECUTION_FEE
+        - SETTLEMENT_FEE
+        - SERVICE_FEE
       description: Type of fee applied to the transaction.
 
     GasCostType:
       type: string
       enum:
         - executeCall
+      x-enum-varnames:
+        - EXECUTE_CALL
       description: Type of gas cost.
 
     FeeCost:
@@ -373,6 +396,14 @@ components:
         - fee
         - rfq
       example: "swap"
+      x-enum-varnames:
+        - SWAP
+        - WRAP
+        - BRIDGE
+        - IBC_TRANSFER
+        - CUSTOM
+        - FEE
+        - RFQ
 
     Action:
       type: object
@@ -573,6 +604,13 @@ components:
         - chainflip
         - coral
         - chainflipMultihop
+      x-enum-varnames:
+        - MaintenanceMode
+        - Bitcoin
+        - Solana
+        - Chainflip
+        - Coral
+        - ChainflipMultihop
       description: Feature flag type identifier.
 
     TRMIdentifier:
@@ -626,6 +664,54 @@ components:
         - zcash
         - zilliqa
       description: TRM compliance identifier.
+      x-enum-varnames:
+        - ALGORAND
+        - ARBITRUM
+        - AVALANCHE
+        - BASE
+        - BERACHAIN
+        - BINANCE
+        - BINANCE_SMART_CHAIN
+        - BITCOIN
+        - BITCOIN_CASH
+        - BYTOM
+        - CARDANO
+        - CELO
+        - COSMOS
+        - DASH
+        - DOGECOIN
+        - ELASTOS
+        - ETHEREUM
+        - ETHEREUM_CLASSIC
+        - ELROND
+        - FANTOM
+        - FILECOIN
+        - HEDERA
+        - ICON
+        - IOST
+        - IOTA
+        - KLAYTN
+        - LISK
+        - LITECOIN
+        - MONERO
+        - NEBULAS
+        - NEO
+        - OASIS
+        - OMNI
+        - ONTOLOGY
+        - OPTIMISM
+        - PAI
+        - POLKADOT
+        - POLYGON
+        - QTUM
+        - XRPLEDGER
+        - SOLANA
+        - STEEM
+        - STELLAR
+        - TEZOS
+        - TRON
+        - ZCASH
+        - ZILLIQA
 
     SquidTransactionStatus:
       type: string
@@ -638,6 +724,14 @@ components:
         - failed_on_destination
         - refunded
       description: Squid transaction status.
+      x-enum-varnames:
+        - SUCCESS
+        - NEEDS_GAS
+        - ONGOING
+        - PARTIAL_SUCCESS
+        - NOT_FOUND
+        - FAILED_DESTINATION
+        - REFUNDED
 
     AxelarRouteAction:
       type: string
@@ -651,6 +745,15 @@ components:
         - gas_paid
         - approved
       description: Axelar route action type.
+      x-enum-varnames:
+        - CALL
+        - EXECUTED
+        - IBC_TRANSFER
+        - SEND
+        - VOTE
+        - IBC_SEND
+        - GAS_PAID
+        - APPROVED
 
     RouteActionStatus:
       type: string
@@ -662,7 +765,14 @@ components:
         - awaiting
         - refunded
       description: Route action status.
-
+      x-enum-varnames:
+        - SUCCESS
+        - FAILURE
+        - NOT_FOUND
+        - UNKNOWN
+        - AWAITING
+        - REFUNDED
+    
     CCTPStatus:
       type: string
       enum:
@@ -670,6 +780,10 @@ components:
         - complete
         - pending
       description: CCTP status.
+      x-enum-varnames:
+        - ERROR
+        - COMPLETE
+        - PENDING
 
     SendTokenStatus:
       type: string
@@ -677,7 +791,10 @@ components:
         - asset_sent
         - executed
       description: Send token status.
-
+      x-enum-varnames:
+        - ASSET_SENT
+        - EXECUTED
+    
     CosmosChainFeatures:
       type: string
       enum:
@@ -685,7 +802,11 @@ components:
         - legacy-ibc
         - cosmwasm
       description: Cosmos chain features.
-
+      x-enum-varnames:
+        - PACKET_FORWARD_MIDDLEWARE
+        - LEGACY_IBC
+        - COSMWASM
+          
     SquidRouteType:
       type: string
       enum:
@@ -705,6 +826,9 @@ components:
       enum:
         - ON_CHAIN_EXECUTION
         - CHAINFLIP_DEPOSIT_ADDRESS
+      x-enum-varnames:
+        - OnChainExecution
+        - ChainflipDepositAddress
       description: Squid data type.
 
     CosmosCallType:
@@ -717,6 +841,12 @@ components:
         2: PFM
         3: GMP
         4: CCTP
+      x-enum-varnames:
+        - MULTICALL
+        - IBC_TRANSFER
+        - PFM
+        - GMP
+        - CCTP 
 
     ActionStage:
       type: integer
@@ -736,6 +866,20 @@ components:
         10: SOLANA_SOURCE
         11: SOLANA_DESTINATION
         12: SOLANA_ONLY
+      x-enum-varnames:
+        - EVM_SOURCE
+        - EVM_DESTINATION
+        - EVM_TRANSIENT
+        - EVM_ONLY
+        - COSMOS_SOURCE
+        - COSMOS_DESTINATION
+        - COSMOS_TRANSIENT
+        - COSMOS_ONLY
+        - BTC_SOURCE
+        - BTC_DESTINATION
+        - SOLANA_SOURCE
+        - SOLANA_DESTINATION
+        - SOLANA_ONLY
 
     FEES_ENUM:
       type: string
@@ -759,7 +903,16 @@ components:
         - CORAL
         - Immutable
       description: Bridge provider name for cross-chain operations.
-
+      x-enum-varnames:
+        - AXELAR
+        - CCTP
+        - NOBLE_CCTP
+        - IBC
+        - PFM
+        - CHAINFLIP
+        - RFQ
+        - IMMUTABLE
+    
     ChainName:
       type: string
       enum:
@@ -858,8 +1011,106 @@ components:
         - nirvana
         - bitcoin
         - solana
+        - sui
       description: Chain name identifier.
-
+      x-enum-varnames:
+        - ARBITRUM
+        - ARBITRUM2
+        - AURORA
+        - AVALANCHE
+        - BASE
+        - BINANCE
+        - CELO
+        - CENTRIFUGE
+        - ETHEREUM
+        - ETHEREUM2
+        - FANTOM
+        - FILECOIN
+        - FILECOIN2
+        - IMMUTABLE_ZKEVM
+        - KAVA
+        - MANTLE
+        - MOONBEAM
+        - OPTIMISM
+        - POLYGON_ZKEVM
+        - POLYGON
+        - LINEA
+        - SCROLL
+        - BLAST
+        - FRAXTAL
+        - BERACHAIN
+        - AGORIC
+        - ASSETMANTLE
+        - AXELARNET
+        - CARBON
+        - COMDEX
+        - COSMOS
+        - CRESCENT
+        - EVMOS
+        - FETCH
+        - INJECTIVE
+        - JUNO
+        - KI
+        - KUJIRA
+        - NEUTRON
+        - NOBLE
+        - OSMOSIS
+        - OSMOSIS7
+        - REGEN
+        - SEI
+        - SECRETSNIP
+        - STARGAZE
+        - STRIDE
+        - TERRA2
+        - UMEE
+        - DYDX
+        - ACRECHAIN
+        - ARCHWAY
+        - BITCANNA
+        - BITSONG
+        - CHEQD
+        - CELESTIA
+        - COREUM
+        - DECENTR
+        - DESMOS
+        - DIG
+        - DYMENSION
+        - IRISNET
+        - IXO
+        - JACKAL
+        - LUM
+        - LIKECOIN
+        - KAVA_IBC
+        - NOLUS
+        - XPLA
+        - AKASH
+        - CHIHUAHUA
+        - CRONOS
+        - GRAVITYBRIDGE
+        - MARS
+        - MIGALOO
+        - PERSISTENCE
+        - OMNIFLIXHUB
+        - QUICKSILVER
+        - SOMMELIER
+        - TERRA
+        - TERITORI
+        - SENTINEL
+        - HUMANS
+        - CHAIN4ENERGY
+        - SAGA
+        - NIBIRU
+        - LAVA
+        - KYVE
+        - XION
+        - SAGA_HUB
+        - SAGA_DEX
+        - SAGA_MARIA
+        - SAGA_NIRVANA
+        - BITCOIN
+        - SOLANA
+        - SUI
+    
     NetworkIdentifier:
       type: string
       enum:
@@ -952,8 +1203,100 @@ components:
         - nirvana
         - bitcoin
         - solana
+        - sui
       description: Network identifier.
-
+      x-enum-varnames:
+        - ETHEREUM
+        - AVALANCHE
+        - ARBITRUM
+        - AURORA
+        - BASE
+        - BINANCE
+        - CELO
+        - FANTOM
+        - FILECOIN
+        - IMMUTABLE_ZKEVM
+        - KAVA
+        - MANTLE
+        - MOONBEAM
+        - OPTIMISM
+        - POLYGON
+        - LINEA
+        - SCROLL
+        - BLAST
+        - FRAXTAL
+        - BERACHAIN
+        - AGORIC
+        - ASSETMANTLE
+        - AXELAR
+        - AXELARNET
+        - CARBON
+        - COMDEX
+        - COSMOS
+        - CRESCENT
+        - EVMOS
+        - FETCH
+        - INJECTIVE
+        - JUNO
+        - KI
+        - KUJIRA
+        - NOBLE
+        - NEUTRON
+        - OSMOSIS
+        - REGEN
+        - SEI
+        - SECRETSNIP
+        - STARGAZE
+        - STRIDE
+        - TERRA2
+        - UMEE
+        - DYDX
+        - ACRECHAIN
+        - ARCHWAY
+        - BITCANNA
+        - BITSONG
+        - CHEQD
+        - CELESTIA
+        - COREUM
+        - DECENTR
+        - DESMOS
+        - DYMENSION
+        - IRISNET
+        - IXO
+        - JACKAL
+        - LUM
+        - LIKECOIN
+        - KAVA_IBC
+        - NOLUS
+        - XPLA
+        - AKASH
+        - CHIHUAHUA
+        - CRONOS
+        - GRAVITYBRIDGE
+        - MARS
+        - MIGALOO
+        - PERSISTENCE
+        - OMNIFLIXHUB
+        - QUICKSILVER
+        - SOMMELIER
+        - TERRA
+        - TERITORI
+        - SENTINEL
+        - HUMANS
+        - CHAIN4ENERGY
+        - SAGA
+        - NIBIRU
+        - LAVA
+        - KYVE
+        - XION
+        - SAGA_HUB
+        - SAGA_DEX
+        - SAGA_MARIA
+        - SAGA_NIRVANA
+        - BITCOIN
+        - SOLANA
+        - SUI
+    
     DexName:
       type: string
       enum:
@@ -1033,6 +1376,82 @@ components:
         - Zyberswap V2
         - Zyberswap V3
       description: DEX name identifier.
+      x-enum-varnames:
+        - AGNI_V3
+        - AERODROME_SOLIDLY
+        - AERODROME_V3
+        - APESWAP_V2
+        - APESWAP_V3
+        - ASTROPORT
+        - BALANCER_V2
+        - BASESWAP_V2
+        - BASESWAP_V3
+        - BEAMSWAP_V2
+        - BEAMSWAP_V3
+        - BEAMSWAP_SADDLE
+        - CAMELOT_V3
+        - CURVE_V2
+        - ELLIPSIS
+        - EQUILIBRE
+        - EQUALIZER
+        - FRAXSWAP_V2
+        - FUSIONX_V2
+        - FUSIONX_V3
+        - GMX
+        - HORIZON_V2
+        - HORIZON_V3
+        - KYBERSWAP
+        - KYBERSWAP_AGGREGATOR
+        - KINETIX_V3
+        - LYNEX_V3
+        - MENTO_V2
+        - NILE_SOLIDLY
+        - NILE_V3
+        - OPENOCEAN
+        - OSMOSIS
+        - PANCAKESWAP_V2
+        - PANCAKESWAP_V3
+        - PANCAKESWAP_STABLE
+        - PANGOLIN_V2
+        - PHARAOH_SOLIDLY
+        - PHARAOH_V3
+        - PLATYPUS
+        - QUICKSWAP_V2
+        - QUICKSWAP_V3
+        - RAMSES_SOLIDLY
+        - RA_V3
+        - RAMSES_V3
+        - SPOOKYSWAP_V2
+        - STELLASWAP_V2
+        - STELLASWAP_V3
+        - STELLASWAP_SADDLE
+        - SUSHISWAP_V2
+        - SUSHISWAP_V3
+        - SWAPBASED_V2
+        - SYNTHSWAP_V2
+        - SYNTHSWAP_V3
+        - SKYDROME
+        - THENA_SOLIDLY
+        - THENA_V3
+        - TRADERJOE_V2
+        - TRADERJOE_V21
+        - TRADERJOE_V22
+        - TRIDENT
+        - THRUSTER_V3
+        - THRUSTER_V2
+        - UBESWAP_V2
+        - UBESWAP_V3
+        - UNISWAP_V2
+        - UNISWAP_V3
+        - WAGMI_V3
+        - WIGOSWAP_V2
+        - WOMBAT
+        - VELODROME_SOLIDLY
+        - VELODROME_V2
+        - VELODROME_V3
+        - VELOCIMETER
+        - ZYBERSWAP_V2
+        - ZYBERSWAP_V3
 
     DexType:
       type: string
@@ -1057,7 +1476,27 @@ components:
         - osmosis
         - astroport
       description: DEX type identifier.
-
+      x-enum-varnames:
+        - ALGEBRA
+        - BALANCER_V2
+        - CURVE
+        - GMX
+        - KYBERSWAP_ELASTIC
+        - PLATYPUS
+        - PANCAKESWAP_STABLE
+        - SADDLE
+        - SLIPSTREAM
+        - SOLIDLY
+        - TRADERJOE_V21
+        - TRADERJOE_V22
+        - TRIDENT
+        - WOMBAT
+        - UNISWAP_V2
+        - UNISWAP_V3
+        - MENTO_V2
+        - OSMOSIS
+        - ASTROPORT
+    
     WrapperType:
       type: string
       enum:
@@ -1070,7 +1509,16 @@ components:
         - ConverterDAIUSDS
         - ConverterMKRSKY
       description: Wrapper type identifier.
-
+      x-enum-varnames:
+        - WRAPPED_NATIVE
+        - OVERNIGHT
+        - DEUS
+        - WSTETH
+        - WRAPPED_MAI
+        - WRAPPED_USDY
+        - CONVERTER_DAI_USDS
+        - CONVERTER_MKR_SKY
+    
     WrapperName:
       type: string
       enum:
@@ -1083,6 +1531,15 @@ components:
         - DAI USDS Converter
         - MKR SKY Converter
       description: Wrapper name identifier.
+      x-enum-varnames:
+        - WRAPPED_NATIVE
+        - OVERNIGHT
+        - DEUS
+        - WSTETH
+        - WRAPPED_MAI
+        - WRAPPED_USDY
+        - SKY_PROTOCOL_USDS
+        - SKY_PROTOCOL_SKY
 
     WrapDirection:
       type: string
@@ -1090,6 +1547,9 @@ components:
         - wrap
         - unwrap
       description: Wrap direction.
+      x-enum-varnames:
+        - WRAP
+        - UNWRAP
 
     BridgeType:
       type: string
@@ -1102,6 +1562,15 @@ components:
         - chainflip
         - rfq
         - immutable-token-bridge
+      x-enum-varnames:
+        - AXELAR_GMP
+        - AXELAR_ITS
+        - CCTP
+        - NOBLE_CCTP
+        - IBC
+        - CHAINFLIP
+        - RFQ
+        - ITB
       description: Type of bridge used for cross-chain operations.
 
     DepositAddressRequestData:
@@ -1191,6 +1660,11 @@ components:
         1: STABLE
         2: HIGH_CAP
         3: VOLATILE
+      x-enum-varnames:
+        - SUPER_STABLE
+        - STABLE
+        - HIGH_CAP
+        - VOLATILE
 
     Dex:
       type: object

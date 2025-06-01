@@ -23,103 +23,103 @@ class TRMIdentifier {
 
   String toJson() => value;
 
-  static const algorand = TRMIdentifier._(r'algorand');
-  static const arbitrum = TRMIdentifier._(r'arbitrum');
-  static const avalancheCChain = TRMIdentifier._(r'avalanche_c_chain');
-  static const base_ = TRMIdentifier._(r'base');
-  static const berachain = TRMIdentifier._(r'berachain');
-  static const binance = TRMIdentifier._(r'binance');
-  static const binanceSmartChain = TRMIdentifier._(r'binance_smart_chain');
-  static const bitcoin = TRMIdentifier._(r'bitcoin');
-  static const bitcoinCash = TRMIdentifier._(r'bitcoin_cash');
-  static const bytom = TRMIdentifier._(r'bytom');
-  static const cardano = TRMIdentifier._(r'cardano');
-  static const celo = TRMIdentifier._(r'celo');
-  static const cosmos = TRMIdentifier._(r'cosmos');
-  static const dash = TRMIdentifier._(r'dash');
-  static const dogecoin = TRMIdentifier._(r'dogecoin');
-  static const elastos = TRMIdentifier._(r'elastos');
-  static const ethereum = TRMIdentifier._(r'ethereum');
-  static const ethereumClassic = TRMIdentifier._(r'ethereum_classic');
-  static const elrond = TRMIdentifier._(r'elrond');
-  static const fantom = TRMIdentifier._(r'fantom');
-  static const filecoin = TRMIdentifier._(r'filecoin');
-  static const hedera = TRMIdentifier._(r'hedera');
-  static const icon = TRMIdentifier._(r'icon');
-  static const iost = TRMIdentifier._(r'iost');
-  static const iota = TRMIdentifier._(r'iota');
-  static const klaytn = TRMIdentifier._(r'klaytn');
-  static const lisk = TRMIdentifier._(r'lisk');
-  static const litecoin = TRMIdentifier._(r'litecoin');
-  static const monero = TRMIdentifier._(r'monero');
-  static const nebulas = TRMIdentifier._(r'nebulas');
-  static const neo = TRMIdentifier._(r'neo');
-  static const oasis = TRMIdentifier._(r'oasis');
-  static const omni = TRMIdentifier._(r'omni');
-  static const ontology = TRMIdentifier._(r'ontology');
-  static const optimism = TRMIdentifier._(r'optimism');
-  static const pai = TRMIdentifier._(r'pai');
-  static const polkadot = TRMIdentifier._(r'polkadot');
-  static const polygon = TRMIdentifier._(r'polygon');
-  static const qtum = TRMIdentifier._(r'qtum');
-  static const ripple = TRMIdentifier._(r'ripple');
-  static const solana = TRMIdentifier._(r'solana');
-  static const steem = TRMIdentifier._(r'steem');
-  static const stellar = TRMIdentifier._(r'stellar');
-  static const tezos = TRMIdentifier._(r'tezos');
-  static const tron = TRMIdentifier._(r'tron');
-  static const zcash = TRMIdentifier._(r'zcash');
-  static const zilliqa = TRMIdentifier._(r'zilliqa');
+  static const ALGORAND = TRMIdentifier._(r'algorand');
+  static const ARBITRUM = TRMIdentifier._(r'arbitrum');
+  static const AVALANCHE = TRMIdentifier._(r'avalanche_c_chain');
+  static const BASE = TRMIdentifier._(r'base');
+  static const BERACHAIN = TRMIdentifier._(r'berachain');
+  static const BINANCE = TRMIdentifier._(r'binance');
+  static const BINANCE_SMART_CHAIN = TRMIdentifier._(r'binance_smart_chain');
+  static const BITCOIN = TRMIdentifier._(r'bitcoin');
+  static const BITCOIN_CASH = TRMIdentifier._(r'bitcoin_cash');
+  static const BYTOM = TRMIdentifier._(r'bytom');
+  static const CARDANO = TRMIdentifier._(r'cardano');
+  static const CELO = TRMIdentifier._(r'celo');
+  static const COSMOS = TRMIdentifier._(r'cosmos');
+  static const DASH = TRMIdentifier._(r'dash');
+  static const DOGECOIN = TRMIdentifier._(r'dogecoin');
+  static const ELASTOS = TRMIdentifier._(r'elastos');
+  static const ETHEREUM = TRMIdentifier._(r'ethereum');
+  static const ETHEREUM_CLASSIC = TRMIdentifier._(r'ethereum_classic');
+  static const ELROND = TRMIdentifier._(r'elrond');
+  static const FANTOM = TRMIdentifier._(r'fantom');
+  static const FILECOIN = TRMIdentifier._(r'filecoin');
+  static const HEDERA = TRMIdentifier._(r'hedera');
+  static const ICON = TRMIdentifier._(r'icon');
+  static const IOST = TRMIdentifier._(r'iost');
+  static const IOTA = TRMIdentifier._(r'iota');
+  static const KLAYTN = TRMIdentifier._(r'klaytn');
+  static const LISK = TRMIdentifier._(r'lisk');
+  static const LITECOIN = TRMIdentifier._(r'litecoin');
+  static const MONERO = TRMIdentifier._(r'monero');
+  static const NEBULAS = TRMIdentifier._(r'nebulas');
+  static const NEO = TRMIdentifier._(r'neo');
+  static const OASIS = TRMIdentifier._(r'oasis');
+  static const OMNI = TRMIdentifier._(r'omni');
+  static const ONTOLOGY = TRMIdentifier._(r'ontology');
+  static const OPTIMISM = TRMIdentifier._(r'optimism');
+  static const PAI = TRMIdentifier._(r'pai');
+  static const POLKADOT = TRMIdentifier._(r'polkadot');
+  static const POLYGON = TRMIdentifier._(r'polygon');
+  static const QTUM = TRMIdentifier._(r'qtum');
+  static const XRPLEDGER = TRMIdentifier._(r'ripple');
+  static const SOLANA = TRMIdentifier._(r'solana');
+  static const STEEM = TRMIdentifier._(r'steem');
+  static const STELLAR = TRMIdentifier._(r'stellar');
+  static const TEZOS = TRMIdentifier._(r'tezos');
+  static const TRON = TRMIdentifier._(r'tron');
+  static const ZCASH = TRMIdentifier._(r'zcash');
+  static const ZILLIQA = TRMIdentifier._(r'zilliqa');
 
   /// List of all possible values in this [enum][TRMIdentifier].
   static const values = <TRMIdentifier>[
-    algorand,
-    arbitrum,
-    avalancheCChain,
-    base_,
-    berachain,
-    binance,
-    binanceSmartChain,
-    bitcoin,
-    bitcoinCash,
-    bytom,
-    cardano,
-    celo,
-    cosmos,
-    dash,
-    dogecoin,
-    elastos,
-    ethereum,
-    ethereumClassic,
-    elrond,
-    fantom,
-    filecoin,
-    hedera,
-    icon,
-    iost,
-    iota,
-    klaytn,
-    lisk,
-    litecoin,
-    monero,
-    nebulas,
-    neo,
-    oasis,
-    omni,
-    ontology,
-    optimism,
-    pai,
-    polkadot,
-    polygon,
-    qtum,
-    ripple,
-    solana,
-    steem,
-    stellar,
-    tezos,
-    tron,
-    zcash,
-    zilliqa,
+    ALGORAND,
+    ARBITRUM,
+    AVALANCHE,
+    BASE,
+    BERACHAIN,
+    BINANCE,
+    BINANCE_SMART_CHAIN,
+    BITCOIN,
+    BITCOIN_CASH,
+    BYTOM,
+    CARDANO,
+    CELO,
+    COSMOS,
+    DASH,
+    DOGECOIN,
+    ELASTOS,
+    ETHEREUM,
+    ETHEREUM_CLASSIC,
+    ELROND,
+    FANTOM,
+    FILECOIN,
+    HEDERA,
+    ICON,
+    IOST,
+    IOTA,
+    KLAYTN,
+    LISK,
+    LITECOIN,
+    MONERO,
+    NEBULAS,
+    NEO,
+    OASIS,
+    OMNI,
+    ONTOLOGY,
+    OPTIMISM,
+    PAI,
+    POLKADOT,
+    POLYGON,
+    QTUM,
+    XRPLEDGER,
+    SOLANA,
+    STEEM,
+    STELLAR,
+    TEZOS,
+    TRON,
+    ZCASH,
+    ZILLIQA,
   ];
 
   static TRMIdentifier? fromJson(dynamic value) => TRMIdentifierTypeTransformer().decode(value);
@@ -158,53 +158,53 @@ class TRMIdentifierTypeTransformer {
   TRMIdentifier? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'algorand': return TRMIdentifier.algorand;
-        case r'arbitrum': return TRMIdentifier.arbitrum;
-        case r'avalanche_c_chain': return TRMIdentifier.avalancheCChain;
-        case r'base': return TRMIdentifier.base_;
-        case r'berachain': return TRMIdentifier.berachain;
-        case r'binance': return TRMIdentifier.binance;
-        case r'binance_smart_chain': return TRMIdentifier.binanceSmartChain;
-        case r'bitcoin': return TRMIdentifier.bitcoin;
-        case r'bitcoin_cash': return TRMIdentifier.bitcoinCash;
-        case r'bytom': return TRMIdentifier.bytom;
-        case r'cardano': return TRMIdentifier.cardano;
-        case r'celo': return TRMIdentifier.celo;
-        case r'cosmos': return TRMIdentifier.cosmos;
-        case r'dash': return TRMIdentifier.dash;
-        case r'dogecoin': return TRMIdentifier.dogecoin;
-        case r'elastos': return TRMIdentifier.elastos;
-        case r'ethereum': return TRMIdentifier.ethereum;
-        case r'ethereum_classic': return TRMIdentifier.ethereumClassic;
-        case r'elrond': return TRMIdentifier.elrond;
-        case r'fantom': return TRMIdentifier.fantom;
-        case r'filecoin': return TRMIdentifier.filecoin;
-        case r'hedera': return TRMIdentifier.hedera;
-        case r'icon': return TRMIdentifier.icon;
-        case r'iost': return TRMIdentifier.iost;
-        case r'iota': return TRMIdentifier.iota;
-        case r'klaytn': return TRMIdentifier.klaytn;
-        case r'lisk': return TRMIdentifier.lisk;
-        case r'litecoin': return TRMIdentifier.litecoin;
-        case r'monero': return TRMIdentifier.monero;
-        case r'nebulas': return TRMIdentifier.nebulas;
-        case r'neo': return TRMIdentifier.neo;
-        case r'oasis': return TRMIdentifier.oasis;
-        case r'omni': return TRMIdentifier.omni;
-        case r'ontology': return TRMIdentifier.ontology;
-        case r'optimism': return TRMIdentifier.optimism;
-        case r'pai': return TRMIdentifier.pai;
-        case r'polkadot': return TRMIdentifier.polkadot;
-        case r'polygon': return TRMIdentifier.polygon;
-        case r'qtum': return TRMIdentifier.qtum;
-        case r'ripple': return TRMIdentifier.ripple;
-        case r'solana': return TRMIdentifier.solana;
-        case r'steem': return TRMIdentifier.steem;
-        case r'stellar': return TRMIdentifier.stellar;
-        case r'tezos': return TRMIdentifier.tezos;
-        case r'tron': return TRMIdentifier.tron;
-        case r'zcash': return TRMIdentifier.zcash;
-        case r'zilliqa': return TRMIdentifier.zilliqa;
+        case r'algorand': return TRMIdentifier.ALGORAND;
+        case r'arbitrum': return TRMIdentifier.ARBITRUM;
+        case r'avalanche_c_chain': return TRMIdentifier.AVALANCHE;
+        case r'base': return TRMIdentifier.BASE;
+        case r'berachain': return TRMIdentifier.BERACHAIN;
+        case r'binance': return TRMIdentifier.BINANCE;
+        case r'binance_smart_chain': return TRMIdentifier.BINANCE_SMART_CHAIN;
+        case r'bitcoin': return TRMIdentifier.BITCOIN;
+        case r'bitcoin_cash': return TRMIdentifier.BITCOIN_CASH;
+        case r'bytom': return TRMIdentifier.BYTOM;
+        case r'cardano': return TRMIdentifier.CARDANO;
+        case r'celo': return TRMIdentifier.CELO;
+        case r'cosmos': return TRMIdentifier.COSMOS;
+        case r'dash': return TRMIdentifier.DASH;
+        case r'dogecoin': return TRMIdentifier.DOGECOIN;
+        case r'elastos': return TRMIdentifier.ELASTOS;
+        case r'ethereum': return TRMIdentifier.ETHEREUM;
+        case r'ethereum_classic': return TRMIdentifier.ETHEREUM_CLASSIC;
+        case r'elrond': return TRMIdentifier.ELROND;
+        case r'fantom': return TRMIdentifier.FANTOM;
+        case r'filecoin': return TRMIdentifier.FILECOIN;
+        case r'hedera': return TRMIdentifier.HEDERA;
+        case r'icon': return TRMIdentifier.ICON;
+        case r'iost': return TRMIdentifier.IOST;
+        case r'iota': return TRMIdentifier.IOTA;
+        case r'klaytn': return TRMIdentifier.KLAYTN;
+        case r'lisk': return TRMIdentifier.LISK;
+        case r'litecoin': return TRMIdentifier.LITECOIN;
+        case r'monero': return TRMIdentifier.MONERO;
+        case r'nebulas': return TRMIdentifier.NEBULAS;
+        case r'neo': return TRMIdentifier.NEO;
+        case r'oasis': return TRMIdentifier.OASIS;
+        case r'omni': return TRMIdentifier.OMNI;
+        case r'ontology': return TRMIdentifier.ONTOLOGY;
+        case r'optimism': return TRMIdentifier.OPTIMISM;
+        case r'pai': return TRMIdentifier.PAI;
+        case r'polkadot': return TRMIdentifier.POLKADOT;
+        case r'polygon': return TRMIdentifier.POLYGON;
+        case r'qtum': return TRMIdentifier.QTUM;
+        case r'ripple': return TRMIdentifier.XRPLEDGER;
+        case r'solana': return TRMIdentifier.SOLANA;
+        case r'steem': return TRMIdentifier.STEEM;
+        case r'stellar': return TRMIdentifier.STELLAR;
+        case r'tezos': return TRMIdentifier.TEZOS;
+        case r'tron': return TRMIdentifier.TRON;
+        case r'zcash': return TRMIdentifier.ZCASH;
+        case r'zilliqa': return TRMIdentifier.ZILLIQA;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

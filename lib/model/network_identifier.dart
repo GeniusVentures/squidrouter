@@ -23,187 +23,189 @@ class NetworkIdentifier {
 
   String toJson() => value;
 
-  static const ethereum = NetworkIdentifier._(r'ethereum');
-  static const avalanche = NetworkIdentifier._(r'avalanche');
-  static const arbitrum = NetworkIdentifier._(r'arbitrum');
-  static const aurora = NetworkIdentifier._(r'aurora');
-  static const base_ = NetworkIdentifier._(r'base');
-  static const binance = NetworkIdentifier._(r'binance');
-  static const celo = NetworkIdentifier._(r'celo');
-  static const fantom = NetworkIdentifier._(r'fantom');
-  static const filecoin = NetworkIdentifier._(r'filecoin');
-  static const immutable = NetworkIdentifier._(r'immutable');
-  static const kava = NetworkIdentifier._(r'kava');
-  static const mantle = NetworkIdentifier._(r'mantle');
-  static const moonbeam = NetworkIdentifier._(r'moonbeam');
-  static const optimism = NetworkIdentifier._(r'optimism');
-  static const polygon = NetworkIdentifier._(r'polygon');
-  static const linea = NetworkIdentifier._(r'linea');
-  static const scroll = NetworkIdentifier._(r'scroll');
-  static const blast = NetworkIdentifier._(r'blast');
-  static const fraxtal = NetworkIdentifier._(r'fraxtal');
-  static const berachain = NetworkIdentifier._(r'berachain');
-  static const agoric = NetworkIdentifier._(r'agoric');
-  static const assetmantle = NetworkIdentifier._(r'assetmantle');
-  static const axelar = NetworkIdentifier._(r'axelar');
-  static const axelarnet = NetworkIdentifier._(r'axelarnet');
-  static const carbon = NetworkIdentifier._(r'carbon');
-  static const comdex = NetworkIdentifier._(r'comdex');
-  static const cosmoshub = NetworkIdentifier._(r'cosmoshub');
-  static const crescent = NetworkIdentifier._(r'crescent');
-  static const evmos = NetworkIdentifier._(r'evmos');
-  static const fetch = NetworkIdentifier._(r'fetch');
-  static const injective = NetworkIdentifier._(r'injective');
-  static const juno = NetworkIdentifier._(r'juno');
-  static const ki = NetworkIdentifier._(r'ki');
-  static const kujira = NetworkIdentifier._(r'kujira');
-  static const noble = NetworkIdentifier._(r'noble');
-  static const neutron = NetworkIdentifier._(r'neutron');
-  static const osmosis = NetworkIdentifier._(r'osmosis');
-  static const regen = NetworkIdentifier._(r'regen');
-  static const sei = NetworkIdentifier._(r'sei');
-  static const secretSnip = NetworkIdentifier._(r'secret-snip');
-  static const stargaze = NetworkIdentifier._(r'stargaze');
-  static const stride = NetworkIdentifier._(r'stride');
-  static const terra2 = NetworkIdentifier._(r'terra-2');
-  static const umee = NetworkIdentifier._(r'umee');
-  static const dydx = NetworkIdentifier._(r'dydx');
-  static const acre = NetworkIdentifier._(r'acre');
-  static const archway = NetworkIdentifier._(r'archway');
-  static const bitcanna = NetworkIdentifier._(r'bitcanna');
-  static const bitsong = NetworkIdentifier._(r'bitsong');
-  static const cheqd = NetworkIdentifier._(r'cheqd');
-  static const celestia = NetworkIdentifier._(r'celestia');
-  static const coreum = NetworkIdentifier._(r'coreum');
-  static const decentr = NetworkIdentifier._(r'decentr');
-  static const desmos = NetworkIdentifier._(r'desmos');
-  static const dymension = NetworkIdentifier._(r'dymension');
-  static const irisnet = NetworkIdentifier._(r'irisnet');
-  static const impacthub = NetworkIdentifier._(r'impacthub');
-  static const jackal = NetworkIdentifier._(r'jackal');
-  static const lumnetwork = NetworkIdentifier._(r'lumnetwork');
-  static const likecoin = NetworkIdentifier._(r'likecoin');
-  static const kavaIbc = NetworkIdentifier._(r'kava-ibc');
-  static const nolus = NetworkIdentifier._(r'nolus');
-  static const xpla = NetworkIdentifier._(r'xpla');
-  static const akash = NetworkIdentifier._(r'akash');
-  static const chihuahua = NetworkIdentifier._(r'chihuahua');
-  static const cronos = NetworkIdentifier._(r'cronos');
-  static const gravitybridge = NetworkIdentifier._(r'gravitybridge');
-  static const mars = NetworkIdentifier._(r'mars');
-  static const migaloo = NetworkIdentifier._(r'migaloo');
-  static const persistence = NetworkIdentifier._(r'persistence');
-  static const omniflixhub = NetworkIdentifier._(r'omniflixhub');
-  static const quicksilver = NetworkIdentifier._(r'quicksilver');
-  static const sommelier = NetworkIdentifier._(r'sommelier');
-  static const terra = NetworkIdentifier._(r'terra');
-  static const teritori = NetworkIdentifier._(r'teritori');
-  static const sentinel = NetworkIdentifier._(r'sentinel');
-  static const humans = NetworkIdentifier._(r'humans');
-  static const c4e = NetworkIdentifier._(r'c4e');
-  static const saga = NetworkIdentifier._(r'saga');
-  static const nibiru = NetworkIdentifier._(r'nibiru');
-  static const lava = NetworkIdentifier._(r'lava');
-  static const kyve = NetworkIdentifier._(r'kyve');
-  static const xion = NetworkIdentifier._(r'xion');
-  static const hub = NetworkIdentifier._(r'hub');
-  static const sagaEvm = NetworkIdentifier._(r'saga_evm');
-  static const maria = NetworkIdentifier._(r'maria');
-  static const nirvana = NetworkIdentifier._(r'nirvana');
-  static const bitcoin = NetworkIdentifier._(r'bitcoin');
-  static const solana = NetworkIdentifier._(r'solana');
+  static const ETHEREUM = NetworkIdentifier._(r'ethereum');
+  static const AVALANCHE = NetworkIdentifier._(r'avalanche');
+  static const ARBITRUM = NetworkIdentifier._(r'arbitrum');
+  static const AURORA = NetworkIdentifier._(r'aurora');
+  static const BASE = NetworkIdentifier._(r'base');
+  static const BINANCE = NetworkIdentifier._(r'binance');
+  static const CELO = NetworkIdentifier._(r'celo');
+  static const FANTOM = NetworkIdentifier._(r'fantom');
+  static const FILECOIN = NetworkIdentifier._(r'filecoin');
+  static const IMMUTABLE_ZKEVM = NetworkIdentifier._(r'immutable');
+  static const KAVA = NetworkIdentifier._(r'kava');
+  static const MANTLE = NetworkIdentifier._(r'mantle');
+  static const MOONBEAM = NetworkIdentifier._(r'moonbeam');
+  static const OPTIMISM = NetworkIdentifier._(r'optimism');
+  static const POLYGON = NetworkIdentifier._(r'polygon');
+  static const LINEA = NetworkIdentifier._(r'linea');
+  static const SCROLL = NetworkIdentifier._(r'scroll');
+  static const BLAST = NetworkIdentifier._(r'blast');
+  static const FRAXTAL = NetworkIdentifier._(r'fraxtal');
+  static const BERACHAIN = NetworkIdentifier._(r'berachain');
+  static const AGORIC = NetworkIdentifier._(r'agoric');
+  static const ASSETMANTLE = NetworkIdentifier._(r'assetmantle');
+  static const AXELAR = NetworkIdentifier._(r'axelar');
+  static const AXELARNET = NetworkIdentifier._(r'axelarnet');
+  static const CARBON = NetworkIdentifier._(r'carbon');
+  static const COMDEX = NetworkIdentifier._(r'comdex');
+  static const COSMOS = NetworkIdentifier._(r'cosmoshub');
+  static const CRESCENT = NetworkIdentifier._(r'crescent');
+  static const EVMOS = NetworkIdentifier._(r'evmos');
+  static const FETCH = NetworkIdentifier._(r'fetch');
+  static const INJECTIVE = NetworkIdentifier._(r'injective');
+  static const JUNO = NetworkIdentifier._(r'juno');
+  static const KI = NetworkIdentifier._(r'ki');
+  static const KUJIRA = NetworkIdentifier._(r'kujira');
+  static const NOBLE = NetworkIdentifier._(r'noble');
+  static const NEUTRON = NetworkIdentifier._(r'neutron');
+  static const OSMOSIS = NetworkIdentifier._(r'osmosis');
+  static const REGEN = NetworkIdentifier._(r'regen');
+  static const SEI = NetworkIdentifier._(r'sei');
+  static const SECRETSNIP = NetworkIdentifier._(r'secret-snip');
+  static const STARGAZE = NetworkIdentifier._(r'stargaze');
+  static const STRIDE = NetworkIdentifier._(r'stride');
+  static const TERRA2 = NetworkIdentifier._(r'terra-2');
+  static const UMEE = NetworkIdentifier._(r'umee');
+  static const DYDX = NetworkIdentifier._(r'dydx');
+  static const ACRECHAIN = NetworkIdentifier._(r'acre');
+  static const ARCHWAY = NetworkIdentifier._(r'archway');
+  static const BITCANNA = NetworkIdentifier._(r'bitcanna');
+  static const BITSONG = NetworkIdentifier._(r'bitsong');
+  static const CHEQD = NetworkIdentifier._(r'cheqd');
+  static const CELESTIA = NetworkIdentifier._(r'celestia');
+  static const COREUM = NetworkIdentifier._(r'coreum');
+  static const DECENTR = NetworkIdentifier._(r'decentr');
+  static const DESMOS = NetworkIdentifier._(r'desmos');
+  static const DYMENSION = NetworkIdentifier._(r'dymension');
+  static const IRISNET = NetworkIdentifier._(r'irisnet');
+  static const IXO = NetworkIdentifier._(r'impacthub');
+  static const JACKAL = NetworkIdentifier._(r'jackal');
+  static const LUM = NetworkIdentifier._(r'lumnetwork');
+  static const LIKECOIN = NetworkIdentifier._(r'likecoin');
+  static const KAVA_IBC = NetworkIdentifier._(r'kava-ibc');
+  static const NOLUS = NetworkIdentifier._(r'nolus');
+  static const XPLA = NetworkIdentifier._(r'xpla');
+  static const AKASH = NetworkIdentifier._(r'akash');
+  static const CHIHUAHUA = NetworkIdentifier._(r'chihuahua');
+  static const CRONOS = NetworkIdentifier._(r'cronos');
+  static const GRAVITYBRIDGE = NetworkIdentifier._(r'gravitybridge');
+  static const MARS = NetworkIdentifier._(r'mars');
+  static const MIGALOO = NetworkIdentifier._(r'migaloo');
+  static const PERSISTENCE = NetworkIdentifier._(r'persistence');
+  static const OMNIFLIXHUB = NetworkIdentifier._(r'omniflixhub');
+  static const QUICKSILVER = NetworkIdentifier._(r'quicksilver');
+  static const SOMMELIER = NetworkIdentifier._(r'sommelier');
+  static const TERRA = NetworkIdentifier._(r'terra');
+  static const TERITORI = NetworkIdentifier._(r'teritori');
+  static const SENTINEL = NetworkIdentifier._(r'sentinel');
+  static const HUMANS = NetworkIdentifier._(r'humans');
+  static const CHAIN4ENERGY = NetworkIdentifier._(r'c4e');
+  static const SAGA = NetworkIdentifier._(r'saga');
+  static const NIBIRU = NetworkIdentifier._(r'nibiru');
+  static const LAVA = NetworkIdentifier._(r'lava');
+  static const KYVE = NetworkIdentifier._(r'kyve');
+  static const XION = NetworkIdentifier._(r'xion');
+  static const SAGA_HUB = NetworkIdentifier._(r'hub');
+  static const SAGA_DEX = NetworkIdentifier._(r'saga_evm');
+  static const SAGA_MARIA = NetworkIdentifier._(r'maria');
+  static const SAGA_NIRVANA = NetworkIdentifier._(r'nirvana');
+  static const BITCOIN = NetworkIdentifier._(r'bitcoin');
+  static const SOLANA = NetworkIdentifier._(r'solana');
+  static const SUI = NetworkIdentifier._(r'sui');
 
   /// List of all possible values in this [enum][NetworkIdentifier].
   static const values = <NetworkIdentifier>[
-    ethereum,
-    avalanche,
-    arbitrum,
-    aurora,
-    base_,
-    binance,
-    celo,
-    fantom,
-    filecoin,
-    immutable,
-    kava,
-    mantle,
-    moonbeam,
-    optimism,
-    polygon,
-    linea,
-    scroll,
-    blast,
-    fraxtal,
-    berachain,
-    agoric,
-    assetmantle,
-    axelar,
-    axelarnet,
-    carbon,
-    comdex,
-    cosmoshub,
-    crescent,
-    evmos,
-    fetch,
-    injective,
-    juno,
-    ki,
-    kujira,
-    noble,
-    neutron,
-    osmosis,
-    regen,
-    sei,
-    secretSnip,
-    stargaze,
-    stride,
-    terra2,
-    umee,
-    dydx,
-    acre,
-    archway,
-    bitcanna,
-    bitsong,
-    cheqd,
-    celestia,
-    coreum,
-    decentr,
-    desmos,
-    dymension,
-    irisnet,
-    impacthub,
-    jackal,
-    lumnetwork,
-    likecoin,
-    kavaIbc,
-    nolus,
-    xpla,
-    akash,
-    chihuahua,
-    cronos,
-    gravitybridge,
-    mars,
-    migaloo,
-    persistence,
-    omniflixhub,
-    quicksilver,
-    sommelier,
-    terra,
-    teritori,
-    sentinel,
-    humans,
-    c4e,
-    saga,
-    nibiru,
-    lava,
-    kyve,
-    xion,
-    hub,
-    sagaEvm,
-    maria,
-    nirvana,
-    bitcoin,
-    solana,
+    ETHEREUM,
+    AVALANCHE,
+    ARBITRUM,
+    AURORA,
+    BASE,
+    BINANCE,
+    CELO,
+    FANTOM,
+    FILECOIN,
+    IMMUTABLE_ZKEVM,
+    KAVA,
+    MANTLE,
+    MOONBEAM,
+    OPTIMISM,
+    POLYGON,
+    LINEA,
+    SCROLL,
+    BLAST,
+    FRAXTAL,
+    BERACHAIN,
+    AGORIC,
+    ASSETMANTLE,
+    AXELAR,
+    AXELARNET,
+    CARBON,
+    COMDEX,
+    COSMOS,
+    CRESCENT,
+    EVMOS,
+    FETCH,
+    INJECTIVE,
+    JUNO,
+    KI,
+    KUJIRA,
+    NOBLE,
+    NEUTRON,
+    OSMOSIS,
+    REGEN,
+    SEI,
+    SECRETSNIP,
+    STARGAZE,
+    STRIDE,
+    TERRA2,
+    UMEE,
+    DYDX,
+    ACRECHAIN,
+    ARCHWAY,
+    BITCANNA,
+    BITSONG,
+    CHEQD,
+    CELESTIA,
+    COREUM,
+    DECENTR,
+    DESMOS,
+    DYMENSION,
+    IRISNET,
+    IXO,
+    JACKAL,
+    LUM,
+    LIKECOIN,
+    KAVA_IBC,
+    NOLUS,
+    XPLA,
+    AKASH,
+    CHIHUAHUA,
+    CRONOS,
+    GRAVITYBRIDGE,
+    MARS,
+    MIGALOO,
+    PERSISTENCE,
+    OMNIFLIXHUB,
+    QUICKSILVER,
+    SOMMELIER,
+    TERRA,
+    TERITORI,
+    SENTINEL,
+    HUMANS,
+    CHAIN4ENERGY,
+    SAGA,
+    NIBIRU,
+    LAVA,
+    KYVE,
+    XION,
+    SAGA_HUB,
+    SAGA_DEX,
+    SAGA_MARIA,
+    SAGA_NIRVANA,
+    BITCOIN,
+    SOLANA,
+    SUI,
   ];
 
   static NetworkIdentifier? fromJson(dynamic value) => NetworkIdentifierTypeTransformer().decode(value);
@@ -242,95 +244,96 @@ class NetworkIdentifierTypeTransformer {
   NetworkIdentifier? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'ethereum': return NetworkIdentifier.ethereum;
-        case r'avalanche': return NetworkIdentifier.avalanche;
-        case r'arbitrum': return NetworkIdentifier.arbitrum;
-        case r'aurora': return NetworkIdentifier.aurora;
-        case r'base': return NetworkIdentifier.base_;
-        case r'binance': return NetworkIdentifier.binance;
-        case r'celo': return NetworkIdentifier.celo;
-        case r'fantom': return NetworkIdentifier.fantom;
-        case r'filecoin': return NetworkIdentifier.filecoin;
-        case r'immutable': return NetworkIdentifier.immutable;
-        case r'kava': return NetworkIdentifier.kava;
-        case r'mantle': return NetworkIdentifier.mantle;
-        case r'moonbeam': return NetworkIdentifier.moonbeam;
-        case r'optimism': return NetworkIdentifier.optimism;
-        case r'polygon': return NetworkIdentifier.polygon;
-        case r'linea': return NetworkIdentifier.linea;
-        case r'scroll': return NetworkIdentifier.scroll;
-        case r'blast': return NetworkIdentifier.blast;
-        case r'fraxtal': return NetworkIdentifier.fraxtal;
-        case r'berachain': return NetworkIdentifier.berachain;
-        case r'agoric': return NetworkIdentifier.agoric;
-        case r'assetmantle': return NetworkIdentifier.assetmantle;
-        case r'axelar': return NetworkIdentifier.axelar;
-        case r'axelarnet': return NetworkIdentifier.axelarnet;
-        case r'carbon': return NetworkIdentifier.carbon;
-        case r'comdex': return NetworkIdentifier.comdex;
-        case r'cosmoshub': return NetworkIdentifier.cosmoshub;
-        case r'crescent': return NetworkIdentifier.crescent;
-        case r'evmos': return NetworkIdentifier.evmos;
-        case r'fetch': return NetworkIdentifier.fetch;
-        case r'injective': return NetworkIdentifier.injective;
-        case r'juno': return NetworkIdentifier.juno;
-        case r'ki': return NetworkIdentifier.ki;
-        case r'kujira': return NetworkIdentifier.kujira;
-        case r'noble': return NetworkIdentifier.noble;
-        case r'neutron': return NetworkIdentifier.neutron;
-        case r'osmosis': return NetworkIdentifier.osmosis;
-        case r'regen': return NetworkIdentifier.regen;
-        case r'sei': return NetworkIdentifier.sei;
-        case r'secret-snip': return NetworkIdentifier.secretSnip;
-        case r'stargaze': return NetworkIdentifier.stargaze;
-        case r'stride': return NetworkIdentifier.stride;
-        case r'terra-2': return NetworkIdentifier.terra2;
-        case r'umee': return NetworkIdentifier.umee;
-        case r'dydx': return NetworkIdentifier.dydx;
-        case r'acre': return NetworkIdentifier.acre;
-        case r'archway': return NetworkIdentifier.archway;
-        case r'bitcanna': return NetworkIdentifier.bitcanna;
-        case r'bitsong': return NetworkIdentifier.bitsong;
-        case r'cheqd': return NetworkIdentifier.cheqd;
-        case r'celestia': return NetworkIdentifier.celestia;
-        case r'coreum': return NetworkIdentifier.coreum;
-        case r'decentr': return NetworkIdentifier.decentr;
-        case r'desmos': return NetworkIdentifier.desmos;
-        case r'dymension': return NetworkIdentifier.dymension;
-        case r'irisnet': return NetworkIdentifier.irisnet;
-        case r'impacthub': return NetworkIdentifier.impacthub;
-        case r'jackal': return NetworkIdentifier.jackal;
-        case r'lumnetwork': return NetworkIdentifier.lumnetwork;
-        case r'likecoin': return NetworkIdentifier.likecoin;
-        case r'kava-ibc': return NetworkIdentifier.kavaIbc;
-        case r'nolus': return NetworkIdentifier.nolus;
-        case r'xpla': return NetworkIdentifier.xpla;
-        case r'akash': return NetworkIdentifier.akash;
-        case r'chihuahua': return NetworkIdentifier.chihuahua;
-        case r'cronos': return NetworkIdentifier.cronos;
-        case r'gravitybridge': return NetworkIdentifier.gravitybridge;
-        case r'mars': return NetworkIdentifier.mars;
-        case r'migaloo': return NetworkIdentifier.migaloo;
-        case r'persistence': return NetworkIdentifier.persistence;
-        case r'omniflixhub': return NetworkIdentifier.omniflixhub;
-        case r'quicksilver': return NetworkIdentifier.quicksilver;
-        case r'sommelier': return NetworkIdentifier.sommelier;
-        case r'terra': return NetworkIdentifier.terra;
-        case r'teritori': return NetworkIdentifier.teritori;
-        case r'sentinel': return NetworkIdentifier.sentinel;
-        case r'humans': return NetworkIdentifier.humans;
-        case r'c4e': return NetworkIdentifier.c4e;
-        case r'saga': return NetworkIdentifier.saga;
-        case r'nibiru': return NetworkIdentifier.nibiru;
-        case r'lava': return NetworkIdentifier.lava;
-        case r'kyve': return NetworkIdentifier.kyve;
-        case r'xion': return NetworkIdentifier.xion;
-        case r'hub': return NetworkIdentifier.hub;
-        case r'saga_evm': return NetworkIdentifier.sagaEvm;
-        case r'maria': return NetworkIdentifier.maria;
-        case r'nirvana': return NetworkIdentifier.nirvana;
-        case r'bitcoin': return NetworkIdentifier.bitcoin;
-        case r'solana': return NetworkIdentifier.solana;
+        case r'ethereum': return NetworkIdentifier.ETHEREUM;
+        case r'avalanche': return NetworkIdentifier.AVALANCHE;
+        case r'arbitrum': return NetworkIdentifier.ARBITRUM;
+        case r'aurora': return NetworkIdentifier.AURORA;
+        case r'base': return NetworkIdentifier.BASE;
+        case r'binance': return NetworkIdentifier.BINANCE;
+        case r'celo': return NetworkIdentifier.CELO;
+        case r'fantom': return NetworkIdentifier.FANTOM;
+        case r'filecoin': return NetworkIdentifier.FILECOIN;
+        case r'immutable': return NetworkIdentifier.IMMUTABLE_ZKEVM;
+        case r'kava': return NetworkIdentifier.KAVA;
+        case r'mantle': return NetworkIdentifier.MANTLE;
+        case r'moonbeam': return NetworkIdentifier.MOONBEAM;
+        case r'optimism': return NetworkIdentifier.OPTIMISM;
+        case r'polygon': return NetworkIdentifier.POLYGON;
+        case r'linea': return NetworkIdentifier.LINEA;
+        case r'scroll': return NetworkIdentifier.SCROLL;
+        case r'blast': return NetworkIdentifier.BLAST;
+        case r'fraxtal': return NetworkIdentifier.FRAXTAL;
+        case r'berachain': return NetworkIdentifier.BERACHAIN;
+        case r'agoric': return NetworkIdentifier.AGORIC;
+        case r'assetmantle': return NetworkIdentifier.ASSETMANTLE;
+        case r'axelar': return NetworkIdentifier.AXELAR;
+        case r'axelarnet': return NetworkIdentifier.AXELARNET;
+        case r'carbon': return NetworkIdentifier.CARBON;
+        case r'comdex': return NetworkIdentifier.COMDEX;
+        case r'cosmoshub': return NetworkIdentifier.COSMOS;
+        case r'crescent': return NetworkIdentifier.CRESCENT;
+        case r'evmos': return NetworkIdentifier.EVMOS;
+        case r'fetch': return NetworkIdentifier.FETCH;
+        case r'injective': return NetworkIdentifier.INJECTIVE;
+        case r'juno': return NetworkIdentifier.JUNO;
+        case r'ki': return NetworkIdentifier.KI;
+        case r'kujira': return NetworkIdentifier.KUJIRA;
+        case r'noble': return NetworkIdentifier.NOBLE;
+        case r'neutron': return NetworkIdentifier.NEUTRON;
+        case r'osmosis': return NetworkIdentifier.OSMOSIS;
+        case r'regen': return NetworkIdentifier.REGEN;
+        case r'sei': return NetworkIdentifier.SEI;
+        case r'secret-snip': return NetworkIdentifier.SECRETSNIP;
+        case r'stargaze': return NetworkIdentifier.STARGAZE;
+        case r'stride': return NetworkIdentifier.STRIDE;
+        case r'terra-2': return NetworkIdentifier.TERRA2;
+        case r'umee': return NetworkIdentifier.UMEE;
+        case r'dydx': return NetworkIdentifier.DYDX;
+        case r'acre': return NetworkIdentifier.ACRECHAIN;
+        case r'archway': return NetworkIdentifier.ARCHWAY;
+        case r'bitcanna': return NetworkIdentifier.BITCANNA;
+        case r'bitsong': return NetworkIdentifier.BITSONG;
+        case r'cheqd': return NetworkIdentifier.CHEQD;
+        case r'celestia': return NetworkIdentifier.CELESTIA;
+        case r'coreum': return NetworkIdentifier.COREUM;
+        case r'decentr': return NetworkIdentifier.DECENTR;
+        case r'desmos': return NetworkIdentifier.DESMOS;
+        case r'dymension': return NetworkIdentifier.DYMENSION;
+        case r'irisnet': return NetworkIdentifier.IRISNET;
+        case r'impacthub': return NetworkIdentifier.IXO;
+        case r'jackal': return NetworkIdentifier.JACKAL;
+        case r'lumnetwork': return NetworkIdentifier.LUM;
+        case r'likecoin': return NetworkIdentifier.LIKECOIN;
+        case r'kava-ibc': return NetworkIdentifier.KAVA_IBC;
+        case r'nolus': return NetworkIdentifier.NOLUS;
+        case r'xpla': return NetworkIdentifier.XPLA;
+        case r'akash': return NetworkIdentifier.AKASH;
+        case r'chihuahua': return NetworkIdentifier.CHIHUAHUA;
+        case r'cronos': return NetworkIdentifier.CRONOS;
+        case r'gravitybridge': return NetworkIdentifier.GRAVITYBRIDGE;
+        case r'mars': return NetworkIdentifier.MARS;
+        case r'migaloo': return NetworkIdentifier.MIGALOO;
+        case r'persistence': return NetworkIdentifier.PERSISTENCE;
+        case r'omniflixhub': return NetworkIdentifier.OMNIFLIXHUB;
+        case r'quicksilver': return NetworkIdentifier.QUICKSILVER;
+        case r'sommelier': return NetworkIdentifier.SOMMELIER;
+        case r'terra': return NetworkIdentifier.TERRA;
+        case r'teritori': return NetworkIdentifier.TERITORI;
+        case r'sentinel': return NetworkIdentifier.SENTINEL;
+        case r'humans': return NetworkIdentifier.HUMANS;
+        case r'c4e': return NetworkIdentifier.CHAIN4ENERGY;
+        case r'saga': return NetworkIdentifier.SAGA;
+        case r'nibiru': return NetworkIdentifier.NIBIRU;
+        case r'lava': return NetworkIdentifier.LAVA;
+        case r'kyve': return NetworkIdentifier.KYVE;
+        case r'xion': return NetworkIdentifier.XION;
+        case r'hub': return NetworkIdentifier.SAGA_HUB;
+        case r'saga_evm': return NetworkIdentifier.SAGA_DEX;
+        case r'maria': return NetworkIdentifier.SAGA_MARIA;
+        case r'nirvana': return NetworkIdentifier.SAGA_NIRVANA;
+        case r'bitcoin': return NetworkIdentifier.BITCOIN;
+        case r'solana': return NetworkIdentifier.SOLANA;
+        case r'sui': return NetworkIdentifier.SUI;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

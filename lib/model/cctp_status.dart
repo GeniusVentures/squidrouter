@@ -23,15 +23,15 @@ class CCTPStatus {
 
   String toJson() => value;
 
-  static const error = CCTPStatus._(r'error');
-  static const complete = CCTPStatus._(r'complete');
-  static const pending = CCTPStatus._(r'pending');
+  static const ERROR = CCTPStatus._(r'error');
+  static const COMPLETE = CCTPStatus._(r'complete');
+  static const PENDING = CCTPStatus._(r'pending');
 
   /// List of all possible values in this [enum][CCTPStatus].
   static const values = <CCTPStatus>[
-    error,
-    complete,
-    pending,
+    ERROR,
+    COMPLETE,
+    PENDING,
   ];
 
   static CCTPStatus? fromJson(dynamic value) => CCTPStatusTypeTransformer().decode(value);
@@ -70,9 +70,9 @@ class CCTPStatusTypeTransformer {
   CCTPStatus? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'error': return CCTPStatus.error;
-        case r'complete': return CCTPStatus.complete;
-        case r'pending': return CCTPStatus.pending;
+        case r'error': return CCTPStatus.ERROR;
+        case r'complete': return CCTPStatus.COMPLETE;
+        case r'pending': return CCTPStatus.PENDING;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

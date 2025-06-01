@@ -23,23 +23,23 @@ class SquidTransactionStatus {
 
   String toJson() => value;
 
-  static const success = SquidTransactionStatus._(r'success');
-  static const needsGas = SquidTransactionStatus._(r'needs_gas');
-  static const ongoing = SquidTransactionStatus._(r'ongoing');
-  static const partialSuccess = SquidTransactionStatus._(r'partial_success');
-  static const notFound = SquidTransactionStatus._(r'not_found');
-  static const failedOnDestination = SquidTransactionStatus._(r'failed_on_destination');
-  static const refunded = SquidTransactionStatus._(r'refunded');
+  static const SUCCESS = SquidTransactionStatus._(r'success');
+  static const NEEDS_GAS = SquidTransactionStatus._(r'needs_gas');
+  static const ONGOING = SquidTransactionStatus._(r'ongoing');
+  static const PARTIAL_SUCCESS = SquidTransactionStatus._(r'partial_success');
+  static const NOT_FOUND = SquidTransactionStatus._(r'not_found');
+  static const FAILED_DESTINATION = SquidTransactionStatus._(r'failed_on_destination');
+  static const REFUNDED = SquidTransactionStatus._(r'refunded');
 
   /// List of all possible values in this [enum][SquidTransactionStatus].
   static const values = <SquidTransactionStatus>[
-    success,
-    needsGas,
-    ongoing,
-    partialSuccess,
-    notFound,
-    failedOnDestination,
-    refunded,
+    SUCCESS,
+    NEEDS_GAS,
+    ONGOING,
+    PARTIAL_SUCCESS,
+    NOT_FOUND,
+    FAILED_DESTINATION,
+    REFUNDED,
   ];
 
   static SquidTransactionStatus? fromJson(dynamic value) => SquidTransactionStatusTypeTransformer().decode(value);
@@ -78,13 +78,13 @@ class SquidTransactionStatusTypeTransformer {
   SquidTransactionStatus? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'success': return SquidTransactionStatus.success;
-        case r'needs_gas': return SquidTransactionStatus.needsGas;
-        case r'ongoing': return SquidTransactionStatus.ongoing;
-        case r'partial_success': return SquidTransactionStatus.partialSuccess;
-        case r'not_found': return SquidTransactionStatus.notFound;
-        case r'failed_on_destination': return SquidTransactionStatus.failedOnDestination;
-        case r'refunded': return SquidTransactionStatus.refunded;
+        case r'success': return SquidTransactionStatus.SUCCESS;
+        case r'needs_gas': return SquidTransactionStatus.NEEDS_GAS;
+        case r'ongoing': return SquidTransactionStatus.ONGOING;
+        case r'partial_success': return SquidTransactionStatus.PARTIAL_SUCCESS;
+        case r'not_found': return SquidTransactionStatus.NOT_FOUND;
+        case r'failed_on_destination': return SquidTransactionStatus.FAILED_DESTINATION;
+        case r'refunded': return SquidTransactionStatus.REFUNDED;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

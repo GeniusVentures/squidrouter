@@ -171,9 +171,9 @@ class ApiClient {
         case 'String':
           return value is String ? value : value.toString();
         case 'int':
-          return value is int ? value : int.parse('$value');
+          return value is int ? value : int.tryParse('$value');
         case 'double':
-          return value is double ? value : double.parse('$value');
+          return value is double ? value : double.tryParse('$value');
         case 'bool':
           if (value is bool) {
             return value;

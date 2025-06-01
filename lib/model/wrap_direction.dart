@@ -23,13 +23,13 @@ class WrapDirection {
 
   String toJson() => value;
 
-  static const wrap = WrapDirection._(r'wrap');
-  static const unwrap = WrapDirection._(r'unwrap');
+  static const WRAP = WrapDirection._(r'wrap');
+  static const UNWRAP = WrapDirection._(r'unwrap');
 
   /// List of all possible values in this [enum][WrapDirection].
   static const values = <WrapDirection>[
-    wrap,
-    unwrap,
+    WRAP,
+    UNWRAP,
   ];
 
   static WrapDirection? fromJson(dynamic value) => WrapDirectionTypeTransformer().decode(value);
@@ -68,8 +68,8 @@ class WrapDirectionTypeTransformer {
   WrapDirection? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'wrap': return WrapDirection.wrap;
-        case r'unwrap': return WrapDirection.unwrap;
+        case r'wrap': return WrapDirection.WRAP;
+        case r'unwrap': return WrapDirection.UNWRAP;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

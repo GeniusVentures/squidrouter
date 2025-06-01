@@ -23,17 +23,17 @@ class Volatility {
 
   int toJson() => value;
 
-  static const number0 = Volatility._(0);
-  static const number1 = Volatility._(1);
-  static const number2 = Volatility._(2);
-  static const number3 = Volatility._(3);
+  static const SUPER_STABLE = Volatility._(0);
+  static const STABLE = Volatility._(1);
+  static const HIGH_CAP = Volatility._(2);
+  static const VOLATILE = Volatility._(3);
 
   /// List of all possible values in this [enum][Volatility].
   static const values = <Volatility>[
-    number0,
-    number1,
-    number2,
-    number3,
+    SUPER_STABLE,
+    STABLE,
+    HIGH_CAP,
+    VOLATILE,
   ];
 
   static Volatility? fromJson(dynamic value) => VolatilityTypeTransformer().decode(value);
@@ -72,10 +72,10 @@ class VolatilityTypeTransformer {
   Volatility? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case 0: return Volatility.number0;
-        case 1: return Volatility.number1;
-        case 2: return Volatility.number2;
-        case 3: return Volatility.number3;
+        case 0: return Volatility.SUPER_STABLE;
+        case 1: return Volatility.STABLE;
+        case 2: return Volatility.HIGH_CAP;
+        case 3: return Volatility.VOLATILE;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

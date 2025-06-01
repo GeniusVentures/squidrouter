@@ -23,25 +23,25 @@ class AxelarRouteAction {
 
   String toJson() => value;
 
-  static const call = AxelarRouteAction._(r'call');
-  static const executed = AxelarRouteAction._(r'executed');
-  static const ibcTransfer = AxelarRouteAction._(r'ibc_transfer');
-  static const send = AxelarRouteAction._(r'send');
-  static const vote = AxelarRouteAction._(r'vote');
-  static const ibcSend = AxelarRouteAction._(r'ibc_send');
-  static const gasPaid = AxelarRouteAction._(r'gas_paid');
-  static const approved = AxelarRouteAction._(r'approved');
+  static const CALL = AxelarRouteAction._(r'call');
+  static const EXECUTED = AxelarRouteAction._(r'executed');
+  static const IBC_TRANSFER = AxelarRouteAction._(r'ibc_transfer');
+  static const SEND = AxelarRouteAction._(r'send');
+  static const VOTE = AxelarRouteAction._(r'vote');
+  static const IBC_SEND = AxelarRouteAction._(r'ibc_send');
+  static const GAS_PAID = AxelarRouteAction._(r'gas_paid');
+  static const APPROVED = AxelarRouteAction._(r'approved');
 
   /// List of all possible values in this [enum][AxelarRouteAction].
   static const values = <AxelarRouteAction>[
-    call,
-    executed,
-    ibcTransfer,
-    send,
-    vote,
-    ibcSend,
-    gasPaid,
-    approved,
+    CALL,
+    EXECUTED,
+    IBC_TRANSFER,
+    SEND,
+    VOTE,
+    IBC_SEND,
+    GAS_PAID,
+    APPROVED,
   ];
 
   static AxelarRouteAction? fromJson(dynamic value) => AxelarRouteActionTypeTransformer().decode(value);
@@ -80,14 +80,14 @@ class AxelarRouteActionTypeTransformer {
   AxelarRouteAction? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'call': return AxelarRouteAction.call;
-        case r'executed': return AxelarRouteAction.executed;
-        case r'ibc_transfer': return AxelarRouteAction.ibcTransfer;
-        case r'send': return AxelarRouteAction.send;
-        case r'vote': return AxelarRouteAction.vote;
-        case r'ibc_send': return AxelarRouteAction.ibcSend;
-        case r'gas_paid': return AxelarRouteAction.gasPaid;
-        case r'approved': return AxelarRouteAction.approved;
+        case r'call': return AxelarRouteAction.CALL;
+        case r'executed': return AxelarRouteAction.EXECUTED;
+        case r'ibc_transfer': return AxelarRouteAction.IBC_TRANSFER;
+        case r'send': return AxelarRouteAction.SEND;
+        case r'vote': return AxelarRouteAction.VOTE;
+        case r'ibc_send': return AxelarRouteAction.IBC_SEND;
+        case r'gas_paid': return AxelarRouteAction.GAS_PAID;
+        case r'approved': return AxelarRouteAction.APPROVED;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
