@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.1.1
 info:
   title: Squid Router API V2
   version: v2
@@ -27,6 +27,7 @@ components:
         - SOLANA
         - SUI
       default: evm
+
     SquidCallType:
       type: integer
       description: |
@@ -41,7 +42,6 @@ components:
         - FULL_TOKEN_BALANCE
         - CALL_DATA
         - COLLECT_TOKEN_BALANCE
-      example: FULL_TOKEN_BALANCE
       default: 0
 
     HookCallPayload:
@@ -62,9 +62,9 @@ components:
       title: EvmContractCall
       properties:
         chainType:
-          $ref: '#/components/schemas/ChainType'
+          $ref: "#/components/schemas/ChainType"
         callType:
-          $ref: '#/components/schemas/SquidCallType'
+          $ref: "#/components/schemas/SquidCallType"
         target:
           type: string
           description: The address of the contract to call.
@@ -78,7 +78,7 @@ components:
           description: The ABI-encoded calldata for the function call.
           example: "0x0a0a2b2e..."
         payload:
-          $ref: '#/components/schemas/HookCallPayload'
+          $ref: "#/components/schemas/HookCallPayload"
         estimatedGas:
           type: string
           description: Estimated gas limit for this call.
@@ -95,7 +95,7 @@ components:
       title: Hook
       properties:
         chainType:
-          $ref: '#/components/schemas/ChainType'
+          $ref: "#/components/schemas/ChainType"
         fundAmount:
           type: string
           description: Amount of `fundToken` to be provided to the hook contract. (Required for preHooks that need funds).
@@ -107,7 +107,7 @@ components:
         calls:
           type: array
           items:
-            $ref: '#/components/schemas/EvmContractCall'
+            $ref: "#/components/schemas/EvmContractCall"
         provider:
           type: string
           description: Name of your product or application triggering the hook.
@@ -166,10 +166,10 @@ components:
           type: boolean
           description: If true, only a quote is returned without transaction data. Optional.
         preHook:
-          $ref: '#/components/schemas/Hook'
+          $ref: "#/components/schemas/Hook"
           description: Optional pre-execution hook. If provided, must be a valid Hook object.
         postHook:
-          $ref: '#/components/schemas/Hook'
+          $ref: "#/components/schemas/Hook"
           description: Optional post-execution hook. If provided, must be a valid Hook object.
         enableForecall:
           type: boolean
@@ -207,7 +207,18 @@ components:
       properties:
         routeType:
           type: string
-          enum: [CALL_BRIDGE_CALL, CALL_BRIDGE, BRIDGE_CALL, BRIDGE, EVM_ONLY, COSMOS_ONLY, SOLANA_ONLY, RFQ, FUND_AND_RUN_MULTICALL]
+          enum:
+            [
+              CALL_BRIDGE_CALL,
+              CALL_BRIDGE,
+              BRIDGE_CALL,
+              BRIDGE,
+              EVM_ONLY,
+              COSMOS_ONLY,
+              SOLANA_ONLY,
+              RFQ,
+              FUND_AND_RUN_MULTICALL,
+            ]
           example: "BRIDGE_CALL"
         target:
           type: string
@@ -279,16 +290,16 @@ components:
           type: string
           description: Amount to deposit.
         sourceAsset:
-          $ref: '#/components/schemas/ChainflipSourceAsset'
+          $ref: "#/components/schemas/ChainflipSourceAsset"
         destinationAsset:
-          $ref: '#/components/schemas/ChainflipDestinationAsset'
+          $ref: "#/components/schemas/ChainflipDestinationAsset"
         destinationAddress:
           type: string
 
     TransactionRequest:
       oneOf:
-        - $ref: '#/components/schemas/EvmTransactionRequestData'
-        - $ref: '#/components/schemas/ChainflipTransactionRequestData'
+        - $ref: "#/components/schemas/EvmTransactionRequestData"
+        - $ref: "#/components/schemas/ChainflipTransactionRequestData"
 
     FeeType:
       type: string
@@ -344,7 +355,7 @@ components:
           description: Gas multiplier for this fee, if applicable.
           nullable: true
         token:
-          $ref: '#/components/schemas/Token'
+          $ref: "#/components/schemas/Token"
         amount:
           type: string
           example: "100000000000000"
@@ -366,9 +377,9 @@ components:
       title: GasCost
       properties:
         type:
-          $ref: '#/components/schemas/GasCostType'
+          $ref: "#/components/schemas/GasCostType"
         token:
-          $ref: '#/components/schemas/Token'
+          $ref: "#/components/schemas/Token"
         gasLimit:
           type: string
           description: Gas limit for this cost.
@@ -410,17 +421,17 @@ components:
       title: Action
       properties:
         type:
-          $ref: '#/components/schemas/ActionType'
+          $ref: "#/components/schemas/ActionType"
         fromChainId:
           type: string
         fromToken:
-          $ref: '#/components/schemas/Token'
+          $ref: "#/components/schemas/Token"
         fromAmount:
           type: string
         toChainId:
           type: string
         toToken:
-          $ref: '#/components/schemas/Token'
+          $ref: "#/components/schemas/Token"
         toAmount:
           type: string
         provider:
@@ -460,7 +471,7 @@ components:
       title: RouteResponse
       properties:
         route:
-          $ref: '#/components/schemas/RouteResponseData'
+          $ref: "#/components/schemas/RouteResponseData"
           nullable: true
         requestId:
           type: string
@@ -469,7 +480,7 @@ components:
           type: string
           description: The integrator ID used for the request
         error:
-          $ref: '#/components/schemas/RouteResponseError'
+          $ref: "#/components/schemas/RouteResponseError"
           nullable: true
         errorType:
           type: string
@@ -516,13 +527,13 @@ components:
         feeCosts:
           type: array
           items:
-            $ref: '#/components/schemas/FeeCost'
+            $ref: "#/components/schemas/FeeCost"
             nullable: true
           nullable: true
         gasCosts:
           type: array
           items:
-            $ref: '#/components/schemas/GasCost'
+            $ref: "#/components/schemas/GasCost"
             nullable: true
           nullable: true
         isApprovalRequired:
@@ -533,7 +544,7 @@ components:
         actions:
           type: array
           items:
-            $ref: '#/components/schemas/Action'
+            $ref: "#/components/schemas/Action"
       required:
         - fromAmount
         - toAmount
@@ -543,11 +554,11 @@ components:
       title: RouteResponseData
       properties:
         transactionRequest:
-          $ref: '#/components/schemas/TransactionRequest'
+          $ref: "#/components/schemas/TransactionRequest"
         estimate:
-          $ref: '#/components/schemas/RouteEstimate'
+          $ref: "#/components/schemas/RouteEstimate"
         params:
-          $ref: '#/components/schemas/RouteRequestParams'
+          $ref: "#/components/schemas/RouteRequestParams"
 
     ErrorType:
       type: string
@@ -587,9 +598,9 @@ components:
         callEventLog:
           type: array
           items:
-            $ref: '#/components/schemas/TransactionCallEventLog'
+            $ref: "#/components/schemas/TransactionCallEventLog"
         chainData:
-          $ref: '#/components/schemas/TransactionChainData'
+          $ref: "#/components/schemas/TransactionChainData"
         transactionUrl:
           type: string
         destinationAddress:
@@ -772,7 +783,7 @@ components:
         - UNKNOWN
         - AWAITING
         - REFUNDED
-    
+
     CCTPStatus:
       type: string
       enum:
@@ -794,7 +805,7 @@ components:
       x-enum-varnames:
         - ASSET_SENT
         - EXECUTED
-    
+
     CosmosChainFeatures:
       type: string
       enum:
@@ -806,7 +817,7 @@ components:
         - PACKET_FORWARD_MIDDLEWARE
         - LEGACY_IBC
         - COSMWASM
-          
+
     SquidRouteType:
       type: string
       enum:
@@ -846,7 +857,7 @@ components:
         - IBC_TRANSFER
         - PFM
         - GMP
-        - CCTP 
+        - CCTP
 
     ActionStage:
       type: integer
@@ -891,28 +902,6 @@ components:
         - TIER
       description: Fee enum types.
 
-    BridgeProvider:
-      type: string
-      enum:
-        - Axelar
-        - CCTP
-        - Noble CCTP
-        - IBC
-        - IBC Packet forward middleware
-        - Chainflip
-        - CORAL
-        - Immutable
-      description: Bridge provider name for cross-chain operations.
-      x-enum-varnames:
-        - AXELAR
-        - CCTP
-        - NOBLE_CCTP
-        - IBC
-        - PFM
-        - CHAINFLIP
-        - RFQ
-        - IMMUTABLE
-    
     ChainName:
       type: string
       enum:
@@ -1110,7 +1099,7 @@ components:
         - BITCOIN
         - SOLANA
         - SUI
-    
+
     NetworkIdentifier:
       type: string
       enum:
@@ -1296,7 +1285,7 @@ components:
         - BITCOIN
         - SOLANA
         - SUI
-    
+
     DexName:
       type: string
       enum:
@@ -1496,7 +1485,7 @@ components:
         - MENTO_V2
         - OSMOSIS
         - ASTROPORT
-    
+
     WrapperType:
       type: string
       enum:
@@ -1518,7 +1507,7 @@ components:
         - WRAPPED_USDY
         - CONVERTER_DAI_USDS
         - CONVERTER_MKR_SKY
-    
+
     WrapperName:
       type: string
       enum:
@@ -1573,8 +1562,35 @@ components:
         - ITB
       description: Type of bridge used for cross-chain operations.
 
+    BridgeProvider:
+      type: string
+      enum:
+        - Axelar
+        - CCTP
+        - Noble CCTP
+        - IBC
+        - IBC Packet forward middleware
+        - Chainflip
+        - CORAL
+        - Immutable
+      description: Bridge provider name for cross-chain operations.
+      x-enum-varnames:
+        - AXELAR
+        - CCTP
+        - NOBLE_CCTP
+        - IBC
+        - PFM
+        - CHAINFLIP
+        - RFQ
+        - IMMUTABLE
+
+    BridgeConfig:
+      type: object
+      additionalProperties:
+        type: string
+
     DepositAddressRequestData:
-      $ref: '#/components/schemas/ChainflipTransactionRequestData'
+      $ref: "#/components/schemas/ChainflipTransactionRequestData"
 
     DepositAddressResponseData:
       type: object
@@ -1631,7 +1647,7 @@ components:
       title: ComplianceData
       properties:
         trmIdentifier:
-          $ref: '#/components/schemas/TRMIdentifier'
+          $ref: "#/components/schemas/TRMIdentifier"
       additionalProperties:
         type: string
 
@@ -1671,11 +1687,11 @@ components:
       title: Dex
       properties:
         name:
-          $ref: '#/components/schemas/DexName'
+          $ref: "#/components/schemas/DexName"
         chainId:
           type: string
         type:
-          $ref: '#/components/schemas/DexType'
+          $ref: "#/components/schemas/DexType"
         properties:
           type: object
           additionalProperties: true
@@ -1704,9 +1720,9 @@ components:
           items:
             type: string
         type:
-          $ref: '#/components/schemas/WrapperType'
+          $ref: "#/components/schemas/WrapperType"
         name:
-          $ref: '#/components/schemas/WrapperName'
+          $ref: "#/components/schemas/WrapperName"
         logoURI:
           type: string
         properties:
@@ -1730,7 +1746,7 @@ components:
         chainId:
           type: string
         chainType:
-          $ref: '#/components/schemas/ChainType'
+          $ref: "#/components/schemas/ChainType"
           default: evm
         rpc:
           type: string
@@ -1741,12 +1757,12 @@ components:
           format: uri
           nullable: true
         nativeCurrency:
-          $ref: '#/components/schemas/ChainDataNativeCurrency'
+          $ref: "#/components/schemas/ChainDataNativeCurrency"
         axelarChainName:
-          $ref: '#/components/schemas/ChainName'
+          $ref: "#/components/schemas/ChainName"
           nullable: true
         networkIdentifier:
-          $ref: '#/components/schemas/NetworkIdentifier'
+          $ref: "#/components/schemas/NetworkIdentifier"
           description: Network identifier.
         squidImplementation:
           type: string
@@ -1771,7 +1787,7 @@ components:
           format: float
           nullable: true
         chainNativeContracts:
-          $ref: '#/components/schemas/ChainNativeContracts'
+          $ref: "#/components/schemas/ChainNativeContracts"
           nullable: true
         supportedCrossChainProtocols:
           type: array
@@ -1779,12 +1795,12 @@ components:
             type: string
           nullable: true
         compliance:
-          $ref: '#/components/schemas/ComplianceData'
+          $ref: "#/components/schemas/ComplianceData"
           nullable: true
         maintenances:
           type: array
           items:
-            $ref: '#/components/schemas/Maintenance'
+            $ref: "#/components/schemas/Maintenance"
           nullable: true
         boostSupported:
           type: boolean
@@ -1857,10 +1873,10 @@ components:
           type: boolean
           nullable: true
         axelarNetworkIdentifier:
-          $ref: '#/components/schemas/AxelarNetworkIdentifier'
+          $ref: "#/components/schemas/AxelarNetworkIdentifier"
           nullable: true
         volatility:
-          $ref: '#/components/schemas/Volatility'
+          $ref: "#/components/schemas/Volatility"
           nullable: true
         axelarNetworkSymbol:
           type: string
@@ -1869,7 +1885,7 @@ components:
           type: string
           nullable: true
         type:
-          $ref: '#/components/schemas/ChainType'
+          $ref: "#/components/schemas/ChainType"
           nullable: true
         feeOnTransfer:
           type: boolean
@@ -1897,7 +1913,7 @@ components:
       title: FeatureFlag
       properties:
         feature:
-          $ref: '#/components/schemas/FeatureFlagType'
+          $ref: "#/components/schemas/FeatureFlagType"
         allowedIntegrators:
           type: array
           items:
@@ -1914,16 +1930,16 @@ components:
         txHash:
           type: string
         status:
-          $ref: '#/components/schemas/RouteActionStatus'
+          $ref: "#/components/schemas/RouteActionStatus"
         action:
-          $ref: '#/components/schemas/AxelarRouteAction'
+          $ref: "#/components/schemas/AxelarRouteAction"
 
     StatusResponseData:
       type: object
       title: StatusResponseData
       properties:
         squidTransactionStatus:
-          $ref: '#/components/schemas/SquidTransactionStatus'
+          $ref: "#/components/schemas/SquidTransactionStatus"
           example: "success"
         id:
           type: string
@@ -1941,9 +1957,9 @@ components:
           type: string
           description: URL to view transaction on Axelar.
         fromChain:
-          $ref: '#/components/schemas/TransactionStatus'
+          $ref: "#/components/schemas/TransactionStatus"
         toChain:
-          $ref: '#/components/schemas/TransactionStatus'
+          $ref: "#/components/schemas/TransactionStatus"
         timeSpent:
           type: object
           additionalProperties:
@@ -1951,7 +1967,7 @@ components:
         routeStatus:
           type: array
           items:
-            $ref: '#/components/schemas/RouteStatusEntry'
+            $ref: "#/components/schemas/RouteStatusEntry"
       required:
         - squidTransactionStatus
 
@@ -1962,12 +1978,12 @@ components:
         tokens:
           type: array
           items:
-            $ref: '#/components/schemas/Token'
+            $ref: "#/components/schemas/Token"
           nullable: true
         chains:
           type: array
           items:
-            $ref: '#/components/schemas/ChainData'
+            $ref: "#/components/schemas/ChainData"
           nullable: true
         axelarscanURL:
           type: string
@@ -1981,7 +1997,7 @@ components:
         featureFlags:
           type: array
           items:
-            $ref: '#/components/schemas/FeatureFlag'
+            $ref: "#/components/schemas/FeatureFlag"
           nullable: true
 
     FeeData:
@@ -2030,7 +2046,7 @@ components:
         actions:
           type: array
           items:
-            $ref: '#/components/schemas/QuoteAction'
+            $ref: "#/components/schemas/QuoteAction"
         fromAmount:
           type: string
         toAmount:
@@ -2067,29 +2083,29 @@ components:
 
     ActionDetails:
       oneOf:
-        - $ref: '#/components/schemas/SwapDetails'
-        - $ref: '#/components/schemas/WrapDetails'
-        - $ref: '#/components/schemas/BridgeDetails'
-        - $ref: '#/components/schemas/CustomCallDetails'
-        - $ref: '#/components/schemas/FeeDetails'
-        - $ref: '#/components/schemas/LiquidityProviderDetails'
+        - $ref: "#/components/schemas/SwapDetails"
+        - $ref: "#/components/schemas/WrapDetails"
+        - $ref: "#/components/schemas/BridgeDetails"
+        - $ref: "#/components/schemas/CustomCallDetails"
+        - $ref: "#/components/schemas/FeeDetails"
+        - $ref: "#/components/schemas/LiquidityProviderDetails"
 
     QuoteAction:
       type: object
       title: QuoteAction
       properties:
         type:
-          $ref: '#/components/schemas/ActionType'
+          $ref: "#/components/schemas/ActionType"
         chainType:
-          $ref: '#/components/schemas/ChainType'
+          $ref: "#/components/schemas/ChainType"
         fromChain:
-          $ref: '#/components/schemas/ChainData'
+          $ref: "#/components/schemas/ChainData"
         toChain:
-          $ref: '#/components/schemas/ChainData'
+          $ref: "#/components/schemas/ChainData"
         fromToken:
-          $ref: '#/components/schemas/Token'
+          $ref: "#/components/schemas/Token"
         toToken:
-          $ref: '#/components/schemas/Token'
+          $ref: "#/components/schemas/Token"
         fromAmount:
           type: string
         toAmount:
@@ -2101,10 +2117,10 @@ components:
         priceImpact:
           type: string
         stage:
-          $ref: '#/components/schemas/ActionStage'
+          $ref: "#/components/schemas/ActionStage"
           nullable: true
         data:
-          $ref: '#/components/schemas/ActionDetails'
+          $ref: "#/components/schemas/ActionDetails"
       required:
         - type
         - chainType
@@ -2130,11 +2146,11 @@ components:
           items:
             type: string
         dex:
-          $ref: '#/components/schemas/Dex'
+          $ref: "#/components/schemas/Dex"
         calls:
           type: array
           items:
-            $ref: '#/components/schemas/ChainCall'
+            $ref: "#/components/schemas/ChainCall"
         poolId:
           type: string
         poolFee:
@@ -2198,7 +2214,7 @@ components:
           items:
             type: string
         type:
-          $ref: '#/components/schemas/WrapperType'
+          $ref: "#/components/schemas/WrapperType"
         address:
           type: string
         wrapper:
@@ -2208,11 +2224,11 @@ components:
           items:
             type: string
         direction:
-          $ref: '#/components/schemas/WrapDirection'
+          $ref: "#/components/schemas/WrapDirection"
         calls:
           type: array
           items:
-            $ref: '#/components/schemas/ChainCall'
+            $ref: "#/components/schemas/ChainCall"
         custom:
           type: object
           additionalProperties: true
@@ -2245,7 +2261,7 @@ components:
         provider:
           type: string
         type:
-          $ref: '#/components/schemas/BridgeType'
+          $ref: "#/components/schemas/BridgeType"
         name:
           type: string
         logoURI:
@@ -2254,7 +2270,7 @@ components:
         calls:
           type: array
           items:
-            $ref: '#/components/schemas/ChainCall'
+            $ref: "#/components/schemas/ChainCall"
           nullable: true
       required:
         - target
@@ -2277,7 +2293,7 @@ components:
         calls:
           type: array
           items:
-            $ref: '#/components/schemas/ChainCall'
+            $ref: "#/components/schemas/ChainCall"
       required:
         - name
         - calls
@@ -2293,7 +2309,7 @@ components:
         provider:
           type: string
         type:
-          $ref: '#/components/schemas/BridgeType'
+          $ref: "#/components/schemas/BridgeType"
         name:
           type: string
         logoURI:
@@ -2302,7 +2318,7 @@ components:
         calls:
           type: array
           items:
-            $ref: '#/components/schemas/ChainCall'
+            $ref: "#/components/schemas/ChainCall"
           nullable: true
         fillerAddress:
           type: string
@@ -2324,18 +2340,18 @@ components:
         calls:
           type: array
           items:
-            $ref: '#/components/schemas/ChainCall'
+            $ref: "#/components/schemas/ChainCall"
           nullable: true
         platformFee:
-          $ref: '#/components/schemas/PlatformFee'
+          $ref: "#/components/schemas/PlatformFee"
         integratorFee:
-          $ref: '#/components/schemas/IntegratorFee'
+          $ref: "#/components/schemas/IntegratorFee"
         chainFee:
-          $ref: '#/components/schemas/ChainFee'
+          $ref: "#/components/schemas/ChainFee"
         tokenFee:
-          $ref: '#/components/schemas/TokenFee'
+          $ref: "#/components/schemas/TokenFee"
         tierFee:
-          $ref: '#/components/schemas/TierFee'
+          $ref: "#/components/schemas/TierFee"
         totalFeeAmount:
           type: string
           format: int64
@@ -2437,7 +2453,7 @@ components:
           type: string
           nullable: true
         integrator:
-          $ref: '#/components/schemas/Integrator'
+          $ref: "#/components/schemas/Integrator"
           nullable: true
       required:
         - type
@@ -2467,7 +2483,7 @@ components:
         waivePlatformFee:
           type: boolean
         chain:
-          $ref: '#/components/schemas/ChainData'
+          $ref: "#/components/schemas/ChainData"
           nullable: true
       required:
         - type
@@ -2494,7 +2510,7 @@ components:
         waivePlatformFee:
           type: boolean
         token:
-          $ref: '#/components/schemas/Token'
+          $ref: "#/components/schemas/Token"
           nullable: true
       required:
         - type
@@ -2511,7 +2527,7 @@ components:
           type: string
           enum: [TIER]
         tier:
-          $ref: '#/components/schemas/Volatility'
+          $ref: "#/components/schemas/Volatility"
         flat:
           type: number
           default: 0
@@ -2544,20 +2560,20 @@ components:
 
     ChainCall:
       oneOf:
-        - $ref: '#/components/schemas/EvmContractCall'
-        - $ref: '#/components/schemas/CosmosCall'
+        - $ref: "#/components/schemas/EvmContractCall"
+        - $ref: "#/components/schemas/CosmosCall"
 
     CosmosCall:
       type: object
       title: CosmosCall
       properties:
         chainType:
-          $ref: '#/components/schemas/ChainType'
+          $ref: "#/components/schemas/ChainType"
           default: cosmos
         callType:
-          $ref: '#/components/schemas/CosmosCallType'
+          $ref: "#/components/schemas/CosmosCallType"
         call:
-          $ref: '#/components/schemas/CosmosCallUnion'
+          $ref: "#/components/schemas/CosmosCallUnion"
       required:
         - chainType
         - callType
@@ -2565,12 +2581,12 @@ components:
 
     CosmosCallUnion:
       oneOf:
-        - $ref: '#/components/schemas/CosmosMulticallContractCall'
-        - $ref: '#/components/schemas/CosmosIbcTransferCall'
-        - $ref: '#/components/schemas/CosmosPfmCall'
-        - $ref: '#/components/schemas/CosmosGmpCall'
-        - $ref: '#/components/schemas/CosmosBankSendCall'
-        - $ref: '#/components/schemas/CosmosCctpCall'
+        - $ref: "#/components/schemas/CosmosMulticallContractCall"
+        - $ref: "#/components/schemas/CosmosIbcTransferCall"
+        - $ref: "#/components/schemas/CosmosPfmCall"
+        - $ref: "#/components/schemas/CosmosGmpCall"
+        - $ref: "#/components/schemas/CosmosBankSendCall"
+        - $ref: "#/components/schemas/CosmosCctpCall"
 
     CosmosMulticallContractCall:
       type: object
@@ -2581,16 +2597,16 @@ components:
         actions:
           type: array
           items:
-            $ref: '#/components/schemas/CosmosActionUnion'
+            $ref: "#/components/schemas/CosmosActionUnion"
       required:
         - msg
         - actions
 
     CosmosActionUnion:
       oneOf:
-        - $ref: '#/components/schemas/NativeBalanceFetchAction'
-        - $ref: '#/components/schemas/IbcTrackingAction'
-        - $ref: '#/components/schemas/FieldToProtoBinaryAction'
+        - $ref: "#/components/schemas/NativeBalanceFetchAction"
+        - $ref: "#/components/schemas/IbcTrackingAction"
+        - $ref: "#/components/schemas/FieldToProtoBinaryAction"
 
     NativeBalanceFetchAction:
       type: object
@@ -2854,17 +2870,17 @@ components:
       title: Path
       properties:
         fromChain:
-          $ref: '#/components/schemas/ChainData'
+          $ref: "#/components/schemas/ChainData"
         fromToken:
-          $ref: '#/components/schemas/Token'
+          $ref: "#/components/schemas/Token"
         toChain:
-          $ref: '#/components/schemas/ChainData'
+          $ref: "#/components/schemas/ChainData"
         toToken:
-          $ref: '#/components/schemas/Token'
+          $ref: "#/components/schemas/Token"
         actions:
           type: array
           items:
-            $ref: '#/components/schemas/PathAction'
+            $ref: "#/components/schemas/PathAction"
       required:
         - fromChain
         - fromToken
@@ -2877,17 +2893,17 @@ components:
       title: PathAction
       properties:
         type:
-          $ref: '#/components/schemas/ActionType'
+          $ref: "#/components/schemas/ActionType"
         chainType:
-          $ref: '#/components/schemas/ChainType'
+          $ref: "#/components/schemas/ChainType"
         fromChain:
-          $ref: '#/components/schemas/ChainData'
+          $ref: "#/components/schemas/ChainData"
         toChain:
-          $ref: '#/components/schemas/ChainData'
+          $ref: "#/components/schemas/ChainData"
         fromToken:
-          $ref: '#/components/schemas/Token'
+          $ref: "#/components/schemas/Token"
         toToken:
-          $ref: '#/components/schemas/Token'
+          $ref: "#/components/schemas/Token"
         data:
           type: object
           additionalProperties: true
@@ -2965,7 +2981,7 @@ components:
       title: ApiBasicResponseError
       properties:
         errorType:
-          $ref: '#/components/schemas/ErrorType'
+          $ref: "#/components/schemas/ErrorType"
           description: A high-level classification of the error.
           example: "ValidationError"
         message:
@@ -2976,7 +2992,7 @@ components:
         errors:
           type: array
           items:
-            $ref: '#/components/schemas/ApiErrorDetails'
+            $ref: "#/components/schemas/ApiErrorDetails"
           nullable: true
           description: A list of specific validation errors.
         reason:
@@ -3036,7 +3052,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/ApiBasicResponseError'
+            $ref: "#/components/schemas/ApiBasicResponseError"
     RouteResponse:
       description: Successful route calculation.
       headers:
@@ -3050,25 +3066,25 @@ components:
             type: object
             properties:
               route:
-                $ref: '#/components/schemas/RouteResponseData'
+                $ref: "#/components/schemas/RouteResponseData"
     StatusResponse:
       description: Transaction status.
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/StatusResponseData'
+            $ref: "#/components/schemas/StatusResponseData"
     DepositAddressResponse:
       description: Deposit address information for non-EVM to EVM swaps.
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/DepositAddressResponseData'
+            $ref: "#/components/schemas/DepositAddressResponseData"
     SDKInfoResponse:
       description: SDK Information, including token list.
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/SDKInfoResponseData'
+            $ref: "#/components/schemas/SDKInfoResponseData"
 
 paths:
   /v2/route:
@@ -3076,15 +3092,15 @@ paths:
       operationId: getRoute
       summary: Get a cross-chain swap route
       parameters:
-        - $ref: '#/components/parameters/IntegratorIdHeader'
+        - $ref: "#/components/parameters/IntegratorIdHeader"
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RouteRequestParams'
+              $ref: "#/components/schemas/RouteRequestParams"
       responses:
-        '200':
+        "200":
           description: Successful route calculation.
           headers:
             x-request-id:
@@ -3094,16 +3110,16 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RouteResponse'
+                $ref: "#/components/schemas/RouteResponse"
         default:
-          $ref: '#/components/responses/ApiBasicResponseError'
+          $ref: "#/components/responses/ApiBasicResponseError"
 
   /v2/status:
     get:
       operationId: getStatus
       summary: Get the status of a transaction
       parameters:
-        - $ref: '#/components/parameters/IntegratorIdHeader'
+        - $ref: "#/components/parameters/IntegratorIdHeader"
         - name: transactionId
           in: query
           required: true
@@ -3135,37 +3151,37 @@ paths:
             type: string
           description: Specifies the bridge type if applicable.
       responses:
-        '200':
-          $ref: '#/components/responses/StatusResponse'
+        "200":
+          $ref: "#/components/responses/StatusResponse"
         default:
-          $ref: '#/components/responses/ApiBasicResponseError'
+          $ref: "#/components/responses/ApiBasicResponseError"
 
   /v2/sdk-info:
     get:
       operationId: getSDKInfo
       summary: Get SDK information, including supported tokens and chains
       parameters:
-        - $ref: '#/components/parameters/IntegratorIdHeader'
+        - $ref: "#/components/parameters/IntegratorIdHeader"
       responses:
-        '200':
-          $ref: '#/components/responses/SDKInfoResponse'
+        "200":
+          $ref: "#/components/responses/SDKInfoResponse"
         default:
-          $ref: '#/components/responses/ApiBasicResponseError'
+          $ref: "#/components/responses/ApiBasicResponseError"
 
   /v2/deposit-address:
     post:
       operationId: getDepositAddress
       summary: Get deposit address for non-EVM to EVM swaps
       parameters:
-        - $ref: '#/components/parameters/IntegratorIdHeader'
+        - $ref: "#/components/parameters/IntegratorIdHeader"
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/DepositAddressRequestData'
+              $ref: "#/components/schemas/DepositAddressRequestData"
       responses:
-        '200':
-          $ref: '#/components/responses/DepositAddressResponse'
+        "200":
+          $ref: "#/components/responses/DepositAddressResponse"
         default:
-          $ref: '#/components/responses/ApiBasicResponseError'
+          $ref: "#/components/responses/ApiBasicResponseError"
