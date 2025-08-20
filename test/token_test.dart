@@ -1,21 +1,17 @@
-//
-// AUTO-GENERATED FILE, DO NOT MODIFY!
-//
-// @dart=2.18
-
-// ignore_for_file: unused_element, unused_import
-// ignore_for_file: always_put_required_named_parameters_first
-// ignore_for_file: constant_identifier_names
-// ignore_for_file: lines_longer_than_80_chars
-
-import 'package:openapi/api.dart';
 import 'package:test/test.dart';
+import 'package:squidrouter/squidrouter.dart';
 
 // tests for Token
 void main() {
-  // final instance = Token();
+  final instance = TokenBuilder();
+  // TODO add properties to the builder and call build()
 
-  group('test Token', () {
+  group(Token, () {
+    // ChainType type
+    test('to test the property `type`', () async {
+      // TODO
+    });
+
     // String chainId
     test('to test the property `chainId`', () async {
       // TODO
@@ -36,7 +32,7 @@ void main() {
       // TODO
     });
 
-    // int decimals (default value: 18)
+    // num decimals
     test('to test the property `decimals`', () async {
       // TODO
     });
@@ -51,30 +47,8 @@ void main() {
       // TODO
     });
 
-    // Current USD price of the token.
-    // double usdPrice
-    test('to test the property `usdPrice`', () async {
-      // TODO
-    });
-
-    // List<String> categories (default value: const [])
-    test('to test the property `categories`', () async {
-      // TODO
-    });
-
-    // String ibcDenom
-    test('to test the property `ibcDenom`', () async {
-      // TODO
-    });
-
-    // bool bridgeOnly
-    test('to test the property `bridgeOnly`', () async {
-      // TODO
-    });
-
-    // Axelar network identifiers for the token.
-    // Map<String, String> axelarNetworkIdentifier (default value: const {})
-    test('to test the property `axelarNetworkIdentifier`', () async {
+    // String interchainTokenId
+    test('to test the property `interchainTokenId`', () async {
       // TODO
     });
 
@@ -83,18 +57,23 @@ void main() {
       // TODO
     });
 
+    // num usdPrice
+    test('to test the property `usdPrice`', () async {
+      // TODO
+    });
+
     // String axelarNetworkSymbol
     test('to test the property `axelarNetworkSymbol`', () async {
       // TODO
     });
 
-    // String interchainTokenId
-    test('to test the property `interchainTokenId`', () async {
+    // bool subGraphOnly
+    test('to test the property `subGraphOnly`', () async {
       // TODO
     });
 
-    // ChainType type
-    test('to test the property `type`', () async {
+    // BuiltList<String> subGraphIds
+    test('to test the property `subGraphIds`', () async {
       // TODO
     });
 
@@ -118,17 +97,5 @@ void main() {
       // TODO
     });
 
-    // bool subGraphOnly
-    test('to test the property `subGraphOnly`', () async {
-      // TODO
-    });
-
-    // List<String> subGraphIds (default value: const [])
-    test('to test the property `subGraphIds`', () async {
-      // TODO
-    });
-
-
   });
-
 }

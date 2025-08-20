@@ -1,22 +1,22 @@
-# openapi.model.WrapDetails
+# squidrouter.model.WrapDetails
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:squidrouter/api.dart';
 ```
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **target** | **String** |  | 
-**path** | **List<String>** |  | [default to const []]
+**path** | **BuiltList&lt;String&gt;** |  | 
 **type** | [**WrapperType**](WrapperType.md) |  | 
 **address** | **String** |  | 
 **wrapper** | **String** |  | 
-**coinAddresses** | **List<String>** |  | [default to const []]
+**coinAddresses** | **BuiltList&lt;String&gt;** |  | 
 **direction** | [**WrapDirection**](WrapDirection.md) |  | 
-**calls** | [**List<ChainCall>**](ChainCall.md) |  | [default to const []]
-**custom** | [**Map<String, Object>**](Object.md) |  | [optional] [default to const {}]
+**calls** | [**BuiltList&lt;ChainCall&gt;**](ChainCall.md) |  | 
+**custom** | [**JsonObject**](.md) |  | [optional] 
 **logoURI** | **String** |  | [optional] 
 **name** | **String** |  | [optional] 
 **provider** | **String** |  | [optional] 

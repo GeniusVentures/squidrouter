@@ -1,4 +1,4 @@
-# openapi.model.CosmosBankSendCallBank
+# squidrouter.model.CosmosBankSendCallBank
 
 ## Load the model package
 ```dart

@@ -1,8 +1,8 @@
-# openapi.model.SquidDataType
+# squidrouter.model.SquidDataType
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:squidrouter/api.dart';
 ```
 
 ## Properties

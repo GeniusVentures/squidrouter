@@ -1,22 +1,13 @@
-//
-// AUTO-GENERATED FILE, DO NOT MODIFY!
-//
-// @dart=2.18
-
-// ignore_for_file: unused_element, unused_import
-// ignore_for_file: always_put_required_named_parameters_first
-// ignore_for_file: constant_identifier_names
-// ignore_for_file: lines_longer_than_80_chars
-
-import 'package:openapi/api.dart';
 import 'package:test/test.dart';
+import 'package:squidrouter/squidrouter.dart';
 
 // tests for FeeDetails
 void main() {
-  // final instance = FeeDetails();
+  final instance = FeeDetailsBuilder();
+  // TODO add properties to the builder and call build()
 
-  group('test FeeDetails', () {
-    // List<ChainCall> calls (default value: const [])
+  group(FeeDetails, () {
+    // BuiltList<ChainCall> calls
     test('to test the property `calls`', () async {
       // TODO
     });
@@ -46,42 +37,42 @@ void main() {
       // TODO
     });
 
-    // String totalFeeAmount
+    // num totalFeeAmount
     test('to test the property `totalFeeAmount`', () async {
       // TODO
     });
 
-    // String platformFeeAmount
+    // num platformFeeAmount
     test('to test the property `platformFeeAmount`', () async {
       // TODO
     });
 
-    // String integratorFeeAmount
+    // num integratorFeeAmount
     test('to test the property `integratorFeeAmount`', () async {
       // TODO
     });
 
-    // String integratorFee2Amount
+    // num integratorFee2Amount
     test('to test the property `integratorFee2Amount`', () async {
       // TODO
     });
 
-    // String squidFeeAmount
+    // num squidFeeAmount
     test('to test the property `squidFeeAmount`', () async {
       // TODO
     });
 
-    // String chainFeeAmount
+    // num chainFeeAmount
     test('to test the property `chainFeeAmount`', () async {
       // TODO
     });
 
-    // String tokenFeeAmount
+    // num tokenFeeAmount
     test('to test the property `tokenFeeAmount`', () async {
       // TODO
     });
 
-    // String tierFeeAmount
+    // num tierFeeAmount
     test('to test the property `tierFeeAmount`', () async {
       // TODO
     });
@@ -91,7 +82,5 @@ void main() {
       // TODO
     });
 
-
   });
-
 }

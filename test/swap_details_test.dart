@@ -1,37 +1,23 @@
-//
-// AUTO-GENERATED FILE, DO NOT MODIFY!
-//
-// @dart=2.18
-
-// ignore_for_file: unused_element, unused_import
-// ignore_for_file: always_put_required_named_parameters_first
-// ignore_for_file: constant_identifier_names
-// ignore_for_file: lines_longer_than_80_chars
-
-import 'package:openapi/api.dart';
 import 'package:test/test.dart';
+import 'package:squidrouter/squidrouter.dart';
 
 // tests for SwapDetails
 void main() {
-  // final instance = SwapDetails();
+  final instance = SwapDetailsBuilder();
+  // TODO add properties to the builder and call build()
 
-  group('test SwapDetails', () {
+  group(SwapDetails, () {
     // String target
     test('to test the property `target`', () async {
       // TODO
     });
 
-    // List<String> path (default value: const [])
+    // BuiltList<String> path
     test('to test the property `path`', () async {
       // TODO
     });
 
-    // Dex dex
-    test('to test the property `dex`', () async {
-      // TODO
-    });
-
-    // List<ChainCall> calls (default value: const [])
+    // BuiltList<ChainCall> calls
     test('to test the property `calls`', () async {
       // TODO
     });
@@ -46,22 +32,22 @@ void main() {
       // TODO
     });
 
-    // int tickSpacing (default value: 0)
+    // num tickSpacing
     test('to test the property `tickSpacing`', () async {
       // TODO
     });
 
-    // int binStep (default value: 0)
+    // num binStep
     test('to test the property `binStep`', () async {
       // TODO
     });
 
-    // List<OsmosisPool> osmosisPools (default value: const [])
+    // BuiltList<SwapDetailsOsmosisPoolsInner> osmosisPools
     test('to test the property `osmosisPools`', () async {
       // TODO
     });
 
-    // List<String> coinAddresses (default value: const [])
+    // BuiltList<String> coinAddresses
     test('to test the property `coinAddresses`', () async {
       // TODO
     });
@@ -86,7 +72,7 @@ void main() {
       // TODO
     });
 
-    // Map<String, Object> custom (default value: const {})
+    // JsonObject custom
     test('to test the property `custom`', () async {
       // TODO
     });
@@ -101,7 +87,10 @@ void main() {
       // TODO
     });
 
+    // DexName dex
+    test('to test the property `dex`', () async {
+      // TODO
+    });
 
   });
-
 }

@@ -1,4 +1,4 @@
-# openapi.model.CosmosMulticallContractCallActionsInner
+# squidrouter.model.CosmosMulticallContractCallActionsInner
 
 ## Load the model package
 ```dart

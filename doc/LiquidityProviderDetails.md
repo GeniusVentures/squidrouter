@@ -1,8 +1,8 @@
-# openapi.model.LiquidityProviderDetails
+# squidrouter.model.LiquidityProviderDetails
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:squidrouter/api.dart';
 ```
 
 ## Properties
@@ -14,8 +14,9 @@ Name | Type | Description | Notes
 **type** | [**BridgeType**](BridgeType.md) |  | 
 **name** | **String** |  | 
 **logoURI** | **String** |  | [optional] 
-**calls** | [**List<ChainCall>**](ChainCall.md) |  | [optional] [default to const []]
-**fillerAddress** | **String** |  | 
+**calls** | [**BuiltList&lt;ChainCall&gt;**](ChainCall.md) |  | [optional] 
+**fillerAddress** | **String** |  | [optional] 
+**fillerAddresses** | [**FillerAddresses**](FillerAddresses.md) |  | [optional] 
 **expiry** | **String** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
