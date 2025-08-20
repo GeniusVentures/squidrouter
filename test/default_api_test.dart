@@ -1,157 +1,152 @@
-// test/default_api_test.dart
-import 'package:squidrouter/api.dart';
+import 'dart:io';
+
+import 'package:dio/dio.dart';
+import 'package:dotenv/dotenv.dart' as dotenv_package;
 import 'package:test/test.dart';
-import 'api_test_helper.dart';
+import 'package:squidrouter/squidrouter.dart';
 
 /// tests for DefaultApi
 void main() {
-  late DefaultApi api;
+  // When 'dart test' is run from 'squidrouter/', the CWD is 'squidrouter/'.
+  // This path correctly targets '.env' in the directory containing 'squidrouter/'
+  String envFilePathFromPackageParent = '../.env';
+  String envFilePathInPackageRoot = '.env';
 
-  setUpAll(() {
-    // Initialize API with test configuration
-    initializeTestApi();
-    api = squidTestApi;
-  });
+  bool loadedFromParent = false;
+  var dotenv = dotenv_package.DotEnv();
 
-  group('tests for DefaultApi', () {
+  if (File(envFilePathFromPackageParent).existsSync()) {
+    dotenv.load([envFilePathFromPackageParent]);
+    print(
+        "    (.env loader): Loaded .env from parent of package root: $envFilePathFromPackageParent");
+    loadedFromParent = true;
+  } else if (File(envFilePathInPackageRoot).existsSync()) {
+    dotenv.load([envFilePathInPackageRoot]);
+    print(
+        "    (.env loader): Loaded .env from package root: $envFilePathInPackageRoot");
+  } else {
+    print(
+        "    (.env loader): WARNING - No .env file found in package root or its parent directory.");
+  }
+
+  // Use SQUID_INTEGRATOR_ID for tests hitting the production API with testnet params
+  String testIntegratorId = dotenv['SQUID_INTEGRATOR_ID'] ?? '';
+  // This would be the production API key if used
+  String? testApiKey = dotenv['SQUID_API_KEY'];
+
+  if (testIntegratorId.isEmpty) {
+    final checkedPaths = loadedFromParent
+        ? envFilePathFromPackageParent
+        : "$envFilePathFromPackageParent and $envFilePathInPackageRoot";
+    throw Exception(
+        "SQUID_INTEGRATOR_ID not found in .env (checked $checkedPaths). Please set this variable for tests.");
+  }
+
+  final instance = Squidrouter();
+  instance.setApiKey("IntegratorId", testIntegratorId);
+  final api = instance.getDefaultApi();
+
+  group(DefaultApi, () {
     // Get deposit address for non-EVM to EVM swaps
+    //
+    //Future<ChainflipDepositAddressResponse> getDepositAddress(ChainflipDepositAddressData chainflipDepositAddressData) async
     test('test getDepositAddress', () async {
       // This test requires a valid deposit channel from a previous route response
-      print('This test requires a valid Chainflip deposit channel from a prior /route response');
+      print(
+          'This test requires a valid Chainflip deposit channel from a prior /route response');
+    });
+
+    // Get a cross-chain swap route
+    //
+    //Future<RouteResponseData> getRoute(String xIntegratorId, RouteRequest routeRequest) async
+    test('test getRoute', () async {
+      // Create route request for a common testnet pair
+      var routeParamsBuilder = RouteRequestBuilder();
+      // Ethereum chain
+      routeParamsBuilder.fromChain = "1";
+      // Polygon
+      routeParamsBuilder.toChain = "137";
+      // USDC on eth chain
+      routeParamsBuilder.fromToken =
+          "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48";
+      // POL ON POLYGON
+      routeParamsBuilder.toToken = "0x3c499c542cef5e3811e1192ce70d8cc03d5c3359";
+      // 100 USDC
+      routeParamsBuilder.fromAmount = "100000000";
+      routeParamsBuilder.toAddress = "";
+      routeParamsBuilder.fromAddress =
+          "0x0000000000000000000000000000000000000000";
+      // Just get a quote to avoid actual transaction
+      routeParamsBuilder.quoteOnly = true;
+      var routeRequest = routeParamsBuilder.build();
+
+      final response = await api.getRoute(routeRequest: routeRequest);
+      expect(response.data, isNotNull);
+
+      print(
+          "Route calculated successfully with estimated toAmount: ${response.data?.route.estimate.toAmount}");
     });
 
     // Get SDK information, including supported tokens and chains
+    //
+    //Future<GetSDKInfo200Response> getSDKInfo(String xIntegratorId) async
     test('test getSDKInfo', () async {
-      await testApiThrottler.wait();
+      // headers: Map.from({"x-integrator-id": testIntegratorId})
+      final response = await api.getSDKInfo();
+      expect(response.data, isNotNull);
 
-      try {
-        final response = await api.getSDKInfo(testIntegratorId);
-        expect(response, isNotNull);
+      final data = response.data;
 
-        // Validate response structure based on SDKInfoResponseData
-        if (response != null) {
-          // Check chains collection
-          if (response.chains != null && response.chains!.isNotEmpty) {
-            print("SDK info returned ${response.chains!.length} chains");
-            // Sample the first chain to ensure it has expected properties
-            var firstChain = response.chains!.first;
-            expect(firstChain.chainId, isNotNull);
-            expect(firstChain.chainName, isNotNull);
-            print("First chain: ${firstChain.chainName} (${firstChain.chainId})");
-          } else {
-            print("SDK info returned no chains or null chains list");
-          }
-
-          // Check tokens collection
-          if (response.tokens != null && response.tokens!.isNotEmpty) {
-            print("SDK info returned ${response.tokens!.length} tokens");
-            // Sample a token to ensure it has expected properties
-            var sampleToken = response.tokens!.first;
-            expect(sampleToken.symbol, isNotNull);
-            print("Sample token: ${sampleToken.symbol} on chain ${sampleToken.chainId}");
-          } else {
-            print("SDK info returned no tokens or null tokens list");
-          }
-
-          // Check maintenance status
-          if (response.isInMaintenanceMode == true) {
-            print("API is in maintenance mode: ${response.maintenanceMessage}");
-          }
-        }
-      } on ApiException catch (e) {
-        printApiErrorDetails('getSDKInfo', e);
-        fail("SDK info request failed: ${e.code} - ${e.message}");
+      // Check maintenance status
+      if (data!.isInMaintenanceMode ?? false) {
+        print("API is in maintenance mode: ${data.maintenanceMessage}");
+        return;
       }
+
+      // Check chains
+      expect(data.chains, isNotEmpty);
+      print("SDK info returned ${data.chains.length} chains");
+
+      BaseChain firstChain = data.chains.first.oneOf.value as BaseChain;
+      print("First chain: ${firstChain.chainName} (${firstChain.chainId})");
+
+      // Check tokens
+      expect(data.tokens, isNotEmpty);
+      print("SDK info returned ${data.tokens.length} tokens");
+
+      var firstToken = data.tokens.first;
+      print(
+          "Sample token: ${firstToken.symbol} on chain ${firstToken.chainId}");
     });
 
-    // Get a cross-chain swap route
-    // Get a cross-chain swap route
-    test('test getRoute', () async {
-      await testApiThrottler.wait();
+    // Get the status of a transaction
+    //
+    //Future<StatusResponse> getStatus(String xIntegratorId, String transactionId, String quoteId, { String requestId, String bridgeType }) async
+    test('test getStatus', () async {
+      var response = await api.getStatus(
+          transactionId:
+              "0x7591aa38d646ac26b57f7235836cb7e7b63a32534bdd2e5dcecf06136744a94d",
+          quoteId: "6f388be5205ee044cd7fd5047a4ce72e");
 
-      // Create route request for a common testnet pair
-      final routeParams = RouteRequestParams(
-          fromChain: "1", // Ethereum Chain
-          toChain: "137", // Polygon
-          fromToken: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48", // USDC on Eth Chain
-          toToken: "0x3c499c542cef5e3811e1192ce70d8cc03d5c3359", // POL ON POLYGON
-          fromAmount: "100000000", // 100 USDC
-          toAddress: "",
-          fromAddress: "0x0000000000000000000000000000000000000000",
-          //slippage: 1.0,
-          quoteOnly: true, // Just get a quote to avoid actual transaction
+      expect(response.data, isNotNull);
+      print("Response status: ${response.data?.status}");
+    });
+
+    //Future<GetTokenPrice200Response> getTokenPrice(String address, { String chainId, bool usdPrice }) async
+    test('test getTokenPrice', () async {
+      var response = await api.getTokenPrice(
+        address: "0xAcc15dC74880C9944775448304B263D191c6077F",
+        chainId: "1284",
+        usdPrice: true,
       );
 
-      try {
-        final response = await api.getRoute(testIntegratorId, routeParams);
-        expect(response, isNotNull);
+      expect(response.data, isNotNull);
 
-        // Check if a route was found
-        if (response?.route == null && response?.error != null) {
-          print("Route calculation returned error: ${response?.error?.message}");
-          expect(response?.errorType, isNotNull);
-        } else if (response?.route == null) {
-          print("Route calculation returned no route");
-        } else {
-          expect(response?.route?.estimate, isNotNull);
-          expect(response?.route?.transactionRequest, isNotNull);
-          print("Route calculated successfully with estimated toAmount: ${response?.route?.estimate?.toAmount}");
-        }
-      } on ApiException catch (e) {
-        printApiErrorDetails('getRoute', e);
-        fail("Route request failed: ${e.code} - ${e.message}");
-      }
-    });
+      expect(response.data?.tokens, isNotEmpty);
 
+      var firstToken = response.data?.tokens?.first;
 
-    // Get the status of a transaction
-    // Get the status of a transaction
-    test('test getStatus', () async {
-      await testApiThrottler.wait();
-
-      // Using a known non-existent transaction as a test
-      const testTxId = "0x0000000000000000000000000000000000000000000000000000000000000000";
-      const testRequestId = "test-request-id";
-      const fromChainId = "56";   // BNB Chain
-      const toChainId = "42161";  // Arbitrum
-
-      print("Checking status for non-existent transaction (expecting 404 or not_found status)...");
-
-      try {
-        final response = await api.getStatus(
-          testIntegratorId,
-          testTxId,
-          testRequestId,
-          fromChainId,
-          toChainId,
-        );
-
-        // If no exception is thrown, proceed to check the response
-        expect(response, isNotNull);
-        if (response != null) {
-          print("Transaction status: ${response.squidTransactionStatus}");
-          // The status should be one of these values for a fake transaction
-          expect(
-              response.squidTransactionStatus,
-              anyOf(
-                  equals(SquidTransactionStatus.NOT_FOUND),
-                  equals(SquidTransactionStatus.FAILED_DESTINATION)
-              )
-          );
-          print("✓ Received expected status for non-existent transaction");
-        }
-      } on ApiException catch (e) {
-        // For non-existent transactions, a 404 error is expected and acceptable
-        if (e.code == 404 && e.message != null && e.message!.contains('No transaction found')) {
-          // This is the expected behavior - silent pass
-          print("✓ Received expected 404 'No transaction found' error for non-existent transaction");
-        } else {
-          // Only print error details for unexpected errors
-          printApiErrorDetails('getStatus', e);
-          print("Unexpected API exception: ${e.code} - ${e.message}");
-          fail("Test failed with unexpected error");
-        }
-      }
+      print("Token ${firstToken?.name}: USD ${firstToken?.usdPrice}");
     });
   });
 }

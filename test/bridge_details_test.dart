@@ -1,21 +1,12 @@
-//
-// AUTO-GENERATED FILE, DO NOT MODIFY!
-//
-// @dart=2.18
-
-// ignore_for_file: unused_element, unused_import
-// ignore_for_file: always_put_required_named_parameters_first
-// ignore_for_file: constant_identifier_names
-// ignore_for_file: lines_longer_than_80_chars
-
-import 'package:openapi/api.dart';
 import 'package:test/test.dart';
+import 'package:squidrouter/squidrouter.dart';
 
 // tests for BridgeDetails
 void main() {
-  // final instance = BridgeDetails();
+  final instance = BridgeDetailsBuilder();
+  // TODO add properties to the builder and call build()
 
-  group('test BridgeDetails', () {
+  group(BridgeDetails, () {
     // String target
     test('to test the property `target`', () async {
       // TODO
@@ -41,12 +32,10 @@ void main() {
       // TODO
     });
 
-    // List<ChainCall> calls (default value: const [])
+    // BuiltList<ChainCall> calls
     test('to test the property `calls`', () async {
       // TODO
     });
 
-
   });
-
 }

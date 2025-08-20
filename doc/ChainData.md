@@ -1,35 +1,55 @@
-# openapi.model.ChainData
+# squidrouter.model.ChainData
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:squidrouter/api.dart';
 ```
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**chainName** | **String** |  | 
+**id** | **String** |  | 
 **chainId** | **String** |  | 
-**chainType** | [**ChainType**](ChainType.md) |  | 
+**type** | [**ChainType**](ChainType.md) |  | 
+**chainType** | [**ChainType**](ChainType.md) |  | [optional] 
+**chainName** | **String** |  | [optional] 
+**axelarChainName** | **String** |  | 
+**networkIdentifier** | [**NetworkIdentifier**](NetworkIdentifier.md) |  | 
+**networkName** | **String** |  | 
 **rpc** | **String** |  | [optional] 
-**chainIconURI** | **String** |  | [optional] 
-**nativeCurrency** | [**ChainDataNativeCurrency**](ChainDataNativeCurrency.md) |  | [optional] 
-**axelarChainName** | [**ChainName**](ChainName.md) |  | [optional] 
-**networkIdentifier** | [**NetworkIdentifier**](NetworkIdentifier.md) |  | [optional] 
-**squidImplementation** | **String** |  | [optional] 
-**estimatedRouteDuration** | **int** |  | [optional] 
-**estimatedExpressRouteDuration** | **int** |  | [optional] 
+**internalRpc** | **String** |  | [optional] 
+**chainIconURI** | **String** |  | 
+**blockExplorerUrls** | **BuiltList&lt;String&gt;** |  | 
+**enableBoostByDefault** | **bool** |  | 
 **swapAmountForGas** | **String** |  | [optional] 
-**blockExplorerUrls** | **List<String>** |  | [optional] [default to const []]
-**gasMultiplier** | **double** |  | [optional] 
-**chainNativeContracts** | [**ChainNativeContracts**](ChainNativeContracts.md) |  | [optional] 
-**supportedCrossChainProtocols** | **List<String>** |  | [optional] [default to const []]
-**compliance** | [**ComplianceData**](ComplianceData.md) |  | [optional] 
-**maintenances** | [**List<Maintenance>**](Maintenance.md) |  | [optional] [default to const []]
-**boostSupported** | **bool** |  | [optional] 
-**sameChainSwapsSupported** | **bool** | Whether same-chain swaps are supported. | [optional] 
-**enableBoostByDefault** | **bool** |  | [optional] 
+**sameChainSwapsSupported** | **bool** |  | 
 **interchainService** | **String** |  | [optional] 
+**nativeCurrency** | [**BaseChainNativeCurrency**](BaseChainNativeCurrency.md) |  | 
+**squidContracts** | [**BaseChainSquidContracts**](BaseChainSquidContracts.md) |  | 
+**bridges** | [**BuiltMap&lt;String, BuiltMap&lt;String, JsonObject&gt;&gt;**](BuiltMap.md) |  | 
+**rpcList** | **BuiltList&lt;String&gt;** |  | 
+**visible** | **bool** |  | 
+**compliance** | [**BaseChainCompliance**](BaseChainCompliance.md) |  | [optional] 
+**boostSupported** | **bool** |  | [optional] 
+**gasFee** | [**BaseChainGasFee**](BaseChainGasFee.md) |  | [optional] 
+**enabled** | **bool** |  | [optional] 
+**layerZeroEndpoint** | **String** |  | [optional] 
+**chainNativeContracts** | [**EvmChainAllOfChainNativeContracts**](EvmChainAllOfChainNativeContracts.md) |  | [optional] 
+**gas** | [**EvmChainAllOfGas**](EvmChainAllOfGas.md) |  | [optional] 
+**rest** | **String** |  | 
+**stakeCurrency** | [**CosmosCurrency**](CosmosCurrency.md) |  | 
+**walletUrl** | **String** |  | [optional] 
+**walletUrlForStaking** | **String** |  | [optional] 
+**bip44** | [**BIP44**](BIP44.md) |  | 
+**alternativeBIP44s** | [**BuiltList&lt;BIP44&gt;**](BIP44.md) |  | [optional] 
+**bech32Config** | [**Bech32Config**](Bech32Config.md) |  | 
+**currencies** | [**BuiltList&lt;CosmosCurrency&gt;**](CosmosCurrency.md) |  | 
+**feeCurrencies** | [**BuiltList&lt;CosmosCurrency&gt;**](CosmosCurrency.md) |  | 
+**coinType** | **int** |  | [optional] 
+**features** | **BuiltList&lt;String&gt;** |  | [optional] 
+**gasPriceStep** | [**CosmosGasType**](CosmosGasType.md) |  | [optional] 
+**isEvmos** | **bool** |  | [optional] 
+**chainToAxelarChannelId** | **String** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

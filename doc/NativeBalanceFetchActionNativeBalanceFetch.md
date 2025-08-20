@@ -1,4 +1,4 @@
-# openapi.model.NativeBalanceFetchActionNativeBalanceFetch
+# squidrouter.model.NativeBalanceFetchActionNativeBalanceFetch
 
 ## Load the model package
 ```dart

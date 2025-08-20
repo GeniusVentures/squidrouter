@@ -1,8 +1,8 @@
-# openapi.model.FallbackAddress
+# squidrouter.model.FallbackAddress
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:squidrouter/api.dart';
 ```
 
 ## Properties

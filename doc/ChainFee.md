@@ -1,16 +1,16 @@
-# openapi.model.ChainFee
+# squidrouter.model.ChainFee
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:squidrouter/api.dart';
 ```
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **String** |  | 
-**flat** | **num** |  | [default to 0]
-**percentage** | **num** |  | [default to 0]
+**flat** | **num** |  | 
+**percentage** | **num** |  | 
 **enabled** | **bool** |  | 
 **waivePlatformFee** | **bool** |  | 
 **chain** | [**ChainData**](ChainData.md) |  | [optional] 
