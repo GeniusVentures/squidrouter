@@ -1,0 +1,8 @@
+[
+  "schemas",
+  "parameters",
+  "headers",
+  "requestBodies",
+  "responses",
+  "securitySchemes"
+]

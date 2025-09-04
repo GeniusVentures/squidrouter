@@ -1,4 +1,4 @@
-# openapi.model.FieldToProtoBinaryActionFieldToBinary
+# squidrouter.model.FieldToProtoBinaryActionFieldToBinary
 
 ## Load the model package
 ```dart

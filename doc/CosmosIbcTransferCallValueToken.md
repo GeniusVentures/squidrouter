@@ -1,4 +1,4 @@
-# openapi.model.CosmosIbcTransferCallValueToken
+# squidrouter.model.CosmosIbcTransferCallValueToken
 
 ## Load the model package
 ```dart

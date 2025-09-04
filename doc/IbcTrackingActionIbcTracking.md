@@ -1,4 +1,4 @@
-# openapi.model.IbcTrackingActionIbcTracking
+# squidrouter.model.IbcTrackingActionIbcTracking
 
 ## Load the model package
 ```dart

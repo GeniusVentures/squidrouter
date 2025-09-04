@@ -1,20 +1,20 @@
-# openapi.model.IntegratorFee
+# squidrouter.model.IntegratorFee
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:squidrouter/api.dart';
 ```
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **String** |  | 
-**flat** | **num** |  | [default to 0]
-**percentage** | **num** |  | [default to 0]
+**flat** | **num** |  | 
+**percentage** | **num** |  | 
 **flat2** | **num** |  | [optional] 
 **percentage2** | **num** |  | [optional] 
-**squidFlat** | **num** |  | [default to 0]
-**squidPercentage** | **num** |  | [default to 0]
+**squidFlat** | **num** |  | 
+**squidPercentage** | **num** |  | 
 **enabled** | **bool** |  | 
 **waivePlatformFee** | **bool** |  | 
 **address** | **String** |  | 

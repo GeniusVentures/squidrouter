@@ -1,21 +1,12 @@
-//
-// AUTO-GENERATED FILE, DO NOT MODIFY!
-//
-// @dart=2.18
-
-// ignore_for_file: unused_element, unused_import
-// ignore_for_file: always_put_required_named_parameters_first
-// ignore_for_file: constant_identifier_names
-// ignore_for_file: lines_longer_than_80_chars
-
-import 'package:openapi/api.dart';
 import 'package:test/test.dart';
+import 'package:squidrouter/squidrouter.dart';
 
 // tests for Hook
 void main() {
-  // final instance = Hook();
+  final instance = HookBuilder();
+  // TODO add properties to the builder and call build()
 
-  group('test Hook', () {
+  group(Hook, () {
     // ChainType chainType
     test('to test the property `chainType`', () async {
       // TODO
@@ -33,18 +24,11 @@ void main() {
       // TODO
     });
 
-    // List<EvmContractCall> calls (default value: const [])
+    // BuiltList<ChainCall> calls
     test('to test the property `calls`', () async {
       // TODO
     });
 
-    // Name of your product or application triggering the hook.
-    // String provider
-    test('to test the property `provider`', () async {
-      // TODO
-    });
-
-    // A brief description of what the hook does.
     // String description
     test('to test the property `description`', () async {
       // TODO
@@ -56,7 +40,11 @@ void main() {
       // TODO
     });
 
+    // Name of your product or application triggering the hook.
+    // String provider
+    test('to test the property `provider`', () async {
+      // TODO
+    });
 
   });
-
 }

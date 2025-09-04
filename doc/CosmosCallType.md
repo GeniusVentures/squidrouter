@@ -1,8 +1,8 @@
-# openapi.model.CosmosCallType
+# squidrouter.model.CosmosCallType
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:squidrouter/api.dart';
 ```
 
 ## Properties

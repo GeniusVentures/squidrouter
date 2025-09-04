@@ -1,4 +1,4 @@
-# openapi.model.CosmosGmpCallFee
+# squidrouter.model.CosmosGmpCallFee
 
 ## Load the model package
 ```dart

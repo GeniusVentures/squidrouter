@@ -1,4 +1,4 @@
-# openapi.model.CosmosCallCall
+# squidrouter.model.CosmosCallCall
 
 ## Load the model package
 ```dart
@@ -8,15 +8,15 @@ import 'package:squidrouter/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**msg** | [**Object**](.md) |  | 
-**actions** | [**List<CosmosMulticallContractCallActionsInner>**](CosmosMulticallContractCallActionsInner.md) |  | [default to const []]
+**msg** | [**JsonObject**](.md) |  | 
+**actions** | [**BuiltList&lt;CosmosMulticallContractCallActionsInner&gt;**](CosmosMulticallContractCallActionsInner.md) |  | 
 **typeUrl** | **String** |  | 
 **value** | [**CosmosCctpCallValue**](CosmosCctpCallValue.md) |  | 
 **forward** | [**CosmosPfmCallForward**](CosmosPfmCallForward.md) |  | 
 **destinationChain** | **String** |  | 
 **destinationAddress** | **String** |  | 
-**payload** | **List<int>** |  | [optional] [default to const []]
-**type** | **int** |  | [default to 0]
+**payload** | **BuiltList&lt;int&gt;** |  | [optional] 
+**type** | **int** |  | 
 **fee** | [**CosmosGmpCallFee**](CosmosGmpCallFee.md) |  | [optional] 
 **bank** | [**CosmosBankSendCallBank**](CosmosBankSendCallBank.md) |  | 
 

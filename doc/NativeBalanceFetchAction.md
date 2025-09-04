@@ -1,14 +1,14 @@
-# openapi.model.NativeBalanceFetchAction
+# squidrouter.model.NativeBalanceFetchAction
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:squidrouter/api.dart';
 ```
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**nativeBalanceFetch** | [**NativeBalanceFetch**](NativeBalanceFetch.md) |  | 
+**nativeBalanceFetch** | [**NativeBalanceFetchActionNativeBalanceFetch**](NativeBalanceFetchActionNativeBalanceFetch.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

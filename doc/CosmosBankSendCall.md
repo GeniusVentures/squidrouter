@@ -1,14 +1,14 @@
-# openapi.model.CosmosBankSendCall
+# squidrouter.model.CosmosBankSendCall
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:squidrouter/api.dart';
 ```
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**bank** | [**BankSend**](BankSend.md) |  | 
+**bank** | [**CosmosBankSendCallBank**](CosmosBankSendCallBank.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

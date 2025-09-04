@@ -1,37 +1,26 @@
-//
-// AUTO-GENERATED FILE, DO NOT MODIFY!
-//
-// @dart=2.18
-
-// ignore_for_file: unused_element, unused_import
-// ignore_for_file: always_put_required_named_parameters_first
-// ignore_for_file: constant_identifier_names
-// ignore_for_file: lines_longer_than_80_chars
-
-import 'package:openapi/api.dart';
 import 'package:test/test.dart';
+import 'package:squidrouter/squidrouter.dart';
 
 // tests for RouteResponseData
 void main() {
-  // final instance = RouteResponseData();
+  final instance = RouteResponseDataBuilder();
+  // TODO add properties to the builder and call build()
 
-  group('test RouteResponseData', () {
-    // TransactionRequest transactionRequest
-    test('to test the property `transactionRequest`', () async {
+  group(RouteResponseData, () {
+    // String requestId
+    test('to test the property `requestId`', () async {
       // TODO
     });
 
-    // RouteEstimate estimate
-    test('to test the property `estimate`', () async {
+    // String integratorId
+    test('to test the property `integratorId`', () async {
       // TODO
     });
 
-    // RouteRequestParams params
-    test('to test the property `params`', () async {
+    // RouteResponseDataRoute route
+    test('to test the property `route`', () async {
       // TODO
     });
-
 
   });
-
 }

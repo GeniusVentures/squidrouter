@@ -1,8 +1,8 @@
-# openapi.model.TierFee
+# squidrouter.model.TierFee
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:squidrouter/api.dart';
 ```
 
 ## Properties
@@ -10,8 +10,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **String** |  | 
 **tier** | [**Volatility**](Volatility.md) |  | 
-**flat** | **num** |  | [default to 0]
-**percentage** | **num** |  | [default to 0]
+**flat** | **num** |  | 
+**percentage** | **num** |  | 
 **enabled** | **bool** |  | 
 **waivePlatformFee** | **bool** |  | 
 

@@ -1,8 +1,8 @@
-# openapi.api.DefaultApi
+# squidrouter.api.DefaultApi
 
 ## Load the API package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:squidrouter/api.dart';
 ```
 
 All URIs are relative to *https://v2.api.squidrouter.com*
@@ -13,25 +13,29 @@ Method | HTTP request | Description
 [**getRoute**](DefaultApi.md#getroute) | **POST** /v2/route | Get a cross-chain swap route
 [**getSDKInfo**](DefaultApi.md#getsdkinfo) | **GET** /v2/sdk-info | Get SDK information, including supported tokens and chains
 [**getStatus**](DefaultApi.md#getstatus) | **GET** /v2/status | Get the status of a transaction
+[**getTokenPrice**](DefaultApi.md#gettokenprice) | **GET** /v2/tokens | 
 
 
 # **getDepositAddress**
-> DepositAddressResponseData getDepositAddress(xIntegratorId, body)
+> ChainflipDepositAddressResponse getDepositAddress(chainflipDepositAddressData)
 
 Get deposit address for non-EVM to EVM swaps
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:squidrouter/api.dart';
+// TODO Configure API key authorization: IntegratorId
+//defaultApiClient.getAuthentication<ApiKeyAuth>('IntegratorId').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('IntegratorId').apiKeyPrefix = 'Bearer';
 
-final api_instance = DefaultApi();
-final xIntegratorId = your-integrator-id; // String | Your Squid integrator ID.
-final body = ChainflipTransactionRequestData(); // ChainflipTransactionRequestData | 
+final api = Squidrouter().getDefaultApi();
+final ChainflipDepositAddressData chainflipDepositAddressData = ; // ChainflipDepositAddressData | 
 
 try {
-    final result = api_instance.getDepositAddress(xIntegratorId, body);
-    print(result);
-} catch (e) {
+    final response = api.getDepositAddress(chainflipDepositAddressData);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling DefaultApi->getDepositAddress: $e\n');
 }
 ```
@@ -40,16 +44,15 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xIntegratorId** | **String**| Your Squid integrator ID. | 
- **body** | **ChainflipTransactionRequestData**|  | 
+ **chainflipDepositAddressData** | [**ChainflipDepositAddressData**](ChainflipDepositAddressData.md)|  | 
 
 ### Return type
 
-[**DepositAddressResponseData**](DepositAddressResponseData.md)
+[**ChainflipDepositAddressResponse**](ChainflipDepositAddressResponse.md)
 
 ### Authorization
 
-No authorization required
+[IntegratorId](../README.md#IntegratorId)
 
 ### HTTP request headers
 
@@ -59,22 +62,25 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getRoute**
-> RouteResponse getRoute(xIntegratorId, routeRequestParams)
+> RouteResponseData getRoute(routeRequest)
 
 Get a cross-chain swap route
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:squidrouter/api.dart';
+// TODO Configure API key authorization: IntegratorId
+//defaultApiClient.getAuthentication<ApiKeyAuth>('IntegratorId').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('IntegratorId').apiKeyPrefix = 'Bearer';
 
-final api_instance = DefaultApi();
-final xIntegratorId = your-integrator-id; // String | Your Squid integrator ID.
-final routeRequestParams = RouteRequestParams(); // RouteRequestParams | 
+final api = Squidrouter().getDefaultApi();
+final RouteRequest routeRequest = ; // RouteRequest | 
 
 try {
-    final result = api_instance.getRoute(xIntegratorId, routeRequestParams);
-    print(result);
-} catch (e) {
+    final response = api.getRoute(routeRequest);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling DefaultApi->getRoute: $e\n');
 }
 ```
@@ -83,16 +89,15 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xIntegratorId** | **String**| Your Squid integrator ID. | 
- **routeRequestParams** | [**RouteRequestParams**](RouteRequestParams.md)|  | 
+ **routeRequest** | [**RouteRequest**](RouteRequest.md)|  | 
 
 ### Return type
 
-[**RouteResponse**](RouteResponse.md)
+[**RouteResponseData**](RouteResponseData.md)
 
 ### Authorization
 
-No authorization required
+[IntegratorId](../README.md#IntegratorId)
 
 ### HTTP request headers
 
@@ -102,38 +107,38 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getSDKInfo**
-> SDKInfoResponseData getSDKInfo(xIntegratorId)
+> GetSDKInfo200Response getSDKInfo()
 
 Get SDK information, including supported tokens and chains
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:squidrouter/api.dart';
+// TODO Configure API key authorization: IntegratorId
+//defaultApiClient.getAuthentication<ApiKeyAuth>('IntegratorId').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('IntegratorId').apiKeyPrefix = 'Bearer';
 
-final api_instance = DefaultApi();
-final xIntegratorId = your-integrator-id; // String | Your Squid integrator ID.
+final api = Squidrouter().getDefaultApi();
 
 try {
-    final result = api_instance.getSDKInfo(xIntegratorId);
-    print(result);
-} catch (e) {
+    final response = api.getSDKInfo();
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling DefaultApi->getSDKInfo: $e\n');
 }
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **xIntegratorId** | **String**| Your Squid integrator ID. | 
+This endpoint does not need any parameter.
 
 ### Return type
 
-[**SDKInfoResponseData**](SDKInfoResponseData.md)
+[**GetSDKInfo200Response**](GetSDKInfo200Response.md)
 
 ### Authorization
 
-No authorization required
+[IntegratorId](../README.md#IntegratorId)
 
 ### HTTP request headers
 
@@ -143,26 +148,28 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getStatus**
-> StatusResponseData getStatus(xIntegratorId, transactionId, requestId, fromChainId, toChainId, bridgeType)
+> StatusResponse getStatus(quoteId, transactionId, bridgeType, requestId)
 
 Get the status of a transaction
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:squidrouter/api.dart';
+// TODO Configure API key authorization: IntegratorId
+//defaultApiClient.getAuthentication<ApiKeyAuth>('IntegratorId').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('IntegratorId').apiKeyPrefix = 'Bearer';
 
-final api_instance = DefaultApi();
-final xIntegratorId = your-integrator-id; // String | Your Squid integrator ID.
-final transactionId = transactionId_example; // String | The transaction hash to check the status for.
-final requestId = requestId_example; // String | The request ID received from the /route endpoint.
-final fromChainId = fromChainId_example; // String | The source chain ID of the transaction.
-final toChainId = toChainId_example; // String | The destination chain ID of the transaction.
-final bridgeType = bridgeType_example; // String | Specifies the bridge type if applicable.
+final api = Squidrouter().getDefaultApi();
+final String quoteId = quoteId_example; // String | 
+final String transactionId = transactionId_example; // String | The transaction hash to check the status for.
+final String bridgeType = bridgeType_example; // String | Specifies the bridge type if applicable.
+final String requestId = requestId_example; // String | The request ID received from the /route endpoint.
 
 try {
-    final result = api_instance.getStatus(xIntegratorId, transactionId, requestId, fromChainId, toChainId, bridgeType);
-    print(result);
-} catch (e) {
+    final response = api.getStatus(quoteId, transactionId, bridgeType, requestId);
+    print(response);
+} catch on DioException (e) {
     print('Exception when calling DefaultApi->getStatus: $e\n');
 }
 ```
@@ -171,20 +178,67 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xIntegratorId** | **String**| Your Squid integrator ID. | 
+ **quoteId** | **String**|  | 
  **transactionId** | **String**| The transaction hash to check the status for. | 
- **requestId** | **String**| The request ID received from the /route endpoint. | 
- **fromChainId** | **String**| The source chain ID of the transaction. | 
- **toChainId** | **String**| The destination chain ID of the transaction. | 
  **bridgeType** | **String**| Specifies the bridge type if applicable. | [optional] 
+ **requestId** | **String**| The request ID received from the /route endpoint. | [optional] 
 
 ### Return type
 
-[**StatusResponseData**](StatusResponseData.md)
+[**StatusResponse**](StatusResponse.md)
 
 ### Authorization
 
-No authorization required
+[IntegratorId](../README.md#IntegratorId)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getTokenPrice**
+> GetTokenPrice200Response getTokenPrice(address, chainId, usdPrice)
+
+
+
+### Example
+```dart
+import 'package:squidrouter/api.dart';
+// TODO Configure API key authorization: IntegratorId
+//defaultApiClient.getAuthentication<ApiKeyAuth>('IntegratorId').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('IntegratorId').apiKeyPrefix = 'Bearer';
+
+final api = Squidrouter().getDefaultApi();
+final String address = address_example; // String | 
+final String chainId = chainId_example; // String | 
+final bool usdPrice = true; // bool | 
+
+try {
+    final response = api.getTokenPrice(address, chainId, usdPrice);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling DefaultApi->getTokenPrice: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **address** | **String**|  | 
+ **chainId** | **String**|  | [optional] 
+ **usdPrice** | **bool**|  | [optional] 
+
+### Return type
+
+[**GetTokenPrice200Response**](GetTokenPrice200Response.md)
+
+### Authorization
+
+[IntegratorId](../README.md#IntegratorId)
 
 ### HTTP request headers
 

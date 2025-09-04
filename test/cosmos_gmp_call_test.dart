@@ -1,21 +1,12 @@
-//
-// AUTO-GENERATED FILE, DO NOT MODIFY!
-//
-// @dart=2.18
-
-// ignore_for_file: unused_element, unused_import
-// ignore_for_file: always_put_required_named_parameters_first
-// ignore_for_file: constant_identifier_names
-// ignore_for_file: lines_longer_than_80_chars
-
-import 'package:openapi/api.dart';
 import 'package:test/test.dart';
+import 'package:squidrouter/squidrouter.dart';
 
 // tests for CosmosGmpCall
 void main() {
-  // final instance = CosmosGmpCall();
+  final instance = CosmosGmpCallBuilder();
+  // TODO add properties to the builder and call build()
 
-  group('test CosmosGmpCall', () {
+  group(CosmosGmpCall, () {
     // String destinationChain
     test('to test the property `destinationChain`', () async {
       // TODO
@@ -26,22 +17,20 @@ void main() {
       // TODO
     });
 
-    // List<int> payload (default value: const [])
+    // BuiltList<int> payload
     test('to test the property `payload`', () async {
       // TODO
     });
 
-    // int type (default value: 0)
+    // int type
     test('to test the property `type`', () async {
       // TODO
     });
 
-    // GmpFee fee
+    // CosmosGmpCallFee fee
     test('to test the property `fee`', () async {
       // TODO
     });
 
-
   });
-
 }

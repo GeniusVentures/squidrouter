@@ -1,27 +1,120 @@
-// lib/squidrouter.dart
-/// Squid Router SDK for Dart
-///
-/// A comprehensive SDK for cross-chain swaps using Squid Router API v2.
-library squidrouter;
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
 
-// Main SDK class
-export 'squidrouter/squid_client_wrapper.dart' show Squid;
+export 'package:squidrouter/src/api.dart';
+export 'package:squidrouter/src/auth/api_key_auth.dart';
+export 'package:squidrouter/src/auth/basic_auth.dart';
+export 'package:squidrouter/src/auth/bearer_auth.dart';
+export 'package:squidrouter/src/auth/oauth.dart';
+export 'package:squidrouter/src/serializers.dart';
+export 'package:squidrouter/src/model/date.dart';
 
-// Configuration
-export 'squidrouter/squid_config.dart';
+export 'package:squidrouter/src/api/default_api.dart';
 
-// Types
-export 'squidrouter/squid_types.dart';
+export 'package:squidrouter/src/model/action_stage.dart';
+export 'package:squidrouter/src/model/action_type.dart';
+export 'package:squidrouter/src/model/api_basic_response.dart';
+export 'package:squidrouter/src/model/api_basic_response_error.dart';
+export 'package:squidrouter/src/model/bip44.dart';
+export 'package:squidrouter/src/model/base_chain.dart';
+export 'package:squidrouter/src/model/base_chain_compliance.dart';
+export 'package:squidrouter/src/model/base_chain_gas_fee.dart';
+export 'package:squidrouter/src/model/base_chain_native_currency.dart';
+export 'package:squidrouter/src/model/base_chain_squid_contracts.dart';
+export 'package:squidrouter/src/model/bech32_config.dart';
+export 'package:squidrouter/src/model/bridge_details.dart';
+export 'package:squidrouter/src/model/bridge_type.dart';
+export 'package:squidrouter/src/model/chain_call.dart';
+export 'package:squidrouter/src/model/chain_data.dart';
+export 'package:squidrouter/src/model/chain_fee.dart';
+export 'package:squidrouter/src/model/chain_type.dart';
+export 'package:squidrouter/src/model/chainflip_deposit_address_data.dart';
+export 'package:squidrouter/src/model/chainflip_deposit_address_data_request.dart';
+export 'package:squidrouter/src/model/chainflip_deposit_address_data_request_ccm_params.dart';
+export 'package:squidrouter/src/model/chainflip_deposit_address_data_request_fill_or_kill_params.dart';
+export 'package:squidrouter/src/model/chainflip_deposit_address_response.dart';
+export 'package:squidrouter/src/model/cosmos_bank_send_call.dart';
+export 'package:squidrouter/src/model/cosmos_bank_send_call_bank.dart';
+export 'package:squidrouter/src/model/cosmos_bank_send_call_bank_send.dart';
+export 'package:squidrouter/src/model/cosmos_bank_send_call_bank_send_amount_inner.dart';
+export 'package:squidrouter/src/model/cosmos_call.dart';
+export 'package:squidrouter/src/model/cosmos_call_call.dart';
+export 'package:squidrouter/src/model/cosmos_call_type.dart';
+export 'package:squidrouter/src/model/cosmos_cctp_call.dart';
+export 'package:squidrouter/src/model/cosmos_cctp_call_value.dart';
+export 'package:squidrouter/src/model/cosmos_chain.dart';
+export 'package:squidrouter/src/model/cosmos_currency.dart';
+export 'package:squidrouter/src/model/cosmos_gas_type.dart';
+export 'package:squidrouter/src/model/cosmos_gmp_call.dart';
+export 'package:squidrouter/src/model/cosmos_gmp_call_fee.dart';
+export 'package:squidrouter/src/model/cosmos_ibc_transfer_call.dart';
+export 'package:squidrouter/src/model/cosmos_ibc_transfer_call_value.dart';
+export 'package:squidrouter/src/model/cosmos_ibc_transfer_call_value_token.dart';
+export 'package:squidrouter/src/model/cosmos_multicall_contract_call.dart';
+export 'package:squidrouter/src/model/cosmos_multicall_contract_call_actions_inner.dart';
+export 'package:squidrouter/src/model/cosmos_pfm_call.dart';
+export 'package:squidrouter/src/model/cosmos_pfm_call_forward.dart';
+export 'package:squidrouter/src/model/custom_call_details.dart';
+export 'package:squidrouter/src/model/dex_name.dart';
+export 'package:squidrouter/src/model/error_type.dart';
+export 'package:squidrouter/src/model/estimate.dart';
+export 'package:squidrouter/src/model/evm_chain.dart';
+export 'package:squidrouter/src/model/evm_chain_all_of_chain_native_contracts.dart';
+export 'package:squidrouter/src/model/evm_chain_all_of_gas.dart';
+export 'package:squidrouter/src/model/evm_contract_call.dart';
+export 'package:squidrouter/src/model/evm_contract_call_payload.dart';
+export 'package:squidrouter/src/model/fallback_address.dart';
+export 'package:squidrouter/src/model/fee_cost.dart';
+export 'package:squidrouter/src/model/fee_details.dart';
+export 'package:squidrouter/src/model/fee_type.dart';
+export 'package:squidrouter/src/model/field_to_proto_binary_action.dart';
+export 'package:squidrouter/src/model/field_to_proto_binary_action_field_to_binary.dart';
+export 'package:squidrouter/src/model/filler_addresses.dart';
+export 'package:squidrouter/src/model/gmp_error.dart';
+export 'package:squidrouter/src/model/gas_cost.dart';
+export 'package:squidrouter/src/model/gas_cost_type.dart';
+export 'package:squidrouter/src/model/get_sdk_info200_response.dart';
+export 'package:squidrouter/src/model/get_token_price200_response.dart';
+export 'package:squidrouter/src/model/hook.dart';
+export 'package:squidrouter/src/model/ibc_tracking_action.dart';
+export 'package:squidrouter/src/model/ibc_tracking_action_ibc_tracking.dart';
+export 'package:squidrouter/src/model/integrator.dart';
+export 'package:squidrouter/src/model/integrator_fee.dart';
+export 'package:squidrouter/src/model/jito_tip_fee.dart';
+export 'package:squidrouter/src/model/liquidity_provider_details.dart';
+export 'package:squidrouter/src/model/long.dart';
+export 'package:squidrouter/src/model/native_balance_fetch_action.dart';
+export 'package:squidrouter/src/model/native_balance_fetch_action_native_balance_fetch.dart';
+export 'package:squidrouter/src/model/network_identifier.dart';
+export 'package:squidrouter/src/model/on_chain_execution_data.dart';
+export 'package:squidrouter/src/model/platform_fee.dart';
+export 'package:squidrouter/src/model/route_action_response.dart';
+export 'package:squidrouter/src/model/route_action_response_data.dart';
+export 'package:squidrouter/src/model/route_request.dart';
+export 'package:squidrouter/src/model/route_request_custom_params.dart';
+export 'package:squidrouter/src/model/route_request_post_hook.dart';
+export 'package:squidrouter/src/model/route_response_data.dart';
+export 'package:squidrouter/src/model/route_response_data_route.dart';
+export 'package:squidrouter/src/model/route_response_data_route_transaction_request.dart';
+export 'package:squidrouter/src/model/squid_call_type.dart';
+export 'package:squidrouter/src/model/squid_data.dart';
+export 'package:squidrouter/src/model/squid_data_type.dart';
+export 'package:squidrouter/src/model/squid_route_type.dart';
+export 'package:squidrouter/src/model/squid_transaction_status.dart';
+export 'package:squidrouter/src/model/status_response.dart';
+export 'package:squidrouter/src/model/sui_coral_call.dart';
+export 'package:squidrouter/src/model/sui_coral_call_type.dart';
+export 'package:squidrouter/src/model/swap_details.dart';
+export 'package:squidrouter/src/model/swap_details_osmosis_pools_inner.dart';
+export 'package:squidrouter/src/model/tier_fee.dart';
+export 'package:squidrouter/src/model/token.dart';
+export 'package:squidrouter/src/model/token_fee.dart';
+export 'package:squidrouter/src/model/transaction_status.dart';
+export 'package:squidrouter/src/model/transaction_status_call_event_log_inner.dart';
+export 'package:squidrouter/src/model/volatility.dart';
+export 'package:squidrouter/src/model/wrap_details.dart';
+export 'package:squidrouter/src/model/wrap_direction.dart';
+export 'package:squidrouter/src/model/wrapper_type.dart';
+export 'package:squidrouter/src/model/yup_error.dart';
 
-// Constants
-export 'squidrouter/squid_constants.dart';
-
-// Handlers (if needed for advanced usage)
-export 'squidrouter/handlers/evm_handler.dart' show EvmHandler;
-export 'squidrouter/handlers/cosmos_handler.dart' show CosmosHandler;
-export 'squidrouter/handlers/solana_handler.dart' show SolanaHandler;
-
-// Utils (if needed for advanced usage)
-export 'squidrouter/utils/tokens_chains.dart' show TokensChains;
-export 'squidrouter/utils/evm_utils.dart' show EvmUtils;
-export 'squidrouter/utils/cosmos_utils.dart' show CosmosUtils;

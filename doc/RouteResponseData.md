@@ -1,16 +1,16 @@
-# openapi.model.RouteResponseData
+# squidrouter.model.RouteResponseData
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:squidrouter/api.dart';
 ```
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**transactionRequest** | [**TransactionRequest**](TransactionRequest.md) |  | [optional] 
-**estimate** | [**RouteEstimate**](RouteEstimate.md) |  | [optional] 
-**params** | [**RouteRequestParams**](RouteRequestParams.md) |  | [optional] 
+**requestId** | **String** |  | [optional] 
+**integratorId** | **String** |  | [optional] 
+**route** | [**RouteResponseDataRoute**](RouteResponseDataRoute.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
